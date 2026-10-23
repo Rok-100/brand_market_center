@@ -1,0 +1,9 @@
+.env
+**/node_modules/
+**/__pycache__/
+**/dist/
+test-results/
+*.sqlite*
+*.key
+*.pem
+*.zip

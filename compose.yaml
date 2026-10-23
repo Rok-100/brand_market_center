@@ -1,0 +1,50 @@
+name: brand-market-dev
+services:
+  cloud:
+    build: .
+    environment:
+      LOCAL_DEV_MODE: "1"
+      LOCAL_SIMULATION: "1"
+      DATABASE_URL: sqlite:////data/cloud.sqlite
+      SESSION_COOKIE: local_dev_session
+      OA_API_BASE_URL: http://local-oa.invalid
+      OA_ENFORCE_DEPARTMENT: "false"
+      OSS_ACCESS_KEY: local-simulation
+      OSS_SECRET_KEY: local-simulation
+      OSS_BUCKET: marketing-video-dashboard
+      OSS_ENDPOINT: http://remix-object-store:9000
+      REMIX_OSS_ENDPOINT: http://remix-object-store:9000
+      COMPANY_AUDIT_ENABLED: "false"
+      SERVICE_NOTIFICATION_DELIVERY_MODE: disabled
+      SUPER_ADMIN_NUMBERS: FD-990001
+      PORT: "3000"
+    volumes:
+      - cloud-data:/data
+    depends_on:
+      remix-object-store:
+        condition: service_healthy
+    networks: [local]
+    restart: unless-stopped
+  remix-object-store:
+    build: adapters
+    environment:
+      LOCAL_SIMULATION: "1"
+    volumes:
+      - objects:/data
+    networks: [local]
+    restart: unless-stopped
+  gateway:
+    build: gateway
+    ports:
+      - "127.0.0.1:8095:8080"
+    depends_on:
+      cloud:
+        condition: service_healthy
+    networks: [local]
+    restart: unless-stopped
+networks:
+  local:
+    internal: true
+volumes:
+  cloud-data:
+  objects:
