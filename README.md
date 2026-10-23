@@ -4,40 +4,61 @@
 
 打开后默认使用最高权限，无需 OA 账号或登录。中枢中只有“二创混剪”接入功能，其余菜单仅展示界面。
 
-## 启动
+## 启动步骤
 
 先安装并启动 Docker Desktop（Windows／macOS），或安装 Docker Engine 和 Docker Compose v2（Linux）。Windows 使用 Linux 容器模式。
 
 首次启动需要联网下载镜像及依赖。电脑上无需另装 Node、Python、FFmpeg、OCR 或数据库，也无需填写生产账号和密钥。
 
+### 1. 下载项目
+
 ```sh
 git clone https://github.com/gsy-fddm/brand_market_center.git
 cd brand_market_center
-docker compose up --build -d
 ```
 
-命令执行完成后，默认访问 http://127.0.0.1:8095/ ，点击“二创混剪”。
+### 2. 填写自己电脑的访问端口
 
-- 工作台：http://127.0.0.1:8095/yxb/wis-marketing-hub/modules/material-workbench/
-- 本地素材输入：http://127.0.0.1:8095/local-input/input
+在 `brand_market_center` 文件夹中，将 `.env.example` 复制一份，副本命名为 `.env`，与 `compose.yaml` 放在同一层。注意文件名必须是 `.env`，不能是 `.env.txt`。
 
-### 修改访问端口
-
-8095 只是默认端口，可以换成其他空闲端口。在项目根目录新建 `.env` 文件（也可以复制 `.env.example` 并重命名），例如填写：
+用文本编辑器打开 `.env`，将 `HUB_PORT` 改成自己电脑上空闲的端口，例如：
 
 ```dotenv
 HUB_PORT=9000
 ```
 
-然后执行：
+`9000` 只是示例，可以选择 1024～65535 之间未被其他程序占用的端口，例如 `8095`、`9000` 或 `18095`。只修改等号后面的数字，不要添加地址或引号。如果提示端口已占用，换一个数字并重新执行下一步即可。
+
+### 3. 启动
+
+在项目文件夹中打开终端，执行：
 
 ```sh
 docker compose up --build -d
 ```
 
-此时访问 http://127.0.0.1:9000/ ，工作台与素材输入地址也使用 9000。入口映射与工作台访问地址会同步更新，无需修改源码。已有数据会保留。
+等待命令完成。第一次需要下载和构建，耗时取决于网络及电脑性能。
+
+### 4. 打开界面
+
+浏览器输入 `http://127.0.0.1:你填写的端口/`，例如填写 `HUB_PORT=9000`，就访问 http://127.0.0.1:9000/ ，然后点击“二创混剪”。
+
+同一示例下，也可直接访问：
+
+- 工作台：http://127.0.0.1:9000/yxb/wis-marketing-hub/modules/material-workbench/
+- 本地素材输入：http://127.0.0.1:9000/local-input/input
+
+所有地址都使用你填写的同一个端口，其他文件不用修改。
 
 端口配置变更后使用 `docker compose up -d` 应用；仅执行 `docker compose restart` 不会加载新的配置。
+
+### 使用 AI 辅助操作
+
+可以将下面这段指令连同仓库地址发给 AI：
+
+> 请按本仓库 README 帮我在当前电脑启动二创混剪模拟环境。我没有开发经验，请先确认 Docker 已安装并运行，帮我选择一个空闲端口，将 `.env.example` 复制为项目根目录的 `.env` 并设置 `HUB_PORT`，再按文档启动，告诉我实际访问地址。如果报错，请根据日志定位处理，不要随意修改业务代码、删除数据卷或执行 `docker compose down -v`。
+
+如果 AI 无法直接操作电脑，请让它按你的操作系统逐步给出命令。遇到错误时把完整报错或截图发给它，不要只描述“打不开”。
 
 ## 使用流程
 
