@@ -10,7 +10,7 @@
         "RENDER_WORKER_PORT": "8787",
         "RENDER_WORKER_DATA_DIR": "/data",
         "RENDER_WORKER_SHARED_SECRET": "local-development-workstation-shared-token-20261023",
-        "RENDER_WORKER_PUBLIC_URL": "http://127.0.0.1:8095/yxb/wis-marketing-hub/modules/material-workbench/worker",
+        "RENDER_WORKER_PUBLIC_URL": "http://127.0.0.1:${HUB_PORT:-8095}/yxb/wis-marketing-hub/modules/material-workbench/worker",
         "STABLE_APP_STATIC_DIR": "/app/render-worker/client-dist",
         "STABLE_APP_PUBLIC_PREFIX": "/yxb/wis-marketing-hub/modules/material-workbench",
         "HUB_INTEGRATED_MODE": "1",
@@ -75,7 +75,7 @@
     "gateway": {
       "build": "gateway",
       "ports": [
-        "127.0.0.1:8095:8080"
+        "127.0.0.1:${HUB_PORT:-8095}:8080"
       ],
       "depends_on": {
         "remix": {

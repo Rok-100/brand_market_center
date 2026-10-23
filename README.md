@@ -16,12 +16,28 @@ cd brand_market_center
 docker compose up --build -d
 ```
 
-命令执行完成后，访问 http://127.0.0.1:8095/ ，点击“二创混剪”。
+命令执行完成后，默认访问 http://127.0.0.1:8095/ ，点击“二创混剪”。
 
 - 工作台：http://127.0.0.1:8095/yxb/wis-marketing-hub/modules/material-workbench/
 - 本地素材输入：http://127.0.0.1:8095/local-input/input
 
-如果提示端口被占用，请先关闭占用 8095 端口的程序，再重新执行启动命令。
+### 修改访问端口
+
+8095 只是默认端口，可以换成其他空闲端口。在项目根目录新建 `.env` 文件（也可以复制 `.env.example` 并重命名），例如填写：
+
+```dotenv
+HUB_PORT=9000
+```
+
+然后执行：
+
+```sh
+docker compose up --build -d
+```
+
+此时访问 http://127.0.0.1:9000/ ，工作台与素材输入地址也使用 9000。入口映射与工作台访问地址会同步更新，无需修改源码。已有数据会保留。
+
+端口配置变更后使用 `docker compose up -d` 应用；仅执行 `docker compose restart` 不会加载新的配置。
 
 ## 使用流程
 

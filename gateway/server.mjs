@@ -12,7 +12,7 @@ function proxy(req,res,host,path,forwardedPrefix){
 const types={'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.svg':'image/svg+xml','.png':'image/png','.woff2':'font/woff2','.ico':'image/x-icon'};
 http.createServer(async(req,res)=>{
  try{
-  const url=new URL(req.url,'http://127.0.0.1:8095');let p=url.pathname;
+  const url=new URL(req.url,'http://'+(req.headers.host||'127.0.0.1'));let p=url.pathname;
   const send=(value,status=200)=>{res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});res.end(JSON.stringify(value))};
   if(p==='/'||p==='/local-dev/'||p===prefix){res.writeHead(302,{Location:prefix+'/'});return res.end()}
   if(p==='/health')return send({ok:true,module:'remix-only'});
