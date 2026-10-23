@@ -1,4 +1,7 @@
-FROM nginx:1.28-alpine
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY index.html /usr/share/nginx/html/index.html
+FROM node:22.23.2-bookworm-slim
+WORKDIR /gateway
+COPY hub/ ./hub/
+COPY server.mjs local-shell.js ./
+USER node
 EXPOSE 8080
+CMD ["node","server.mjs"]

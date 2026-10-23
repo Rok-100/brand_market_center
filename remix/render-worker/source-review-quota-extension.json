@@ -1,0 +1,10 @@
+{
+  "schema": "wis-source-review-quota-extension-v1",
+  "authorizationId": "black-20-second-additional-source-reviews-20261003",
+  "jobId": "a5fdb74d-a2a1-4cf0-affe-d9bbfaf30354",
+  "baseAuthorizationId": "black-20-additional-source-reviews-20261003",
+  "basePolicySha256": "34e5a46ac21b0a3a63ae2f2d1806d5465e86558dc567756900f3854cc395d9d6",
+  "priorTotalLimit": 264,
+  "additionalLimit": 200,
+  "totalLimit": 464
+}

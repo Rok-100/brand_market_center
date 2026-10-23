@@ -1,0 +1,88 @@
+{
+  "status": "candidate_only_requires_root_deployment_review",
+  "createdAt": "2026-10-03T14:44:47.381Z",
+  "jobId": "a5fdb74d-a2a1-4cf0-affe-d9bbfaf30354",
+  "executorId": "FD-026222",
+  "grantSha256": "53fc85e019c018fa1029c5065f828a87819787f71f8f8e6afff31a5e32eb8c9f",
+  "grantEvidenceDigest": "cab9ad46fd8f192bc24e4fe9aac181fdf0aae125e330c77f5725f9f120f69dce",
+  "copiedOriginalFiles": [
+    {
+      "file": "evidence/renderer-source-capture.private.json",
+      "sha256": "1394f793f3862286db9787c88bd36f93ae4143e2b5a9791cc6d352243d3b9280",
+      "size": 63631
+    },
+    {
+      "file": "evidence/database-upload-capture.private.json",
+      "sha256": "be5079172d18512e8ffd90de3a74d0bc267ddb91e6284fadc9ed3b9c0c2111e7",
+      "size": 2414
+    },
+    {
+      "file": "evidence/physical-media-readback.json",
+      "sha256": "4a67739da2bc4b280f8908d7dc529d8aa080ac714b5ea5c8f20dc9d80b1cc066",
+      "size": 7669
+    },
+    {
+      "file": "evidence/job-capture.private.json",
+      "sha256": "1c103507452c6dbd18d0976b6339f4ab1534b67252c19ae08e3af112eb42abdc",
+      "size": 132597
+    },
+    {
+      "file": "evidence/asset-84980-get.raw.json",
+      "sha256": "4b1dacb065cb00eccfcc37a6baadde3a00ed2ab156c061d0048fe8a6138c7c6d",
+      "size": 1492
+    },
+    {
+      "file": "evidence/asset-84985-get.raw.json",
+      "sha256": "a58670db055525bde6849570343e27896f99a4b43a3a5faa044da66af27f35f5",
+      "size": 1492
+    },
+    {
+      "file": "evidence/asset-84975-get.raw.json",
+      "sha256": "f8a70290f215acdc5d8df24eb28155ada80470b2f98bf5d3739d3ed322c1737c",
+      "size": 1492
+    }
+  ],
+  "capturedJob": {
+    "file": "evidence/job-capture.private.json",
+    "sha256": "1c103507452c6dbd18d0976b6339f4ab1534b67252c19ae08e3af112eb42abdc",
+    "jobPointer": "/job",
+    "jobReadAtPointer": "/readAt",
+    "readAt": "2026-10-03T14:35:36.706Z"
+  },
+  "sources": [
+    {
+      "assetId": 84980,
+      "sourceId": "fc2682c8-86b6-4d73-9f8e-1931220d94ae",
+      "sha256": "73bea07ad66dacf20f2ff2a9e0a21f286e7b4369e13fe75df54b48fa7bc60923",
+      "size": 376038174,
+      "fromCategoryState": "absent",
+      "actualDurationSeconds": 106.44
+    },
+    {
+      "assetId": 84985,
+      "sourceId": "3931aab7-e983-4d8e-ac72-3720d2d78d78",
+      "sha256": "4fe14271bed35fe93a5004860886bf5a756be802607f07cfbab5017726afc7f3",
+      "size": 372987582,
+      "fromCategoryState": "absent",
+      "actualDurationSeconds": 105.000998
+    },
+    {
+      "assetId": 84975,
+      "sourceId": "ee12e2fb-0a92-4f75-b330-4800f77c330d",
+      "sha256": "80499d63f8a53fd2140aa2d0d7c2f4b1c242fd03de401345252b9f245accfb8d",
+      "size": 321675240,
+      "fromCategoryState": "absent",
+      "actualDurationSeconds": 90.650998
+    }
+  ],
+  "inputEvidenceContainsSignedUrls": true,
+  "contentApproval": false,
+  "commercialApproval": false,
+  "preparationPermissionGranted": false,
+  "currentSourceCategoryChanged": false,
+  "registryWritten": false,
+  "productionWrites": 0,
+  "networkRequests": 0,
+  "modelCalls": 0,
+  "asrCalls": 0
+}

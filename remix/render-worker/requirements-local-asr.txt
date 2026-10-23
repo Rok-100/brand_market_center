@@ -1,0 +1,11 @@
+# Optional offline CPU evidence-producer environment; separate from Node worker.
+# Python 3.11/3.12; install only in an explicitly prepared candidate/deployment image.
+# Existing local Windows runtime verified 2026-10-01; no installation performed.
+faster-whisper==1.2.1
+ctranslate2==4.8.2
+# ffmpeg and ffprobe executables are also required (not Python packages).
+# Supply a complete, separately staged local model directory containing model.bin,
+# config.json, tokenizer.json and vocabulary.txt. Never download at runtime.
+# Linux image/dependency compatibility and real media accuracy require separate QA.
+# Dockerfile opts in with --build-arg LOCAL_ASR_RUNTIME=true. This does not
+# enable the runner, download weights, bind a SKU, or approve any output.

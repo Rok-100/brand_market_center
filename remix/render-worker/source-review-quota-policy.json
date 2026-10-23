@@ -1,0 +1,10 @@
+{
+  "schema": "wis-source-review-quota-v1",
+  "authorizationId": "black-20-additional-source-reviews-20261003",
+  "jobId": "a5fdb74d-a2a1-4cf0-affe-d9bbfaf30354",
+  "baseLimit": 64,
+  "additionalLimit": 200,
+  "totalLimit": 264,
+  "legacyRunIds": ["91267275-95ff-46ca-bda5-f6c2ebc01e40"],
+  "legacyReservationCount": 54
+}

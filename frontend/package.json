@@ -1,1 +1,0 @@
-{"name":"wis-cloud-local-hall","private":true,"version":"0.0.0","type":"module","scripts":{"build":"vite build","check":"vue-tsc --noEmit"},"dependencies":{"vue":"^3.5.0","lucide-vue-next":"^0.468.0","hash-wasm":"^4.12.0"},"devDependencies":{"vite":"^6.1.0","@vitejs/plugin-vue":"^5.2.0","typescript":"^5.7.0","vue-tsc":"^2.2.0"}}
