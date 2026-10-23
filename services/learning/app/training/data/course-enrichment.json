@@ -1,0 +1,686 @@
+{
+  "verifiedAt": "2026-10-13T05:11:13.565892+00:00",
+  "courses": {
+    "bmt-swuf-947d87c3eb5f": {
+      "sourceBlock": "doxcnDp39s731kaoDgtkkMta2Cf",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcneaz4u314clknseiu5811?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcneaz4u314clknseiu5811?from=ccm",
+          "title": "《AI赋能营销素材实战认知课》-品牌营销部进阶课程",
+          "durationSeconds": 7444.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcneaz4u314clknseiu5811?from=ccm",
+      "durationMinutes": 125,
+      "durationSeconds": 7444.0,
+      "durationBasis": "single-recording",
+      "description": "从营销素材需求出发，认识 AI 生成与实拍素材的适用场景，学习创意镜头构思、关键词生成、文生图与图生视频流程。结合产品镜头和非产品镜头案例，练习筛选画面、迭代创意并承接产品卖点。",
+      "descriptionSource": {
+        "url": "https://jqx28l0j4lx.feishu.cn/minutes/obcneaz4u314clknseiu5811",
+        "basis": "Original transcript at 00:30:42–00:38:15 and 00:47:58–01:07:54, plus source-linked prereading.",
+        "readingUrl": "https://jqx28l0j4lx.feishu.cn/wiki/CiLSw0wzkiPfMfkEkE1c6Pb3nBh",
+        "readingRevision": 140
+      }
+    },
+    "bmt-swuf-03ba998c1949": {
+      "sourceBlock": "doxcn0oJgVnnIYjFkC1XBEaSgqe",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcni2hbmnjks78v1n368l61?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcni2hbmnjks78v1n368l61?from=ccm",
+          "title": "《竞价广告素材制作》-品营特训营-宋睿凛",
+          "durationSeconds": 5820.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcni2hbmnjks78v1n368l61?from=ccm",
+      "durationMinutes": 97,
+      "durationSeconds": 5820.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-swuf-871336f74363": {
+      "sourceBlock": "doxcnccIbyGqaSUoDnkFzM5sjjd",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnjn19i5v4j968bm9eg326?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnjn19i5v4j968bm9eg326?from=ccm",
+          "title": "《从营销到直播：明星内容场执行经验分享》-品营特训营-李雨橦",
+          "durationSeconds": 8822.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnjn19i5v4j968bm9eg326?from=ccm",
+      "durationMinutes": 148,
+      "durationSeconds": 8822.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-swuf-76755afe4a9f": {
+      "sourceBlock": "doxcnpglXWUAsR3Po5yOxDiMIAh",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnk49r8519pas14w57t498?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnk49r8519pas14w57t498?from=ccm",
+          "title": "《如何做好混剪素材-从前置思考到过程实操》-品营特训营-舒豪",
+          "durationSeconds": 5909.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnk49r8519pas14w57t498?from=ccm",
+      "durationMinutes": 99,
+      "durationSeconds": 5909.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-swuf-8259e44cd944": {
+      "sourceBlock": "doxcnnbK2m0VnRMWoEFkI8xYKNf",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnmhzzp87bv19elwhr6d3i?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnmhzzp87bv19elwhr6d3i?from=ccm",
+          "title": "《如何提升自产&混剪爆款率》-品营特训营-彭聪",
+          "durationSeconds": 5491.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnmhzzp87bv19elwhr6d3i?from=ccm",
+      "durationMinutes": 92,
+      "durationSeconds": 5491.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-swuf-d2d19ea234b1": {
+      "sourceBlock": "doxcn41NzGov3OiLLJYrIqmYYch",
+      "sourceRecordingUrls": [],
+      "recordings": [],
+      "recoveredRecordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/obcnnrru9hg8vt3xco99i159",
+          "title": "《主播教练进阶课：主播状态管理》-品营特训营-练美好",
+          "type": "minutes",
+          "durationSeconds": 7421.0,
+          "evidenceSourceBlock": "doxcn41NzGov3OiLLJYrIqmYYch",
+          "evidenceSource": [
+            "source-anchor-management.json",
+            "search-anchor-management.json",
+            "obcnnrru9hg8vt3xco99i159.json"
+          ]
+        }
+      ],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/obcnnrru9hg8vt3xco99i159",
+      "durationMinutes": 124,
+      "durationSeconds": 7421.0,
+      "durationBasis": "recovered-recording"
+    },
+    "bmt-swuf-018de2b8ee8e": {
+      "sourceBlock": "doxcnxUaMNrpHCfFq6EfBqarkUd",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnps1bvmywrfxk71sq8811?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnps1bvmywrfxk71sq8811?from=ccm",
+          "title": "《从素材到爆款：混剪的结构创新与裂变方法》-品营特训营-张瑶&唐茹",
+          "durationSeconds": 5204.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnps1bvmywrfxk71sq8811?from=ccm",
+      "durationMinutes": 87,
+      "durationSeconds": 5204.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-swuf-6d8a39546024": {
+      "sourceBlock": "doxcnvEwrhz26ink0Bvu8Xae6Xf",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnql5gmx471dy68t4349i1?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnql5gmx471dy68t4349i1?from=ccm",
+          "title": "《如何策划直播间内容场》-品营特训营-逯晶妍",
+          "durationSeconds": 7122.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnql5gmx471dy68t4349i1?from=ccm",
+      "durationMinutes": 119,
+      "durationSeconds": 7122.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-swuf-bbb1fe85788b": {
+      "sourceBlock": "doxcnwa40l8jOmBMw746grbDdcd",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnq7rmz88w2g26zu4pzz8b?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnq7rmz88w2g26zu4pzz8b?from=ccm",
+          "title": "《剧情素材制作基础》-品营特训营-李逸青",
+          "durationSeconds": 7102.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnq7rmz88w2g26zu4pzz8b?from=ccm",
+      "durationMinutes": 119,
+      "durationSeconds": 7102.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-swuf-1bad1f28b75a": {
+      "sourceBlock": "doxcn9NwCgKJk0hTakHu1LWjMBe",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnrv372xf23j4e92sov2wj?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnrv372xf23j4e92sov2wj?from=ccm",
+          "title": "《如何从自产小白成长为合格的自产素材负责人》-品营特训营-杜昀辰",
+          "durationSeconds": 6596.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnrv372xf23j4e92sov2wj?from=ccm",
+      "durationMinutes": 110,
+      "durationSeconds": 6596.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-swuf-d3c4b0b3949a": {
+      "sourceBlock": "doxcnCp91Fnov0Zz9uhoq6OHH9d",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnsknh36851e67358382m8?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnsknh36851e67358382m8?from=ccm",
+          "title": "《如何用流量漏斗模型赋能素材》-品营特训营-李楚其",
+          "durationSeconds": 6817.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnsknh36851e67358382m8?from=ccm",
+      "durationMinutes": 114,
+      "durationSeconds": 6817.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-swuf-e337bfa5f6a6": {
+      "sourceBlock": "BdMfdq7k1oGYBBxjRc9cdPA8n7d",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcn942rz1v85pebyx83c28w?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcn942rz1v85pebyx83c28w?from=ccm",
+          "title": "《营销决策的底层逻辑：财报复盘 × 竞对分析》-品牌营销部基础课程",
+          "durationSeconds": 5621.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcn942rz1v85pebyx83c28w?from=ccm",
+      "durationMinutes": 94,
+      "durationSeconds": 5621.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-swuf-b5fda1a788d1": {
+      "sourceBlock": "GfMkdjnFAoWK28x1juJccZm6nnc",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnbh3r72x7tf2441k193x8?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnbh3r72x7tf2441k193x8?from=ccm",
+          "title": "《如何挖掘营销机会点》-品营培训课程-杨雯",
+          "durationSeconds": 5975.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnbh3r72x7tf2441k193x8?from=ccm",
+      "durationMinutes": 100,
+      "durationSeconds": 5975.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-swuf-7e99b5a40390": {
+      "sourceBlock": "ZYAXdcRTtoqZ97xKvK0cfIDhnge",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnvdvcb3w41sy4vi2s94w7?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnvdvcb3w41sy4vi2s94w7?from=ccm",
+          "title": "《千川引流素材的竞对分析》-逯晶妍讲师-品营培训课程",
+          "durationSeconds": 4546.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnvdvcb3w41sy4vi2s94w7?from=ccm",
+      "durationMinutes": 76,
+      "durationSeconds": 4546.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-swuf-af4ff278898c": {
+      "sourceBlock": "T5JEdWuhboWwUex8lVXcQ1k1nSb",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcn5zu5rkbdrdrw9k6dc13j?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcn5zu5rkbdrdrw9k6dc13j?from=ccm",
+          "title": "《自产素材拍摄筹备与执行》-何雨庭讲师-品营培训课程",
+          "durationSeconds": 6019.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcn5zu5rkbdrdrw9k6dc13j?from=ccm",
+      "durationMinutes": 101,
+      "durationSeconds": 6019.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-swuf-2cb11905bf55": {
+      "sourceBlock": "GiRwdcXxToEf6ExP2K0cTQY5nGb",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnar6g4re61fjxa9c5y1zu?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnar6g4re61fjxa9c5y1zu?from=ccm",
+          "title": "《自产二创和混剪》-彭聪讲师-品营培训课程",
+          "durationSeconds": 7929.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnar6g4re61fjxa9c5y1zu?from=ccm",
+      "durationMinutes": 133,
+      "durationSeconds": 7929.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-swuf-c4858fd897f9": {
+      "sourceBlock": "PYXzd0HMpoLOaOxNkhHcbqaOnnf",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcn2774i94kd481z645czz1?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcn2774i94kd481z645czz1?from=ccm",
+          "title": "《营销管理的角色跃迁》-吴超华讲师-营销干部集训",
+          "durationSeconds": 9931.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcn2774i94kd481z645czz1?from=ccm",
+      "durationMinutes": 166,
+      "durationSeconds": 9931.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-swuf-eef7aada23e1": {
+      "sourceBlock": "MfV6dOmoooOuSDxCkP1cUlMUnuf",
+      "sourceRecordingUrls": [],
+      "recordings": [],
+      "recoveredRecordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/obcnepd64l7fk3497p2k8czh",
+          "title": "《营销关键问题：竞争力视角下的经营认知升级》-唐娟讲师-管理培训",
+          "type": "minutes",
+          "durationSeconds": 7582.0,
+          "evidenceSourceBlock": "MfV6dOmoooOuSDxCkP1cUlMUnuf",
+          "evidenceSource": [
+            "source-competitiveness.json",
+            "search-competitiveness.json",
+            "obcnepd64l7fk3497p2k8czh.json"
+          ]
+        }
+      ],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/obcnepd64l7fk3497p2k8czh",
+      "durationMinutes": 127,
+      "durationSeconds": 7582.0,
+      "durationBasis": "recovered-recording",
+      "description": "面向营销管理干部，从经营结构、直播间与营销团队的竞争力三个角度，学习如何用财报理解资源投入、评估经营决策，并判断团队的价值产出。",
+      "descriptionSource": {
+        "url": "https://jqx28l0j4lx.feishu.cn/minutes/obcnepd64l7fk3497p2k8czh",
+        "basis": "Original transcript at 00:04:04–00:10:00; general course outline only, no confidential case figures."
+      }
+    },
+    "bmt-swuf-c77f96a62705": {
+      "sourceBlock": "WBRrdEeXtoZEutx2A56cDf60nBf",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcn6lsb26zyoc59461262z6?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcn6lsb26zyoc59461262z6?from=ccm",
+          "title": "《经营复盘：用利润视角判断营销动作到底好不好》-杨雯讲师-品营培训课程",
+          "durationSeconds": 8416.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcn6lsb26zyoc59461262z6?from=ccm",
+      "durationMinutes": 141,
+      "durationSeconds": 8416.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-swuf-dbd533fb0753": {
+      "sourceBlock": "QO1Cd14qboQbOxxuYCVcUvlenec",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/obcn7b3lg32d35l866nxhy13?from=from_copylink"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/obcn7b3lg32d35l866nxhy13?from=from_copylink",
+          "title": "《KOC选择与放大：跑出结果的关键判断》-王思怡讲师-品营&广策培训课程",
+          "durationSeconds": 3262.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/obcn7b3lg32d35l866nxhy13?from=from_copylink",
+      "durationMinutes": 55,
+      "durationSeconds": 3262.0,
+      "durationBasis": "single-recording",
+      "description": "围绕 KOC 的画像、内容与成本三项关键判断，学习筛选合作资源、优化脚本与评估投入产出。结合项目复盘，掌握原片投放、开头测试、混剪优化和有效素材放大的思路。",
+      "descriptionSource": {
+        "url": "https://jqx28l0j4lx.feishu.cn/minutes/obcn7b3lg32d35l866nxhy13",
+        "basis": "Original transcript at 00:02:01–00:03:59, 00:07:25–00:10:58, 00:12:00–00:17:36 and 00:17:36–00:26:29."
+      }
+    },
+    "bmt-pmg-c9a337768357": {
+      "sourceBlock": "OV53dBu8RowGVexV8g6cNNBZnod",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnm2lqke41945u167ig6zx?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnm2lqke41945u167ig6zx?from=ccm",
+          "title": "《护肤第一课： 从用户肌肤问题 到WIS产品表达》-廖丫讲师-品营新岛民专项课程",
+          "durationSeconds": 5526.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnm2lqke41945u167ig6zx?from=ccm",
+      "durationMinutes": 93,
+      "durationSeconds": 5526.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-pmg-57b2eff21ab6": {
+      "sourceBlock": "OdsbdBaZqoMM85x2xDMcGvGTnKf",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcno46kc24b7t87z98n7854?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcno46kc24b7t87z98n7854?from=ccm",
+          "title": "《品牌营销部-部门第一课》-赵佳乐讲师-品营新岛民专项培训",
+          "durationSeconds": 5534.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcno46kc24b7t87z98n7854?from=ccm",
+      "durationMinutes": 93,
+      "durationSeconds": 5534.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-pmg-9d378380c005": {
+      "sourceBlock": "T6jHdzyyhoNg7sxCsnJc8DQxnMb",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnqh1v8qdnm7ls34srba7p?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnqh1v8qdnm7ls34srba7p?from=ccm",
+          "title": "《今天我要剪亿条爆款——信息流混剪框架》-吴为讲师-品营新岛民卓越计划",
+          "durationSeconds": 4870.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnqh1v8qdnm7ls34srba7p?from=ccm",
+      "durationMinutes": 82,
+      "durationSeconds": 4870.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-pmg-3c9633b1249e": {
+      "sourceBlock": "LEcod8AqAovoddxMsplc9CXQnSZ",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnrrzjv1ib8152aut1ux78?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnrrzjv1ib8152aut1ux78?from=ccm",
+          "title": "《让AI成为每个人的助手 ——建立起对AI的认知》-舒豪讲师-品营专业培训",
+          "durationSeconds": 4423.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnrrzjv1ib8152aut1ux78?from=ccm",
+      "durationMinutes": 74,
+      "durationSeconds": 4423.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-pmg-a0c4b2224e80": {
+      "sourceBlock": "SJusdeKyTo8OMGx4zSucbaf0nod",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcntw2eks94fk1ytn83i65r?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcntw2eks94fk1ytn83i65r?from=ccm",
+          "title": "《素材亿飞冲天》-唐茹讲师-品营新岛民卓越计划",
+          "durationSeconds": 4886.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcntw2eks94fk1ytn83i65r?from=ccm",
+      "durationMinutes": 82,
+      "durationSeconds": 4886.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-pmg-38a85ce0385c": {
+      "sourceBlock": "VZ5adFr1foIvMMxZCyEcRlt5nmf",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/obcnva962qeqy399mge91jrg?from=from_copylink",
+        "https://jqx28l0j4lx.feishu.cn/minutes/obcnvbedyebhb7967skb97y5?from=from_copylink"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/obcnvbedyebhb7967skb97y5?from=from_copylink",
+          "title": "后半段回放（有声）",
+          "durationSeconds": 5325.0
+        },
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/obcnva962qeqy399mge91jrg?from=from_copylink",
+          "title": "课堂录屏（无声）",
+          "durationSeconds": 6740.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/obcnvbedyebhb7967skb97y5?from=from_copylink",
+      "durationMinutes": 89,
+      "durationSeconds": 5325.0,
+      "durationBasis": "alternative-recordings"
+    },
+    "bmt-pmg-1452a1bd051d": {
+      "sourceBlock": "CLSPduUPyo9gKFx8BmOcyo40nAb",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnwk515c2kg73l36rdn7g3?from=ccm",
+        "https://meetings.feishu.cn/minutes/embed/obcnzew56fu13m7e3qa5nh35?from=ccm&from_source=clip_generated"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnwk515c2kg73l36rdn7g3?from=ccm",
+          "title": "第一批次",
+          "durationSeconds": 8301.0
+        },
+        {
+          "url": "https://meetings.feishu.cn/minutes/embed/obcnzew56fu13m7e3qa5nh35?from=ccm&from_source=clip_generated",
+          "title": "第二批次",
+          "durationSeconds": 8711.015
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnwk515c2kg73l36rdn7g3?from=ccm",
+      "durationMinutes": 139,
+      "durationSeconds": 8301.0,
+      "durationBasis": "alternative-recordings"
+    },
+    "bmt-pmg-2a7a0a96b4ec": {
+      "sourceBlock": "QXBodv8N7oAYRfxYpJ9cUJwZnff",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcns48248mc6884385b4i9d?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcns48248mc6884385b4i9d?from=ccm",
+          "title": "00:02:42-01:05:27 |  《亿眼定爆款：素材分析与创意判断力提升》-彭聪讲师-品营新岛民卓越计划",
+          "durationSeconds": 3764.675
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcns48248mc6884385b4i9d?from=ccm",
+      "durationMinutes": 63,
+      "durationSeconds": 3764.675,
+      "durationBasis": "single-recording"
+    },
+    "bmt-pmg-2dc273ce46be": {
+      "sourceBlock": "MC68daSasoKbpixkzkwchhcHnHk",
+      "sourceRecordingUrls": [],
+      "recordings": [],
+      "recoveredRecordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/docx/PMgwdg3hRo7NYaxtaXacBNZXnaf#WmJKd97fZoanS9xVgjZcfyFZnQh",
+          "title": "6.3 《直播间通识培训》.mp4",
+          "type": "source-document",
+          "durationSeconds": 1312.836,
+          "evidenceSourceBlock": "WmJKd97fZoanS9xVgjZcfyFZnQh",
+          "evidenceSource": [
+            "source-live-general.json",
+            "live-video-file-inspect.json",
+            "live-video-preview.json",
+            "live-video-duration-confirmed.json"
+          ]
+        }
+      ],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/docx/PMgwdg3hRo7NYaxtaXacBNZXnaf#WmJKd97fZoanS9xVgjZcfyFZnQh",
+      "durationMinutes": 22,
+      "durationSeconds": 1312.836,
+      "durationBasis": "recovered-recording"
+    },
+    "bmt-pmg-2d88888d14bd": {
+      "sourceBlock": "Vy6SdSjkroXloTx9PCqc5yfFnWd",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcns472a8s7923z7p3f362y?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcns472a8s7923z7p3f362y?from=ccm",
+          "title": "混剪-C组长课-陈紫仪讲师",
+          "durationSeconds": 4869.656
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcns472a8s7923z7p3f362y?from=ccm",
+      "durationMinutes": 82,
+      "durationSeconds": 4869.656,
+      "durationBasis": "single-recording"
+    },
+    "bmt-pmg-5ea9cb93c117": {
+      "sourceBlock": "B23UdrGVQoBhcMx3ThBcgZ0Lnvg",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcn6m2umx81dgp23bj47kqz?from=ccm",
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcns48325tx533r7g46j1o5?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcns48325tx533r7g46j1o5?from=ccm",
+          "title": "第二批次 · 吴灏楠",
+          "durationSeconds": 5422.029
+        },
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcn6m2umx81dgp23bj47kqz?from=ccm",
+          "title": "第一批次 · 张俊辉",
+          "durationSeconds": null
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcns48325tx533r7g46j1o5?from=ccm",
+      "durationMinutes": 91,
+      "durationSeconds": 5422.029,
+      "durationBasis": "alternative-recordings"
+    },
+    "bmt-pmg-32e79f102ab0": {
+      "sourceBlock": "H8NCdx7OfoMzLyxflrVc95Ddnnb",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnfhjsdu6314s6je483327?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnfhjsdu6314s6je483327?from=ccm",
+          "title": "《营销业务场景——肖像权使用风险及防范》课程培训",
+          "durationSeconds": 4237.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnfhjsdu6314s6je483327?from=ccm",
+      "durationMinutes": 71,
+      "durationSeconds": 4237.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-pmg-580507175651": {
+      "sourceBlock": "J492dN44voTM83xtqw5cOlbwnpc",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcniwx8kd575q419tmfz237?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcniwx8kd575q419tmfz237?from=ccm",
+          "title": "《如何形成优质种草内容:从结构和数据角度，优化信息流广告》-张鑫露讲师-品营新岛民卓越计划",
+          "durationSeconds": 3923.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcniwx8kd575q419tmfz237?from=ccm",
+      "durationMinutes": 66,
+      "durationSeconds": 3923.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-pmg-916780a0b418": {
+      "sourceBlock": "NlwCdbfXroiBkRxLnEBcro8Hnuf",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnnq56hj1uldsmyekw1484?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnnq56hj1uldsmyekw1484?from=ccm",
+          "title": "《视频号培训——从渠道特性到运营全链路》-宋睿凛讲师-品营新岛民卓越计划",
+          "durationSeconds": 3484.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnnq56hj1uldsmyekw1484?from=ccm",
+      "durationMinutes": 59,
+      "durationSeconds": 3484.0,
+      "durationBasis": "single-recording"
+    },
+    "bmt-pmg-651be6faaff9": {
+      "sourceBlock": "WCuEdZL5AoNZXvx5AzMcMawvnEh",
+      "sourceRecordingUrls": [
+        "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnuke55f4x179x51as22jd?from=ccm"
+      ],
+      "recordings": [
+        {
+          "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnuke55f4x179x51as22jd?from=ccm",
+          "title": "《一创造画面,二创接流量：AI大投素材的焕新、迭代与裂变》-昱桦、微微主讲",
+          "durationSeconds": 3259.0
+        }
+      ],
+      "recoveredRecordings": [],
+      "defaultRecordingUrl": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnuke55f4x179x51as22jd?from=ccm",
+      "durationMinutes": 55,
+      "durationSeconds": 3259.0,
+      "durationBasis": "single-recording"
+    }
+  }
+}

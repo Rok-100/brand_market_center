@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI单视频批量裂变｜品牌营销部工作站</title>
+    <link rel="stylesheet" href="./styles.css?v=2.11.59&build=variation-auto-canvas-20260829-r1" />
+  </head>
+  <body>
+    <main class="shell variation-shell">
+      <nav class="page-nav" aria-label="页面导航">
+        <a class="back-link" href="./#creation">← 返回工作台首页</a>
+        <span>AI-单视频批量裂变</span>
+      </nav>
+
+      <header class="topbar variation-topbar">
+        <div>
+          <span class="entry-tag ready">1条母版 → 1–10条可控裂变</span>
+          <h1>锁住成交骨架，再改变内容表现</h1>
+          <p>先由LibTV理解母版，形成核心逻辑锁和裂变任务卡；人工确认后才生成成片。</p>
+        </div>
+        <div class="variation-health" id="variationHealth">
+          <span class="status-dot"></span>
+          <div><b id="variationHealthTitle">正在检查LibTV</b><small id="variationHealthText">请稍候</small></div>
+        </div>
+      </header>
+
+      <section class="variation-stage-strip" aria-label="批量裂变步骤">
+        <div class="active" data-stage="1"><b>01</b><span>上传母版</span></div>
+        <div data-stage="2"><b>02</b><span>理解逻辑</span></div>
+        <div data-stage="3"><b>03</b><span>规划裂变</span></div>
+        <div data-stage="4"><b>04</b><span>人工审核</span></div>
+        <div class="variation-generation-stage" data-stage="5">
+          <b>05</b><span>生成成片</span>
+          <button class="secondary variation-revision-action" id="variationEditGenerated" type="button" hidden>修改任务并生成新版本</button>
+        </div>
+      </section>
+
+      <section class="variation-workspace">
+        <form class="tool-panel variation-form" id="variationForm">
+          <div class="panel-title">
+            <div><h2>创建裂变任务</h2><p>先选择“允许改变什么”，系统不会自行改动未选维度。</p></div>
+            <span id="variationFormBadge">待上传</span>
+          </div>
+          <div class="variation-edit-lock" id="variationEditLock" hidden>
+            <div><b id="variationEditLockTitle">任务内容已锁定</b><span id="variationEditLockText">生成期间不能修改母版、裂变方向和参考资产。</span></div>
+          </div>
+
+          <fieldset class="variation-block">
+            <legend><span>1</span>母版视频</legend>
+            <label class="variation-dropzone" id="variationReferenceDropZone">
+              <input id="variationReferenceInput" type="file" accept="video/mp4,video/quicktime,video/x-m4v,video/webm" hidden />
+              <strong>上传1条已经验证有效的视频</strong>
+              <small>支持MP4、MOV、M4V、WEBM，第一版不超过150秒</small>
+              <em id="variationReferenceName">点击选择或拖入视频</em>
+            </label>
+            <video id="variationSourcePreview" controls playsinline hidden></video>
+          </fieldset>
+
+          <fieldset class="variation-block">
+            <legend><span>2</span>裂变数量与强度</legend>
+            <div class="variation-tier-count-grid">
+              <label class="stable"><span><b>稳健</b><small>沿用母版原文，只换商品事实</small></span><input id="variationStableCount" name="stableCount" type="number" min="0" max="10" value="2" inputmode="numeric" /></label>
+              <label class="balanced"><span><b>均衡</b><small>母版原文打底，只做小幅创新</small></span><input id="variationBalancedCount" name="balancedCount" type="number" min="0" max="10" value="2" inputmode="numeric" /></label>
+              <label class="bold"><span><b>大胆</b><small>文案可重写，但人物与逻辑不变</small></span><input id="variationBoldCount" name="boldCount" type="number" min="0" max="10" value="1" inputmode="numeric" /></label>
+            </div>
+            <div class="variation-count-total">
+              <span>本批合计</span>
+              <output id="variationCountOutput">5条</output>
+            </div>
+            <p class="variation-allocation-note" id="variationAllocationNote">三档数量可自由组合，合计1–10条；所有版本都会连接母版并逐镜对位。</p>
+          </fieldset>
+
+          <fieldset class="variation-block">
+            <legend><span>3</span>允许变化的维度</legend>
+            <div class="variation-dimension-grid">
+              <label><input type="checkbox" name="dimensions" value="product" checked /><span><b>换产品</b><small>产品、使用动作和产品镜头</small></span></label>
+              <label><input type="checkbox" name="dimensions" value="background" checked /><span><b>换背景</b><small>场景、光线和空间氛围</small></span></label>
+              <label><input type="checkbox" name="dimensions" value="copy" checked /><span><b>换文案</b><small>口播与声音表达，不生成字幕</small></span></label>
+              <label><input type="checkbox" name="dimensions" value="wardrobe" /><span><b>换服装</b><small>颜色、材质和造型</small></span></label>
+              <label><input type="checkbox" name="dimensions" value="protagonist" /><span><b>换主角</b><small>人物形象和角色关系</small></span></label>
+              <label><input type="checkbox" name="dimensions" value="format" /><span><b>换形式</b><small>KOC、主持人、剧情或静默变化</small></span></label>
+            </div>
+            <div class="variation-dimension-detail-grid">
+              <label class="dimension-detail" data-dimension="product"><span>产品怎么呈现</span><select name="productPresentation"><option value="auto">自动匹配母版</option><option value="handheld">手持展示</option><option value="application">真实使用演示</option><option value="packshot">产品特写</option><option value="unboxing">开盒取用</option></select></label>
+              <label class="dimension-detail" data-dimension="background"><span>背景类型</span><select name="backgroundStyle"><option value="auto">自动匹配母版</option><option value="home">真实居家</option><option value="vanity">卧室梳妆台</option><option value="livestream">美妆直播间</option><option value="launch">品牌发布现场</option><option value="outdoor">自然户外</option><option value="office">办公室休息区</option></select></label>
+              <label class="dimension-detail" data-dimension="copy"><span>文案变化方向</span><select name="copyStyle"><option value="auto">按裂变强度自动处理</option><option value="original">严格沿用母版</option><option value="strong-hook">强化开头钩子</option><option value="benefit">突出卖点利益</option><option value="offer">突出价格机制</option><option value="dialogue">自然对话表达</option></select></label>
+              <label class="dimension-detail" data-dimension="wardrobe"><span>服装类型</span><select name="wardrobeStyle"><option value="auto">自动更换</option><option value="casual">日常休闲装</option><option value="suit">西装</option><option value="gown">礼服</option><option value="homewear">家居服</option><option value="sportswear">运动装</option><option value="professional">专业制服</option></select></label>
+              <label class="dimension-detail" data-dimension="protagonist"><span>主角类型</span><select name="protagonistStyle"><option value="auto">自动更换</option><option value="koc">真实KOC</option><option value="host">主持人/主播</option><option value="expert">专业讲解者</option><option value="consumer">消费者体验者</option><option value="dialogue">双人对话</option><option value="young">年轻女性</option><option value="mature">成熟女性</option></select></label>
+              <label class="dimension-detail" data-dimension="format"><span>表现形式</span><select name="formatStyle"><option value="auto">自动匹配母版</option><option value="koc">KOC真实种草</option><option value="host">主持人发布</option><option value="dialogue">双人剧情对话</option><option value="review">测评分享</option><option value="demo">产品演示</option><option value="silent">无口播视觉变化</option></select></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="variation-block">
+            <legend><span>4</span>目标产品与参考资产</legend>
+            <label class="field-label"><span>目标产品</span><select name="productId" id="variationProductSelect"></select></label>
+            <label class="field-label" id="variationProductNameStyleField"><span>口播产品名</span><select name="productNameStyle" id="variationProductNameStyle"><option value="short">简称（默认）</option><option value="full">产品全称</option></select></label>
+            <label class="field-label" id="variationProductMentionPolicyField"><span>是否必须说产品名</span><select name="productMentionPolicy" id="variationProductMentionPolicy"><option value="follow-source">跟随母版（默认）</option><option value="required">必须口播产品名</option><option value="optional">不强制口播产品名</option></select><small>“跟随母版”会尊重原口播：母版没说产品名时，不会为了补名称强改文案。</small></label>
+            <label class="field-label"><span>本批主推价格与规格</span><select name="offerId" id="variationOfferSelect" required></select></label>
+            <p class="variation-truth-note" id="variationTruthNote">价格、数量和产品口径会锁定到每条新口播，模型不能自行修改。</p>
+            <input name="targetProductName" id="variationTargetProductName" type="hidden" />
+            <p class="variation-asset-note" id="variationAssetNote">勾选“换产品”时，默认直接调用“AI-产品镜生成”使用的产品图库；下面仅用于追加或覆盖参考。</p>
+            <div class="variation-upload-grid">
+              <label class="mini-upload" id="variationProductDropZone">
+                <input id="variationProductInput" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden />
+                <b>追加产品图</b><small>最多6张</small><em id="variationProductNames">可不上传</em>
+              </label>
+              <label class="mini-upload" id="variationCharacterDropZone">
+                <input id="variationCharacterInput" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden />
+                <b>人物参考图</b><small>换主角时建议上传</small><em id="variationCharacterNames">可不上传</em>
+              </label>
+              <label class="mini-upload" id="variationBackgroundDropZone">
+                <input id="variationBackgroundInput" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden />
+                <b>背景参考图</b><small>换背景时可上传</small><em id="variationBackgroundNames">可不上传</em>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="variation-block">
+            <legend><span>5</span>本批次边界</legend>
+            <label class="field-label"><span>必须保留</span><textarea name="mustKeep" rows="3" placeholder="例如：固定开头钩子、保留顾客异议与优惠推动下单的顺序"></textarea></label>
+            <label class="field-label"><span>补充要求</span><textarea name="variationRequest" rows="3" placeholder="例如：场景以真实家庭为主，不生成美容院；所有版本都要自然露出产品"></textarea></label>
+            <details class="variation-advanced">
+              <summary>高级设置</summary>
+              <label class="field-label"><span>分析方式</span><select name="analysisMode"><option value="ai">LibTV自动理解母版</option><option value="manual">人工提供完整拆解</option></select></label>
+              <label class="field-label"><span>人工拆解（仅人工模式）</span><textarea name="manualDeepDive" rows="5" placeholder="至少80字，写清钩子、痛点、解决方案、卖点、行动引导和镜头顺序"></textarea></label>
+              <div class="variation-auto-canvas-note" role="note" aria-label="LibTV画布说明">
+                <span class="variation-auto-canvas-icon" aria-hidden="true">✓</span>
+                <span><b>LibTV画布自动管理</b><small>提交任务后，系统会根据当前LibTV账号为本任务自动创建独立画布；同一任务再次生成继续复用原画布，无需填写链接。</small></span>
+              </div>
+            </details>
+          </fieldset>
+
+          <button class="primary variation-submit" id="variationSubmit" type="submit">分析母版并生成裂变方案</button>
+          <p class="form-message" id="variationFormMessage"></p>
+        </form>
+
+        <aside class="variation-side-panel">
+          <div class="variation-side-card">
+            <span>核心原则</span>
+            <h2>不是随机改10条</h2>
+            <p>系统先锁定钩子、痛点、解决方案、卖点顺序、人物关系和行动引导，再为每条成片安排不同变量。</p>
+          </div>
+          <div class="variation-side-card">
+            <span id="variationTierRuleTitle">三级文案规则</span>
+            <ul id="variationTierRuleList"><li>稳健：沿用母版原口播</li><li>均衡：只改一处钩子、转折或收口</li><li>大胆：可完整创新，但人物视角与成交顺序不变</li></ul>
+          </div>
+          <div class="variation-side-card">
+            <span>画面文字规则</span>
+            <h2>禁止口播字幕</h2>
+            <p>所有口播都不能转成字幕；品牌、包装、舞台字和已审核价格可以出现，但必须准确，不能有错字或乱码。</p>
+          </div>
+          <div class="variation-side-card warning">
+            <span>生成成本</span>
+            <p id="variationEstimate">5条母版裂变，实际LibTV调用次数取决于原片时长和拆分段数。</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="variation-review-panel" id="variationReviewPanel" hidden>
+        <div class="panel-title">
+          <div><h2>审核核心逻辑与裂变任务卡</h2><p>可以直接修改。只有勾选确认后，系统才提交LibTV生成。</p></div>
+          <span id="variationReviewBadge">待审核</span>
+        </div>
+        <div class="variation-commerce-lock" id="variationCommerceLock"></div>
+        <div class="variation-core-grid" id="variationCoreGrid"></div>
+        <details class="variation-shot-detail">
+          <summary>查看母版镜头功能拆解</summary>
+          <div id="variationShotList"></div>
+        </details>
+        <div class="variation-review-head"><h3>裂变任务卡</h3><button class="text-button" id="variationSelectAll" type="button">全选</button></div>
+        <div class="variation-card-grid" id="variationCardGrid"></div>
+        <div class="variation-approval-box">
+          <label><input id="variationCoreApproved" type="checkbox" /><span>核心钩子、成交链路和镜头功能已经确认</span></label>
+          <label><input id="variationAssetsApproved" type="checkbox" /><span>产品、人物和背景资产来源已经确认</span></label>
+          <label><input id="variationPlanApproved" type="checkbox" /><span id="variationPlanApprovedText">已逐条检查新口播、目标产品、价格规格和分秒镜头</span></label>
+          <button class="primary" id="variationApproveButton" type="button">确认并调用LibTV生成</button>
+        </div>
+      </section>
+
+      <section class="variation-history-panel" hidden aria-hidden="true">
+        <div class="panel-title">
+          <div><h2>任务列表</h2><p>历史任务和已生成视频会保存在当前工作台，刷新或下次打开仍可找回。</p></div>
+          <div class="variation-history-actions">
+            <span id="variationHistoryBadge" aria-live="polite">正在读取</span>
+            <button class="icon-button" id="variationNewTask" type="button">＋ 新建任务</button>
+            <button class="history-toggle-button" id="variationHistoryToggle" type="button" aria-expanded="true" aria-controls="variationHistoryBody">
+              <span id="variationHistoryToggleLabel">收起任务列表</span>
+              <span class="history-toggle-icon" aria-hidden="true">⌄</span>
+            </button>
+            <button class="icon-button" id="variationHistoryRefresh" type="button">刷新</button>
+          </div>
+        </div>
+        <div class="variation-history-body" id="variationHistoryBody">
+          <div class="variation-history-list" id="variationHistoryList">
+            <p class="empty-line">正在读取历史任务…</p>
+          </div>
+          <nav class="variation-history-pagination" id="variationHistoryPagination" aria-label="任务列表分页" hidden>
+            <button type="button" id="variationHistoryPrev">上一页</button>
+            <div class="variation-history-page-numbers" id="variationHistoryPageNumbers" aria-label="选择页码"></div>
+            <span class="variation-history-page-status" id="variationHistoryPageStatus">第 1 / 1 页</span>
+            <button type="button" id="variationHistoryNext">下一页</button>
+          </nav>
+        </div>
+      </section>
+
+      <section class="run-panel variation-run-panel" id="variationJobPanel">
+        <div class="run-head">
+          <div><h2>任务进度</h2><p id="variationJobMessage">尚未创建任务</p></div>
+          <strong id="variationProgressText">0 / 0</strong>
+        </div>
+        <div class="variation-warning-box" id="variationWarningBox" hidden></div>
+        <div class="progress"><span id="variationProgressBar"></span></div>
+        <div class="panel-actions variation-output-actions">
+          <button class="icon-button" id="variationRecoverAnalysis" type="button" hidden>恢复已保存分析</button>
+          <button class="icon-button" id="variationRetryUpload" type="button" hidden>重试上传母版并继续</button>
+          <button class="icon-button" id="variationOpenOutput" type="button" disabled>打开输出文件夹</button>
+          <a class="ghost-link" id="variationCanvasLink" href="#" target="_blank" rel="noreferrer" hidden>打开LibTV画布</a>
+        </div>
+      </section>
+
+      <section class="result-panel variation-result-panel">
+        <div class="panel-title"><h2>裂变结果</h2><span id="variationResultBadge">等待任务</span></div>
+        <div class="variation-result-grid" id="variationResultGrid"></div>
+        <div class="variation-generation-history" id="variationGenerationHistory" hidden>
+          <div class="variation-generation-history-head"><h3>历史成片</h3><span id="variationGenerationHistoryBadge"></span></div>
+          <div class="variation-generation-history-list" id="variationGenerationHistoryList"></div>
+        </div>
+      </section>
+
+      <section class="log-panel variation-log-panel">
+        <div class="panel-title"><h2>任务日志</h2><span id="variationJobId">无任务</span></div>
+        <pre id="variationLogBox"></pre>
+      </section>
+    </main>
+    <script src="./workstation-identity.js?v=2.11.0"></script>
+    <script src="./knowledge-context.js?v=2.8.21"></script>
+    <script src="./variation.js?v=2.11.59-auto-canvas"></script>
+    <script src="./module-task-center.js?v=2.11.59-task-lifecycle"></script>
+  </body>
+</html>

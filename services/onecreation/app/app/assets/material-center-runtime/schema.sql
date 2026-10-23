@@ -1,0 +1,187 @@
+CREATE TABLE IF NOT EXISTS ai_material_assets (
+  id VARCHAR(64) NOT NULL,
+  external_id VARCHAR(128) NULL,
+  title VARCHAR(255) NOT NULL,
+  product_id VARCHAR(128) NULL,
+  product_name VARCHAR(255) NULL,
+  source_type VARCHAR(32) NOT NULL DEFAULT 'upload',
+  source_doc_title VARCHAR(255) NULL,
+  source_doc_url TEXT NULL,
+  source_section VARCHAR(255) NULL,
+  source_rank INT NULL,
+  effective_label VARCHAR(64) NULL,
+  approval_risk VARCHAR(32) NULL,
+  is_effective TINYINT(1) NOT NULL DEFAULT 0,
+  storage_backend VARCHAR(24) NOT NULL DEFAULT 'local',
+  storage_path TEXT NOT NULL,
+  file_name VARCHAR(255) NOT NULL,
+  mime VARCHAR(100) NULL,
+  file_size BIGINT UNSIGNED NOT NULL DEFAULT 0,
+  sha256 CHAR(64) NULL,
+  duration_ms INT UNSIGNED NOT NULL DEFAULT 0,
+  width INT UNSIGNED NOT NULL DEFAULT 0,
+  height INT UNSIGNED NOT NULL DEFAULT 0,
+  fps VARCHAR(32) NULL,
+  video_codec VARCHAR(32) NULL,
+  audio_codec VARCHAR(32) NULL,
+  has_audio TINYINT(1) NOT NULL DEFAULT 0,
+  status VARCHAR(32) NOT NULL DEFAULT 'ready',
+  ai_status VARCHAR(32) NOT NULL DEFAULT 'pending',
+  ai_summary_json JSON NULL,
+  search_text TEXT NULL,
+  created_by VARCHAR(128) NULL,
+  updated_by VARCHAR(128) NULL,
+  created_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+  updated_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3),
+  deleted_at DATETIME(3) NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_ai_material_assets_external_id (external_id),
+  KEY idx_ai_material_assets_product (product_id),
+  KEY idx_ai_material_assets_effective (is_effective, status),
+  KEY idx_ai_material_assets_sha256 (sha256),
+  KEY idx_ai_material_assets_created (created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS ai_material_clips (
+  id VARCHAR(96) NOT NULL,
+  asset_id VARCHAR(64) NOT NULL,
+  start_ms INT UNSIGNED NOT NULL DEFAULT 0,
+  end_ms INT UNSIGNED NOT NULL DEFAULT 0,
+  duration_ms INT UNSIGNED NOT NULL DEFAULT 0,
+  stage VARCHAR(32) NULL,
+  stage_label VARCHAR(64) NULL,
+  visual_type VARCHAR(64) NULL,
+  transcript TEXT NULL,
+  visible_text TEXT NULL,
+  file_path TEXT NOT NULL,
+  thumbnail_path TEXT NULL,
+  has_audio TINYINT(1) NOT NULL DEFAULT 0,
+  has_speech_candidate TINYINT(1) NOT NULL DEFAULT 0,
+  label_source VARCHAR(128) NULL,
+  confidence DECIMAL(6,5) NULL,
+  cut_basis VARCHAR(64) NULL,
+  segmentation_version INT NOT NULL DEFAULT 0,
+  approved TINYINT(1) NOT NULL DEFAULT 0,
+  review_required TINYINT(1) NOT NULL DEFAULT 1,
+  created_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+  updated_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3),
+  PRIMARY KEY (id),
+  KEY idx_ai_material_clips_asset (asset_id),
+  KEY idx_ai_material_clips_stage (stage),
+  KEY idx_ai_material_clips_visual_type (visual_type),
+  CONSTRAINT fk_ai_material_clips_asset FOREIGN KEY (asset_id)
+    REFERENCES ai_material_assets (id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS ai_material_tags (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  name VARCHAR(80) NOT NULL,
+  category VARCHAR(40) NOT NULL DEFAULT 'custom',
+  created_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_ai_material_tags_name_category (name, category)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS ai_material_asset_tags (
+  asset_id VARCHAR(64) NOT NULL,
+  tag_id BIGINT UNSIGNED NOT NULL,
+  created_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+  PRIMARY KEY (asset_id, tag_id),
+  KEY idx_ai_material_asset_tags_tag (tag_id),
+  CONSTRAINT fk_ai_material_asset_tags_asset FOREIGN KEY (asset_id)
+    REFERENCES ai_material_assets (id) ON DELETE CASCADE,
+  CONSTRAINT fk_ai_material_asset_tags_tag FOREIGN KEY (tag_id)
+    REFERENCES ai_material_tags (id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS ai_material_publish_tasks (
+  id VARCHAR(64) NOT NULL,
+  asset_id VARCHAR(64) NOT NULL,
+  clip_id VARCHAR(96) NULL,
+  platform VARCHAR(32) NOT NULL DEFAULT 'qianchuan',
+  advertiser_id VARCHAR(128) NULL,
+  status VARCHAR(32) NOT NULL DEFAULT 'waiting_auth',
+  payload_json JSON NULL,
+  external_material_id VARCHAR(128) NULL,
+  error_message TEXT NULL,
+  requested_by VARCHAR(128) NULL,
+  requested_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+  started_at DATETIME(3) NULL,
+  finished_at DATETIME(3) NULL,
+  updated_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3),
+  PRIMARY KEY (id),
+  KEY idx_ai_material_publish_tasks_status (platform, status, requested_at),
+  KEY idx_ai_material_publish_tasks_asset (asset_id),
+  CONSTRAINT fk_ai_material_publish_tasks_asset FOREIGN KEY (asset_id)
+    REFERENCES ai_material_assets (id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS ai_material_performance_daily (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  asset_id VARCHAR(64) NOT NULL,
+  publish_task_id VARCHAR(64) NULL,
+  platform VARCHAR(32) NOT NULL DEFAULT 'qianchuan',
+  metric_date DATE NOT NULL,
+  impressions BIGINT UNSIGNED NOT NULL DEFAULT 0,
+  clicks BIGINT UNSIGNED NOT NULL DEFAULT 0,
+  spend DECIMAL(18,4) NOT NULL DEFAULT 0,
+  attributed_gmv DECIMAL(18,4) NOT NULL DEFAULT 0,
+  orders BIGINT UNSIGNED NOT NULL DEFAULT 0,
+  ctr DECIMAL(12,8) NULL,
+  cvr DECIMAL(12,8) NULL,
+  roi DECIMAL(12,6) NULL,
+  raw_json JSON NULL,
+  created_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+  updated_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3),
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_ai_material_performance_daily (asset_id, platform, metric_date),
+  KEY idx_ai_material_performance_date (metric_date),
+  CONSTRAINT fk_ai_material_performance_asset FOREIGN KEY (asset_id)
+    REFERENCES ai_material_assets (id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS ai_material_audit_logs (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  actor VARCHAR(128) NULL,
+  action VARCHAR(64) NOT NULL,
+  entity_type VARCHAR(40) NOT NULL,
+  entity_id VARCHAR(128) NULL,
+  detail_json JSON NULL,
+  created_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+  PRIMARY KEY (id),
+  KEY idx_ai_material_audit_entity (entity_type, entity_id),
+  KEY idx_ai_material_audit_created (created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS ai_remake_prompt_recipes (
+  id VARCHAR(64) NOT NULL,
+  schema_version VARCHAR(64) NOT NULL DEFAULT 'one-click-remake-recipe-v2',
+  owner_key VARCHAR(128) NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  product_id VARCHAR(128) NULL,
+  product_name VARCHAR(255) NULL,
+  change_type VARCHAR(40) NULL,
+  video_type VARCHAR(80) NULL,
+  source_task_id VARCHAR(128) NULL,
+  source_canvas_url TEXT NULL,
+  source_model VARCHAR(128) NULL,
+  cover_url TEXT NULL,
+  result_video_url TEXT NULL,
+  snapshot_oss_key TEXT NULL,
+  snapshot_oss_url TEXT NULL,
+  snapshot_sha256 CHAR(64) NULL,
+  tags_json JSON NULL,
+  search_text MEDIUMTEXT NULL,
+  recipe_json JSON NOT NULL,
+  created_by VARCHAR(128) NULL,
+  updated_by VARCHAR(128) NULL,
+  created_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+  updated_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3),
+  PRIMARY KEY (id),
+  KEY idx_ai_remake_recipes_owner_created (owner_key, created_at),
+  KEY idx_ai_remake_recipes_product (owner_key, product_id),
+  KEY idx_ai_remake_recipes_change_type (owner_key, change_type),
+  KEY idx_ai_remake_recipes_video_type (owner_key, video_type),
+  KEY idx_ai_remake_recipes_model (owner_key, source_model),
+  KEY idx_ai_remake_recipes_task (owner_key, source_task_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

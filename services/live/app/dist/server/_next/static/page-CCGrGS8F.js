@@ -1,0 +1,1 @@
+import{t as e}from"./framework~index~layout~page~page~page~page~app-page-cache-render~app-page-cache~app-route-h~kwo0jk2q-ByjNgxmK.js";import{t}from"./dashboard-iIRMQ3D7.js";var n=e();async function r({searchParams:e}){return(0,n.jsx)(t,{initialView:(await e).view===`overview`?`overview`:`data`})}export{r as default};

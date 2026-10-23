@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>一键做同款 · 一创制作</title>
+  <link rel="stylesheet" href="./one-click-remake.css?v=2.11.107" />
+</head>
+<body>
+  <main class="remake-shell">
+    <header class="remake-topbar">
+      <div>
+        <a class="back-link" href="./index.html#creation">← 返回一创制作</a>
+        <p class="eyebrow">REFERENCE CANVAS REPLICATION</p>
+        <h1>一键做同款</h1>
+        <p>把已成功的 LibTV 视频节点沉淀为可复用经验；沿用原提示词、参数与 nodeKey 输入顺序，只改本次白名单。</p>
+      </div>
+      <div class="engine-stack" id="engineStack">
+        <span>提示词编译器 <b>Qwen 3.7 Plus</b></span>
+        <span>生图 <b>GPT Image 2 → Seedream 5.0 Pro</b></span>
+        <span>视频 <b>沿用源节点模型与参数</b></span>
+      </div>
+    </header>
+
+    <nav class="mode-tabs" id="modeTabs" aria-label="一键做同款模式">
+      <button class="mode-tab is-active" type="button" data-tab="tasks">任务列表</button>
+      <button class="mode-tab" type="button" data-tab="history">历史任务做同款</button>
+      <button class="mode-tab" type="button" data-tab="library">提示词库</button>
+    </nav>
+
+    <section class="tab-panel" data-panel="tasks">
+      <div id="taskLandingHost"></div>
+    </section>
+
+    <section class="tab-panel" data-panel="workspace" hidden>
+      <header class="workspace-toolbar">
+        <button class="workspace-back" id="backToTaskList" type="button">← 返回任务列表</button>
+        <div class="workspace-task-bar">
+          <div class="workspace-task-copy">
+            <span id="workspaceTaskStatus">新任务</span>
+            <strong id="workspaceTaskName">新建一键做同款任务</strong>
+            <small id="jobMessage">填写画布来源后开始任务</small>
+          </div>
+          <div class="workspace-progress" id="workspaceProgress" hidden>
+            <div class="workspace-progress-track"><i id="progressBar"></i></div>
+            <b id="progressText">0%</b>
+          </div>
+          <div class="job-actions workspace-job-actions" id="workspaceJobActions" hidden>
+            <a class="secondary-button" id="taskCanvasLink" href="#" target="_blank" rel="noopener" hidden>任务画布</a>
+            <a class="secondary-button" id="sourceCanvasLink" href="#" target="_blank" rel="noopener">源画布</a>
+            <button class="text-button" id="toggleDetails" type="button">过程与耗时</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="workflow-layout">
+        <aside class="workflow-sidebar panel" aria-label="一键做同款步骤">
+          <p class="workflow-sidebar-kicker">制作流程</p>
+          <h2>一键做同款</h2>
+          <nav class="workflow-steps" id="workflowSteps">
+            <button class="workflow-step is-active" type="button" data-workflow-step="source">
+              <span class="workflow-step-marker">01</span>
+              <span class="workflow-step-copy"><strong>提交成功画布</strong><small>填写来源与复刻类型</small></span>
+              <em data-workflow-state>进行中</em>
+            </button>
+            <button class="workflow-step" type="button" data-workflow-step="audit" disabled>
+              <span class="workflow-step-marker">02</span>
+              <span class="workflow-step-copy"><strong>源画布拆解</strong><small>读取资产、模型与参数</small></span>
+              <em data-workflow-state>待开始</em>
+            </button>
+            <button class="workflow-step" type="button" data-workflow-step="assets" disabled>
+              <span class="workflow-step-marker">03</span>
+              <span class="workflow-step-copy"><strong>确认上游资产</strong><small>配置、映射与候选确认</small></span>
+              <em data-workflow-state>待开始</em>
+            </button>
+            <button class="workflow-step" type="button" data-workflow-step="results" disabled>
+              <span class="workflow-step-marker">04</span>
+              <span class="workflow-step-copy"><strong>同款结果输出</strong><small>生成、质检与下载</small></span>
+              <em data-workflow-state>待开始</em>
+            </button>
+          </nav>
+          <p class="workflow-sidebar-note">任务在后台持续运行，离开当前页面不会中断。</p>
+        </aside>
+
+        <div class="workflow-content">
+          <section class="job-panel job-detail-panel panel" id="jobPanel" hidden>
+            <div class="job-detail-head">
+              <p class="eyebrow" id="jobStageLabel">BACKGROUND JOB</p>
+              <span id="jobUpdatedAt"></span>
+            </div>
+            <div class="access-notice" id="jobAccessNotice" role="alert" hidden>
+              <b>当前画布不可访问</b>
+              <span>请确认画布链接已向当前 LibTV 账号开放，或更换可访问的画布后重新提交。平台不会继续拆解或生成。</span>
+            </div>
+            <div class="process-details" id="processDetails" hidden>
+              <div class="timing-grid" id="timingGrid"></div>
+              <div class="event-list" id="eventList"></div>
+            </div>
+          </section>
+
+          <section class="workflow-section" data-workflow-section="source">
+            <form class="source-form panel" id="sourceForm">
+          <div class="panel-head">
+            <div><span class="step-no">01</span><h2>提交成功画布</h2></div>
+            <small>只读拆解，不会修改源画布</small>
+          </div>
+          <label>
+            <span>LibTV 画布 URL</span>
+            <input id="canvasUrl" name="canvasUrl" type="url" aria-describedby="canvasUrlFormat" placeholder="https://www.liblib.tv/canvas?spaceId=5429958&projectId=原来的projectId" required />
+            <small class="field-hint" id="canvasUrlFormat">请按上方格式填写，画布地址中不要包含 <code>/share</code>。</small>
+          </label>
+          <label>
+            <span>成功视频 TaskID</span>
+            <input id="taskId" name="taskId" inputmode="numeric" aria-describedby="sourceInputOwnershipHint" placeholder="例如 20260828161603622893342" required />
+            <small class="field-hint" id="sourceInputOwnershipHint">每次复刻请点击任务列表中的“新建任务”，再填写本次画布 URL 和成功视频 TaskID；打开历史任务时这里只回显该任务的来源。</small>
+          </label>
+          <label>
+            <span>本次只允许改变</span>
+            <select id="changeType" name="changeType" required></select>
+          </label>
+          <button class="primary-button" id="auditButton" type="submit">开始拆解成功经验</button>
+          <p class="form-hint">提交后会先判断当前 LibTV 账号能否访问该画布；可访问后才按 TaskID 读取全部上游资产、提示词、模型、模式、输入顺序、时长、清晰度与高级参数。</p>
+            </form>
+          </section>
+
+          <section class="workflow-section workflow-stage-panel panel" data-workflow-section="audit" hidden>
+            <div id="auditStageFailure"></div>
+            <div id="auditResult"></div>
+            <p class="workflow-stage-empty" data-workflow-empty="audit">正在等待源画布拆解结果…</p>
+          </section>
+
+          <section class="workflow-section workflow-stage-panel panel" data-workflow-section="assets" hidden>
+            <div id="assetStageFailure"></div>
+            <div id="targetConfigurator"></div>
+            <div id="mappingConfirmation"></div>
+            <div id="candidateConfirmation"></div>
+            <div id="assetConfirmationSummary"></div>
+            <p class="workflow-stage-empty" data-workflow-empty="assets">完成源画布拆解后，可在这里配置并确认上游资产。</p>
+          </section>
+
+          <section class="workflow-section workflow-stage-panel panel" data-workflow-section="results" hidden>
+            <div id="resultGrid"></div>
+            <p class="workflow-stage-empty" data-workflow-empty="results">确认全部上游资产后，将在这里显示生成、质检与下载结果。</p>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-panel" data-panel="history" hidden>
+      <header class="section-intro">
+        <div><p class="eyebrow">COMPLETED CASES</p><h2>历史任务做同款</h2></div>
+        <div class="history-intro-tools">
+          <p>全员共享 OSS 中的成功拆解快照，直接复用节点结构与提示词；无需原 LibTV 账号访问源画布。</p>
+          <form class="history-search" id="historySearchForm" role="search">
+            <input id="historyKeyword" name="keyword" type="search" aria-label="搜索历史模板" placeholder="搜索 URL、TaskID、视频名称…" />
+            <button class="primary-button" type="submit">搜索</button>
+            <button class="secondary-button" id="historyReset" type="button">清空</button>
+          </form>
+        </div>
+      </header>
+      <div class="history-meta"><span id="historyResultCount">正在读取历史模板…</span><span>全员共享 · 不绑定源 LibTV 账号</span></div>
+      <div class="case-grid" id="historyGrid"><p class="empty-state">正在读取历史案例…</p></div>
+      <nav class="library-pagination" id="historyPagination" aria-label="历史模板分页" hidden>
+        <button class="secondary-button" id="historyPrev" type="button">上一页</button>
+        <span id="historyPageText">第 1 / 1 页</span>
+        <button class="secondary-button" id="historyNext" type="button">下一页</button>
+      </nav>
+    </section>
+
+    <section class="tab-panel" data-panel="library" hidden>
+      <header class="section-intro">
+        <div><p class="eyebrow">PROMPT RECIPES</p><h2>提示词库</h2></div>
+        <p>全员共享的正式案例快照归档至 OSS，结构化内容进入数据库，可按提示词、产品、类型、模型、TaskID 与日期检索。</p>
+      </header>
+      <details class="library-guidance panel" open>
+        <summary>提示词入库原则、筛选与查看方法</summary>
+        <div class="library-guidance-grid">
+          <section><b>入库原则</b><p>新视频生成并下载后先进入人工质检；只有人工确认“符合要求并归档”的结果才进入正式提示词库。AI 质量结果仅供参考，不会自动归档或自动生成下一轮。</p></section>
+          <section><b>如何筛选</b><p>上方关键词可搜索提示词、动作、场景、产品、节点名称、URL 与 TaskID；“高级筛选”可按 SKU、复刻类型、视频类型、模型、源 TaskID 和日期组合收窄。</p></section>
+          <section><b>如何查看</b><p>展开案例中的“生图”“源视频提示词”“同款视频提示词”查看完整内容；如已同步 OSS，可继续打开案例快照核对结构化记录。</p></section>
+        </div>
+      </details>
+      <div class="library-management panel">
+        <div>
+          <b>正式案例治理</b>
+          <p>归属人可新增、删除自己的正式案例；一键做同款管理员可跨归属操作。其他用户仅可查看。</p>
+        </div>
+        <button class="primary-button" id="libraryAddFormalCase" type="button" hidden>新增正式案例</button>
+      </div>
+      <form class="library-search panel" id="librarySearchForm">
+        <div class="library-search-main">
+          <label class="search-field">
+            <span>搜索正式案例</span>
+            <input id="libraryKeyword" name="keyword" type="search" placeholder="提示词、动作、场景、产品、节点名称…" />
+          </label>
+          <button class="primary-button" type="submit">搜索</button>
+        </div>
+        <details class="library-filters">
+          <summary>高级筛选</summary>
+          <div class="library-filter-grid">
+            <label><span>目标 SKU</span><select id="libraryProductId" name="productId"><option value="">全部产品</option></select></label>
+            <label><span>复刻类型</span><select id="libraryChangeType" name="changeType"><option value="">全部类型</option></select></label>
+            <label><span>视频类型</span><input id="libraryVideoType" name="videoType" placeholder="例如：仅换产品" /></label>
+            <label><span>生成模型</span><input id="libraryModel" name="model" placeholder="例如：Seedance 2.5" /></label>
+            <label><span>源 TaskID</span><input id="libraryTaskId" name="taskId" inputmode="numeric" /></label>
+            <label><span>开始日期</span><input id="libraryDateFrom" name="dateFrom" type="date" /></label>
+            <label><span>结束日期</span><input id="libraryDateTo" name="dateTo" type="date" /></label>
+            <button class="secondary-button" id="libraryReset" type="button">清空筛选</button>
+          </div>
+        </details>
+      </form>
+      <div class="library-meta"><span id="libraryResultCount">正在读取提示词库…</span><span id="libraryStorageState">OSS 快照 · 数据库索引</span></div>
+      <div class="library-grid" id="libraryGrid"><p class="empty-state">正在读取提示词库…</p></div>
+      <nav class="library-pagination" id="libraryPagination" aria-label="提示词库分页" hidden>
+        <button class="secondary-button" id="libraryPrev" type="button">上一页</button>
+        <span id="libraryPageText">第 1 / 1 页</span>
+        <button class="secondary-button" id="libraryNext" type="button">下一页</button>
+      </nav>
+    </section>
+
+    <dialog class="source-asset-preview-dialog" id="sourceAssetPreviewDialog" aria-labelledby="sourceAssetPreviewTitle" aria-describedby="sourceAssetPreviewHint">
+      <div class="source-asset-preview-head">
+        <div>
+          <h2 id="sourceAssetPreviewTitle">源资产</h2>
+          <p id="sourceAssetPreviewHint">查看源画布的原始上游资产</p>
+        </div>
+        <button type="button" data-close-source-asset-preview aria-label="关闭源资产预览">×</button>
+      </div>
+      <div class="source-asset-preview-body" id="sourceAssetPreviewBody"></div>
+    </dialog>
+
+    <dialog class="video-review-dialog" id="videoReviewDialog" aria-labelledby="videoReviewTitle" aria-describedby="videoReviewHint">
+      <div class="video-review-layout">
+        <header class="video-review-head">
+          <div>
+            <span>人工质检成片</span>
+            <h2 id="videoReviewTitle">成片人工质检</h2>
+            <p id="videoReviewHint">完整播放视频后决定归档或生成下一轮。</p>
+          </div>
+          <button type="button" data-close-video-review aria-label="关闭人工质检窗口">×</button>
+        </header>
+        <div class="video-review-body">
+          <div class="video-review-player-wrap">
+            <video id="videoReviewPlayer" controls preload="metadata"></video>
+          </div>
+          <aside class="video-review-panel">
+            <section class="video-review-checklist">
+              <b>人工核对项</b>
+              <span>产品替换是否干净，无旧包装、旧 Logo 或残影</span>
+              <span>目标 SKU、包装文字、结构和比例是否准确</span>
+              <span>人物、动作、背景、镜头和台词是否符合要求</span>
+              <span>整段视频是否稳定，无闪烁、变形或跳变</span>
+            </section>
+            <section class="video-review-ai" id="videoReviewAiReference"></section>
+            <label class="video-review-note">
+              <span>人工质检意见（不符合时将作为第 2 轮修正指令）</span>
+              <textarea id="videoReviewNote" rows="5" placeholder="例如：瓶身 Logo 在第 4 秒变形，请保持包装文字和瓶身结构稳定。"></textarea>
+            </label>
+            <div class="video-review-actions">
+              <button class="secondary-button" id="videoReviewReject" type="button">不符合，生成第 2 轮</button>
+              <button class="primary-button" id="videoReviewApprove" type="button">符合要求并归档</button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </dialog>
+
+    <div class="toast" id="toast" hidden></div>
+  </main>
+  <script src="./module-task-center.js?v=2.11.107"></script>
+  <script src="./one-click-remake.js?v=2.11.107"></script>
+</body>
+</html>

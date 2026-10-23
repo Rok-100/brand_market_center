@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>视频提示词逆推｜AI一创工作台</title>
+    <link rel="stylesheet" href="./styles.css?v=2.11.36" />
+  </head>
+  <body>
+    <main class="shell reverse-shell">
+      <nav class="page-nav" aria-label="页面导航">
+        <a class="back-link" href="./#creation">← 返回工作台首页</a>
+        <span>视频提示词逆推</span>
+      </nav>
+
+      <header class="topbar reverse-topbar">
+        <div><p class="reverse-kicker">VIDEO PROMPT REVERSE</p><h1>视频提示词逆推</h1><p id="reverseHealth">正在检查分析能力</p></div>
+        <span class="reverse-safe-badge">只分析 · 不调用 LibTV</span>
+      </header>
+
+      <section class="reverse-layout">
+        <form class="tool-panel reverse-form" id="reverseForm">
+          <div class="panel-title"><div><h2>上传参考视频</h2><p>系统会读取真实镜头切点、人物动作、产品露出和连续性。</p></div><span id="reverseFormBadge">待上传</span></div>
+          <label class="drop-zone reverse-drop-zone" id="reverseDropZone">
+            <input id="reverseVideoInput" type="file" accept="video/mp4,video/quicktime,video/webm,.m4v" />
+            <b>拖入或选择参考视频</b>
+            <span>支持 MP4、MOV、M4V、WEBM；大文件自动分片上传</span>
+          </label>
+          <div class="reverse-upload-progress" id="reverseUploadProgress" hidden><span id="reverseUploadBar"></span></div>
+          <div class="reverse-source-preview" id="reverseSourcePreview"></div>
+          <label class="reverse-focus-field"><span>这次重点关注（选填）</span><textarea id="reverseFocus" rows="4" placeholder="例如：重点拆解前三秒钩子、桌拍运镜和产品露出动作。"></textarea></label>
+          <div class="reverse-submit-row">
+            <p><b>输出内容</b><span>原片摘要、逐镜结构、可直接使用的母提示词、负面提示词与风险项。</span></p>
+            <button class="primary" id="reverseSubmit" type="submit" disabled>开始逆推提示词</button>
+          </div>
+        </form>
+
+        <aside class="reverse-side">
+          <section class="tool-panel reverse-rules">
+            <div class="panel-title"><h2>执行边界</h2><span>分析任务</span></div>
+            <ol>
+              <li><b>只认原片证据</b><span>无法确认的商品、功效、价格、规格和材质不会被补写。</span></li>
+              <li><b>逐镜可执行</b><span>输出时间段、场景、机位、主体、动作、产品与衔接规则。</span></li>
+              <li><b>零生成消耗</b><span>不会创建 LibTV 画布、视频节点或生成任务。</span></li>
+            </ol>
+          </section>
+          <section class="tool-panel reverse-history">
+            <div class="panel-title"><h2>最近任务</h2><button id="reverseHistoryRefresh" type="button">刷新</button></div>
+            <div id="reverseHistoryList"><p>正在读取…</p></div>
+          </section>
+        </aside>
+      </section>
+
+      <section class="run-panel reverse-run-panel" id="reverseRunPanel">
+        <div class="run-head"><div><h2>分析进度</h2><p id="reverseJobMessage">上传参考视频后开始</p></div><strong id="reverseJobStatus">等待</strong></div>
+        <div class="progress"><span id="reverseProgressBar"></span></div>
+        <div class="reverse-log-grid">
+          <ol id="reverseSteps">
+            <li data-state="source"><b>01</b><span>读取原片与时长</span><em>等待</em></li>
+            <li data-state="analysis"><b>02</b><span>多模态逐镜分析</span><em>等待</em></li>
+            <li data-state="prompt"><b>03</b><span>编排母提示词与负面词</span><em>等待</em></li>
+          </ol>
+          <pre id="reverseLogBox">暂无日志</pre>
+        </div>
+      </section>
+
+      <section class="result-panel reverse-result" id="reverseResult" hidden>
+        <div class="panel-title reverse-result-head">
+          <div><h2>提示词逆推结果</h2><p id="reverseResultMeta">等待分析</p></div>
+          <div><a id="reverseDownload" target="_blank" rel="noreferrer" hidden>下载完整文档</a><button id="reverseCopy" type="button">复制母提示词</button></div>
+        </div>
+        <section class="reverse-summary"><h3>原片摘要</h3><p id="reverseSummary"></p></section>
+        <div class="reverse-prompt-grid">
+          <label><span>可直接使用的母提示词</span><textarea id="reverseMasterPrompt" rows="16" readonly></textarea></label>
+          <label><span>负面提示词</span><textarea id="reverseNegativePrompt" rows="16" readonly></textarea></label>
+        </div>
+        <section class="reverse-shot-section"><div><h3>逐镜结构</h3><span id="reverseShotCount"></span></div><div class="reverse-shot-grid" id="reverseShotGrid"></div></section>
+      </section>
+    </main>
+    <script src="./workstation-identity.js?v=2.11.0"></script>
+    <script src="./video-prompt-reverse.js?v=2.11.36"></script>
+  </body>
+</html>

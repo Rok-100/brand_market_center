@@ -1,0 +1,12 @@
+node_modules
+**/node_modules
+.local
+**/*.sqlite*
+.env
+.env.*
+**/.env
+**/.env.*
+**/var
+test
+training/test
+.git

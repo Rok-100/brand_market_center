@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /opt/dissection-media/ffmpeg/lib64/ld-linux-x86-64.so.2 --library-path "$(cat /opt/dissection-media/ffmpeg/library-path)" /opt/dissection-media/ffmpeg/usr/bin/ffprobe "$@"

@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI-明星画面生成｜凡岛AI视频工作台</title>
+    <link rel="stylesheet" href="./styles.css?v=2.9.7-user-libtv&build=2.10.0-unified-tasks" />
+  </head>
+  <body class="person-body">
+    <main class="shell">
+      <nav class="page-nav" aria-label="页面导航">
+        <a class="back-link" href="../">← 返回工作台首页</a>
+        <span>AI-明星画面生成</span>
+      </nav>
+      <header class="hero">
+        <div>
+          <p class="eyebrow">凡岛AI项目组 · PERSON STUDIO</p>
+          <h1>AI-明星画面生成</h1>
+          <p class="hero-copy">建立人物身份，可生成手持与正确使用产品画面，也可选择不出现产品，制作纯人物内容。</p>
+        </div>
+        <span class="service-state" id="serviceState"><i></i> 本地服务已连接</span>
+      </header>
+
+      <section class="settings-card">
+        <div class="section-head compact">
+          <div><span class="step-number">设置</span><h2>接口与输出</h2></div>
+          <span class="privacy-note">请确认人物肖像与素材已获授权；可自由选择可灵或 LibTV 创建任务</span>
+        </div>
+        <div class="settings-grid">
+          <div class="auth-card">
+            <span>公司多模态服务</span>
+            <strong id="authStatus">正在自动连接…</strong>
+            <small id="authHint">支持 FanDo 自动登录或公司工号登录；凭证只在本地服务内使用，不会显示在页面。</small>
+            <div class="auth-actions">
+              <button class="secondary-button" id="connectKling" type="button">自动连接</button>
+              <button class="secondary-button" id="showMultimodalLogin" type="button">使用工号登录</button>
+            </div>
+            <div class="multimodal-login" id="multimodalLoginForm" hidden>
+              <label><span>工号</span><input id="multimodalUsername" autocomplete="username" /></label>
+              <label><span>密码</span><input id="multimodalPassword" type="password" autocomplete="current-password" /></label>
+              <label id="multimodalCaptchaField" hidden><span>验证码</span><input id="multimodalCaptcha" autocomplete="off" /></label>
+              <button class="primary-button" id="submitMultimodalLogin" type="button">登录并连接</button>
+            </div>
+          </div>
+          <div class="auth-card">
+            <span>LibTV 画布平台</span>
+            <strong id="libtvStatus">正在检测当前账号的绑定状态…</strong>
+            <small id="libtvHint">LibTV 凭证与当前工作台账号一对一绑定，请在工作台首页用本人手机号登录。</small>
+            <button class="secondary-button" id="connectLibtv" type="button">前往首页绑定 LibTV</button>
+          </div>
+          <label class="wide-field"><span>输出文件夹</span><input id="outputDir" autocomplete="off" /></label>
+        </div>
+      </section>
+
+      <nav class="stepper" aria-label="生成步骤">
+        <button class="step-tab active" type="button" data-target="step1"><b>1</b><span>人物素材</span></button>
+        <button class="step-tab" type="button" data-target="step2"><b>2</b><span>产品与模型</span></button>
+        <button class="step-tab" type="button" data-target="step3"><b>3</b><span>视频内容</span></button>
+        <button class="step-tab" type="button" data-target="step4"><b>4</b><span>生成结果</span></button>
+      </nav>
+
+      <section class="step-section" id="step1">
+        <div class="section-head">
+          <div><span class="step-number">步骤 1</span><h2>建立人物身份</h2></div>
+          <span class="status-pill" id="identityBadge">等待人物素材</span>
+        </div>
+
+        <div class="mode-switch">
+          <button class="mode-button active" type="button" data-mode="views">上传正面照 · 生成三视图</button>
+          <button class="mode-button" type="button" data-mode="video">上传人物参考视频 · 保留原片逻辑</button>
+        </div>
+
+        <div id="viewsMode" class="source-layout">
+          <div class="upload-column">
+            <label class="upload-zone" for="portraitFile">
+              <input id="portraitFile" type="file" accept="image/*" />
+              <span class="upload-icon">＋</span>
+              <strong>上传人物正面清晰照</strong>
+              <small>肩部以上、无遮挡、自然光、避免强滤镜</small>
+            </label>
+            <div id="portraitPreview" class="source-preview empty"><span>正面照预览</span></div>
+            <label><span>三视图调整要求</span><textarea id="identityAdjustment" rows="3" placeholder="例如：左右角度再大一点、表情更自然、保持原服装"></textarea></label>
+            <div class="button-row">
+              <button class="primary-button" id="generateIdentity" type="button">生成三视图</button>
+              <button class="secondary-button" id="regenerateIdentity" type="button" disabled>重新生成三视图</button>
+            </div>
+            <p class="helper" id="identityHint">重新生成只更新三视图，不会清空产品、模型和版位设置。</p>
+          </div>
+
+          <div class="views-column">
+            <div class="three-view-grid" id="identityGrid">
+              <article class="view-card" data-angle="front"><div class="view-placeholder">正</div><strong>正面基准图</strong><span>等待生成</span></article>
+              <article class="view-card" data-angle="left"><div class="view-placeholder">左</div><strong>左侧 45°</strong><span>等待生成</span></article>
+              <article class="view-card" data-angle="right"><div class="view-placeholder">右</div><strong>右侧 45°</strong><span>等待生成</span></article>
+            </div>
+          </div>
+        </div>
+
+        <div id="videoMode" class="source-layout" hidden>
+          <div class="upload-column">
+            <label class="upload-zone" for="videoFile">
+              <input id="videoFile" type="file" accept="video/*" />
+              <span class="upload-icon">▶</span>
+              <strong>上传人物参考视频</strong>
+              <small>建议 5–30 秒，人物脸部与双手清晰、动作稳定</small>
+            </label>
+          </div>
+          <div id="videoPreview" class="video-preview empty"><span>视频原片预览</span></div>
+        </div>
+      </section>
+
+      <section class="step-section" id="step2">
+        <div class="section-head">
+          <div><span class="step-number">步骤 2</span><h2>选择产品与视频模型</h2></div>
+          <span class="status-pill" id="productBadge">与产品镜共用产品库</span>
+        </div>
+        <div class="product-layout">
+          <div>
+            <fieldset class="provider-fieldset">
+              <legend>生成平台</legend>
+              <div class="provider-options">
+                <label class="provider-card">
+                  <input type="radio" name="provider" value="multimodal" />
+                  <strong>可灵（公司多模态登录）</strong>
+                  <small>三视图使用 GPT Image 2，视频使用 Kling Omni；参考视频含新口播时自动用 Seedance</small>
+                </label>
+                <label class="provider-card selected">
+                  <input type="radio" name="provider" value="libtv" checked />
+                  <strong>LibTV（团队优先）</strong>
+                  <small>默认使用已连接的团队工作空间，支持参考图片与视频</small>
+                </label>
+              </div>
+            </fieldset>
+            <label><span>产品（可选）</span><select id="productSelect"></select></label>
+            <label id="productNameStyleField"><span>口播产品名</span><select id="productNameStyle"><option value="short">简称（默认）</option><option value="full">产品全称</option></select><small>生成时会统一按所选名称读出产品名。</small></label>
+            <div class="product-rule">
+              <span>自动使用规则</span>
+              <p id="usageRule">选择产品后显示正确使用方式。</p>
+            </div>
+            <div class="provider-model-fields" id="klingModelFields">
+              <div class="product-rule wide-field">
+                <span>自动模型路由</span>
+                <p>人物三视图固定使用 GPT Image 2；人物视频优先使用 Kling Omni。参考视频和新口播同时存在时，自动切换 Seedance 以保证声音与口型。</p>
+              </div>
+            </div>
+            <div class="provider-model-fields" id="libtvModelFields" hidden>
+              <label><span>LibTV 三视图模型</span><select id="libtvImageModel"></select><small>优先提供人物一致性更好的图片编辑模型。</small></label>
+              <label><span>LibTV 视频模型</span><select id="libtvVideoModel"></select><small>参考视频建议使用 Seedance 2.0 或 Wan 2.7。</small></label>
+            </div>
+          </div>
+          <aside>
+            <div class="product-images" id="productImages"></div>
+            <p class="helper" id="productSummary"></p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="step-section" id="step3">
+        <div class="section-head">
+          <div><span class="step-number">步骤 3</span><h2>自动生成人物展示视频</h2></div>
+          <span class="status-pill ready" id="generationCountBadge">本次生成 2 条视频</span>
+        </div>
+        <div class="generation-settings">
+          <label class="dialogue-field">
+            <span>人物口播台词（可选）</span>
+            <textarea id="dialogueText" rows="4" maxlength="500" placeholder="例如：最近熬夜后我都会用这款眼膜，贴在眼下很服帖，敷完眼周看起来水润又有精神。选择“不出现产品”时，也可以填写纯人物口播。"></textarea>
+            <small>留空则生成无口播视频。填写后会要求人物自然对口型，不自动添加字幕。</small>
+          </label>
+          <label>
+            <span>每类视频生成数量</span>
+            <select id="candidateCount">
+              <option value="1" selected>1 条（共 2 条）</option>
+              <option value="2">2 条（共 4 条）</option>
+              <option value="3">3 条（共 6 条）</option>
+              <option value="4">4 条（共 8 条）</option>
+              <option value="5">5 条（共 10 条）</option>
+            </select>
+            <small>“人物手持”和“产品上脸”会分别生成相同数量的候选版本，最多显示 10 条。</small>
+          </label>
+          <div class="voice-field"><span>声音规则</span><small id="referenceAudioHint">填写口播时启用平台原生声音；参考视频含新口播时会自动选择支持声音与口型的模型。</small></div>
+        </div>
+        <section class="prompt-panel" aria-labelledby="promptPanelTitle">
+          <div class="prompt-panel-head">
+            <div>
+              <span>独立提示词</span>
+              <h3 id="promptPanelTitle">按需更改人物与场景</h3>
+            </div>
+            <label class="cleanup-switch">
+              <input id="cleanSourceText" type="checkbox" checked />
+              <span>默认清理原片/原图字幕与错误文字</span>
+            </label>
+          </div>
+          <div class="prompt-grid">
+            <label>
+              <span>服装</span>
+              <textarea id="clothingPrompt" rows="3" maxlength="600" placeholder="例如：改为米白色高定西装，版型利落，保留人物身份和动作"></textarea>
+            </label>
+            <label>
+              <span>妆造</span>
+              <textarea id="stylingPrompt" rows="3" maxlength="600" placeholder="例如：清透水光底妆、低饱和豆沙唇、自然盘发"></textarea>
+            </label>
+            <label>
+              <span>背景</span>
+              <textarea id="backgroundPrompt" rows="3" maxlength="600" placeholder="例如：更换为高端品牌发布会舞台，冷白主光，观众席虚化"></textarea>
+            </label>
+            <label>
+              <span>其他</span>
+              <textarea id="otherPrompt" rows="3" maxlength="600" placeholder="例如：情绪更有感染力、镜头轻微推进、动作更从容"></textarea>
+            </label>
+          </div>
+          <p class="prompt-note">不填的项目会沿用原人物素材。系统不生成口播字幕；产品包装自带且核验正确的品牌文字可以保留。</p>
+        </section>
+        <p class="speech-note" id="providerNote">多模态服务会按素材自动选择 GPT Image 2、Kling Omni 或 Seedance；参考图片和参考视频都可直接使用。</p>
+        <div class="deliverables">
+          <article><span>01</span><div><strong>人物手持产品</strong><small>每条 15 秒 · 包装正面朝镜头 · 手指不遮挡 logo</small></div></article>
+          <article><span>02</span><div><strong>人物正确使用产品</strong><small>每条 15 秒 · 根据产品形态自动匹配正确使用动作</small></div></article>
+        </div>
+        <button class="generate-button" id="startGeneration" type="button">开始生成 2 条人物营销视频</button>
+      </section>
+
+      <section class="step-section" id="step4">
+        <div class="section-head">
+          <div><span class="step-number">步骤 4</span><h2>生成进度与结果</h2></div>
+          <button class="secondary-button" id="openOutput" type="button" disabled>打开输出目录</button>
+        </div>
+        <div class="job-progress">
+          <div><span id="jobStatus">尚未开始</span><strong id="progressText">0 / 2</strong></div>
+          <div class="progress-track"><i id="progressBar"></i></div>
+        </div>
+        <div class="preparation-grid" id="preparationGrid">
+          <article class="preparation-step queued"><span>等待</span><strong>生成平台连接</strong><small>生成前自动检查</small></article>
+          <article class="preparation-step queued"><span>等待</span><strong>产品参考图上传</strong><small>失败自动重试</small></article>
+          <article class="preparation-step queued"><span>等待</span><strong>人物素材上传</strong><small>显示具体文件</small></article>
+        </div>
+        <div class="failure-banner" id="failureBanner" hidden></div>
+        <div class="task-grid" id="taskGrid">
+          <article><span class="task-state">等待</span><strong>人物手持产品视频</strong><small>等待开始</small></article>
+          <article><span class="task-state">等待</span><strong>人物正确使用产品视频</strong><small>选择“不出现产品”时改为人物场景表演</small></article>
+        </div>
+        <div class="result-grid" id="resultGrid" aria-live="polite"></div>
+        <p class="result-note">每生成完成一条就会立即新增一个播放器；播放器数量会随任务自动扩展，不必等待全部完成。</p>
+        <details class="log-panel"><summary>查看任务日志</summary><pre id="logBox"></pre></details>
+      </section>
+      <footer class="person-footer">
+        <span>品牌营销部工作站 v2.8.21</span>
+        <span>开发者：舒豪</span>
+      </footer>
+    </main>
+    <script src="./workstation-identity.js?v=2.11.0"></script>
+    <script src="./module-task-center.js?v=2.10.0"></script>
+    <script src="./app.js?v=2.10.0-unified-tasks"></script>
+  </body>
+</html>

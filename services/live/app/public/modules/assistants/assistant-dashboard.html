@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>助理档案 · 月度排名</title><link rel="stylesheet" href="assistant-dashboard.css?v=20261009-r3"></head>
+<body><main>
+ <header class="page-head"><div><p class="eyebrow">LIVE CENTER · ASSISTANT DEVELOPMENT</p><h1>助理档案</h1><p>按直播间查看助理月度业务能力评分与排名</p></div><span class="tag">月度考核</span></header>
+ <div class="split-layout"><aside class="selection-panel"><h2>历史记录与直播间</h2><p class="selection-help">选择月份和直播间，查看对应排名</p><section class="toolbar" aria-label="月份与同步"><label>历史月份<select id="monthSelect" aria-label="历史月份"></select></label><button id="refreshView">刷新页面数据</button><button id="syncRankings">立即同步上月</button><span id="requestStatus" role="status" aria-live="polite">正在读取助理档案…</span></section>
+ <p class="schedule" id="scheduleInfo">每月1—20日，北京时间16:00同步上个月数据；21日起保留最终结果。</p>
+ <aside id="sourceNotice" hidden></aside>
+ <h3 class="section-label">选择直播间</h3><nav id="roomTabs" aria-label="直播间"><button data-room="flagship" class="active">官旗直播间</button><button data-room="premium">品牌精选直播间</button><button data-room="select">优选直播间</button><button data-room="beauty">王鸥美肤直播间</button></nav>
+ </aside><section class="results-panel"><section id="rankingPanel" aria-live="polite"></section>
+ <details class="history"><summary>同步记录</summary><div id="syncHistory">暂无同步记录</div></details>
+ <footer>得分取对应评价月份内，每位助理“汇总得分”的平均值；按未四舍五入的得分降序排名，同分并列。黄色为最高分，红色为最低分；只有一人或全员同分时不标预警。</footer>
+</section></div></main><script src="assistant-dashboard.js?v=20261009-r3"></script></body></html>

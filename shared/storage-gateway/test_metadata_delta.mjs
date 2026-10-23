@@ -1,0 +1,23 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {createSyncRpc} from './sync_rpc.mjs';
+
+const config=JSON.parse(fs.readFileSync('/run/pinying-fixture.json','utf8'));
+const root=config.rules[0].root,path=config.rules[0].logicalRoot+'/library.json';
+fs.mkdirSync(root,{recursive:true});
+const first=JSON.stringify({text:'中文😀'.repeat(180000),updatedAt:'first'});
+fs.writeFileSync(root+'/library.json',first);
+const next=first.replace('😀','😁').replace('"updatedAt":"first"','"updatedAt":"second"'),started=Date.now();
+fs.writeFileSync(root+'/new.tmp',next);
+let served=false;setTimeout(()=>{served=true;},0);
+await fs.promises.rename(root+'/new.tmp',root+'/library.json');
+assert.equal(served,true,'MySQL persistence must not block HTTP callbacks');
+const rpc=createSyncRpc('/run/pinying-rpc.json','documents');
+const row=rpc.call('readFile',[path]);
+assert.equal(row.data,next);
+assert.equal(row.sha256,createHash('sha256').update(next).digest('hex'));
+assert.equal(fs.readFileSync(root+'/library.json','utf8'),next);
+fs.unlinkSync(root+'/library.json');
+assert.equal(rpc.call('statFile',[path]).exists,false);rpc.close();
+console.log(JSON.stringify({nativeDeltaAtomicRename:true,byteExact:true,unicode:true,cacheAndMysqlMatch:true,deletion:true,bytes:Buffer.byteLength(next),milliseconds:Date.now()-started}));

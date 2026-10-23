@@ -1,0 +1,11 @@
+[
+  {
+    "path": "/yxb/wis-marketing-hub/modules/data-dashboard/legacy"
+  },
+  {
+    "path": "/yxb/wis-marketing-hub/modules/data-dashboard/cockpit/*"
+  },
+  {
+    "path": "/yxb/wis-marketing-hub/modules/data-dashboard/"
+  }
+]

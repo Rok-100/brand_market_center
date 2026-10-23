@@ -1,0 +1,6 @@
+{
+  "name": "brand-market-kling-toolchain",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": { "@klingai/cli-cn": "0.1.3" }
+}

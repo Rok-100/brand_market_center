@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>访问受限 · AI一创工作台</title>
+    <link rel="stylesheet" href="./styles.css?v=2.11.36" />
+  </head>
+  <body class="workspace-index-body">
+    <main class="access-state-card" aria-labelledby="accessTitle">
+      <span class="access-state-mark" aria-hidden="true">!</span>
+      <p class="access-state-kicker">WIS HUB ACCESS</p>
+      <h1 id="accessTitle">当前账号暂时无法进入</h1>
+      <p id="accessMessage">一创使用中枢平台的登录状态和界面权限，请在中枢核对当前账号。</p>
+      <div class="access-state-actions">
+        <a id="hubLink" href="https://app.fandow.top/fd-026222/wis-marketing-hub/">返回中枢平台</a>
+        <button type="button" onclick="location.reload()">重新校验</button>
+      </div>
+    </main>
+    <script>
+      const reason = new URLSearchParams(location.search).get("reason");
+      if (location.pathname.includes("/modules/ai-first-creation/")) {
+        document.querySelector("#hubLink").href = "../../";
+      }
+      if (reason === "service") {
+        document.querySelector("#accessTitle").textContent = "中枢登录暂时未响应";
+        document.querySelector("#accessMessage").textContent = "请稍后从中枢重新进入；现有任务和素材不会受到影响。";
+      }
+    </script>
+  </body>
+</html>

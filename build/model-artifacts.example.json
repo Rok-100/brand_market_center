@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "modelId": "FILL_WITH_APPROVED_MODEL_AND_REVISION",
+  "files": [
+    {"path": "model/config.json", "sha256": "FILL_SHA256"},
+    {"path": "model/model.bin", "sha256": "FILL_SHA256"},
+    {"path": "model/tokenizer.json", "sha256": "FILL_SHA256"},
+    {"path": "model/vocabulary.txt", "sha256": "FILL_SHA256"},
+    {"path": "vad/silero_vad.onnx", "sha256": "FILL_SHA256"}
+  ]
+}

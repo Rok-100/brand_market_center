@@ -1,0 +1,6 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>审核记录 · 素材中心</title><link rel="stylesheet" href="communication-records.css?v=20260930"></head>
+<body data-record-mode="reviews"><main class="records-shell"><header><div><p class="eyebrow">COMMUNICATION REVIEW</p><h1>审核记录</h1><p>查看我的提交与待我审核，打开提交快照进行审核。</p></div><button id="refreshRecords" type="button">刷新</button></header>
+<div class="filters"><label>搜索<input id="recordSearch" type="search" placeholder="产品、提交人或审核人"></label><label>审核状态<select id="recordFilter"><option value="all">全部记录</option><option value="mine">待我审核</option><option value="pending">待审核</option><option value="approved">已通过</option><option value="rejected">已驳回</option></select></label></div>
+<p id="recordStatus" role="status">正在加载…</p><div id="recordList"></div><div class="pagination"><button id="previousPage" type="button">上一页</button><span id="pageLabel"></span><button id="nextPage" type="button">下一页</button></div>
+</main><script src="communication-records.js?v=20260930"></script></body></html>

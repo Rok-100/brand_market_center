@@ -1,0 +1,11 @@
+[
+  {
+    "path": "/legacy"
+  },
+  {
+    "path": "/cockpit/*"
+  },
+  {
+    "path": "/"
+  }
+]

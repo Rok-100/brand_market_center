@@ -1,0 +1,13 @@
+{
+  "name": "product-shot-generator",
+  "version": "2.11.107",
+  "private": true,
+  "description": "Local LibTV product video generator for beauty product showcase workflows.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

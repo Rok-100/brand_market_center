@@ -1,0 +1,1 @@
+import{t as e}from"./framework~index~layout~page~page~page~page~app-page-cache-render~app-page-cache~app-route-h~kwo0jk2q-ByjNgxmK.js";import{t}from"./dashboard-BXAn6z0D.js";var n=e();function r(){return(0,n.jsx)(t,{})}export{r as default};

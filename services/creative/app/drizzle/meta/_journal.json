@@ -1,0 +1,62 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1786349864265,
+      "tag": "0000_giant_preak",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1786351968793,
+      "tag": "0001_brave_starfox",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1786452808074,
+      "tag": "0002_grey_zeigeist",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1786590454691,
+      "tag": "0003_shallow_mojo",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1786962069502,
+      "tag": "0004_dear_nicolaos",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1787547361006,
+      "tag": "0005_youthful_meggan",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1788153953611,
+      "tag": "0006_brown_shotgun",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1789451072074,
+      "tag": "0007_perfect_kate_bishop",
+      "breakpoints": true
+    }
+  ]
+}

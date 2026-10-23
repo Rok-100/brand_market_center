@@ -1,0 +1,142 @@
+<!DOCTYPE html><html lang="zh"><head><script>(function(){
+  var needsPolyfill=(function(){
+    try{
+      if(typeof crypto==="undefined"||typeof crypto.randomUUID!=="function")return true;
+      if(typeof Object.hasOwn!=="function")return true;
+      if(typeof[].at!=="function")return true;
+      if(typeof[].findLast!=="function")return true;
+      return false;
+    }catch(e){return true}
+  })();
+  if(needsPolyfill){
+    document.write('<script src="/yxb/wis-marketing-hub/modules/data-dashboard/polyfills.js"><\/script>');
+  }
+})();</script><script>(function() {
+  var isModernBrowser = (function() {
+    try {
+      if (typeof CSS === 'undefined' || typeof CSS.supports !== 'function') return false;
+      if (!CSS.supports('selector(:has(*))')) return false;
+      if (!CSS.supports('color', 'color-mix(in srgb, red, blue)')) return false;
+      if (!CSS.supports('color', 'oklch(50% 0.1 0)')) return false;
+      return true;
+    } catch (e) {
+      return false;
+    }
+  })();
+
+  var cssUrls = ["/yxb/wis-marketing-hub/modules/data-dashboard/assets/index-_4mGP9tr.css"];
+  var suffix = isModernBrowser ? '' : '.legacy';
+
+  cssUrls.forEach(function(url) {
+    var finalUrl = url.replace(/\.css$/, suffix + '.css');
+    document.write('<link rel="stylesheet" href="' + finalUrl + '">');
+  });
+})();</script><noscript><link rel="stylesheet" href="/yxb/wis-marketing-hub/modules/data-dashboard/assets/index-_4mGP9tr.css"></noscript><script>window.csrfToken = "{{csrfToken}}";
+        window.userId = "{{userId}}";
+        window.tenantId = "{{tenantId}}";
+        window.appId = "{{appId}}";
+        window.ENVIRONMENT = "{{environment}}";
+        const appInfo = {
+          name: "{{appName}}",
+          avatar: "{{{appAvatar}}}",
+          description: "{{appDescription}}",
+        };
+        if (appInfo.name) {
+          window._appInfo = appInfo;
+        }
+        window.__BASENAME__ = "{{basename}}";</script><script>(function(g){
+  if(!window[g]){var q=[];window[g]=function(){q.push([].slice.call(arguments));};window[g].q=q;}
+  window.__slardarErrBuf=window.__slardarErrBuf||[];
+  var ref=document.referrer||'';
+  function _cap(err){
+    if(window[g]&&!window[g].q){
+      window[g]('captureException',err instanceof Error?err:new Error(String(err)),{source:'runtime-error',referrer:ref});
+    }else{
+      (window.__slardarErrBuf=window.__slardarErrBuf||[]).push(err);
+    }
+  }
+  window.addEventListener('error',function(e){
+    if(e.error==null&&e.target instanceof Element){
+      var t=e.target,url=t.src||t.href||'';
+      if(url)window[g]('captureException',new Error('Resource load failed: '+url),{team:'miaoda-sdk',source:'resource-error',resourceType:t.tagName.toLowerCase(),resourceUrl:url,referrer:ref});
+      return;
+    }
+    if(e.error!=null){
+      var err=e.error;
+      if(e.filename&&typeof err.stack==='string'&&err.stack.indexOf(e.filename)<0){
+        try{err.stack+='\n    at '+e.filename+':'+(e.lineno||0)+':'+(e.colno||0);}catch(ex){}
+      }
+      _cap(err);
+    }else{
+      var msg=e.message||'Script error';
+      var err=new Error(msg);
+      if(e.filename)err.stack=msg+'\n    at '+e.filename+':'+(e.lineno||0)+':'+(e.colno||0);
+      _cap(err);
+    }
+  },true);
+  window.addEventListener('unhandledrejection',function(e){
+    if(e.reason!=null)_cap(e.reason instanceof Error?e.reason:new Error(String(e.reason)));
+  });
+})('KSlardarWeb');</script><script>const slardarScript = document.createElement('script');
+    slardarScript.src = 'https://lf3-short.ibytedapm.com/slardar/fe/sdk-web/browser.cn.js?bid=apaas_miaoda&globalName=KSlardarWeb';
+    slardarScript.crossOrigin = 'anonymous';
+
+    // Add onload event handler
+    slardarScript.onload = function() {
+      // Initialize after script loads
+      if (window.KSlardarWeb) {
+        window.KSlardarWeb('context.merge', {
+          tenantId: window.tenantId ?? '',
+          appId: window.appId ?? '',
+          referrer: document.referrer || '',
+        });
+        window.KSlardarWeb('init', {
+          bid: 'apaas_miaoda',
+          env: window.ENVIRONMENT || 'online',
+          userId: window.userId ?? '',
+        });
+        window.KSlardarWeb('start');
+        // Flush JS runtime errors that occurred before SDK loaded
+        var buf = window.__slardarErrBuf || [];
+        window.__slardarErrBuf = [];
+        buf.forEach(function(err) {
+          window.KSlardarWeb('captureException', err instanceof Error ? err : new Error(String(err)), { source: 'pre-sdk-error', referrer: document.referrer || '' });
+        });
+      }
+    };
+
+    // Add error handler
+    slardarScript.onerror = function() {
+      console.warn('Failed to load Slardar script');
+    };
+
+    // Add script to page
+    document.head.appendChild(slardarScript);</script><script src="https://sf3-scmcdn-cn.feishucdn.com/obj/unpkg/byted/performance/0.1.2/dist/performance.iife.js" crossorigin="anonymous" defer="defer"></script><script>(function (win, export_obj) {
+    win['LogAnalyticsObject'] = export_obj;
+    if (!win[export_obj]) {
+      function _collect() {
+        _collect.q.push(arguments);
+      }
+      _collect.q = _collect.q || [];
+      win[export_obj] = _collect;
+    }
+    win[export_obj].l = +new Date();
+  })(window, 'collectEvent');
+
+  // Create tea sdk script element
+    const teaScript = document.createElement('script');
+    teaScript.src = 'https://lf3-cdn-tos.bytescm.com/obj/static/log-sdk/collect/5.1/collect.js';
+    teaScript.crossOrigin = 'anonymous';
+    teaScript.async = true;
+
+    // Add error handler
+    teaScript.onerror = function() {
+      console.warn('Failed to load Tea script');
+    };
+
+    // Add script to page
+    document.head.appendChild(teaScript);</script><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="{{appAvatar}}"><meta name="description" content="{{appDescription}}"><title>{{appName}}</title><style>.app-boot-shell{min-height:100vh;display:grid;place-items:center;background:#f6f7fb;color:#344054;font-family:"Microsoft YaHei",system-ui,sans-serif}.app-boot-card{width:min(22rem,calc(100vw - 3rem));padding:1.5rem;border:1px solid #e4e7ec;border-radius:.75rem;background:#fff;box-shadow:0 .25rem 1rem rgb(16 24 40 / 6%)}.app-boot-card span,.app-boot-card strong{display:block}.app-boot-card strong{font-size:1rem;line-height:1.5}.app-boot-card span{margin-top:.375rem;color:#667085;font-size:.875rem;line-height:1.5}.app-boot-progress{height:.25rem;margin-top:1rem;overflow:hidden;border-radius:999px;background:#eaecf0}.app-boot-progress::after{content:"";display:block;width:45%;height:100%;border-radius:inherit;background:#475467;animation:app-boot-progress 1.2s ease-in-out infinite alternate}@keyframes app-boot-progress{from{transform:translateX(-15%)}to{transform:translateX(135%)}}@media (prefers-reduced-motion:reduce){.app-boot-progress::after{animation:none}}</style><script>try {
+      window.__platform__ = JSON.parse('{{{__platform__}}}');
+    } catch (e) {
+      console.error('Failed to parse __platform__', e);
+    }</script><script type="module" crossorigin src="/yxb/wis-marketing-hub/modules/data-dashboard/assets/index-Cp1zzTLz.js"></script><meta property="og:title" content="{{appName}}"><meta property="og:description" content="{{appDescription}}"><meta property="og:image" content="{{appAvatar}}"><meta property="og:url" content="{{currentUrl}}"></head><body><div id="root"><div class="app-boot-shell" role="status" aria-live="polite" aria-label="WIS 经营驾驶舱正在加载"><div class="app-boot-card"><strong>WIS 品牌营销经营驾驶舱</strong> <span>正在加载页面与经营数据…</span><div class="app-boot-progress" aria-hidden="true"></div></div></div></div></body></html>

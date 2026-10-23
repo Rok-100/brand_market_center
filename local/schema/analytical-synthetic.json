@@ -1,0 +1,152 @@
+{
+  "d_root_project_mid_db_brandmarketing.platform_order_item_api_field": {
+    "columns": [
+      "order_pay_amount",
+      "order_status",
+      "order_time",
+      "pay_time",
+      "platform_order_no",
+      "shop_id",
+      "sku_items",
+      "updated_at"
+    ],
+    "indexes": [
+      "idx_shop_order_time",
+      "idx_shop_pay_time"
+    ]
+  },
+  "d_root_project_mid_db_brandmarketing.qianchuan_ad_plan_hourly_delivery_cost_detail": {
+    "columns": [
+      "ad_id",
+      "ad_name",
+      "advertiser_id",
+      "advertiser_name",
+      "id",
+      "internal_product_name",
+      "marketing_goal_code",
+      "observed_at",
+      "plan_net_pay_order_gmv_yuan",
+      "plan_total_cost_yuan",
+      "record_grain",
+      "report_date",
+      "stat_cost",
+      "stat_time",
+      "time_granularity",
+      "total_pay_order_gmv_for_roi2",
+      "total_pay_order_gmv_include_coupon_for_roi2"
+    ],
+    "indexes": [
+      "idx_qc_plan_material_daily_ad",
+      "uk_qc_plan_window"
+    ]
+  },
+  "d_root_project_mid_db_brandmarketing.qianchuan_chengfang_ad_plan_hourly_delivery_cost_detail": {
+    "columns": [
+      "ad_id",
+      "ad_name",
+      "advertiser_id",
+      "advertiser_name",
+      "id",
+      "internal_product_name",
+      "marketing_goal_code",
+      "observed_at",
+      "plan_net_pay_order_gmv_yuan",
+      "plan_total_cost_yuan",
+      "record_grain",
+      "report_date",
+      "stat_cost",
+      "stat_time",
+      "time_granularity",
+      "total_pay_order_gmv_for_roi2",
+      "total_pay_order_gmv_include_coupon_for_roi2"
+    ],
+    "indexes": [
+      "idx_qc_plan_material_daily_ad",
+      "uk_qc_plan_window"
+    ]
+  },
+  "d_root_project_mid_db_brandmarketing.qianchuan_account_hourly_cost": {
+    "columns": [
+      "advertiser_id",
+      "advertiser_name",
+      "data_status",
+      "live_prom_goods_cost_yuan",
+      "observed_at",
+      "report_date",
+      "stat_time",
+      "total_cost_yuan",
+      "video_prom_goods_cost_yuan"
+    ],
+    "indexes": [
+      "idx_qc_account_daily_advertiser_date",
+      "idx_qc_account_hourly_time",
+      "uk_qc_account_hourly_cost"
+    ]
+  },
+  "d_root_project_mid_db_brandmarketing.qianchuan_material_hourly_report": {
+    "columns": [
+      "advertiser_id",
+      "business_material_type",
+      "content_description",
+      "internal_product_name",
+      "marketing_goal",
+      "material_id",
+      "observed_at",
+      "platform_material_type",
+      "platform_product_ids_json",
+      "report_date",
+      "stat_cost_for_roi2",
+      "stat_time",
+      "total_pay_order_gmv_for_roi2",
+      "total_pay_order_gmv_include_coupon_for_roi2"
+    ],
+    "indexes": [
+      "uk_qc_material_hourly"
+    ]
+  },
+  "d_root_project_mid_db_brandmarketing.qianchuan_chengfang_material_hourly_report": {
+    "columns": [
+      "advertiser_id",
+      "business_material_type",
+      "content_description",
+      "internal_product_name",
+      "marketing_goal",
+      "material_id",
+      "material_name",
+      "material_online_time",
+      "observed_at",
+      "platform_material_type",
+      "platform_product_ids_json",
+      "report_date",
+      "stat_cost_for_roi2",
+      "stat_time",
+      "total_pay_order_gmv_for_roi2",
+      "total_pay_order_gmv_include_coupon_for_roi2"
+    ],
+    "indexes": [
+      "uk_qc_material_hourly"
+    ]
+  },
+  "d_root_project_mid_db_brandmarketing.qianchuan_material_asset_ledger": {
+    "columns": [
+      "advertiser_id",
+      "business_tags_json",
+      "content_description",
+      "filename",
+      "first_seen_report_date",
+      "internal_product_name",
+      "material_id",
+      "material_source",
+      "platform_create_time",
+      "platform_material_name",
+      "platform_material_type",
+      "platform_product_names_json",
+      "platform_products_json",
+      "platform_tags_json",
+      "publisher_aweme_name"
+    ],
+    "indexes": [
+      "uk_qc_material_asset"
+    ]
+  }
+}

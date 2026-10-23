@@ -1,0 +1,37 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import {createHash} from 'node:crypto';
+import {createClipRemixService} from '../clip-remix-service.mjs';
+import {outputBinding} from '../output-review-binding.mjs';
+import {VISUAL_REVIEW_VERSION} from '../visual-quality.mjs';
+
+for (const drift of ['none','before-return','during-upload']) test(`real return route checks generation binding: ${drift}`,async t=>{
+  const dataDir=await fs.mkdtemp(path.join(os.tmpdir(),'wis-return-binding-'));
+  t.after(()=>fs.rm(dataDir,{recursive:true,force:true}));
+  const root=path.join(dataDir,'clip-remix');await fs.mkdir(path.join(root,'outputs'),{recursive:true});
+  const bytes=Buffer.from('isolated fixture output, no external upload');
+  const hash=createHash('sha256').update(bytes).digest('hex');
+  await fs.writeFile(path.join(root,'outputs','fixture.mp4'),bytes);
+  const sources=[{id:'s',storedName:'source.mp4',productCategory:'黑晶面膜',contentSha256:'source-sha',skuVersion:'sku1',visibility:'team'}];
+  const clips=[{id:'c',sourceId:'s',storedName:'clip.mp4',createdByIds:['fixture-owner'],productCategory:'黑晶面膜',visibility:'team',durationSeconds:10,startSeconds:0,endSeconds:10,reviewStatus:'approved',tags:[]}];
+  const binding=outputBinding(clips,sources,'黑晶面膜');
+  const variant={id:'v',storedName:'fixture.mp4',outputName:'fixture.mp4',contentSha256:hash,clipSequence:['c'],slotMapping:{hook:'c'},generationBinding:binding,reviewBinding:binding,reviewStatus:'approved',automaticAssessment:{status:'passed',autoApproved:true,checks:[],visualReview:{status:'passed',sha256:hash,version:VISUAL_REVIEW_VERSION,issues:[],confidence:.99}}};
+  const render={id:'r',createdById:'fixture-owner',productCategory:'黑晶面膜',visibility:'team',automation:{jobId:'j',runId:'original'},templateId:'f',variants:[variant]};
+  const job={id:'j',createdById:'fixture-owner',status:'paused',scheduleEnabled:false,autoApproveOutputs:true,autoReturnAfterApproval:false,runs:[]};
+  await fs.writeFile(path.join(root,'library.json'),JSON.stringify({version:7,sources,clips,renders:[render],autoJobs:[job],frameworks:[{id:'f',name:'Fixture',slots:[{id:'hook'}],visibility:'team'}],folders:[]}));
+  const actor={sub:'fixture-owner',name:'Fixture'};
+  let service,created=0,uploaded=0,completed=0;
+  const route=async(method,url,body={})=>{const res={};await service.route({method,headers:{},body},res,new URL('http://localhost'+url),actor);return res;};
+  const change=async()=>{const res=await route('PATCH','/api/remix/clips/c/metadata',{name:'Fixture',productCategory:'黑晶面膜',tags:['changed after original review']});assert.equal(res.status,200,JSON.stringify(res));};
+  service=createClipRemixService({dataDir,nowIso:()=>new Date().toISOString(),inspectMedia:async()=>({duration:10,width:1080,height:1920,hasAudio:true}),runProcess:async()=>({stdout:'',stderr:''}),readJsonBody:async req=>req.body,jsonResponse:(res,status,body)=>Object.assign(res,{status,body}),autoRemixAdminUsers:'fixture-owner',cutter:{configured:false},materialCenter:{configured:true,createReturn:async()=>{created++;return {};},uploadReturnFile:async()=>{uploaded++;if(drift==='during-upload')await change();},completeReturn:async()=>{completed++;return {status:'completed',assetId:123,assetAvailable:true};}}});
+  await service.initialize();
+  if(drift==='before-return')await change();
+  const response=await route('POST','/api/remix/renders/r/variants/v/return-to-material-center');
+  assert.equal(response.status,drift==='none'?200:409,JSON.stringify(response));
+  assert.equal(created,drift==='before-return'?0:1);assert.equal(uploaded,created);assert.equal(completed,drift==='none'?1:0);
+  const saved=JSON.parse(await fs.readFile(path.join(root,'library.json')));
+  assert.equal(saved.autoJobs[0].status,'paused');assert.equal(saved.renders[0].variants[0].contentSha256,hash);
+});

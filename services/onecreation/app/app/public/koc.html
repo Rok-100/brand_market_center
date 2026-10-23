@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI-KOC生成｜品牌营销部工作站</title>
+    <link rel="stylesheet" href="./styles.css?v=2.11.110&build=koc-duration-final-delivery" />
+  </head>
+  <body>
+    <main class="shell koc-shell">
+      <nav class="page-nav" aria-label="页面导航">
+        <a class="back-link" href="./#creation">← 返回工作台首页</a>
+        <span>AI-KOC生成</span>
+      </nav>
+
+      <header class="topbar koc-topbar">
+        <div>
+          <h1>AI-KOC生成</h1>
+          <p id="kocHealthLine">正在连接 LibTV</p>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button" id="clearKocDraftButton" type="button">清空当前填写</button>
+          <button class="icon-button" id="restoreKocButton" type="button">恢复最近</button>
+          <button class="icon-button" id="refreshKocButton" type="button">刷新状态</button>
+          <a class="ghost-link" href="https://www.liblib.tv/" target="_blank" rel="noreferrer">LibTV</a>
+        </div>
+      </header>
+
+      <section class="koc-stage-strip" aria-label="KOC任务步骤">
+        <div class="active"><b>1</b><span>选择脚本 / 分析原片</span></div>
+        <div><b>2</b><span>生成50% / 60% / 70%候选图</span></div>
+        <div><b>3</b><span>选定人物场景与锁定资产</span></div>
+        <div><b>4</b><span>审核提示词与产品露出</span></div>
+        <div><b>5</b><span>提交LibTV并验收全片</span></div>
+      </section>
+
+      <section class="koc-workspace">
+        <form class="tool-panel koc-form" id="kocForm">
+          <div class="panel-title">
+            <div><h2>任务输入</h2><p>可分析原片复刻，也可选择品牌案例脚本，直接进入视频制作。</p></div>
+            <span id="kocFormBadge">待填写</span>
+          </div>
+
+          <section class="koc-core-inputs">
+            <section class="koc-input-card koc-source-input-card">
+              <div class="koc-card-heading"><b>01</b><div><h3>产品与原片 <small>可选</small></h3><p>需要展示产品时选择 SKU；上传原片可参考其结构、节奏与音色。</p></div></div>
+              <label class="koc-prominent-field">
+                <span>产品 SKU（可选）</span>
+                <select name="productId" id="kocProductSelect"></select>
+              </label>
+              <section class="upload-slot">
+                <div class="upload-slot-head"><strong>原片参考视频</strong><span id="referenceStatus">可选</span></div>
+                <label class="drop-zone" id="referenceDropZone">
+                  <input id="referenceInput" type="file" accept="video/mp4,video/quicktime,video/webm,.m4v" />
+                  <b>拖入或选择原片</b><span>自动识别旧口播，并用于 Qwen 深拆、原片结构和节奏参考</span>
+                </label>
+                <div class="compact-assets" id="referencePreview"></div>
+              </section>
+            </section>
+
+            <section class="koc-input-card koc-character-input-card">
+              <div class="koc-card-heading"><b>02</b><div><h3>人物场景</h3><p>可上传一张新的 9:16 人物场景图；留空则生成三张候选图供人工选择。</p></div></div>
+              <section class="upload-slot">
+                <div class="upload-slot-head"><strong>新人物场景图</strong><span id="characterStatus">可选</span></div>
+                <label class="drop-zone koc-character-drop-zone" id="characterDropZone">
+                  <input id="characterInput" type="file" accept="image/png,image/jpeg,image/webp" />
+                  <b>上传人物场景图</b><span>建议 9:16 竖图；不上传不会阻断任务</span>
+                </label>
+                <div class="compact-assets" id="characterPreview"></div>
+              </section>
+            </section>
+
+            <section class="koc-input-card koc-product-input-card">
+              <div class="koc-card-heading"><b>03</b><div><h3>产品资产图</h3><p>直接选择 SKU 对应的标准图，也可补充上传；合计最多 9 张。</p></div></div>
+              <div class="upload-slot-head"><strong>已选产品资产</strong><span id="productAssetStatus">产品露出时必填</span></div>
+              <div class="product-library-panel">
+                <div class="product-library-head">
+                  <div><b>统一 OSS 产品资产库</b><span>按当前 SKU 映射；点击选择或取消，不重复展示同一资产</span></div>
+                  <button id="refreshProductLibraryButton" type="button">刷新图库</button>
+                </div>
+                <div class="product-library-grid" id="productLibraryGrid">
+                  <p class="product-library-empty">正在加载产品图...</p>
+                </div>
+              </div>
+              <label class="drop-zone koc-product-upload" id="productDropZone">
+                <input id="productAssetInput" type="file" accept="image/png,image/jpeg,image/webp" multiple />
+                <b>补充上传产品图</b><span>支持正面、侧面和使用图</span>
+              </label>
+              <div class="compact-assets compact-grid" id="productAssetPreview"></div>
+            </section>
+
+            <section class="koc-input-card koc-script-library-card">
+              <div class="koc-card-heading"><b>04</b><div><h3>选择脚本 <small>可选</small></h3><p>直接使用「创意来源 → 品牌案例库」中的脚本，新口播留空时沿用所选脚本原文。</p></div></div>
+              <div class="koc-script-library-controls">
+                <label><span>搜索品牌案例脚本</span><input id="kocScriptSearch" type="search" placeholder="搜索标题、产品、类型或文案" /></label>
+                <button class="small-action" id="refreshKocScriptsButton" type="button">刷新脚本</button>
+              </div>
+              <label><span>品牌案例库脚本</span><select id="kocScriptSelect" name="selectedScriptId"><option value="">不选择脚本</option></select></label>
+              <p class="koc-script-library-status" id="kocScriptLibraryStatus" role="status">正在加载品牌案例库…</p>
+              <label id="kocSelectedScriptPreview" hidden><span id="kocSelectedScriptMeta">所选脚本原文</span><textarea id="kocSelectedScriptCopy" rows="7" readonly></textarea></label>
+            </section>
+
+            <section class="koc-input-card koc-script-input-card">
+              <div class="koc-card-heading"><b>05</b><div><h3>新旧口播文案 <small>可选</small></h3><p>新口播优先于所选脚本，其次沿用旧口播；均未提供时生成无口播画面。</p></div></div>
+              <div class="koc-script-grid">
+                <div class="koc-script-column">
+                  <label><span>原片旧口播文案（可选）</span><textarea name="referenceTranscript" rows="9" placeholder="上传原片后自动识别；也可手动填写或留空。"></textarea></label>
+                  <div class="koc-transcript-meta"><span id="kocTranscriptStatus">上传原片后自动识别</span><span id="kocTranscriptCount">0字符</span><button id="retryKocTranscriptButton" type="button" hidden>重新识别</button></div>
+                  <details class="koc-asr-raw" id="kocAsrRaw" hidden><summary>查看未经校订的 ASR 原文</summary><pre id="kocAsrRawText"></pre></details>
+                </div>
+                <div class="koc-script-column">
+                  <label><span>新视频口播文案（可选）</span><textarea name="voiceoverScript" rows="9" placeholder="可填写新文案；留空时使用所选脚本或旧口播，无需手动分镜。"></textarea></label>
+                  <div class="koc-transcript-meta"><span>留空可沿用脚本或生成无口播画面</span><span id="kocVoiceoverCount">0字符</span></div>
+                </div>
+              </div>
+              <label class="check-line koc-voice-choice">
+                <input name="useOriginalVoiceReference" id="useOriginalVoiceReference" type="checkbox" checked />
+                <span><b>沿用原视频口音、语气与节奏</b><small>提供原片时生效；只参考声音表现，新片仍逐字使用最终口播文案。</small></span>
+              </label>
+            </section>
+          </section>
+
+          <details class="koc-advanced-settings">
+            <summary><span><b>查看高级补充项</b><small>拍摄方式、产品露出和互动默认由原片深拆决定，只有需要人工校正时才填写。</small></span><i>展开</i></summary>
+            <div class="koc-advanced-settings-body">
+              <div class="two-cols">
+                <label><span>聊天形式</span><select name="chatFormat"><option value="single">单人唠嗑</option><option value="double">双人唠嗑</option></select></label>
+                <label><span>人物候选梯度</span><select name="candidateMode"><option value="3">3张：50% / 60% / 70%</option></select></label>
+              </div>
+              <div class="two-cols">
+                <label><span>原片拆解方式</span><select name="analysisMode" id="analysisModeSelect"><option value="ai">AI自动深度拆解（Qwen 3.7 多模态）</option><option value="manual">使用人工拆解内容</option></select></label>
+                <label><span>拍摄方式校正</span><select name="cameraMode"><option value="auto">跟随原片深拆结果</option><option value="fixed">固定机位</option><option value="handheld-left">左手持机</option><option value="handheld-right">右手持机</option></select></label>
+              </div>
+              <label class="manual-analysis" id="manualAnalysisField" hidden><span>人工原片拆解</span><textarea name="manualDeepDive" rows="7" placeholder="至少120字，覆盖构图、人物动作、节奏、产品露出和衔接逻辑。"></textarea></label>
+              <label class="check-line"><input name="useMotionReference" type="checkbox" /><span>原片不超过15秒时，同时作为 Seedance 动作参考</span></label>
+              <div class="two-cols">
+                <label><span>产品在画面中的行为</span><input name="productBehavior" placeholder="仅在需要偏离原片安排时填写" /></label>
+                <label><span>价格或行动引导</span><input name="priceCta" placeholder="未经确认的价格不要填写" /></label>
+              </div>
+              <label><span>产品外观约束</span><textarea name="appearanceConstraints" rows="3" placeholder="仅补充产品图无法表达的外观约束"></textarea></label>
+              <div class="two-cols">
+                <label><span>原片露出次数校正</span><input name="originalExposureCount" type="number" min="0" value="0" /></label>
+                <label><span>新视频露出分镜（选填补充）</span><input name="productExposureClips" placeholder="例如：2,4,5；默认跟随原片" /></label>
+              </div>
+              <div class="two-cols">
+                <label><span>关键互动类型</span><select name="interactionMode"><option value="low_reaction">跟随原片轻微因果反应</option><option value="active_support">主动辅助动作</option><option value="co_action">两人共同动作</option></select></label>
+                <label><span>关键互动所在分镜</span><input name="interactionClips" placeholder="例如：2,3；单人可留空" /></label>
+              </div>
+              <label><span>关键互动动作几何</span><textarea name="interactionGeometry" rows="4" placeholder="仅在主动辅助或共同动作时补充"></textarea></label>
+              <label><span>其他生成要求</span><textarea name="specialRequest" rows="3" placeholder="例如：生活化、不要直播感"></textarea></label>
+            </div>
+          </details>
+
+          <div class="koc-submit-row">
+            <div><b>选择制作入口</b><span>生成视频可跳过原片分析；人物场景和最终分镜确认后提交生成。</span></div>
+            <div class="koc-submit-actions">
+              <button class="small-action" id="prepareKocButton" type="submit" value="analyze">开始分析原片</button>
+              <button class="primary" id="generateKocButton" type="submit" value="direct">生成视频</button>
+            </div>
+          </div>
+        </form>
+
+        <aside class="koc-guide-panel" id="kocGuidePanel">
+          <div class="panel-title"><h2>当前执行规则</h2><div class="koc-guide-actions"><span>最新 KOC Skill</span><button id="toggleKocGuideButton" type="button" aria-expanded="true">隐藏</button></div></div>
+          <ol class="rule-list">
+            <li><b>任务资产唯一根目录</b><span>源素材、资产、拆解、提示词、日志和成片全部归档到当前任务目录。</span></li>
+            <li><b>旧口播自动识别</b><span>上传原片后，XingChenASR 自动转写；普通音轨使用单声道说话人分离，左右分别收音时经双重校验后分轨。DeepSeek 4 Pro 只补标点和明显错漏，重叠讲话锁定原文并提示人工核对。</span></li>
+            <li><b>固定三档候选</b><span>首选 GPT Image 2 生成50% / 60% / 70%三张全新人物场景图；HTTP 401时自动降级 Seedream 5.0 Pro，并记录实际模型，禁止自动代选。</span></li>
+            <li><b>人物与资产检查点</b><span>用户选定一张人物场景图后，记录路径、哈希、产品图和逐分镜必需资产。</span></li>
+            <li><b>口播与互动锁定</b><span>新口播、品牌案例脚本、旧口播依次优先；未提供口播时生成无口播画面。直接制作按文案语义编排，分析原片时可沿用其结构和节奏。</span></li>
+            <li><b>产品露出确认</b><span>分析原片时识别并映射产品露出；直接制作时按指定产品与露出分镜安排。未选产品时不主动展示实物产品，确认前不进入生成。</span></li>
+            <li><b>确认后再上传</b><span>提示词确认后再次复查本地资产并执行自动合规检查，再上传LibTV并生成全部分镜。</span></li>
+            <li><b>下载与验收</b><span>保存逐分镜提示词、日志和成片，ffprobe验证后生成全片拼接预览。</span></li>
+          </ol>
+          <div class="guide-warning"><b>保留两次人工确认</b><p>候选人物场景必须人工选择；提示词、产品露出和口播确认前，系统不会上传LibTV或开始视频生成。</p></div>
+        </aside>
+      </section>
+
+      <section class="run-panel koc-run-panel koc-automation-panel" id="kocJobPanel">
+        <div class="run-head">
+          <div><h2>自动处理进度</h2><p id="kocJobMessage">填写核心资料后开始处理</p></div>
+          <strong id="kocProgressText">0 / 0</strong>
+        </div>
+        <div class="progress"><span id="kocProgressBar"></span></div>
+        <ol class="koc-auto-steps" id="kocAutoSteps">
+          <li data-auto-stage="analysis"><span>1</span><div><b>转写并深度拆解原片</b><small>口播、镜头、动作、节奏与产品露出</small></div><em>等待</em></li>
+          <li data-auto-stage="candidates"><span>2</span><div><b>生成人物候选图</b><small>固定 50% / 60% / 70% 三档</small></div><em>等待</em></li>
+          <li data-auto-stage="planning"><span>3</span><div><b>重排新口播与分镜</b><small>按原片结构和新文案语义编排</small></div><em>等待</em></li>
+          <li data-auto-stage="generation"><span>4</span><div><b>生成与回传</b><small>确认后提交 LibTV 并回传平台</small></div><em>等待确认</em></li>
+        </ol>
+        <div class="koc-resume-row" id="kocResumeGate" hidden>
+          <div><b>原任务可继续</b><span id="kocResumeHint">继续沿用当前任务资料和资产，不会新建重复任务。</span></div>
+          <button class="primary" id="resumeInterruptedKocButton" type="button">继续分析原片</button>
+        </div>
+        <div class="candidate-gate" id="kocCandidateGate" hidden>
+          <div class="candidate-gate-head">
+            <div><h3>需要人工选择：人物场景图</h3><p>三张 9:16 候选图纵向展示；选定一张后才继续编排新分镜。</p></div>
+            <button class="small-action" id="regenerateCandidatesButton" type="button">重新生成候选图</button>
+          </div>
+          <div class="candidate-grid" id="kocCandidateGrid"></div>
+          <div class="manual-character-choice">
+            <span>也可以使用上方上传的人工人物场景图</span>
+            <button class="small-action" id="useManualCharacterButton" type="button">使用人工上传图</button>
+          </div>
+        </div>
+        <div class="review-gate" id="kocReviewGate" hidden>
+          <div class="audit-head">
+            <div><h3>需要人工复核：分镜与产品露出</h3><p>查看 Qwen 深拆和新分镜安排；可修改画面、产品露出和提示词，确认后才生成。</p></div>
+            <span id="kocAuditBadge">检查中</span>
+          </div>
+          <div class="koc-review-tools">
+            <button class="small-action" id="toggleKocReviewDetailsButton" type="button" aria-expanded="false">查看并修改任务资料</button>
+            <span id="kocReviewRevision">审核版本 0</span>
+          </div>
+          <section class="koc-duration-section">
+            <div class="koc-duration-heading"><div><b>选择每个分镜的时长</b><span>每段4–15秒，口播逐字保留；较短时长可能使语速加快。</span></div><strong id="kocDurationTotal">合计0秒</strong></div>
+            <div class="koc-duration-grid" id="kocDurationEditor"></div>
+          </section>
+          <div class="koc-review-details" id="kocReviewDetails" hidden>
+            <details>
+              <summary>查看原片拆解或脚本制作方案</summary>
+              <pre id="kocDeepDivePreview"></pre>
+            </details>
+            <section>
+              <div class="koc-review-editor-head"><div><b>分镜安排</b><span>可修改时长、画面、产品露出和最终提示词；口播逐字保留。</span></div><button class="small-action" id="saveKocReviewPlanButton" type="button">保存分镜修订</button></div>
+              <div class="koc-storyboard-editor" id="kocStoryboardEditor"></div>
+              <p class="koc-review-save-status" id="kocReviewSaveStatus"></p>
+            </section>
+          </div>
+          <div class="audit-grid" id="kocAuditList"></div>
+          <button class="primary" id="approveKocButton" type="button">确认当前内容并开始生成</button>
+        </div>
+        <details class="koc-processing-details">
+          <summary>查看自动处理文件与任务日志</summary>
+          <div class="review-files" id="kocFiles"></div>
+          <div class="koc-log-details"><div><b>任务日志</b><span id="kocJobId">无任务</span></div><pre id="kocLogBox"></pre></div>
+        </details>
+      </section>
+
+      <section class="result-panel koc-result-hub">
+        <div class="panel-title"><div><h2>生成结果</h2><p>生成参数、LibTV 画布、单个分镜和成片统一在这里回传。</p></div><span id="kocResultBadge">等待任务</span></div>
+        <div class="koc-output-overview">
+          <section class="koc-generation-settings">
+            <button class="koc-disclosure-button" id="kocGenerationSettingsToggle" type="button" aria-expanded="false" aria-controls="kocGenerationSettingsPanel">
+              <span><b>视频生成参数</b><small id="kocGenerationSettingsSummary">Seedance 2.0 VIP · 全能参考 · 720P · 9:16</small></span>
+              <i aria-hidden="true">展开</i>
+            </button>
+            <div class="koc-generation-settings-panel" id="kocGenerationSettingsPanel" hidden>
+              <div class="koc-fixed-setting"><span>视频生成模型</span><b>Seedance 2.0 VIP</b></div>
+              <div class="koc-fixed-setting"><span>视频生成模式</span><b>全能参考</b></div>
+              <label><span>清晰度</span><select name="videoResolution" id="kocVideoResolution" form="kocForm"><option value="720p" selected>720P</option><option value="1080p">1080P</option></select></label>
+              <div class="koc-fixed-setting"><span>比例</span><b>9:16</b></div>
+            </div>
+          </section>
+          <a class="koc-canvas-link pending" id="kocCanvasLink" target="_blank" rel="noopener noreferrer" aria-disabled="true">
+            <span><b>LibTV 画布自动管理</b><small>确认生成后自动创建并回传，无需手动填写链接</small></span><i aria-hidden="true">•••</i>
+          </a>
+        </div>
+        <section class="koc-output-section">
+          <div class="koc-output-section-head"><div><b>单个分镜</b><span>生成状态、口播和失败重试</span></div><button class="small-action warning-action" id="retryAllKocButton" type="button" hidden>重新生成全部失败分镜</button></div>
+          <div class="task-list" id="kocTaskList"></div>
+          <details id="kocRemovedClips" hidden><summary>已删除分镜（可恢复）</summary><div id="kocRemovedClipList"></div></details>
+        </section>
+        <section class="koc-output-section">
+          <div class="koc-output-section-head"><div><b>完整成片</b><span>全部分镜按顺序拼接为一个视频，自动上传到WIS云管家的视频素材</span></div><button class="small-action" id="openKocOutputButton" type="button" disabled>打开输出文件夹</button></div>
+          <div class="koc-final-delivery" id="kocFinalDeliveryStatus" role="status"></div>
+          <button class="small-action" id="retryKocFinalDeliveryButton" type="button" hidden>继续拼接并上传</button>
+          <div class="result-grid koc-final-video-grid" id="kocResultGrid"></div>
+          <details class="koc-segment-results" id="kocSegmentResults" hidden><summary>查看单个分镜视频</summary><div class="result-grid" id="kocSegmentResultGrid"></div></details>
+        </section>
+      </section>
+    </main>
+    <script src="./workstation-identity.js?v=2.11.1"></script>
+    <script src="./knowledge-context.js?v=2.8.21"></script>
+    <script src="./module-task-center.js?v=2.11.110-koc-finalizing"></script>
+    <script src="./koc.js?v=2.11.110-koc-duration-final-delivery"></script>
+  </body>
+</html>

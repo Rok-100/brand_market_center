@@ -1,0 +1,894 @@
+[
+  {
+    "source": "curated-source/services",
+    "target": "services",
+    "files": 2400
+  },
+  {
+    "source": "curated-source/shared",
+    "target": "shared",
+    "files": 63
+  },
+  {
+    "source": "curated-source/build",
+    "target": "build",
+    "files": 41
+  },
+  {
+    "source": "current-hub-development-source",
+    "target": "services/hub/app",
+    "files": 294
+  },
+  {
+    "source": "current-learning-development-source",
+    "target": "services/learning/app",
+    "files": 56
+  },
+  {
+    "source": "synthetic-local-templates/config",
+    "target": "local/config-templates",
+    "files": 20
+  },
+  {
+    "source": "synthetic-local-templates/schema",
+    "target": "local/schema",
+    "files": 4
+  },
+  {
+    "source": "current-cloud-frontend-source",
+    "target": "services/cloud/app/frontend/src",
+    "files": 66
+  },
+  {
+    "source": "current-worker-overrides",
+    "target": "services/remix/app/render-worker",
+    "files": 13
+  },
+  {
+    "container": "brand-hub-local-hub-1",
+    "path": "/app/server.mjs",
+    "target": "services/hub/app/server.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-hub-local-hub-1",
+    "path": "/app/libtv-points-source.mjs",
+    "target": "services/hub/app/libtv-points-source.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-hub-local-hub-1",
+    "path": "/app/libtv-cost-pricing.mjs",
+    "target": "services/hub/app/libtv-cost-pricing.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-hub-local-cloud-1",
+    "path": "/app/backend/app",
+    "target": "services/cloud/app/backend/app",
+    "files": 79,
+    "available": true
+  },
+  {
+    "container": "brand-hub-local-cloud-1",
+    "path": "/app/frontend/dist",
+    "target": "services/cloud/app/frontend/dist",
+    "files": 57,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-contribution.mjs",
+    "target": "services/live/app/anchor-contribution.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-contribution.test.mjs",
+    "target": "services/live/app/anchor-contribution.test.mjs",
+    "files": 0,
+    "available": false
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-employee-directory.mjs",
+    "target": "services/live/app/anchor-employee-directory.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-employee-directory.test.mjs",
+    "target": "services/live/app/anchor-employee-directory.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-evidence-http.test.mjs",
+    "target": "services/live/app/anchor-evidence-http.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-evidence.mjs",
+    "target": "services/live/app/anchor-evidence.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-evidence.test.mjs",
+    "target": "services/live/app/anchor-evidence.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-recording-caption.mjs",
+    "target": "services/live/app/anchor-recording-caption.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-recording-caption.test.mjs",
+    "target": "services/live/app/anchor-recording-caption.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-recording-integration.test.mjs",
+    "target": "services/live/app/anchor-recording-integration.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-recording-pairing.test.mjs",
+    "target": "services/live/app/anchor-recording-pairing.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-recording-refresh.mjs",
+    "target": "services/live/app/anchor-recording-refresh.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-recording-refresh.test.mjs",
+    "target": "services/live/app/anchor-recording-refresh.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-authorization.mjs",
+    "target": "services/live/app/anchor-status-authorization.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-background.test.mjs",
+    "target": "services/live/app/anchor-status-background.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-card.mjs",
+    "target": "services/live/app/anchor-status-card.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-delivery.mjs",
+    "target": "services/live/app/anchor-status-delivery.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-detail-ui.test.mjs",
+    "target": "services/live/app/anchor-status-detail-ui.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-download.mjs",
+    "target": "services/live/app/anchor-status-download.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-download.test.mjs",
+    "target": "services/live/app/anchor-status-download.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-http.mjs",
+    "target": "services/live/app/anchor-status-http.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-http.test.mjs",
+    "target": "services/live/app/anchor-status-http.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-manual-retry-ui.test.mjs",
+    "target": "services/live/app/anchor-status-manual-retry-ui.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-media.mjs",
+    "target": "services/live/app/anchor-status-media.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-media.test.mjs",
+    "target": "services/live/app/anchor-status-media.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-model.mjs",
+    "target": "services/live/app/anchor-status-model.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-path.test.mjs",
+    "target": "services/live/app/anchor-status-path.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-policy.mjs",
+    "target": "services/live/app/anchor-status-policy.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-read-performance.test.mjs",
+    "target": "services/live/app/anchor-status-read-performance.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-schedule.mjs",
+    "target": "services/live/app/anchor-status-schedule.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-scheduler.test.mjs",
+    "target": "services/live/app/anchor-status-scheduler.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-service.mjs",
+    "target": "services/live/app/anchor-status-service.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-startup.test.mjs",
+    "target": "services/live/app/anchor-status-startup.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status-store.mjs",
+    "target": "services/live/app/anchor-status-store.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/anchor-status.test.mjs",
+    "target": "services/live/app/anchor-status.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/assistant-rankings-fixture.mjs",
+    "target": "services/live/app/assistant-rankings-fixture.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/assistant-rankings-http.mjs",
+    "target": "services/live/app/assistant-rankings-http.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/assistant-rankings.mjs",
+    "target": "services/live/app/assistant-rankings.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/assistant-rankings.test.mjs",
+    "target": "services/live/app/assistant-rankings.test.mjs",
+    "files": 0,
+    "available": false
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/calendar-auth-http.mjs",
+    "target": "services/live/app/calendar-auth-http.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/calendar-auth-http.test.mjs",
+    "target": "services/live/app/calendar-auth-http.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/calendar-pkce-contract.test.mjs",
+    "target": "services/live/app/calendar-pkce-contract.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/calendar-user-reader.mjs",
+    "target": "services/live/app/calendar-user-reader.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/calendar-user-reader.test.mjs",
+    "target": "services/live/app/calendar-user-reader.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/coach-calendar-auth.mjs",
+    "target": "services/live/app/coach-calendar-auth.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/coach-calendar-auth.test.mjs",
+    "target": "services/live/app/coach-calendar-auth.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/coach-review-bitable.mjs",
+    "target": "services/live/app/coach-review-bitable.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/coach-review-bitable.test.mjs",
+    "target": "services/live/app/coach-review-bitable.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/coach-review-links.test.mjs",
+    "target": "services/live/app/coach-review-links.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/coach-review-store.mjs",
+    "target": "services/live/app/coach-review-store.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/coach-review-store.test.mjs",
+    "target": "services/live/app/coach-review-store.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/communication-ai.mjs",
+    "target": "services/live/app/communication-ai.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/communication-ai.test.mjs",
+    "target": "services/live/app/communication-ai.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/communication-delivery.mjs",
+    "target": "services/live/app/communication-delivery.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/communication-delivery.test.mjs",
+    "target": "services/live/app/communication-delivery.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/communication-evidence.mjs",
+    "target": "services/live/app/communication-evidence.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/communication-evidence.test.mjs",
+    "target": "services/live/app/communication-evidence.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/communication-review.mjs",
+    "target": "services/live/app/communication-review.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/communication-review.test.mjs",
+    "target": "services/live/app/communication-review.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/company-ai.mjs",
+    "target": "services/live/app/company-ai.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/company-ai.test.mjs",
+    "target": "services/live/app/company-ai.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/container-entrypoint.sh",
+    "target": "services/live/app/container-entrypoint.sh",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/contribution-http.test.mjs",
+    "target": "services/live/app/contribution-http.test.mjs",
+    "files": 0,
+    "available": false
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/contribution-safety.test.mjs",
+    "target": "services/live/app/contribution-safety.test.mjs",
+    "files": 0,
+    "available": false
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/drizzle.config.ts",
+    "target": "services/live/app/drizzle.config.ts",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/durable-journal.mjs",
+    "target": "services/live/app/durable-journal.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/eslint.config.mjs",
+    "target": "services/live/app/eslint.config.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/feishu-card-policy.test.mjs",
+    "target": "services/live/app/feishu-card-policy.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/feishu-media-range.mjs",
+    "target": "services/live/app/feishu-media-range.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/feishu-media-range.test.mjs",
+    "target": "services/live/app/feishu-media-range.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/feishu-message-policy.mjs",
+    "target": "services/live/app/feishu-message-policy.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/frame-policy.mjs",
+    "target": "services/live/app/frame-policy.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/lifecycle-engine.mjs",
+    "target": "services/live/app/lifecycle-engine.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/lifecycle-reminder-lock.mjs",
+    "target": "services/live/app/lifecycle-reminder-lock.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/material-links.test.mjs",
+    "target": "services/live/app/material-links.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/material-shared.test.mjs",
+    "target": "services/live/app/material-shared.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/material-upload-policy.mjs",
+    "target": "services/live/app/material-upload-policy.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/material-upload-policy.test.mjs",
+    "target": "services/live/app/material-upload-policy.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/materials-http.test.mjs",
+    "target": "services/live/app/materials-http.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/monthly-target-store.mjs",
+    "target": "services/live/app/monthly-target-store.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/monthly-target-store.test.mjs",
+    "target": "services/live/app/monthly-target-store.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/mysql_sqlite.mjs",
+    "target": "services/live/app/mysql_sqlite.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/next-env.d.ts",
+    "target": "services/live/app/next-env.d.ts",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/next.config.ts",
+    "target": "services/live/app/next.config.ts",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/notification-card.mjs",
+    "target": "services/live/app/notification-card.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/package-lock.json",
+    "target": "services/live/app/package-lock.json",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/package.json",
+    "target": "services/live/app/package.json",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/pnpm-lock.yaml",
+    "target": "services/live/app/pnpm-lock.yaml",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/pnpm-workspace.yaml",
+    "target": "services/live/app/pnpm-workspace.yaml",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/postcss.config.mjs",
+    "target": "services/live/app/postcss.config.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/private-assessments.mjs",
+    "target": "services/live/app/private-assessments.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/private-assessments.test.mjs",
+    "target": "services/live/app/private-assessments.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/private-chat-auth.mjs",
+    "target": "services/live/app/private-chat-auth.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/private-chat-pkce.test.mjs",
+    "target": "services/live/app/private-chat-pkce.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/private-chat-reader.mjs",
+    "target": "services/live/app/private-chat-reader.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/private-chat.test.mjs",
+    "target": "services/live/app/private-chat.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/prohibited-delete-http.test.mjs",
+    "target": "services/live/app/prohibited-delete-http.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/PROJECT_HANDOVER.md",
+    "target": "services/live/app/PROJECT_HANDOVER.md",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/README.md",
+    "target": "services/live/app/README.md",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/reminder-gates.mjs",
+    "target": "services/live/app/reminder-gates.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/REQUIREMENTS_20261009.md",
+    "target": "services/live/app/REQUIREMENTS_20261009.md",
+    "files": 0,
+    "available": false
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/review-http.test.mjs",
+    "target": "services/live/app/review-http.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/reviewer-extra.test.mjs",
+    "target": "services/live/app/reviewer-extra.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/self-review.test.mjs",
+    "target": "services/live/app/self-review.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/server.js",
+    "target": "services/live/app/server.js",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/submission-notice.test.mjs",
+    "target": "services/live/app/submission-notice.test.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/sync_rpc.mjs",
+    "target": "services/live/app/sync_rpc.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/sync_rpc_worker.mjs",
+    "target": "services/live/app/sync_rpc_worker.mjs",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/tsconfig.json",
+    "target": "services/live/app/tsconfig.json",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/vite.config.ts",
+    "target": "services/live/app/vite.config.ts",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/public",
+    "target": "services/live/app/public",
+    "files": 98,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/collaboration/app",
+    "target": "services/live/app/collaboration/app",
+    "files": 14,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/collaboration/src",
+    "target": "services/live/app/collaboration/src",
+    "files": 0,
+    "available": false
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/collaboration/worker",
+    "target": "services/live/app/collaboration/worker",
+    "files": 1,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/collaboration/dist",
+    "target": "services/live/app/collaboration/dist",
+    "files": 84,
+    "available": true
+  },
+  {
+    "container": "brand-course-local-course-candidate-1",
+    "path": "/app/collaboration/db",
+    "target": "services/live/app/collaboration/db",
+    "files": 2,
+    "available": true
+  }
+]

@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>二创制作｜品牌营销部工作站</title>
+    <link rel="stylesheet" href="./styles.css?v=2.9.1" />
+    <link rel="stylesheet" href="./remix.css?v=2.9.3&release=2.9.7" />
+  </head>
+  <body class="remix-body">
+    <main class="remix-shell">
+      <header class="remix-hero">
+        <div>
+          <a class="remix-back" href="./">← 返回品牌营销部工作站</a>
+          <span class="remix-kicker">部门素材存储 · 查询 · 混剪 · 投放</span>
+          <h1>AI素材中心与智能混剪</h1>
+          <p>统一管理营销部门的成片和切片，支持检索、预览、AI归类、逻辑混剪及千川待推送队列。当前保留人工审核，不自动投放。</p>
+        </div>
+        <aside class="remix-provider" id="providerCard">
+          <span class="remix-provider-dot"></span>
+          <div>
+            <strong id="providerTitle">正在检查视频理解能力</strong>
+            <small id="providerText">本地切片始终可以运行</small>
+          </div>
+        </aside>
+      </header>
+
+      <section class="remix-kpis material-kpis" aria-label="部门素材中心概况">
+        <article><span>OSS素材索引</span><strong id="materialAssetCount">0</strong><small id="materialEffectiveCount">有投放数据 0</small></article>
+        <article><span>可检索片段</span><strong id="materialClipCount">0</strong><small id="materialDatabaseStatus">正在连接公司数据库</small></article>
+        <article><span>WIS素材</span><strong id="materialStorageSize">0</strong><small id="materialStorageStatus">正在读取OSS索引</small></article>
+        <article><span>千川待推送</span><strong id="materialPublishCount">0</strong><small id="materialPublishStatus">等待API授权</small></article>
+      </section>
+
+      <nav class="remix-stage-nav" aria-label="工作步骤">
+        <button class="active" type="button" data-remix-tab="material-center" aria-selected="true"><b>01</b><span>选片<small id="tabMaterialCount">0</small></span></button>
+        <button type="button" data-remix-tab="clip-library" aria-selected="false"><b>02</b><span>切片<small id="tabClipCount">0</small></span></button>
+        <button type="button" data-remix-tab="planning" aria-selected="false"><b>03</b><span>编排<small id="tabPlanStatus">未编排</small></span></button>
+        <button type="button" data-remix-tab="outputs" aria-selected="false"><b>04</b><span>推送<small id="tabOutputCount">0</small></span></button>
+        <button class="remix-classic-toggle" id="classicModeButton" type="button" title="临时展开四个步骤">经典长页</button>
+      </nav>
+
+      <section class="remix-section remix-tab-panel" id="material-center" data-remix-panel="material-center">
+        <div class="remix-section-head">
+          <div>
+            <span class="remix-step-label">01 · 部门素材存储与查询</span>
+            <h2>部门素材中心</h2>
+            <p>直接查询公司阿里云OSS中的视频素材。RDS保存素材索引、标签和业务关系，视频通过公司OSS域名预览。</p>
+          </div>
+          <div class="material-head-actions">
+            <button class="primary-button" id="addSelectedToClipsButton" type="button" disabled>加入切片库（0）</button>
+            <a class="secondary-button" href="https://jqx28l0j4lx.feishuapp.com/app/app_17aq7v0j96v/shared-upload" target="_blank" rel="noopener">上传共享原片/片段</a>
+            <button class="secondary-button" id="syncSharedLibraryButton" type="button">同步部门共享库</button>
+            <button class="secondary-button" id="syncMaterialButton" type="button">同步已有混剪素材</button>
+            <button class="primary-button" id="toggleMaterialUploadButton" type="button">上传新素材到OSS</button>
+          </div>
+        </div>
+
+        <div class="material-storage-banner" id="materialStorageBanner" data-status="checking">
+          <div>
+            <b id="materialStorageIcon">DB</b>
+            <div>
+              <strong id="materialStorageTitle">正在连接公司素材数据库</strong>
+              <small id="materialStorageText">正在核对OSS素材索引和视频访问状态。</small>
+            </div>
+          </div>
+          <span id="materialStorageBadge">检查中</span>
+        </div>
+
+        <form class="material-upload-panel" id="materialUploadPanel" hidden>
+          <div class="material-upload-drop">
+            <input id="materialFiles" type="file" accept="video/mp4,video/quicktime,video/webm" multiple />
+            <strong>选择或拖入部门视频素材</strong>
+            <small>支持 MP4、MOV、M4V、WebM；系统会自动去重并读取视频信息。</small>
+          </div>
+          <div class="material-upload-fields">
+            <label>所属产品
+              <select id="materialUploadProduct">
+                <option value="">暂不归产品</option>
+                <option value="wis-hydra-peptide-mask" data-name="WIS隐形水润面膜（水光肽）">WIS隐形水润面膜</option>
+                <option value="wis-crystal-firming-eye-mask" data-name="WIS晶润紧致眼膜">WIS晶润紧致眼膜</option>
+              </select>
+            </label>
+            <label>素材标签
+              <input id="materialUploadTags" placeholder="如：KOC、明星、产品镜、618" />
+            </label>
+            <label>卡审风险
+              <select id="materialUploadRisk">
+                <option value="">待评估</option>
+                <option value="low">低</option>
+                <option value="medium">中</option>
+                <option value="high">高</option>
+              </select>
+            </label>
+            <label class="material-upload-check">
+              <input id="materialUploadEffective" type="checkbox" />
+              <span>已验证为有效素材</span>
+            </label>
+          </div>
+          <div class="material-upload-actions">
+            <div>
+              <strong id="materialUploadStatus">等待选择文件</strong>
+              <small id="materialUploadHint">上传后可继续运行AI识别和自动切片。</small>
+            </div>
+            <button class="primary-button" id="materialUploadButton" type="submit">上传到阿里云OSS</button>
+          </div>
+          <i class="material-upload-progress"><b id="materialUploadProgress"></b></i>
+        </form>
+
+        <div class="material-filter-row">
+          <label>素材库
+            <select id="materialLibraryFilter">
+              <option value="team">部门共享有效成片（飞书50条）</option>
+              <option value="oss">阿里云OSS全部库</option>
+              <option value="managed">混剪工作库</option>
+            </select>
+          </label>
+          <label class="material-keyword">搜索素材
+            <input id="materialKeyword" type="search" placeholder="搜索标题、产品、标签、口播或画面文字" />
+          </label>
+          <label>品牌
+            <select id="materialProductFilter">
+              <option value="">全部品牌</option>
+              <option value="WIS">WIS</option>
+              <option value="赫系">赫系</option>
+              <option value="KONO">KONO</option>
+              <option value="可麦">可麦</option>
+            </select>
+          </label>
+          <label>来源
+            <select id="materialSourceFilter">
+              <option value="">全部来源</option>
+              <option value="qianchuan">千川</option>
+              <option value="chanmama">蝉妈妈</option>
+              <option value="wechat_channel">视频号</option>
+              <option value="direct">直接入库</option>
+            </select>
+          </label>
+          <label>投放数据
+            <select id="materialEffectiveFilter">
+              <option value="">全部素材</option>
+              <option value="true">已有投放数据</option>
+              <option value="false">暂无投放数据</option>
+            </select>
+          </label>
+          <button class="ghost-button" id="materialSearchButton" type="button">查询</button>
+        </div>
+
+        <div class="material-library-meta">
+          <span id="materialResultHint">正在读取部门素材库</span>
+          <div id="materialPagination"></div>
+        </div>
+        <div class="material-grid" id="materialGrid">
+          <div class="remix-empty">正在连接公司素材数据库。</div>
+        </div>
+
+        <details class="material-seed-library">
+          <summary>首批测试来源与飞书继续导入</summary>
+          <div class="remix-source-grid">
+            <a href="https://jqx28l0j4lx.feishu.cn/wiki/AcrLwEig1iokfCk9P2gcbGg8nJh?from=from_copylink" target="_blank" rel="noopener">
+              <span>首批眼膜素材</span>
+              <strong>当前在投 TOP20</strong>
+              <small>这20条只是素材中心的首批迁入样本</small>
+            </a>
+            <a href="https://jqx28l0j4lx.feishu.cn/wiki/RQsGwCWG0ioWmZk1G4Cc0iLGnVe?from=from_copylink" target="_blank" rel="noopener">
+              <span>首批水润面膜素材</span>
+              <strong>跑量素材 TOP30</strong>
+              <small>继续保留飞书来源和历史排名</small>
+            </a>
+          </div>
+          <div class="material-seed-actions">
+            <button class="secondary-button" id="importButton" type="button">重新检查飞书并切片</button>
+          </div>
+          <div class="remix-progress-card" id="importProgress">
+            <div><strong id="importStatus">尚未导入</strong><span id="importPercent">0%</span></div>
+            <i><b id="importProgressBar"></b></i>
+            <small id="importMessage">已有素材不会被自动删除。</small>
+          </div>
+        </details>
+      </section>
+
+      <section class="remix-section remix-tab-panel" id="clip-library" data-remix-panel="clip-library" hidden>
+        <div class="remix-section-head">
+          <div>
+            <span class="remix-step-label">02 · AI视频理解与双库底座</span>
+            <h2>片段库：自动切开、归类、人工抽检</h2>
+            <p>同人物、同场景、同话题且口播连续时会整体保留，不再按固定时长强拆；所有AI标签默认待人工确认。</p>
+          </div>
+          <button class="secondary-button" id="analyzeButton" type="button">运行AI视频理解</button>
+        </div>
+
+        <div class="remix-analysis-progress" id="analysisProgress" data-status="idle">
+          <div class="remix-analysis-summary">
+            <div>
+              <span class="remix-analysis-icon" aria-hidden="true">AI</span>
+              <div>
+                <strong id="analysisStatus">尚未运行AI理解</strong>
+                <small id="analysisMessage">运行后会显示正在上传、识别、写标签和按完整语句重切的真实进度。</small>
+              </div>
+            </div>
+            <b id="analysisPercent">0%</b>
+          </div>
+          <i><b id="analysisProgressBar"></b></i>
+          <div class="remix-analysis-meta">
+            <span id="analysisCurrent">等待开始</span>
+            <span id="analysisCounts">成功 0 · 失败 0</span>
+            <span id="analysisElapsed">耗时 0分钟</span>
+          </div>
+          <p id="analysisError" hidden></p>
+        </div>
+
+        <div class="remix-stage-counts" id="stageCounts"></div>
+
+        <div class="remix-clip-tabs" id="clipViewTabs" role="tablist" aria-label="片段审核状态">
+          <button class="active" type="button" role="tab" data-clip-view="all">
+            全部片段 <span id="allClipTabCount">0</span>
+          </button>
+          <button type="button" role="tab" data-clip-view="pending">
+            待人工确认 <span id="pendingClipTabCount">0</span>
+          </button>
+          <button type="button" role="tab" data-clip-view="approved">
+            已人工确认 <span id="approvedClipTabCount">0</span>
+          </button>
+        </div>
+
+        <div class="remix-filter-row">
+          <label>关键词
+            <input id="clipKeywordFilter" type="search" placeholder="搜索口播、画面文字或标签" />
+          </label>
+          <label>产品
+            <select id="clipProductFilter">
+              <option value="">全部产品</option>
+              <option value="wis-crystal-firming-eye-mask">晶润紧致眼膜</option>
+              <option value="wis-hydra-peptide-mask">隐形水润面膜</option>
+            </select>
+          </label>
+          <label>片段角色
+            <select id="clipStageFilter">
+              <option value="">全部角色</option>
+              <option value="hook">开头钩子</option>
+              <option value="problem">人群/痛点</option>
+              <option value="product">产品/方案</option>
+              <option value="proof">使用/证据</option>
+              <option value="cta">行动引导</option>
+              <option value="ending">结尾落版</option>
+            </select>
+          </label>
+          <button class="ghost-button" id="refreshClipsButton" type="button">刷新片段</button>
+          <span id="clipFilterHint">每页显示8条，可按产品和角色筛选</span>
+        </div>
+
+        <div class="remix-clip-toolbar">
+          <div id="clipPagination" aria-label="片段分页"></div>
+          <div>
+            <button class="ghost-button" id="toggleClipGridButton" type="button">收起片段列表</button>
+            <button class="primary-button" id="directPlanningButton" type="button">直接去编排 →</button>
+          </div>
+        </div>
+        <div id="clipLibraryBody">
+          <div class="remix-clip-grid" id="clipGrid">
+            <div class="remix-empty">完成导入后，这里会显示可播放的实体切片。</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="remix-section remix-tab-panel" id="planning" data-remix-panel="planning" hidden>
+        <div class="remix-section-head">
+          <div>
+            <span class="remix-step-label">03 · 组合逻辑中枢</span>
+            <h2>先选框架，再填槽位</h2>
+            <p>编排优先使用已人工确认的切片；生成后可自由拖动或用上下按钮调整顺序，结构建议只提醒、不阻止合成。</p>
+          </div>
+        </div>
+        <div class="knowledge-context-slot" aria-live="polite"></div>
+
+        <div class="remix-planning-grid">
+          <form class="remix-plan-form" id="planForm">
+            <label>本条产品
+              <select id="planProduct" required>
+                <option value="wis-hydra-peptide-mask">WIS隐形水润面膜</option>
+                <option value="wis-crystal-firming-eye-mask">WIS晶润紧致眼膜</option>
+              </select>
+            </label>
+            <label>有效框架
+              <select id="planFramework"></select>
+            </label>
+            <label>目标时长
+              <select id="planDuration">
+                <option value="30">约30秒</option>
+                <option value="45">约45秒</option>
+                <option value="60">约60秒</option>
+              </select>
+            </label>
+            <label>声音处理
+              <select id="planAudioMode">
+                <option value="voice_priority">人声优先（弱化原BGM）</option>
+                <option value="mute">全部静音（完全移除原BGM）</option>
+                <option value="original">保留原声（不推荐混剪）</option>
+              </select>
+            </label>
+            <button class="primary-button" type="submit">生成一条编排方案</button>
+            <small>默认保留并增强人声、弱化原BGM；纯产品空镜会自动静音。需要完全无原BGM时选择“全部静音”。</small>
+          </form>
+
+          <div class="remix-plan-preview" id="planPreview">
+            <div class="remix-empty">选择产品和框架后生成方案，这里会展示片段顺序与来源。</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="remix-section remix-tab-panel" id="outputs" data-remix-panel="outputs" hidden>
+        <div class="remix-section-head">
+          <div>
+            <span class="remix-step-label">04 · 合成、审核与投放队列</span>
+            <h2>成片与千川待推送</h2>
+            <p>输出统一为 9:16、720×1280、30fps、H.264 MP4。选择已授权账户和可关联计划后人工推送；只追加素材，不启动投放。</p>
+          </div>
+        </div>
+        <section class="qianchuan-connector" id="qianchuanConnector" data-status="idle">
+          <header>
+            <div>
+              <span>千川开放平台 · 官方API</span>
+              <strong id="qianchuanTitle">尚未连接千川</strong>
+              <small id="qianchuanMessage">授权后先选择账户即可上传成片到千川素材库；计划为可选项，选择全域或乘方计划时才继续关联。所有操作均需人工点击推送，不会自动创建计划或产生消耗，也不会启动投放或修改预算。</small>
+            </div>
+            <b id="qianchuanBadge">未连接</b>
+          </header>
+          <details id="qianchuanSettings" open>
+            <summary>选择推送账户</summary>
+            <div class="qianchuan-primary-flow">
+              <label>搜索广告账户
+                <input id="qianchuanAccountKeyword" type="search" placeholder="输入账户名称或ID" autocomplete="off" />
+              </label>
+              <label>广告账户
+                <select id="qianchuanAccount"><option value="">先读取账户</option></select>
+                <small id="qianchuanAccountCount">尚未读取账户</small>
+              </label>
+            </div>
+            <div class="qianchuan-choice-details qianchuan-single-detail">
+              <div id="qianchuanAccountDetail">尚未选择广告账户。</div>
+            </div>
+            <div class="qianchuan-actions">
+              <button class="primary-button" id="qianchuanAuthorizeButton" type="button">授权千川账户</button>
+              <button class="secondary-button" id="qianchuanLoadAccountsButton" type="button">读取账户</button>
+              <button class="ghost-button" id="qianchuanCheckButton" type="button">检查授权</button>
+            </div>
+
+            <details class="qianchuan-optional-settings" id="qianchuanPlanSettings">
+              <summary>需要关联计划时再打开（可选）</summary>
+              <p>不打开时只上传到所选账户的素材库；打开并选择全域或乘方计划后，才会继续关联计划。</p>
+              <div class="qianchuan-sync-grid">
+                <label>开始日期<input id="qianchuanStartDate" type="date" /></label>
+                <label>结束日期<input id="qianchuanEndDate" type="date" /></label>
+                <label>投放类型
+                  <select id="qianchuanGoal">
+                    <option value="1">推商品</option>
+                    <option value="2">推直播间</option>
+                  </select>
+                </label>
+                <label>计划范围
+                  <select id="qianchuanPlanType">
+                    <option value="attachable">可直接关联（全域/乘方）</option>
+                    <option value="all">全部计划</option>
+                    <option value="standard">普通计划（只读）</option>
+                  </select>
+                </label>
+              </div>
+              <div class="qianchuan-plan-picker">
+                <label>搜索计划
+                  <input id="qianchuanPlanKeyword" type="search" placeholder="输入计划名称或ID" autocomplete="off" />
+                </label>
+                <label>目标计划
+                  <select id="qianchuanPlan"><option value="">点击右侧读取计划</option></select>
+                </label>
+                <button class="secondary-button" id="qianchuanLoadPlansButton" type="button">读取计划</button>
+              </div>
+              <div class="qianchuan-choice-details qianchuan-single-detail">
+                <div id="qianchuanPlanDetail">未关联计划，将只上传到素材库。</div>
+              </div>
+            </details>
+
+            <details class="qianchuan-optional-settings" id="qianchuanBatchSettings">
+              <summary>批量上传到多个账户（可选）</summary>
+              <p>只有需要把同一批成片上传到多个广告账户时才勾选；普通推送无需设置。</p>
+              <div class="qianchuan-batch-account-list" id="qianchuanBatchAccounts"><small>先读取账户</small></div>
+            </details>
+
+            <details class="qianchuan-optional-settings qianchuan-admin-settings" id="qianchuanAdminSettings">
+              <summary>管理员设置与数据回流</summary>
+              <div class="qianchuan-cookie-row" id="qianchuanCredentialRow">
+                <label>千川开放平台 App ID
+                  <input id="qianchuanAppId" type="text" inputmode="numeric" value="1871927445201475" autocomplete="off" />
+                </label>
+                <label>App Secret
+                  <input id="qianchuanSecret" type="password" autocomplete="new-password" placeholder="仅管理员首次填写，服务端加密保存且不会回显" />
+                </label>
+                <button class="secondary-button" id="qianchuanSaveCredentialsButton" type="button">保存API凭证</button>
+              </div>
+              <details class="qianchuan-cookie-guide">
+                <summary>官方API授权说明</summary>
+                <ol>
+                  <li>管理员首次填写 App ID 与 App Secret，凭证只会加密保存在工作站服务端。</li>
+                  <li>点击“授权千川账户”，浏览器会打开巨量引擎官方授权页。</li>
+                  <li>勾选需要使用的千川广告账户并确认，授权结果会自动回到工作站。</li>
+                  <li>人工选择审核成片并点击推送；系统只追加素材，不会启动计划或修改预算。</li>
+                </ol>
+                <p>开放平台回调地址：<code id="qianchuanCallbackUrl">正在读取</code></p>
+              </details>
+              <div class="qianchuan-actions">
+                <button class="secondary-button" id="qianchuanSyncButton" type="button">同步素材与投放数据</button>
+                <button class="ghost-button" id="qianchuanDisconnectButton" type="button">解除本机令牌</button>
+                <a href="https://jqx28l0j4lx.feishu.cn/docx/CCpsd0TdwoKgzqx1F7qc07tjnDh" target="_blank" rel="noopener">查看接口说明</a>
+              </div>
+            </details>
+          </details>
+          <div class="qianchuan-summary" id="qianchuanSummary" hidden></div>
+        </section>
+        <div class="material-publish-panel">
+          <header>
+            <div>
+              <span>巨量千川</span>
+              <strong>待推送队列</strong>
+            <small>选择账户即可上传到素材库，不要求先读取计划；如主动选择全域/乘方计划，则上传后继续关联。两种操作都不会启动投放或修改预算。</small>
+            </div>
+            <div class="material-panel-actions">
+              <span class="material-auth-badge">等待API授权</span>
+              <button class="ghost-button compact-toggle" id="publishQueueToggle" type="button" hidden>展开队列</button>
+            </div>
+          </header>
+          <div class="material-publish-list" id="materialPublishList">
+            <div class="remix-empty">还没有待推送任务。</div>
+          </div>
+        </div>
+        <div class="remix-output-push-toolbar" id="outputPushToolbar">
+          <div>
+            <strong>审核成片推送</strong>
+            <small>勾选已完成成片：只选账户时上传到素材库；再选全域/乘方计划时，上传后继续关联计划。</small>
+          </div>
+          <div>
+            <span id="selectedOutputCount">已选 0 条</span>
+            <button class="ghost-button compact-toggle" id="outputListToggle" type="button">展开本页全部</button>
+            <button class="secondary-button" id="batchUploadOutputsButton" type="button" hidden disabled>批量上传到多账户素材库</button>
+            <button class="primary-button" id="batchPushOutputsButton" type="button" disabled>批量上传到所选账户素材库</button>
+          </div>
+        </div>
+        <div class="remix-output-list" id="outputList">
+          <div class="remix-empty">还没有混剪合成任务。</div>
+        </div>
+        <div class="remix-output-pagination" id="outputPagination" aria-label="本地成片分页"></div>
+      </section>
+
+      <footer class="remix-footer">
+        <span>数据边界：MySQL保存素材索引与业务数据；现有视频来自公司阿里云OSS。新增上传需OSS写入授权。</span>
+        <a href="./">返回工作台首页</a>
+      </footer>
+    </main>
+
+    <div class="remix-video-modal" id="outputPlayerModal" hidden>
+      <div class="remix-video-dialog" role="dialog" aria-modal="true" aria-labelledby="outputPlayerTitle">
+        <header>
+          <div>
+            <span id="outputPlayerKind">视频预览</span>
+            <strong id="outputPlayerTitle">AI智能混剪</strong>
+          </div>
+          <button type="button" data-close-output-player aria-label="关闭">×</button>
+        </header>
+        <video id="outputPlayerVideo" controls playsinline preload="metadata"></video>
+      </div>
+    </div>
+    <dialog class="remix-dialog" id="remixDraftDialog">
+      <form method="dialog">
+        <span>检测到未完成方案</span>
+        <h3>继续上次的二创工作吗？</h3>
+        <p>选片条件、切片筛选、当前编排和已勾选成片可以继续保留。千川账户不会被保存。</p>
+        <div class="remix-dialog-actions">
+          <button class="primary-button" value="preserve">保留方案</button>
+          <button class="secondary-button" value="reset">重置方案</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="remix-dialog remix-variant-dialog" id="variantUploaderDialog">
+      <form method="dialog" id="variantUploaderForm">
+        <header>
+          <div><span>成片附加版本</span><h3 id="variantUploaderTitle">添加附加版本</h3></div>
+          <button class="ghost-button" value="cancel" aria-label="关闭">关闭</button>
+        </header>
+        <input id="variantOutputId" type="hidden" />
+        <div class="variant-source-tabs" role="tablist">
+          <button class="active" type="button" data-variant-source="local_upload">本地上传</button>
+          <button type="button" data-variant-source="oss_pull">OSS拉取</button>
+          <button type="button" data-variant-source="ai_generated">AI成片</button>
+        </div>
+        <div class="variant-form-grid">
+          <label>版本类型
+            <select id="variantType">
+              <option value="custom">自定义版本</option>
+              <option value="no_audio">无声版本</option>
+              <option value="landscape">横版版本</option>
+              <option value="digital_human">数字人版本</option>
+            </select>
+          </label>
+          <label>版本名称<input id="variantTitle" maxlength="120" placeholder="例如：无声投流版" /></label>
+        </div>
+        <section data-variant-source-panel="local_upload">
+          <label>选择视频<input id="variantFile" type="file" accept="video/mp4,video/quicktime,video/webm" /></label>
+          <small>单文件不超过220MB，上传过程采用流式传输。</small>
+        </section>
+        <section data-variant-source-panel="oss_pull" hidden>
+          <label>OSS视频地址<input id="variantOssUrl" type="url" placeholder="https://oss.../video.mp4" /></label>
+        </section>
+        <section data-variant-source-panel="ai_generated" hidden>
+          <label>已完成AI成片<select id="variantAiJob"><option value="">选择一条已完成成片</option></select></label>
+        </section>
+        <div class="variant-upload-progress" id="variantUploadProgress" hidden><i><b></b></i><span>正在添加版本</span></div>
+        <div class="remix-dialog-actions">
+          <button class="primary-button" id="variantSubmitButton" type="submit" value="submit">添加版本</button>
+          <button class="secondary-button" type="button" data-close-variant-dialog>取消</button>
+        </div>
+      </form>
+    </dialog>
+    <div class="remix-toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./knowledge-context.js?v=2.9.1"></script>
+    <script src="./remix.js?v=2.9.3&release=2.9.7"></script>
+  </body>
+</html>

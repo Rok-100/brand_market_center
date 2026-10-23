@@ -1,0 +1,4 @@
+interface:
+  display_name: "KOC LibTV Video Replication"
+  short_description: "复刻 KOC 产品视频并执行可验证的 LibTV 分镜"
+  default_prompt: "Use $koc-libtv-video-replication to organize the task asset root, prepare KOC assets and prompts, and run JSON-verified LibTV storyboards concurrently."

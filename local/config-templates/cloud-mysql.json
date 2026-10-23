@@ -1,0 +1,1 @@
+{"host": "mysql", "port": 3306, "user": "wis_local", "password": "__LOCAL_SECRET_0__", "database": "wis_local", "tls": false, "expectedApplicationInstanceId": "brand-hub-local-simulation", "expectedMysqlServerUuid": "__MYSQL_UUID__"}

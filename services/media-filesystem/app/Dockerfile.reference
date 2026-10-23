@@ -1,0 +1,6 @@
+FROM wis/media-oss:fuse-base-20261006
+USER 0
+RUN apt-get update && apt-get install -y --no-install-recommends fuse3 ca-certificates && rm -rf /var/lib/apt/lists/*
+COPY rclone /usr/local/bin/rclone
+RUN mkdir -p /mnt/oss
+ENTRYPOINT ["/usr/local/bin/rclone"]

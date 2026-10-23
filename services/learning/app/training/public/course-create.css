@@ -1,0 +1,49 @@
+.course-create-panel .learning-form{display:grid;gap:18px;margin-top:20px}
+.course-create-panel .learning-form>label,.course-create-panel .learning-form-row>label{display:grid;gap:8px}
+.course-create-panel .learning-form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.course-create-panel .learning-form textarea{width:100%;resize:vertical}
+.course-create-panel .learning-checks{display:grid;grid-template-columns:1fr 1fr;gap:8px;border:1px solid var(--n-line);border-radius:9px;padding:16px;max-height:350px;overflow:auto}
+.course-create-panel .learning-checks label{display:flex;align-items:flex-start;gap:10px;padding:7px 4px}
+.course-create-panel .learning-admin-tabs{justify-content:flex-start;margin-bottom:16px}
+.course-create-panel .learning-admin-tabs [aria-selected=true]{background:var(--n-panel);color:var(--n-blue);box-shadow:0 2px 5px color-mix(in srgb,var(--n-text) 5%,transparent)}
+.course-create-panel .learning-admin-page{min-height:320px}
+.course-create-panel .learning-rank-card{width:min(320px,100%);margin:26px auto 30px;padding:22px 20px 0;text-align:center;border:1px solid #ead7a2;border-radius:14px;background:var(--n-panel);overflow:hidden}.course-create-panel .learning-rank-medal{font-size:34px;color:#b67b10}.course-create-panel .learning-rank-card strong{display:block;font-size:17px}.course-create-panel .learning-rank-card p{margin:5px 0}.course-create-panel .learning-rank-step{margin:18px -20px 0;padding:9px;background:#f7df8f;font-size:24px;font-weight:700;color:#805600}.course-create-panel .learning-admin-filter{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:12px;align-items:end;margin:18px 0}.course-create-panel .learning-admin-filter label,.course-create-panel .learning-edit-form label{display:grid;gap:6px}.course-create-panel .learning-admin-filter input,.course-create-panel .learning-admin-filter select,.course-create-panel .learning-edit-form input,.course-create-panel .learning-edit-form select,.course-create-panel .learning-edit-form textarea{width:100%}.course-create-panel .learning-edit-form{display:grid;gap:17px}.course-create-panel .learning-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.course-create-panel .learning-edit-form fieldset{border:1px solid var(--n-line);border-radius:9px;padding:14px;margin:0}.course-create-panel .learning-edit-form legend{font-weight:600}.course-create-panel .learning-resource-entry{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) auto;gap:8px;align-items:end;margin:10px 0}.course-create-panel .learning-course-checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-height:300px;overflow:auto;border:1px solid var(--n-line);padding:12px;border-radius:8px}.course-create-panel .learning-course-checks label{display:flex;gap:8px;align-items:start}.course-create-panel .learning-admin-note{color:var(--n-muted);font-size:12px}.course-create-panel .learning-admin-table{overflow:auto}.course-create-panel .learning-admin-table table{min-width:740px}.course-create-panel .learning-role-chip{display:inline-block;padding:8px 12px;border:1px solid var(--n-line);border-radius:8px;background:var(--n-panel)}.course-create-panel .learning-resource-entry{grid-template-columns:1fr}@media(max-width:800px){.course-create-panel .learning-admin-filter{grid-template-columns:repeat(2,minmax(0,1fr))}.course-create-panel .learning-form-grid{grid-template-columns:1fr}}@media(max-width:560px){.course-create-panel .learning-admin-filter{grid-template-columns:1fr}.course-create-panel .learning-resource-entry{grid-template-columns:1fr}.course-create-panel .learning-course-checks{grid-template-columns:1fr}}
+.course-create-panel .learning-edit-form input[type=checkbox]{width:15px;height:15px;min-width:15px;padding:0;flex:0 0 15px}
+.course-create-panel .learning-edit-form label:has(>input[type=checkbox]){display:flex;align-items:flex-start;gap:9px}
+.course-create-panel .learning-course-checks{min-width:0;overflow-x:hidden}
+.course-create-panel .learning-course-checks label{min-width:0;overflow-wrap:anywhere;line-height:1.5}
+.course-create-panel .learning-admin-actions{justify-content:flex-end;margin-bottom:14px}
+.course-create-panel .learning-catalog-head{flex-wrap:wrap;align-items:flex-end}
+.course-create-panel .learning-catalog-head .learning-path{margin:0;justify-content:flex-end}
+.course-create-panel .learning-admin-actions{justify-content:space-between;align-items:center}
+.course-create-panel .learning-admin-actions input{flex:0 1 320px;width:100%}
+@media(max-width:700px){.course-create-panel .learning-catalog-head .learning-path{margin-top:12px;justify-content:flex-start}}
+@media(max-width:560px){.course-create-panel .learning-admin-actions{justify-content:flex-end}.course-create-panel .learning-admin-actions input{flex-basis:100%}}
+.course-create-panel .learning-resource-entry{padding:16px;border:1px solid var(--n-line);border-radius:10px}
+.course-create-panel .learning-resource-entry>.n-row{justify-content:space-between}
+.course-create-panel .learning-resource-rows{display:grid;gap:8px}
+.course-create-panel .learning-resource-row{display:grid;grid-template-columns:16px minmax(0,1fr) minmax(0,1.4fr);gap:10px;align-items:center;min-width:0}
+.course-create-panel .learning-resource-row input[type=checkbox]{justify-self:center}
+@media(max-width:560px){.course-create-panel .learning-resource-row{grid-template-columns:16px minmax(0,1fr)}.course-create-panel .learning-resource-row input[type=url]{grid-column:2}}
+
+.course-create-panel{--n-line:var(--line);--n-panel:#fff;--n-muted:var(--muted);--n-blue:var(--purple);padding:18px!important}
+.course-create-panel h2{font-size:21px;margin:0;font-weight:600}
+.course-create-panel p{margin-top:6px}
+.course-create-panel .n-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.course-create-panel .n-between{justify-content:space-between}
+.course-create-panel button{background:var(--n-panel);border:1px solid var(--n-line);border-radius:7px;padding:7px 12px;min-height:0;font-size:13px}
+.course-create-panel button.n-primary{background:var(--n-blue);color:#fff;border-color:var(--n-blue)}
+.course-create-panel input,.course-create-panel select,.course-create-panel textarea{border:1px solid var(--n-line);border-radius:7px;padding:8px 10px;font:inherit;min-height:0}
+.course-create-panel textarea{min-height:0}
+.course-create-panel label{font-size:13px;color:var(--ink)}
+.course-create-panel input[type=checkbox]{width:15px;height:15px;padding:0}
+
+/* Match the supplied prototype's form typography, spacing and colors. */
+.course-create-panel{--n-line:#e7ebf1;--n-panel:#fff;--n-muted:#758397;--n-blue:#285cbd;color:#182b45;font:14px/1.6 'Segoe UI','Microsoft YaHei',sans-serif;letter-spacing:.1px}
+.course-create-panel h2{font-family:inherit;font-size:16px;font-weight:500;line-height:1.6;margin:0 0 12px;letter-spacing:inherit}
+.course-create-panel h3{font-family:inherit;font-size:14px;font-weight:500;line-height:1.6;letter-spacing:inherit}
+.course-create-panel label{font-size:14px;color:inherit;font-weight:400}
+.course-create-panel input,.course-create-panel select,.course-create-panel textarea{font:13px/1.6 'Segoe UI','Microsoft YaHei',sans-serif;color:inherit;padding:9px 11px;border-radius:8px}
+.course-create-panel button{font:13px/1.6 'Segoe UI','Microsoft YaHei',sans-serif;color:inherit;padding:9px 12px;border-radius:8px}
+.course-create-panel .n-primary{padding:9px 16px;box-shadow:0 2px 5px #182b4514}
+.course-create-panel .learning-admin-note{margin:0;color:var(--n-muted)}

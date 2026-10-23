@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI视频工作台</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <h1>AI视频工作台</h1>
+          <p id="accountLine">正在连接 LibTV</p>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button" id="updateButton" type="button" title="检查并安装更新">检查更新</button>
+          <button class="icon-button" id="restoreJobButton" type="button" title="恢复最近任务">恢复最近</button>
+          <button class="icon-button" id="healthButton" type="button" title="刷新 LibTV 状态">刷新</button>
+          <a class="ghost-link" href="https://www.liblib.tv/" target="_blank" rel="noreferrer">LibTV</a>
+        </div>
+      </header>
+
+      <section class="update-panel" id="updatePanel" hidden>
+        <div class="panel-title">
+          <h2>程序更新</h2>
+          <span id="updateBadge">未检查</span>
+        </div>
+        <p id="updateMessage">检查后会显示当前版本和最新版本。</p>
+        <ul id="updateNotes"></ul>
+        <div class="panel-actions">
+          <button class="small-action" id="applyUpdateButton" type="button" disabled>立即更新</button>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <form class="tool-panel" id="generatorForm">
+          <div class="panel-title">
+            <h2>任务配置</h2>
+            <span id="formBadge">待生成</span>
+          </div>
+
+          <label>
+            <span>产品类型</span>
+            <select name="productId" id="productSelect"></select>
+            <input name="productType" type="hidden" />
+          </label>
+
+          <div class="two-cols">
+            <label>
+              <span>生成数量</span>
+              <input name="videoCount" type="number" min="1" max="20" />
+            </label>
+            <label>
+              <span>生成目的</span>
+              <select name="purpose">
+                <option>生活种草</option>
+                <option>包装露出</option>
+                <option>使用质地</option>
+                <option>高级感</option>
+                <option>量感陈列</option>
+                <option>冰感功效</option>
+                <option>真实开箱</option>
+                <option>送礼属性</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            <span>场景方向</span>
+            <input name="scene" autocomplete="off" />
+          </label>
+
+          <label>
+            <span>特殊要求</span>
+            <textarea name="specialRequest" rows="3" placeholder="例如：膜布更水润、产品数量更多、原生感强一些、精致感强一些"></textarea>
+          </label>
+
+          <label>
+            <span>LibTV 链接</span>
+            <input name="libtvUrl" autocomplete="off" />
+          </label>
+
+          <label>
+            <span>产品图文件夹</span>
+            <div class="inline-field">
+              <input name="imageDir" autocomplete="off" />
+              <button id="previewButton" type="button">预览</button>
+            </div>
+          </label>
+
+          <label>
+            <span>输出文件夹</span>
+            <input name="outputDir" autocomplete="off" />
+          </label>
+
+          <div class="two-cols">
+            <label>
+              <span>模型策略</span>
+              <select name="modelMode">
+                <option value="auto">智能降级</option>
+                <option value="vip">Seedance VIP</option>
+                <option value="mini">Seedance Mini</option>
+                <option value="lite">Seedance Lite</option>
+              </select>
+            </label>
+            <label>
+              <span>失败处理</span>
+              <select name="fallbackModels">
+                <option value="true">自动换模型</option>
+                <option value="false">只跑首选模型</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="switch-row">
+            <label class="switch">
+              <input name="frameCheck" type="checkbox" />
+              <span></span>
+              <b>抽帧检查</b>
+            </label>
+            <label class="switch">
+              <input name="saveLogs" type="checkbox" checked />
+              <span></span>
+              <b>保存日志</b>
+            </label>
+          </div>
+
+          <button class="primary" id="startButton" type="submit">开始生成</button>
+        </form>
+
+        <aside class="visual-panel">
+          <div class="panel-title">
+            <h2>产品图</h2>
+            <span id="imageCount">0 张</span>
+          </div>
+          <div class="image-grid" id="imageGrid"></div>
+        </aside>
+      </section>
+
+      <section class="run-panel">
+        <div class="run-head">
+          <div>
+            <h2>生成进度</h2>
+            <p id="outputLine">尚未开始</p>
+          </div>
+          <strong id="progressText">0 / 0</strong>
+        </div>
+        <div class="progress">
+          <span id="progressBar"></span>
+        </div>
+        <div class="task-list" id="taskList"></div>
+      </section>
+
+      <section class="result-panel">
+        <div class="panel-title">
+          <h2>结果</h2>
+          <div class="panel-actions">
+            <button class="small-action" id="openOutputButton" type="button" disabled>打开本次输出</button>
+            <span id="resultBadge">等待任务</span>
+          </div>
+        </div>
+        <div class="result-grid" id="resultGrid"></div>
+      </section>
+
+      <section class="log-panel">
+        <div class="panel-title">
+          <h2>日志</h2>
+          <span id="jobId">无任务</span>
+        </div>
+        <pre id="logBox"></pre>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

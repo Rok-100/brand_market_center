@@ -1,0 +1,12 @@
+{
+  "name": "brand-market-notifications",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "start": "node service-notifications-production.mjs",
+    "start:creative": "node creative-notifications-production.mjs"
+  }
+}

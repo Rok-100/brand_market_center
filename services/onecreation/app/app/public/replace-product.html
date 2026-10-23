@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>一键换品 · 品牌营销工作台</title>
+    <link rel="stylesheet" href="./styles.css?v=2.9.4&build=2.10.43-stable-task-order-edit-icon&release=2.9.7-shotplan-source-tabs&hub=2.11.39" />
+    <link rel="stylesheet" href="./product-workflows.css?v=2.11.39-replacement-ux&build=2.11.39-replacement-ux&cleanup=workflow-step-progress" />
+  </head>
+  <body class="pw-body">
+    <main class="pw-shell rp-shell">
+      <nav class="pw-nav">
+        <a href="./#creation">← 返回工作台首页</a>
+        <span>一创制作 / 一键换品</span>
+        <a href="./product-studio.html">前往AI产品镜 →</a>
+      </nav>
+
+      <header class="pw-hero">
+        <div>
+          <span class="pw-kicker">ONE-CLICK PRODUCT REPLACEMENT</span>
+          <h1>参考视频不重拍，产品或口播按选择替换。</h1>
+          <p>用户选定生成新首帧后，每轮生成 2 张平台候选图并按 V1、V2 依次回传，后续轮次继续生成 V3、V4；最终选定的新首帧会上传到 LibTV。换产品任务会连接所选产品参考图，换口播任务会在生成前准备合规MP3参考音频。新口播在确认 ShotPlan 并生成时锁定原文，模型无权改写。</p>
+        </div>
+        <div class="pw-storage" id="replaceStorageStatus">正在读取资产库…</div>
+      </header>
+
+      <section class="rp-steps" aria-label="一键换品进度">
+        <div class="rp-step" data-workflow-step="reference"><b>01</b><span>上传参考视频</span></div>
+        <div class="rp-step" data-workflow-step="product"><b>02</b><span>选择视频上游产品图</span></div>
+        <div class="rp-step" data-workflow-step="first-frame"><b>03</b><span>确认平台或自定义新首帧</span></div>
+        <div class="rp-step" data-workflow-step="generation"><b>04</b><span>生成并严格验收</span></div>
+      </section>
+
+      <section class="rp-workspace-with-rules" id="replacementRulesWorkspace">
+        <div class="rp-workflow-main">
+      <section class="rp-grid">
+        <form class="pw-panel rp-form" id="replacementForm">
+          <div class="pw-panel-head">
+            <div><small>任务设置</small><h2>创建一键换品任务</h2></div>
+            <span id="replaceFormBadge">待提交</span>
+          </div>
+
+          <fieldset class="pw-field">
+            <span>替换内容</span>
+            <div class="rp-mode">
+              <label><input name="replacementMode" type="radio" value="product" checked /><span>只换产品</span></label>
+              <label><input name="replacementMode" type="radio" value="voiceover" /><span>只换口播</span></label>
+              <label><input name="replacementMode" type="radio" value="both" /><span>产品+口播</span></label>
+              <label hidden data-unreleased-replacement-mode="background"><input name="replacementMode" type="radio" value="background" /><span>只换背景</span></label>
+            </div>
+          </fieldset>
+
+          <label class="pw-field" id="replaceProductField">
+            <span>目标产品</span>
+            <div class="rp-product-select-control">
+              <select id="replaceProductSelect"></select>
+              <span id="replaceProductSelectDisplay" aria-hidden="true">请选择目标产品</span>
+            </div>
+            <small id="replaceProductHint">选定后将作为视频生成的上游图片资产，Seedance 2.0 多模态全能参考:文本、图像、视频、音频混合输入单次最多12个参考文件(图像&lt;9张、视频&lt;3段、音频&lt;3段)。</small>
+          </label>
+
+          <div class="rp-product-picker-field" id="replaceProductAssetField">
+            <div class="rp-product-picker-control">
+              <button class="rp-product-picker-trigger" id="openReplaceAssetPicker" type="button">
+                <span><b>选择产品参考图，或从本地上传</b><small>点击选择、上传或重新选择图片</small></span>
+                <em id="replaceAssetSelectionCount">已选 0/8 张</em>
+              </button>
+              <div class="pw-asset-grid rp-selected-assets" id="replaceAssetGrid" hidden></div>
+            </div>
+          </div>
+          <div class="pw-notice" id="temporaryProductStatus" hidden></div>
+
+          <div class="rp-task-variables" id="replacementProductVariables">
+            <label class="pw-field">
+              <span>原产品名称（可选）</span>
+              <input id="originalProductName" maxlength="240" placeholder="参考视频中的原产品" />
+            </label>
+            <label class="pw-field">
+              <span>新产品名称</span>
+              <input id="newProductName" readonly aria-readonly="true" />
+            </label>
+          </div>
+
+          <label class="pw-field" id="backgroundDescriptionField" hidden>
+            <span>目标背景描述</span>
+            <textarea id="backgroundDescription" rows="4" maxlength="1200" placeholder="例如：明亮现代厨房，清晨自然光，浅木色台面"></textarea>
+            <small>只改变环境背景；人物、产品、数量、包装、文字、LOGO、动作、口播、声音、镜头与构图保持原片一致。</small>
+          </label>
+
+          <div class="pw-field">
+            <span>新首帧生图模型</span>
+            <div class="pw-model-options" role="radiogroup" aria-label="选择新首帧生图模型">
+              <label><input name="imageModel" type="radio" value="openai/gpt-image-2" checked /><span>GPT Image 2</span></label>
+              <label><input name="imageModel" type="radio" value="doubao-seedream-5-0-pro-260628" /><span>Seedream 5.0 Pro</span></label>
+            </div>
+            <small>用于生成平台新首帧；只换口播时不调用生图模型。默认规格：9:16、1K；首次和再次生成均每轮新增 2 张。</small>
+          </div>
+
+          <fieldset class="pw-field">
+            <span>口播安排</span>
+            <div class="rp-mode">
+              <label><input name="voiceoverMode" type="radio" value="old" checked /><span>沿用旧口播</span></label>
+              <label><input name="voiceoverMode" type="radio" value="new" /><span>使用新口播</span></label>
+            </div>
+          </fieldset>
+
+          <section class="pw-field rp-transcript-card" id="sourceTranscriptField" hidden>
+            <span class="rp-script-title">原片口播<strong id="sourceTranscriptStatus">等待识别</strong></span>
+            <textarea id="sourceTranscript" rows="7" placeholder="上传参考视频并创建任务后，XingChenASR 会自动转写原片口播。"></textarea>
+            <div class="rp-script-meta">
+              <span id="sourceSpeakerSummary">尚无说话人信息</span>
+              <strong id="sourceTranscriptCount">计时字符 0</strong>
+            </div>
+            <div class="rp-speaker-segments" id="sourceTranscriptSegments" hidden></div>
+            <div class="rp-script-actions">
+              <button class="secondary" id="retrySourceTranscriptButton" type="button">重新识别</button>
+              <button class="secondary" id="saveSourceTranscriptButton" type="button">保存人工校正</button>
+            </div>
+          </section>
+
+          <label class="pw-field" id="lockedScriptField" hidden>
+            <span class="rp-script-title">新口播文案<strong id="lockedScriptStatus" hidden></strong></span>
+            <div class="rp-voiceover-diff" id="voiceoverDiff" hidden></div>
+            <textarea id="lockedScript" rows="7" placeholder="ASR完成后会自动填入原片口播；产品+口播模式还会根据目标SKU契约预修改。请核对并确认后再编译ShotPlan。"></textarea>
+            <div class="rp-script-meta">
+              <span id="voiceoverTimingSummary">等待原片口播</span>
+              <strong id="lockedScriptCount">计时字符 0</strong>
+            </div>
+            <div class="rp-script-actions">
+              <button class="secondary" id="restoreVoiceoverSuggestionButton" type="button">恢复Qwen建议</button>
+              <button class="primary" id="confirmVoiceoverButton" type="button">确认新口播并编译ShotPlan</button>
+            </div>
+          </label>
+          <div class="rp-lock" id="scriptLockPolicy" hidden>
+            必须先确认新口播，系统才会按该文案版本编译ShotPlan。确认后如再次修改，旧ShotPlan和关键帧会自动失效并重新编译。最终文案保存版本号与SHA-256；分段不改变任何字符和顺序，成片后继续进行ASR逐字复核。
+          </div>
+
+          <div class="pw-notice" id="replaceTaskNotice" hidden></div>
+        </form>
+
+        <section class="pw-panel rp-stage">
+          <div class="pw-panel-head">
+            <div><small>上游资产与人工确认</small><h2>新视频生成基准</h2></div>
+            <span id="replaceJobStatus">尚未创建</span>
+          </div>
+
+          <div class="rp-upstream">
+            <article class="rp-reference-video">
+              <input class="rp-reference-file-input" id="referenceVideoInput" type="file" accept="video/mp4,video/quicktime,.mov" />
+              <header class="rp-upstream-card-head">
+                <h3>上传参考视频</h3>
+                <p>上传后自动分析原片，并提取隐藏参考帧。</p>
+              </header>
+              <div class="rp-upstream-control-row">
+                <span id="referenceVideoFileName">尚未上传参考视频</span>
+                <label class="rp-reference-change" for="referenceVideoInput">上传/更换</label>
+              </div>
+              <div class="rp-upstream-media-shell rp-reference-media-shell">
+                <div id="referenceVideoSlot" class="pw-empty rp-upstream-media"></div>
+                <label class="rp-reference-upload" id="referenceVideoUploadPrompt" for="referenceVideoInput">
+                  <span class="rp-reference-upload-copy">
+                    <b>选择或重新上传参考视频</b>
+                    <small>推荐MP4格式，时长1–30秒，200MB以内，分辨率建议1080P</small>
+                    <em>上传后可在此播放原视频</em>
+                  </span>
+                </label>
+              </div>
+              <section class="rp-reference-frame-cache" hidden aria-hidden="true"><h3>参考视频首帧图</h3><div id="referenceFrameSlot" class="pw-empty rp-upstream-media"><span>上传参考视频后自动提取</span></div></section>
+              <div class="pw-notice" id="referenceUploadStatus" hidden></div>
+            </article>
+
+            <article class="rp-new-first-frame">
+              <header class="rp-upstream-card-head">
+                <h3>新首帧图</h3>
+                <p>平台生成与自定义上传统一在此管理。</p>
+              </header>
+              <div class="rp-first-frame-tabs" role="tablist" aria-label="新首帧候选">
+                <div id="firstFrameTabButtons"><span class="rp-first-frame-tab-placeholder">V1</span><span class="rp-first-frame-tab-placeholder">V2</span></div>
+                <label class="rp-first-frame-upload-tab" id="customFirstFrameUpload" for="customFirstFrameInput" aria-label="自定义上传的新首帧">
+                  <input id="customFirstFrameInput" type="file" accept="image/png,image/jpeg,.png,.jpg,.jpeg" disabled />
+                  <span>上传</span>
+                </label>
+              </div>
+              <div class="rp-new-first-frame-stage rp-first-frame-workspace">
+                <div class="rp-first-frames" id="firstFrameCandidates"><div class="pw-empty"><span>任务创建后自动生成 V1、V2</span></div></div>
+                <div class="rp-first-frames" id="customFirstFrameCandidates" hidden><div class="pw-empty"><span>上传后将在这里显示自定义候选</span></div></div>
+              </div>
+              <small id="firstFrameSelectionHint">请先选择沿用原片首帧或生成新首帧；最终选定图将作为新视频 0.0 秒起始状态图。</small>
+              <div class="pw-notice" id="customFirstFrameNotice" hidden></div>
+            </article>
+
+            <article class="rp-first-frame-assets">
+              <header class="rp-upstream-card-head">
+                <h3>新首帧图产品素材</h3>
+                <p>来自左侧产品参考图；选择参与新首帧生成的素材。</p>
+              </header>
+              <div class="rp-upstream-control-row">
+                <em id="firstFrameAssetSelectionCount">已选 0/0 张</em>
+                <span>单击图片切换</span>
+              </div>
+              <div class="rp-upstream-media-shell rp-product-media-shell">
+                <div id="firstFrameProductAssets">
+                  <div id="targetProductSlot" class="pw-empty rp-upstream-media"><span>请先在左侧选择产品参考图；选定后会自动同步到这里</span></div>
+                </div>
+                <div class="pw-empty" id="backgroundFirstFrameHint" hidden><b>无需产品参考图</b><span>系统将根据目标背景描述编辑参考视频首帧，每轮生成 2 张候选。</span></div>
+              </div>
+            </article>
+          </div>
+
+          <section class="rp-first-frame-generation">
+            <div class="rp-first-frame-generation-bar">
+              <div><b>生成新首帧</b><span id="firstFrameGenerationSummary">使用平台内置提示词 · GPT Image 2</span></div>
+              <div class="rp-first-frame-generation-actions">
+                <button id="toggleFirstFramePromptButton" type="button" aria-expanded="false" aria-controls="firstFramePromptPanel">高级设置</button>
+                <button class="primary" id="createReplacementButton" type="submit" form="replacementForm">分析参考视频并生成新首帧</button>
+                <button class="primary" id="appendFirstFrameButton" type="button" disabled hidden>+ 生成2张新首帧</button>
+              </div>
+            </div>
+            <div class="pw-notice" id="firstFramePromptNotice" hidden></div>
+            <aside class="rp-first-frame-prompt" id="firstFramePromptPanel" hidden>
+              <header><span><b>图片生成提示词</b><small>仅在需要人工干预时修改；再次生成不会覆盖已有候选图</small></span><i id="firstFramePromptCount">0 字</i></header>
+              <textarea id="replacementFirstFramePrompt" rows="8" maxlength="8000" placeholder="任务创建后将显示内置的新首帧图片生成提示词"></textarea>
+              <div class="rp-first-frame-prompt-actions">
+                <button id="resetFirstFramePromptButton" type="button">恢复内置提示词</button>
+              </div>
+            </aside>
+          </section>
+
+          <section class="rp-analysis-workspace" id="replacementAnalysisWorkspace">
+            <div class="rp-generation-mode" role="radiogroup" aria-label="原片分析生成模式">
+              <div><b>生成模式</b><span>人工确认可调整原片镜头内的换品锚点；镜头数量不会直接增加视频节点</span></div>
+              <label><input name="generationMode" type="radio" value="manual" checked /><span>人工确认每个镜头</span></label>
+              <label><input name="generationMode" type="radio" value="smart" /><span>智能推荐</span></label>
+            </div>
+
+            <article class="rp-analysis-panel rp-source-analysis-panel" id="sourceAnalysisPanel">
+              <header>
+                <div><small>QWEN 3.7 PLUS</small><h3>原片分析区</h3></div>
+                <div class="rp-source-analysis-actions">
+                  <span id="sourceAnalysisStatus">等待开始分析</span>
+                  <button id="toggleSourceAnalysisButton" type="button" aria-expanded="false" aria-controls="sourceAnalysisContent">查看原片分析</button>
+                </div>
+              </header>
+              <div class="rp-source-analysis-content" id="sourceAnalysisContent" hidden>
+                <div class="rp-analysis-progress" id="sourceAnalysisProgress">
+                  <span data-analysis-step="media">○ 检测视频信息</span>
+                  <span data-analysis-step="frames">○ 提取关键帧</span>
+                  <span data-analysis-step="semantics">○ 识别镜头、人物与产品动作</span>
+                  <span data-analysis-step="plan">○ 生成 ShotPlan</span>
+                </div>
+                <div class="rp-analysis-summary" id="sourceAnalysisSummary">
+                  <div class="pw-empty"><span>点击“分析参考视频并生成新首帧”后，将在这里显示原片时长、镜头数量、动作和产品露出摘要。</span></div>
+                </div>
+                <details class="rp-analysis-details" id="sourceAnalysisDetails">
+                  <summary>展开深度拆解</summary>
+                  <div id="sourceAnalysisDeepDive"></div>
+                </details>
+              </div>
+            </article>
+
+            <article class="rp-analysis-panel rp-shot-plan-panel" id="shotPlanPanel">
+              <header>
+                <div><small>FULL VIDEO · LOCAL ANCHORS</small><h3>一键换品 ShotPlan｜原片结构与换品锚点</h3></div>
+                <span id="shotPlanStatus">等待原片分析</span>
+              </header>
+              <div class="rp-shot-plan-list" id="shotPlanList">
+                <div class="pw-empty"><span>分析完成后，将按原始镜头显示动作阶段和必需换品锚点；模型硬限制允许时由一个视频节点生成整条成片。</span></div>
+              </div>
+              <footer class="rp-shot-plan-actions">
+                <span id="shotPlanNotice">系统只生成最少必要关键帧。</span>
+                <button class="primary" id="confirmShotPlanButton" type="button" disabled>确认并生成</button>
+              </footer>
+            </article>
+          </section>
+
+          <div class="pw-video-bar rp-video-bar">
+            <div><b>开始生成新视频</b><span id="replacementReadyText">先完成上游资产准备和首帧确认</span></div>
+            <label class="rp-video-setting-control" for="replacementVideoDuration">
+              <span>时长</span>
+              <select id="replacementVideoDuration" aria-label="视频生成时长"></select>
+              <small id="replacementVideoDurationHint">上传参考视频后自动同步</small>
+            </label>
+            <label class="rp-video-setting-control" for="replacementVideoClarity">
+              <span>清晰度</span>
+              <select id="replacementVideoClarity" aria-label="视频生成清晰度"></select>
+              <small id="replacementVideoClarityHint">与 LibTV 模型参数同步</small>
+            </label>
+            <label class="rp-video-model-control" for="replacementVideoModel">
+              <span>视频生成模型</span>
+              <select id="replacementVideoModel" aria-label="视频生成模型"></select>
+              <small id="replacementVideoModelHint">正在同步 AI 产展模型…</small>
+            </label>
+            <div class="rp-video-actions">
+              <a class="rp-canvas-button is-disabled" id="replacementCanvasLink" target="_blank" rel="noopener noreferrer" aria-disabled="true">画布准备中</a>
+              <button id="startReplacementButton" type="button" disabled>确认ShotPlan并生成</button>
+            </div>
+          </div>
+          <section class="rp-generation-status" id="replacementGenerationStatus" aria-live="polite" hidden>
+            <header>
+              <div class="rp-generation-heading">
+                <i id="replacementGenerationDot" aria-hidden="true"></i>
+                <span><b id="replacementGenerationTitle">等待生成任务</b><small id="replacementGenerationTask">尚未创建视频任务</small></span>
+              </div>
+              <strong id="replacementGenerationPercent">0%</strong>
+            </header>
+            <div class="rp-progress-track" id="replacementProgressTrack" role="progressbar" aria-label="一键换品视频生成进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span id="replacementProgressFill"></span>
+            </div>
+            <div class="rp-generation-meta">
+              <span id="replacementGenerationCount">0/0 段</span>
+              <span id="replacementGenerationStage">等待任务开始</span>
+            </div>
+            <div class="rp-canvas-row">
+              <span><b>LibTV 任务画布</b><small id="replacementCanvasAddress">正在等待画布地址…</small></span>
+            </div>
+            <div class="rp-output-list" id="replacementOutputList" aria-label="一键换品生成成片" hidden></div>
+          </section>
+          <div class="pw-notice" id="replacementResult" hidden></div>
+        </section>
+      </section>
+        </div>
+        <aside class="ps-current-rules rp-current-rules" id="replacementRulesPanel" aria-label="一键换品当前执行规则">
+          <header class="ps-current-rules-head">
+            <div><h2>当前执行规则</h2><span>一键换品操作提示</span></div>
+            <button id="hideReplacementRulesButton" type="button" aria-controls="replacementRulesPanel">隐藏</button>
+          </header>
+          <ol class="ps-current-rule-list rp-current-rule-list">
+            <li><b>先选择要替换什么</b><span>“只换产品”会替换目标商品并沿用原片口播；“只换口播”不需要选择产品；“产品+口播”会同时替换商品和口播。</span></li>
+            <li><b>上传参考视频并确定新首帧</b><span>可以沿用原片首帧，也可以选择生成新首帧。选择生成时，只需点击一次分析按钮，系统会自动分析原片并生成 V1、V2；首轮完成后才开放继续生成候选。</span></li>
+            <li><b>系统自动分析原片和识别口播</b><span>Qwen 3.7 Plus 分析镜头、人物、动作和产品状态；XingChenASR 自动转写原片口播。普通音轨使用单声道说话人分离，左右分别收音时经双重校验后分轨；重叠讲话会提示人工核对，不由 DeepSeek 猜补。分析运行期间可以查看当前进度，无需重复点击。</span></li>
+            <li><b>使用新口播时先确认文案</b><span>系统会把原片口播填入新口播文本框。“产品+口播”还会根据目标 SKU 预修改品名和卖点。可以继续编辑，但确认文案后才会编译 ShotPlan。</span></li>
+            <li><b>确认 ShotPlan 并生成必要关键帧</b><span>ShotPlan 用来确定镜头顺序、动作阶段和必须替换产品的关键状态。系统只生成最少必要关键帧；生成结果会自动选用，也可以人工切换、删除或重新生成。</span></li>
+            <li class="important"><b>关键帧齐全后提交视频</b><span>当新首帧、口播、ShotPlan和必需关键帧全部就绪，且没有图片正在生成时，“确认ShotPlan并生成”会自动开放。选择视频模型、清晰度和时长后即可提交。</span></li>
+            <li><b>系统自动生成并验收</b><span>视频生成严格使用已选首帧、产品参考图和关键帧。使用新口播时，成片还会通过 ASR 逐字复核；未通过的结果会保留并提示人工检查或重新生成。</span></li>
+            <li><b>任务可以在后台运行</b><span>图片和视频生成期间可以离开当前页面。返回后可从左侧任务中心恢复进度；不同飞书账号的任务、草稿和生成结果互不共享。</span></li>
+          </ol>
+        </aside>
+      </section>
+      <button class="ps-show-rules-button" id="showReplacementRulesButton" type="button" aria-controls="replacementRulesPanel" aria-expanded="false" hidden>显示当前执行规则</button>
+    </main>
+    <dialog class="ps-picker" id="replaceAssetPickerDialog">
+      <div class="ps-picker-head">
+        <div><small id="replacePickerStep">一键换品 · 产品资产</small><h2 id="replacePickerTitle">选择产品参考图</h2></div>
+        <button id="closeReplacePickerButton" type="button" aria-label="关闭">×</button>
+      </div>
+      <p id="replacePickerDescription">选定后将作为视频生成的上游图片资产，请选择1-8张。产品外观、包装、颜色和比例以所选图片为最高优先级真值。</p>
+      <div class="ps-picker-upload">
+        <label>
+          <input id="replaceProductUploadInput" type="file" accept="image/png,image/jpeg,.png,.jpg,.jpeg" multiple />
+          <b>＋ 本地上传产品图</b>
+        </label>
+        <span>上传后自动保存到当前 SKU 的产品资产，并加入本次选择</span>
+      </div>
+      <div class="pw-notice ps-picker-upload-status" id="replacePickerUploadStatus" hidden></div>
+      <div class="ps-picker-grid" id="replacePickerGrid"></div>
+      <div class="pw-empty" id="replacePickerEmpty" hidden><b>还没有产品资产</b><span>可直接使用上方按钮上传本地产品图。</span></div>
+      <section class="ps-picker-selection">
+        <header><b id="replacePickerSelectionTitle">已选视频上游产品图</b><span id="replacePickerSelectionCount">已选 0/8 张</span></header>
+        <div id="replacePickerSelectionList"></div>
+      </section>
+      <div class="ps-picker-actions">
+        <button id="cancelReplacePickerButton" type="button">取消</button>
+        <button id="confirmReplacePickerButton" type="button">确认为视频上游资产</button>
+      </div>
+    </dialog>
+    <dialog class="ps-asset-preview-dialog" id="replaceAssetPreviewDialog">
+      <header><div><small>产品图片原图</small><h2 id="replaceAssetPreviewTitle">查看产品图片</h2></div><button id="closeReplaceAssetPreviewButton" type="button" aria-label="关闭原图预览">×</button></header>
+      <div class="ps-asset-preview-stage"><img id="replaceAssetPreviewImage" alt="产品图片原图" /></div>
+      <p>列表只加载缩略图；此窗口打开后才读取 OSS 原图。</p>
+    </dialog>
+    <dialog class="ps-asset-preview-dialog rp-candidate-preview-dialog" id="firstFramePreviewDialog">
+      <header><div><small>候选图片原图</small><h2 id="firstFramePreviewTitle">查看候选图片</h2></div><button id="closeFirstFramePreviewButton" type="button" aria-label="关闭候选图片原图预览">×</button></header>
+      <div class="ps-asset-preview-stage"><img id="firstFramePreviewImage" alt="候选图片原图" /></div>
+      <footer class="rp-candidate-preview-actions">
+        <button id="cancelFirstFramePreviewButton" type="button">关闭</button>
+        <button class="primary" id="selectFirstFramePreviewButton" type="button">选用此图</button>
+      </footer>
+    </dialog>
+    <script src="./workstation-identity.js?v=2.11.0"></script>
+    <script src="./module-task-center.js?v=2.10.39-replacement-single-video-node&build=2.10.43-stable-task-order-edit-icon"></script>
+    <script src="./replace-product.js?v=2.11.39-replacement-ux&build=2.11.39-replacement-ux&release=2.11.39&hub=2.11.39&cleanup=workflow-step-progress"></script>
+  </body>
+</html>

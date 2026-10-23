@@ -1,0 +1,11 @@
+LibTV积分消耗估算金额（2026-10-20）
+
+目标表：d_root_project_mid_db_brandmarketing.libtv_points_consumption。日期consumed_at为北京时间，消耗积分=-consumed_points。team_member、model_name用于筛选；team_id不是独立计价账户。用户确认全表为一个共享LibTV账号。
+周期为每月16日00:00至下月16日00:00，前132000分按0.019元/分，超出按0.035元/分。按consumed_at、id逐条分档，先按全账号计价再筛选。BigInt精确积分和金额计算，日/所选范围分别汇总后舍入2位。金额为内部估算，非实际账单。
+支持日期、成员、模型筛选，近7/15/30天，累计/日均金额，积分与金额图表切换、每日金额明细。所有柱顶展示数值，图表按标签宽度扩展并在容器内滚动，零值保留。历史周期起点覆盖不足时金额待核验；无流水为0，读取失败不伪装0。
+
+MySQL配置：LIBTV_MYSQL_CONFIG_FILE指向只读挂载的私密JSON，格式见样例；支持外层mysql对象。或用LIBTV_MYSQL_HOST/PORT/USER/PASSWORD，兼容ROOT_MYSQL_*。使用具备目标表SELECT权限的根数据连接，不要使用无此表的中枢文档存储库连接。
+每次SET TRANSACTION READ ONLY后BEGIN，执行固定表参数化SELECT，查询后ROLLBACK；失败连接销毁。连接池最多2个，超时15秒。成功结果缓存5分钟，刷新重读所涉周期完整流水重算，失败不缓存。mysql2固定3.23.2，需npm ci安装。
+生产不设置LOCAL_SIMULATION=1。只有本地模拟允许LIBTV_POINTS_SNAPSHOT_FILE。真实数据快照、静态验收HTML和数据库凭据均不提交仓库。
+
+验证：npm run verify:libtv（15项），npm run typecheck，npm run build。本次只推送Git，不执行服务器部署。上线时需安装依赖并设置数据库连接，保留当时最新配置和权限。历史起点判断只能发现首周期缺口，不能证明后续没有采集遗漏。

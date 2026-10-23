@@ -1,0 +1,22 @@
+(()=>{
+ const $=s=>document.querySelector(s),mode=document.body.dataset.recordMode,reviews=mode==='reviews';
+ const base=location.pathname.slice(0,location.pathname.lastIndexOf('/modules/')),list=$('#recordList'),status=$('#recordStatus');
+ let rows=[],page=0,loading=false;
+ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const date=v=>v?new Date(v).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false}):'—';
+ const labels={pending:'待审核',approved:'已通过',rejected:'已驳回'};
+ const notice=n=>({sent:'已发送',failed:'发送失败',uncertain:'发送结果待确认',pending:'发送结果待确认',not_due:'审核完成后发送',not_sent:'未发送'})[n?.state||'not_sent']||'待确认';
+ async function api(path,body){const r=await fetch(base+'/api/script-generator'+path,{credentials:'same-origin',cache:'no-store',...(body?{method:'POST',headers:{'Content-Type':'application/json','X-Requested-With':'XMLHttpRequest'},body:JSON.stringify(body)}:{})});const p=await r.json().catch(()=>({}));if(!r.ok||p.ok===false)throw Error(p.error||'记录读取失败，请稍后重试。');return p}
+ function render(){
+  const query=$('#recordSearch').value.trim().toLowerCase(),filter=$('#recordFilter')?.value||'all';
+  const filtered=rows.filter(r=>[r.product,r.submitter?.name,r.reviewer?.name,r.updatedBy,r.context?.persona].join(' ').toLowerCase().includes(query)&&(!reviews||filter==='all'||(filter==='mine'?r.canDecide:r.status===filter)));
+  const pages=Math.max(1,Math.ceil(filtered.length/15));page=Math.min(page,pages-1);const visible=filtered.slice(page*15,page*15+15);
+  status.textContent=`共 ${filtered.length} 条${reviews?'审核记录':'稿件'}`;
+  list.innerHTML=visible.length?visible.map(r=>reviews?`<article class="record"><div class="record-top"><h2>${esc(r.product)}</h2><span class="badge ${esc(r.status)}">${labels[r.status]||'待确认'}${r.canDecide?' · 待我审核':''}</span></div><div class="meta"><span>提交人：${esc(r.submitter.name)}</span><span>审核人：${esc(r.reviewer.name)}</span><span>提交：${esc(date(r.submittedAt))}</span>${r.decidedAt?`<span>审核：${esc(date(r.decidedAt))}</span>`:''}</div>${r.comment?`<p class="comment">${esc(r.comment)}</p>`:''}<p class="notice">审核人通知：${notice(r.submissionNotification)} · 结果通知：${notice(r.notification)}</p><div class="actions"><a class="action primary" href="communication-generator.html?review=${encodeURIComponent(r.id)}">${r.canDecide?'查看稿件并审核':'查看审核快照'}</a>${r.canNotifySubmission?`<button type="button" data-notice="${esc(r.id)}">通知审核人</button>`:''}</div></article>`:`<article class="record"><div class="record-top"><h2>${esc(r.product)}</h2><span class="badge">${r.historyType==='review'?'审核快照 · '+(labels[r.reviewStatus]||''):'已保存稿件'} · ${r.scripts?.length||1} 篇</span></div><div class="meta"><span>保存人：${esc(r.updatedBy||'未记录')}</span><span>保存：${esc(date(r.updatedAt||r.generatedAt))}</span><span>人设：${esc(r.context?.persona||'未记录')}</span><span>平台：${esc(r.context?.platform||'未记录')}</span></div><div class="actions"><a class="action primary" href="communication-generator.html?${r.reviewId?'review='+encodeURIComponent(r.reviewId):'draft='+encodeURIComponent(r.id)}">打开稿件</a></div></article>`).join(''):'<div class="empty">没有匹配记录。</div>';
+  $('#pageLabel').textContent=`${page+1} / ${pages}`;$('#previousPage').disabled=page===0;$('#nextPage').disabled=page>=pages-1;
+  list.querySelectorAll('[data-notice]').forEach(button=>button.addEventListener('click',async()=>{button.disabled=true;status.textContent='正在通知审核人…';try{const p=await api('/reviews/'+encodeURIComponent(button.dataset.notice)+'/submission-notice',{});rows=rows.map(r=>r.id===p.review.id?p.review:r);render();status.textContent='审核人通知：'+notice(p.review.submissionNotification)}catch(e){status.textContent=e.message;button.disabled=false}}));
+ }
+ async function load(){if(loading)return;loading=true;$('#refreshRecords').disabled=true;status.textContent='正在读取…';try{const p=await api(reviews?'/reviews':'/history');rows=reviews?p.items:p.drafts;render()}catch(e){status.textContent=e.message}finally{loading=false;$('#refreshRecords').disabled=false}}
+ $('#recordSearch').addEventListener('input',()=>{page=0;render()});$('#recordFilter')?.addEventListener('change',()=>{page=0;render()});$('#previousPage').addEventListener('click',()=>{page--;render()});$('#nextPage').addEventListener('click',()=>{page++;render()});$('#refreshRecords').addEventListener('click',load);
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden)load()});load();
+})();

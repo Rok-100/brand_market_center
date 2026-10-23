@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI产品镜生成｜品牌营销部工作站</title>
+    <link rel="stylesheet" href="./styles.css?v=2.8.21" />
+  </head>
+  <body class="product-page">
+    <main class="shell">
+      <nav class="page-nav" aria-label="页面导航">
+        <a class="back-link" href="./">← 返回工作台首页</a>
+        <span>真实产品镜导演</span>
+      </nav>
+      <header class="topbar product-topbar">
+        <div class="product-hero-copy">
+          <span class="product-kicker">WIS 产品镜导演</span>
+          <h1>先让产品像真的，<br />再让人想多看一秒</h1>
+          <p>选一个真实情绪，系统会锁住产品形态、质地和物理规则，只拍一个干净动作。</p>
+          <span class="account-pill" id="accountLine">正在连接 LibTV</span>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button" id="updateButton" type="button" title="检查并安装更新">检查更新</button>
+          <button class="icon-button" id="restoreJobButton" type="button" title="恢复最近任务">恢复最近</button>
+          <button class="icon-button" id="healthButton" type="button" title="刷新 LibTV 状态">刷新</button>
+          <a class="ghost-link" href="https://www.liblib.tv/" target="_blank" rel="noreferrer">LibTV</a>
+        </div>
+      </header>
+
+      <section class="update-panel" id="updatePanel" hidden>
+        <div class="panel-title">
+          <h2>程序更新</h2>
+          <span id="updateBadge">未检查</span>
+        </div>
+        <p id="updateMessage">检查后会显示当前版本和最新版本。</p>
+        <ul id="updateNotes"></ul>
+        <div class="panel-actions">
+          <button class="small-action" id="applyUpdateButton" type="button" disabled>立即更新</button>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <form class="tool-panel product-director-panel" id="generatorForm">
+          <div class="panel-title">
+            <div>
+              <span class="panel-eyebrow">从停留理由开始</span>
+              <h2>这一条，想让人感受到什么？</h2>
+            </div>
+            <span id="formBadge">待生成</span>
+          </div>
+
+          <fieldset class="mode-switch" aria-label="生成方式">
+            <label>
+              <input name="generationMode" type="radio" value="product-images" checked />
+              <span>从产品图开始</span>
+            </label>
+            <label>
+              <input name="generationMode" type="radio" value="scene-video" />
+              <span>跟随我的素材</span>
+            </label>
+          </fieldset>
+
+          <label class="product-main-field">
+            <span>先选今天要拍的产品</span>
+            <select name="productId" id="productSelect"></select>
+            <input name="productType" type="hidden" />
+          </label>
+
+          <fieldset class="emotion-picker">
+            <legend>第一眼的情绪钩子</legend>
+            <p>不靠夸张特效，靠一个熟悉瞬间让人愿意停下来。</p>
+            <div class="emotion-grid">
+              <label>
+                <input name="emotionHook" type="radio" value="native-trust" checked />
+                <span>
+                  <b>像刚好被我拍到</b>
+                  <small>真实生活痕迹，轻微手持感，像达人随手记录</small>
+                </span>
+              </label>
+              <label>
+                <input name="emotionHook" type="radio" value="texture-surprise" />
+                <span>
+                  <b>质地有点惊喜</b>
+                  <small>让薄、湿、软、透从一个动作里自己说话</small>
+                </span>
+              </label>
+              <label>
+                <input name="emotionHook" type="radio" value="bedtime-relief" />
+                <span>
+                  <b>今晚终于松口气</b>
+                  <small>洗完脸后的安静时刻，松弛但不刻意摆拍</small>
+                </span>
+              </label>
+              <label>
+                <input name="emotionHook" type="radio" value="unboxing-anticipation" />
+                <span>
+                  <b>刚拆到手这一刻</b>
+                  <small>保留开封的期待感，只完成一个真实动作</small>
+                </span>
+              </label>
+              <label>
+                <input name="emotionHook" type="radio" value="abundance-satisfaction" />
+                <span>
+                  <b>摆出来就很满足</b>
+                  <small>用整齐和量感带来踏实感，数量严格按产品真值</small>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="two-cols product-brief-row">
+            <label>
+              <span>镜头要完成什么</span>
+              <select name="purpose">
+                <option value="生活种草">达人随手拍</option>
+                <option value="包装露出">先看清包装</option>
+                <option value="使用质地">让质地自己说话</option>
+                <option value="高级感">安静但有质感</option>
+                <option value="量感陈列">摆满就是满足</option>
+                <option value="冰感功效">清凉一眼就懂</option>
+                <option value="真实开箱">刚拆到手</option>
+                <option value="送礼属性">送人也拿得出手</option>
+              </select>
+            </label>
+            <label id="videoCountField">
+              <span>这次出几条</span>
+              <input name="videoCount" type="number" min="1" max="20" />
+            </label>
+          </div>
+
+          <label>
+            <span>把镜头放在哪里</span>
+            <input name="scene" autocomplete="off" placeholder="例如：洗完脸后的浴室台面、晨间窗边梳妆台" />
+          </label>
+
+          <label>
+            <span>还想补一句</span>
+            <textarea name="specialRequest" rows="3" placeholder="例如：手不要太精致，像自己拿手机拍；膜布边缘要看得出湿、薄、软"></textarea>
+          </label>
+
+          <div class="source-fields" id="sourceFields" hidden>
+            <section class="upload-slot">
+              <div class="upload-slot-head">
+                <strong>场景图</strong>
+                <span id="sceneUploadStatus">可选</span>
+              </div>
+              <label class="drop-zone" id="sceneDropZone">
+                <input id="sceneFileInput" type="file" accept="image/png,image/jpeg,image/webp" />
+                <b>拖入场景图</b>
+                <span>或点击选择图片</span>
+              </label>
+            </section>
+
+            <section class="upload-slot">
+              <div class="upload-slot-head">
+                <strong>原始视频</strong>
+                <span id="videoUploadStatus">可选</span>
+              </div>
+              <label class="drop-zone" id="videoDropZone">
+                <input id="videoFileInput" type="file" accept="video/mp4,video/quicktime,video/webm,.m4v" multiple />
+                <b>拖入原始视频</b>
+                <span>支持一次选择多条</span>
+              </label>
+            </section>
+          </div>
+
+          <details class="advanced-settings">
+            <summary>
+              <span>
+                <b>生成与保存设置</b>
+                <small>模型、链接、产品图与输出位置</small>
+              </span>
+              <em>展开</em>
+            </summary>
+            <div class="advanced-settings-body">
+              <label>
+                <span>LibTV 链接</span>
+                <input name="libtvUrl" autocomplete="off" />
+              </label>
+
+              <label id="productImageField">
+                <span>产品图文件夹</span>
+                <div class="inline-field">
+                  <input name="imageDir" autocomplete="off" />
+                  <button id="previewButton" type="button">预览</button>
+                </div>
+              </label>
+
+              <label>
+                <span>输出文件夹</span>
+                <div class="inline-field">
+                  <input name="outputDir" autocomplete="off" />
+                  <button id="selectOutputDirButton" type="button">选择位置</button>
+                </div>
+              </label>
+
+              <div class="two-cols">
+                <label>
+                  <span>模型策略</span>
+                  <select name="modelMode">
+                    <option value="auto">智能降级</option>
+                    <option value="vip">Seedance VIP</option>
+                    <option value="mini">Seedance Mini</option>
+                    <option value="lite">Seedance Lite</option>
+                    <option value="wan">Wan 2.7</option>
+                  </select>
+                </label>
+                <label>
+                  <span>失败处理</span>
+                  <select name="fallbackModels">
+                    <option value="true">自动换模型</option>
+                    <option value="false">只跑首选模型</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="switch-row">
+                <label class="switch">
+                  <input name="frameCheck" type="checkbox" />
+                  <span></span>
+                  <b>抽帧检查</b>
+                </label>
+                <label class="switch">
+                  <input name="saveLogs" type="checkbox" checked />
+                  <span></span>
+                  <b>保存日志</b>
+                </label>
+              </div>
+            </div>
+          </details>
+
+          <div class="generation-assurance">
+            <span aria-hidden="true">✓</span>
+            <p><b>真实感已自动锁定</b><small>同一产品、同一空间、一个动作；液体和膜布遵循真实重力。</small></p>
+          </div>
+
+          <button class="primary" id="startButton" type="submit" disabled>
+            <span>生成这组产品镜</span>
+            <small>5 秒竖屏 · 1–2 个连贯机位</small>
+          </button>
+        </form>
+
+        <aside class="visual-panel product-shot-board">
+          <div class="panel-title">
+            <div>
+              <span class="panel-eyebrow">开拍前预演</span>
+              <h2>这条产品镜会怎么拍</h2>
+            </div>
+            <span id="shotPreviewBadge">原生信任</span>
+          </div>
+          <div class="shot-preview" id="shotPreview">
+            <div class="shot-preview-lead">
+              <span>停留理由</span>
+              <strong id="previewEmotionTitle">像刚好被我拍到</strong>
+              <p id="previewEmotionCopy">保留一点真实生活痕迹，让产品像日常使用中的自然发现。</p>
+            </div>
+            <dl>
+              <div>
+                <dt>产品</dt>
+                <dd id="previewProduct">正在读取产品</dd>
+              </div>
+              <div>
+                <dt>动作</dt>
+                <dd id="previewAction">只完成一个清楚、连续的动作</dd>
+              </div>
+              <div>
+                <dt>环境</dt>
+                <dd id="previewScene">洗完脸后的浴室台面</dd>
+              </div>
+            </dl>
+            <p class="truth-lock" id="previewTruth">包装、质地和数量会按真实产品资料自动锁定。</p>
+          </div>
+
+          <div class="asset-section-head">
+            <div>
+              <span class="panel-eyebrow">真实产品依据</span>
+              <h3 id="assetPanelTitle">产品图</h3>
+            </div>
+            <span id="imageCount">0 张</span>
+          </div>
+          <div class="image-grid" id="imageGrid"></div>
+        </aside>
+      </section>
+
+      <section class="variation-history-panel">
+        <div class="panel-title">
+          <div>
+            <h2>任务列表</h2>
+            <p>每条产品镜任务都会保留，返回首页或下次打开后仍可查看进度和成片。</p>
+          </div>
+          <div class="variation-history-actions">
+            <span id="productHistoryBadge" aria-live="polite">正在读取</span>
+            <button class="history-toggle-button" id="productHistoryToggle" type="button" aria-expanded="false" aria-controls="productHistoryBody">
+              <span id="productHistoryToggleLabel">展开任务列表</span>
+              <span class="history-toggle-icon" aria-hidden="true">⌄</span>
+            </button>
+            <button class="icon-button" id="productHistoryRefresh" type="button">刷新</button>
+          </div>
+        </div>
+        <div class="variation-history-body" id="productHistoryBody" hidden>
+          <div class="variation-history-list" id="productHistoryList">
+            <p class="empty-line">正在读取历史任务…</p>
+          </div>
+          <nav class="variation-history-pagination" id="productHistoryPagination" aria-label="任务列表分页" hidden>
+            <button type="button" id="productHistoryPrev">上一页</button>
+            <div class="variation-history-page-numbers" id="productHistoryPageNumbers" aria-label="选择页码"></div>
+            <span class="variation-history-page-status" id="productHistoryPageStatus">第 1 / 1 页</span>
+            <button type="button" id="productHistoryNext">下一页</button>
+          </nav>
+        </div>
+      </section>
+
+      <section class="run-panel">
+        <div class="run-head">
+          <div>
+            <h2>生成进度</h2>
+            <p id="outputLine">尚未开始</p>
+          </div>
+          <strong id="progressText">0 / 0</strong>
+        </div>
+        <div class="progress">
+          <span id="progressBar"></span>
+        </div>
+        <div class="task-list" id="taskList"></div>
+      </section>
+
+      <section class="result-panel">
+        <div class="panel-title">
+          <h2>结果</h2>
+          <div class="panel-actions">
+            <button class="small-action" id="openOutputButton" type="button" disabled>打开本次输出</button>
+            <span id="resultBadge">等待任务</span>
+          </div>
+        </div>
+        <div class="result-grid" id="resultGrid"></div>
+      </section>
+
+      <section class="log-panel">
+        <div class="panel-title">
+          <h2>日志</h2>
+          <span id="jobId">无任务</span>
+        </div>
+        <pre id="logBox"></pre>
+      </section>
+    </main>
+
+    <script src="./workstation-identity.js?v=2.11.0"></script>
+    <script src="./knowledge-context.js?v=2.8.21"></script>
+    <script src="./app.js?v=2.8.21"></script>
+  </body>
+</html>

@@ -1,0 +1,3 @@
+# AI视频工作台更新源地址
+# 同事测试版默认读取线上更新清单。
+https://jqx28l0j4lx.feishuapp.com/app/app_17anbtwwd9f/manifest.json

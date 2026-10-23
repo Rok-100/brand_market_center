@@ -1,0 +1,37 @@
+import { OnModuleDestroy, OnModuleInit } from '@nestjs/common';
+import { type PostgresJsDatabase } from '@lark-apaas/fullstack-nestjs-core';
+import type { PerformanceReasonResponse } from '@shared/performance-reason';
+import { DirectorBriefingService } from '../director-briefing/director-briefing.service';
+export declare class PerformanceReasonService implements OnModuleInit, OnModuleDestroy {
+    private readonly db;
+    private readonly directorBriefingService;
+    private readonly logger;
+    private readonly memoryCache;
+    private tableReady;
+    private scheduleTimer;
+    private writeAttempts;
+    private writeSuccesses;
+    private lastWriteError;
+    constructor(db: PostgresJsDatabase, directorBriefingService: DirectorBriefingService);
+    onModuleInit(): Promise<void>;
+    onModuleDestroy(): void;
+    private initialize;
+    private ensureTable;
+    private shanghaiToday;
+    private latestEligibleDate;
+    private eligible;
+    private scheduleNextRun;
+    private cacheKey;
+    private dateText;
+    private rowToItem;
+    private readStored;
+    private storageStatus;
+    private messageMatchesDate;
+    private detectChannels;
+    private cleanMessageText;
+    private reasonClauses;
+    private contextForMessage;
+    private persist;
+    private aggregateDates;
+    getRange(startDate: string, endDate: string): Promise<PerformanceReasonResponse>;
+}

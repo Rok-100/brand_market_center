@@ -1,0 +1,72 @@
+[
+  {
+    "id": "voice-01",
+    "name": "张琦原声",
+    "file": "voice-01.mp3",
+    "durationSeconds": 11,
+    "style": "自然表达"
+  },
+  {
+    "id": "voice-02",
+    "name": "林心如原声",
+    "file": "voice-02.mp3",
+    "durationSeconds": 10,
+    "style": "自然表达"
+  },
+  {
+    "id": "voice-03",
+    "name": "林心如（赫希）",
+    "file": "voice-03.mp3",
+    "durationSeconds": 8,
+    "style": "品牌表达"
+  },
+  {
+    "id": "voice-04",
+    "name": "温峥嵘原声",
+    "file": "voice-04.mp3",
+    "durationSeconds": 12,
+    "style": "自然表达"
+  },
+  {
+    "id": "voice-05",
+    "name": "王新军原声",
+    "file": "voice-05.mp3",
+    "durationSeconds": 11,
+    "style": "自然表达"
+  },
+  {
+    "id": "voice-06",
+    "name": "王琳原声",
+    "file": "voice-06.mp3",
+    "durationSeconds": 11,
+    "style": "自然表达"
+  },
+  {
+    "id": "voice-07",
+    "name": "王鸥原声",
+    "file": "voice-07.mp3",
+    "durationSeconds": 11,
+    "style": "自然表达"
+  },
+  {
+    "id": "voice-08",
+    "name": "秦海璐（焦虑）",
+    "file": "voice-08.mp3",
+    "durationSeconds": 11,
+    "style": "焦虑紧张"
+  },
+  {
+    "id": "voice-09",
+    "name": "秦海璐（开心）",
+    "file": "voice-09.mp3",
+    "durationSeconds": 12,
+    "style": "开心明亮"
+  },
+  {
+    "id": "voice-10",
+    "name": "秦海璐（爆发）",
+    "file": "voice-10.mp3",
+    "durationSeconds": 10,
+    "style": "高能爆发"
+  }
+]

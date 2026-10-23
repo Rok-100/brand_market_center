@@ -1,0 +1,252 @@
+{
+  "services": [
+    {
+      "name": "hub",
+      "source": "services/hub/app",
+      "workdir": "/app",
+      "command": [
+        "node",
+        "server.mjs"
+      ],
+      "recipe": "hub"
+    },
+    {
+      "name": "creative",
+      "source": "services/creative/app",
+      "workdir": "/app",
+      "command": [
+        "node",
+        "server/start-runtime.mjs"
+      ],
+      "recipe": "creative"
+    },
+    {
+      "name": "onecreation",
+      "source": "services/onecreation/app",
+      "workdir": "/opt/workbench/app",
+      "command": [
+        "node",
+        "server.js"
+      ],
+      "recipe": "onecreation"
+    },
+    {
+      "name": "remix",
+      "source": "services/remix/app",
+      "workdir": "/app",
+      "command": [
+        "node",
+        "render-worker/server.mjs"
+      ],
+      "recipe": "remix"
+    },
+    {
+      "name": "cloud",
+      "source": "services/cloud/app",
+      "workdir": "/app/backend",
+      "command": [
+        "uvicorn",
+        "app.main:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "3000"
+      ],
+      "recipe": "python"
+    },
+    {
+      "name": "live",
+      "source": "services/live/app",
+      "workdir": "/app",
+      "command": [
+        "sh",
+        "container-entrypoint.sh"
+      ],
+      "recipe": "live"
+    },
+    {
+      "name": "dashboard",
+      "source": "services/dashboard/app",
+      "workdir": "/app/dist",
+      "command": [
+        "node",
+        "server/main.js"
+      ],
+      "recipe": "dashboard"
+    },
+    {
+      "name": "data-center",
+      "source": "services/data-center/app",
+      "workdir": "/app",
+      "command": [
+        "npm",
+        "exec",
+        "--",
+        "vinext",
+        "start",
+        "--hostname",
+        "0.0.0.0",
+        "--port",
+        "3000"
+      ],
+      "recipe": "vinext"
+    },
+    {
+      "name": "dispatch",
+      "source": "services/dispatch/app",
+      "workdir": "/app",
+      "command": [
+        "node",
+        "schedule-api-server.js"
+      ],
+      "recipe": "node"
+    },
+    {
+      "name": "central-auth",
+      "source": "services/central-auth/app",
+      "workdir": "/app/backend",
+      "command": [
+        "uvicorn",
+        "app.auth_only:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "3000"
+      ],
+      "recipe": "python"
+    },
+    {
+      "name": "storage",
+      "source": "shared/storage-gateway",
+      "workdir": "/opt/storage",
+      "command": [
+        "python",
+        "-u",
+        "sql_gateway.py"
+      ],
+      "recipe": "storage"
+    },
+    {
+      "name": "notifications",
+      "source": "services/notifications/app",
+      "workdir": "/app",
+      "command": [
+        "node",
+        "service-notifications-production.mjs"
+      ],
+      "recipe": "node"
+    },
+    {
+      "name": "flow-sources",
+      "source": "services/flow-sources/app",
+      "workdir": "/app",
+      "command": [
+        "node",
+        "flow-source-export.mjs"
+      ],
+      "recipe": "node"
+    },
+    {
+      "name": "intelligence",
+      "source": "services/intelligence/app",
+      "workdir": "/app",
+      "command": [
+        "node",
+        "daily-intelligence-worker.mjs"
+      ],
+      "recipe": "node"
+    },
+    {
+      "name": "cloud-push",
+      "source": "services/cloud-push/app",
+      "workdir": "/work",
+      "command": [
+        "python",
+        "-m",
+        "app.video_push_notifications"
+      ],
+      "recipe": "aux-python"
+    },
+    {
+      "name": "daily-brief",
+      "source": "services/daily-brief/app",
+      "workdir": "/app",
+      "command": [
+        "python",
+        "run_daily.py",
+        "--serve"
+      ],
+      "recipe": "daily-brief"
+    },
+    {
+      "name": "media-archive",
+      "source": "services/media-archive/app",
+      "workdir": "/opt/wis-media-oss",
+      "command": [
+        "python",
+        "-u",
+        "media_archive.py",
+        "--workers",
+        "3"
+      ],
+      "recipe": "media-archive"
+    },
+    {
+      "name": "creative-notifications",
+      "source": "services/notifications/app",
+      "workdir": "/app",
+      "command": [
+        "node",
+        "creative-notifications-production.mjs"
+      ],
+      "recipe": "node"
+    },
+    {
+      "name": "media-filesystem",
+      "source": "services/media-filesystem/app",
+      "workdir": "/",
+      "command": [
+        "rclone"
+      ],
+      "recipe": "rclone"
+    },
+    {
+      "name": "source-refresh",
+      "source": "services/hub/app",
+      "workdir": "/app",
+      "command": [
+        "node",
+        "server-source-refresh.mjs",
+        "organization"
+      ],
+      "recipe": "job"
+    },
+    {
+      "name": "gateway",
+      "source": "services/gateway/app",
+      "workdir": "/",
+      "command": [
+        "nginx",
+        "-g",
+        "daemon off;"
+      ],
+      "recipe": "gateway"
+    }
+  ],
+  "developmentRoot": "services/",
+  "runtimeAdapters": "shared/runtime-adapters/",
+  "configuration": "local/config-templates/",
+  "localBuilds": [
+    "hub",
+    "creative",
+    "onecreation",
+    "remix",
+    "cloud",
+    "live",
+    "dashboard",
+    "data-center",
+    "dispatch",
+    "storage",
+    "learning"
+  ]
+}

@@ -1,0 +1,19 @@
+import{n as e,t}from"./central-auth-B5qDOiXr.js";import{t as n}from"./mcp-BxVxD0av.js";var r=`edge`,i={session_performance:{keyword:`直播场次 ROI 成交金额 转化率`,label:`场次经营表现`,sql:`WITH latest_hour AS (
+  SELECT *, ROW_NUMBER() OVER (PARTITION BY advertiser_id, live_session_id, stat_time_start ORDER BY observed_at DESC, id DESC) AS rn
+  FROM d_root_project_marketing_db.qianchuan_live_room_timeslot_sales_detail
+  WHERE report_date = :report_date AND (advertiser_name LIKE '%WIS%' OR live_room_name LIKE '%WIS%')
+)
+SELECT live_session_id, live_room_name, SUM(total_pay_order_gmv_yuan) AS gmv_yuan,
+       SUM(total_cost_yuan) AS cost_yuan,
+       SUM(total_pay_order_gmv_yuan) / NULLIF(SUM(total_cost_yuan),0) AS roi
+FROM latest_hour WHERE rn = 1 GROUP BY live_session_id, live_room_name;`},traffic_mix:{keyword:`直播流量构成 短视频 直播推荐 占比`,label:`场次流量构成`,sql:`SELECT live_session_id, channel_name, traffic_share_percent
+FROM d_root_project_marketing_db.buyin_live_traffic_channel_halfhour_snapshot
+WHERE shop_name IN (:approved_shops) AND DATE(started_at) = :report_date
+ORDER BY live_session_id, channel_name;`},hourly_trend:{keyword:`直播小时趋势 成交 ROI 转化率`,label:`每小时经营趋势`,sql:`SELECT shop_name, live_room_id, DATE_FORMAT(snapshot_at, '%Y-%m-%d %H:00') AS hour_at,
+       transaction_amount_fen, qianchuan_spend_fen
+FROM d_root_project_marketing_db.buyin_live_business_halfhour_snapshot
+WHERE shop_name IN (:approved_shops) AND DATE(live_started_at) = :report_date
+ORDER BY shop_name, live_room_id, snapshot_at;`},audience:{keyword:`直播间实时人群 画像 在线人数`,label:`直播间当前人群`,sql:`SELECT shop_name, live_room_id, realtime_online_count, realtime_audience_json
+FROM d_root_project_marketing_db.buyin_live_screen_halfhour_snapshot
+WHERE shop_name IN (:approved_shops) AND DATE(live_started_at) = :report_date
+ORDER BY snapshot_at DESC;`}};function a(e){return/流量|短视频|推荐/.test(e)?`traffic_mix`:/小时|趋势|每小时/.test(e)?`hourly_trend`:/人群|画像|在线/.test(e)?`audience`:`session_performance`}function o(e){return e.split(/\r?\n/).filter(e=>e.startsWith(`data:`)).map(e=>{try{return JSON.parse(e.slice(5).trim()).choices?.[0]?.delta?.content||``}catch{return``}}).join(``).replace(/<think>[\s\S]*?<\/think>/g,``).trim()}async function s(e){let t=process.env.MINIMAX_BASE_URL?.replace(/\/$/,``),n=process.env.MINIMAX_API_KEY;if(!t||!n)return a(e);let r=await fetch(`${t}/chat/completions`,{method:`POST`,headers:{Authorization:`Bearer ${n}`,"Content-Type":`application/json`},body:JSON.stringify({model:process.env.MINIMAX_MODEL||`MiniMax-M2.7-highspeed`,stream:!1,max_tokens:80,messages:[{role:`system`,content:`Return JSON only: {"plan":"session_performance|traffic_mix|hourly_trend|audience"}. Select the single closest approved read-only dashboard plan. Never output SQL.`},{role:`user`,content:e}]}),signal:AbortSignal.timeout(2e4)});if(!r.ok)return a(e);let s=o(await r.text());try{let t=JSON.parse(s.match(/\{[\s\S]*\}/)?.[0]||`{}`).plan;return Object.hasOwn(i,t)?t:a(e)}catch{return a(e)}}async function c(r){let a=await e(r);if(!a.ok)return t(a);let o=(await r.json()).prompt?.trim()||`分析 WIS 直播经营表现`,c=await s(o),l=i[c];try{let e=await n(`search_data_dictionary`,{keyword:l.keyword,limit:3});return Response.json({prompt:o,plan:{id:c,label:l.label},sql:l.sql,dictionary:e,safeguards:[`MiniMax 仅选择查询意图，不生成 SQL`,`SQL 只能来自四个受审计的只读模板`,`仅允许 SELECT 且参数由服务端绑定`,`浏览器不接触 MCP 或模型凭据`]})}catch(e){return Response.json({error:e instanceof Error?e.message:`分析服务暂不可用`},{status:503})}}export{c as POST,r as runtime};

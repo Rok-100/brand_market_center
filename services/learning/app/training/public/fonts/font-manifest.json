@@ -1,0 +1,39 @@
+{
+  "policy": "MiSans unchanged; OFL derivatives renamed to avoid reserved font names",
+  "fonts": [
+    {
+      "source": "SourceHanSerifCN-VF.ttf.woff2",
+      "sourceSha256": "556749ba783b148fa1f48644e8883e5b9351f01abd0d1faad0ba24a21185e76a",
+      "file": "AcademyReadingSerif.woff2",
+      "family": "AcademyReadingSerif",
+      "license": "SourceHanSerif-LICENSE.txt",
+      "bytes": 384936,
+      "sha256": "016074bdfda8d54a93d2682ad09db166e7909442d47f7bd2626e898916d94d82",
+      "characters": 1079
+    },
+    {
+      "source": "SmileySans-Oblique.ttf.woff2",
+      "sourceSha256": "731f22973349404b15a88a99ef3b5dd4104c0965c23b7e485c1f11e84fea99e2",
+      "file": "AcademyCover.woff2",
+      "family": "AcademyCover",
+      "license": "SmileySans-LICENSE.txt",
+      "bytes": 126360,
+      "sha256": "2f5801ee2ec66f4ef0d0d8b7e2a446b3527b56be5b43f5914242febbe616c499",
+      "characters": 1079
+    },
+    {
+      "file": "MiSans-Regular.woff2",
+      "bytes": 4858624,
+      "sha256": "d704c1a932c0bd7e8a071d276cd81c0ed0c9fecfa26ac234f4bed0559fe1cb2d",
+      "modified": false,
+      "license": "MiSans-LICENSE.pdf"
+    },
+    {
+      "file": "MiSans-Demibold.woff2",
+      "bytes": 4994364,
+      "sha256": "7afe3737efaf6a137db0ef4857fbe4033a8802756485ebc7f008e96a4bdedcf2",
+      "modified": false,
+      "license": "MiSans-LICENSE.pdf"
+    }
+  ]
+}

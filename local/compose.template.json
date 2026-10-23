@@ -1,0 +1,1669 @@
+{
+  "name": "__PROJECT_NAME__",
+  "networks": {
+    "isolated": {
+      "internal": true
+    },
+    "ingress": {}
+  },
+  "services": {
+    "cloud": {
+      "command": [
+        "uvicorn",
+        "app.workstation_local_app:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "3000"
+      ],
+      "depends_on": {
+        "identity": {
+          "condition": "service_started",
+          "required": true
+        },
+        "object-store": {
+          "condition": "service_healthy",
+          "required": true
+        },
+        "storage": {
+          "condition": "service_healthy",
+          "required": true
+        },
+        "bootstrap": {
+          "condition": "service_completed_successfully"
+        }
+      },
+      "entrypoint": null,
+      "environment": {
+        "APP_DATA_DIR": "/data",
+        "CENTRAL_AUTHORITY_BASE": "http://identity:3000/api",
+        "COMPANY_AUDIT_ENABLED": "false",
+        "FEISHU_APP_ID": "",
+        "FEISHU_APP_SECRET": "",
+        "HUB_INTEGRATED_MODE": "1",
+        "NODE_OPTIONS": "",
+        "OA_ALLOWED_USERS": "FD-999999",
+        "OA_API_BASE_URL": "http://identity:3000",
+        "OA_ENFORCE_DEPARTMENT": "false",
+        "OSS_ACCESS_KEY": "local-simulation",
+        "OSS_BUCKET": "wis-local-simulation",
+        "OSS_ENDPOINT": "http://object-store:9000",
+        "OSS_PUBLIC_BASE_URL": "",
+        "OSS_SECRET_KEY": "local-simulation",
+        "RENDER_WORKER_SHARED_SECRET": "${RENDER_WORKER_SHARED_SECRET:-__LOCAL_SECRET_20__}",
+        "SERVICE_NOTIFICATION_DELIVERY_MODE": "disabled",
+        "WIS_MATERIAL_CENTER_TOKEN": "${WIS_MATERIAL_CENTER_TOKEN:-__LOCAL_SECRET_20__}",
+        "WIS_REMIX_WORKER_BASE_URL": "http://remix:8787",
+        "WIS_WORKSTATION_API_TOKEN": "${WIS_WORKSTATION_API_TOKEN:-__LOCAL_SECRET_20__}",
+        "LOCAL_SIMULATION": "1",
+        "CLOUD_INTEGRATED_INDEX_SHA256": "415313ed5114038dbe904e82611a55e161256f62f2d8192094861bb0e158576c",
+        "SUPER_ADMIN_NUMBERS": "FD-999999",
+        "LOCAL_REVIEW_ACCEPTANCE": "1",
+        "HUB_PORT": "__HUB_PORT__"
+      },
+      "image": "brand-market-delivery/cloud:local",
+      "networks": {
+        "isolated": null
+      },
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "cloud-data",
+          "target": "/data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "bind",
+          "source": "./config/cloud-mysql.json",
+          "target": "/run/secrets/pinying-mysql.json",
+          "read_only": true
+        },
+        {
+          "type": "volume",
+          "source": "cloud-catalog",
+          "target": "/app/backend/data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "bind",
+          "source": "./config/empty.env",
+          "target": "/app/backend/.env",
+          "read_only": true
+        },
+        {
+          "type": "bind",
+          "source": "./config/review-organization-roster.json",
+          "target": "/app/backend/app/review_organization_roster.json",
+          "read_only": true
+        }
+      ],
+      "restart": "on-failure:20",
+      "user": "10001:10001",
+      "build": {
+        "context": "..",
+        "dockerfile": "build/dockerfiles/cloud/Dockerfile"
+      }
+    },
+    "creative": {
+      "command": [
+        "node",
+        "server/start-runtime.mjs"
+      ],
+      "depends_on": {
+        "identity": {
+          "condition": "service_started",
+          "required": true
+        },
+        "storage": {
+          "condition": "service_healthy",
+          "required": true
+        },
+        "bootstrap": {
+          "condition": "service_completed_successfully"
+        }
+      },
+      "entrypoint": null,
+      "environment": {
+        "CENTRAL_AUTHORITY_BASE": "http://identity:3000/api",
+        "FEISHU_APP_ID": "",
+        "FEISHU_APP_SECRET": "",
+        "HUB_INTEGRATED_MODE": "1",
+        "NODE_OPTIONS": "",
+        "RENDER_WORKER_SHARED_SECRET": "${RENDER_WORKER_SHARED_SECRET:-__LOCAL_SECRET_20__}",
+        "WIS_MATERIAL_CENTER_TOKEN": "${WIS_MATERIAL_CENTER_TOKEN:-__LOCAL_SECRET_20__}",
+        "WIS_WORKSTATION_API_TOKEN": "${WIS_WORKSTATION_API_TOKEN:-__LOCAL_SECRET_20__}",
+        "WRANGLER_SEND_METRICS": "false",
+        "OA_USERINFO_URL": "http://identity:3000/userinfo",
+        "PINYING_DATA_URL": "http://storage:8080",
+        "LOCAL_SIMULATION": "1",
+        "HUB_PORT": "__HUB_PORT__"
+      },
+      "image": "brand-market-delivery/creative:local",
+      "networks": {
+        "isolated": null
+      },
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "creative-worker",
+          "target": "/app/.wrangler",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "bind",
+          "source": "./config/creative.dev.vars",
+          "target": "/app/.dev.vars",
+          "read_only": true
+        },
+        {
+          "type": "bind",
+          "source": "../local/company-ai-fixture.mjs",
+          "target": "/app/server/company-ai-proxy.mjs",
+          "read_only": true
+        }
+      ],
+      "user": "10001:10001",
+      "build": {
+        "context": "..",
+        "dockerfile": "build/dockerfiles/creative/Dockerfile"
+      }
+    },
+    "cutter-fixture": {
+      "command": [
+        "node",
+        "/local/cutter-fixture.mjs"
+      ],
+      "entrypoint": null,
+      "environment": {
+        "LOCAL_SIMULATION": "1",
+        "HUB_PORT": "__HUB_PORT__"
+      },
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3000/health').then(r=>{if(!r.ok)process.exit(1)})"
+        ],
+        "timeout": "3s",
+        "interval": "5s",
+        "retries": 20
+      },
+      "image": "node:22.23.2-bookworm-slim",
+      "networks": {
+        "isolated": null
+      },
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "../local/cutter-fixture.mjs",
+          "target": "/local/cutter-fixture.mjs",
+          "read_only": true
+        },
+        {
+          "type": "volume",
+          "source": "cutter-fixture-data",
+          "target": "/data",
+          "volume": {
+            "nocopy": true
+          }
+        }
+      ],
+      "depends_on": {
+        "bootstrap": {
+          "condition": "service_completed_successfully"
+        }
+      }
+    },
+    "dashboard": {
+      "command": null,
+      "depends_on": {
+        "identity": {
+          "condition": "service_started",
+          "required": true
+        },
+        "postgres": {
+          "condition": "service_healthy",
+          "required": true
+        },
+        "storage": {
+          "condition": "service_healthy",
+          "required": true
+        },
+        "bootstrap": {
+          "condition": "service_completed_successfully"
+        }
+      },
+      "entrypoint": null,
+      "environment": {
+        "CENTRAL_AUTHORITY_BASE": "http://identity:3000/api",
+        "COMPANY_OA_API_BASE_URL": "http://identity:3000",
+        "COMPANY_OA_AUTH_ENABLED": "true",
+        "DISPATCH_CENTER_API_BASE": "http://dispatch:3000",
+        "FEISHU_APP_ID": "",
+        "FEISHU_APP_SECRET": "",
+        "FORCE_AUTHN_INNERAPI_DOMAIN": "http://identity:3000",
+        "HUB_INTEGRATED_MODE": "1",
+        "HUB_SAME_ORIGIN_EMBED": "true",
+        "LIFECYCLE_SCHEDULER_ENABLED": "0",
+        "LOCAL_SIMULATION": "1",
+        "NODE_OPTIONS": "--import /local/runtime-fixtures.mjs",
+        "OA_USERINFO_URL": "http://identity:3000/userinfo",
+        "PORT": "3000",
+        "RENDER_WORKER_SHARED_SECRET": "${RENDER_WORKER_SHARED_SECRET:-__LOCAL_SECRET_20__}",
+        "ROOT_MYSQL_HOST": "mysql",
+        "ROOT_MYSQL_PASSWORD": "__LOCAL_SECRET_0__",
+        "ROOT_MYSQL_PORT": "3306",
+        "ROOT_MYSQL_READ_ONLY": "true",
+        "ROOT_MYSQL_USER": "wis_local",
+        "SERVER_HOST": "0.0.0.0",
+        "SERVER_PORT": "3000",
+        "SUDA_DATABASE_URL": "postgresql://wis_local:__LOCAL_SECRET_23__@postgres:5432/wis_local",
+        "WIS_MATERIAL_CENTER_TOKEN": "${WIS_MATERIAL_CENTER_TOKEN:-__LOCAL_SECRET_20__}",
+        "WIS_WORKSTATION_API_TOKEN": "${WIS_WORKSTATION_API_TOKEN:-__LOCAL_SECRET_20__}",
+        "HUB_PORT": "__HUB_PORT__"
+      },
+      "image": "brand-market-delivery/dashboard:local",
+      "networks": {
+        "isolated": null
+      },
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "../local/runtime-fixtures.mjs",
+          "target": "/local/runtime-fixtures.mjs",
+          "read_only": true
+        },
+        {
+          "type": "volume",
+          "source": "dashboard-data",
+          "target": "/app/data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "bind",
+          "source": "./config/empty.env",
+          "target": "/app/.env",
+          "read_only": true
+        }
+      ],
+      "user": "10001:10001",
+      "build": {
+        "context": "..",
+        "dockerfile": "build/dockerfiles/dashboard/Dockerfile"
+      }
+    },
+    "data-center": {
+      "command": null,
+      "depends_on": {
+        "identity": {
+          "condition": "service_started",
+          "required": true
+        },
+        "storage": {
+          "condition": "service_healthy",
+          "required": true
+        },
+        "bootstrap": {
+          "condition": "service_completed_successfully"
+        }
+      },
+      "entrypoint": null,
+      "environment": {
+        "CENTRAL_AUTHORITY_BASE": "http://identity:3000/api",
+        "DISPATCH_CENTER_API_BASE": "http://dispatch:3000",
+        "FEISHU_APP_ID": "",
+        "FEISHU_APP_SECRET": "",
+        "HUB_INTEGRATED_MODE": "1",
+        "HUB_SAME_ORIGIN_EMBED": "true",
+        "LIFECYCLE_SCHEDULER_ENABLED": "0",
+        "NODE_OPTIONS": "",
+        "OA_USERINFO_URL": "http://identity:3000/userinfo",
+        "PORT": "3000",
+        "RENDER_WORKER_SHARED_SECRET": "${RENDER_WORKER_SHARED_SECRET:-__LOCAL_SECRET_20__}",
+        "WIS_MATERIAL_CENTER_TOKEN": "${WIS_MATERIAL_CENTER_TOKEN:-__LOCAL_SECRET_20__}",
+        "WIS_WORKSTATION_API_TOKEN": "${WIS_WORKSTATION_API_TOKEN:-__LOCAL_SECRET_20__}",
+        "LOCAL_SIMULATION": "1",
+        "HUB_PORT": "__HUB_PORT__"
+      },
+      "image": "brand-market-delivery/data-center:local",
+      "networks": {
+        "isolated": null
+      },
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "data-center-data",
+          "target": "/app/data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "bind",
+          "source": "./config/empty.env",
+          "target": "/app/.env",
+          "read_only": true
+        }
+      ],
+      "user": "10001:10001",
+      "build": {
+        "context": "..",
+        "dockerfile": "build/dockerfiles/data-center/Dockerfile"
+      }
+    },
+    "dispatch": {
+      "command": [
+        "sh",
+        "-c",
+        "node /local/initialize-dispatch.cjs && exec node /app/schedule-api-server.js"
+      ],
+      "depends_on": {
+        "fixtures": {
+          "condition": "service_started"
+        },
+        "identity": {
+          "condition": "service_started",
+          "required": true
+        },
+        "storage": {
+          "condition": "service_healthy",
+          "required": true
+        },
+        "bootstrap": {
+          "condition": "service_completed_successfully"
+        }
+      },
+      "entrypoint": null,
+      "environment": {
+        "CENTRAL_AUTHORITY_BASE": "http://identity:3000/api",
+        "DATA_DIR": "/app/data",
+        "DISPATCH_CENTER_API_BASE": "http://dispatch:3000",
+        "FEISHU_APP_ID": "local-simulation",
+        "FEISHU_APP_SECRET": "local-simulation",
+        "HUB_INTEGRATED_MODE": "1",
+        "HUB_SAME_ORIGIN_EMBED": "true",
+        "LIFECYCLE_SCHEDULER_ENABLED": "0",
+        "LOCAL_SIMULATION": "1",
+        "NODE_OPTIONS": "--import /local/runtime-fixtures.mjs",
+        "OA_USERINFO_URL": "http://identity:3000/userinfo",
+        "PLANNING_DRAFT_WRITES_ENABLED": "1",
+        "PLANNING_TOTAL_IMPORT_ENABLED": "1",
+        "PORT": "3000",
+        "RECOVERY_READ_ONLY": "0",
+        "RENDER_WORKER_SHARED_SECRET": "${RENDER_WORKER_SHARED_SECRET:-__LOCAL_SECRET_20__}",
+        "TOTAL_SCHEDULE_SHEET_ID": "0jFdXf",
+        "TOTAL_SCHEDULE_SPREADSHEET_TOKEN": "Wj4zs3oDfhGUfetlTXicxblmnHe",
+        "WIS_MATERIAL_CENTER_TOKEN": "${WIS_MATERIAL_CENTER_TOKEN:-__LOCAL_SECRET_20__}",
+        "WIS_WORKSTATION_API_TOKEN": "${WIS_WORKSTATION_API_TOKEN:-__LOCAL_SECRET_20__}",
+        "HUB_PORT": "__HUB_PORT__"
+      },
+      "image": "brand-market-delivery/dispatch:local",
+      "networks": {
+        "isolated": null
+      },
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "../local/runtime-fixtures.mjs",
+          "target": "/local/runtime-fixtures.mjs",
+          "read_only": true
+        },
+        {
+          "type": "bind",
+          "source": "../local/initialize-dispatch.cjs",
+          "target": "/local/initialize-dispatch.cjs",
+          "read_only": true
+        },
+        {
+          "type": "volume",
+          "source": "dispatch-data",
+          "target": "/app/data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "bind",
+          "source": "./config/empty.env",
+          "target": "/app/.env",
+          "read_only": true
+        }
+      ],
+      "user": "10001:10001",
+      "build": {
+        "context": "..",
+        "dockerfile": "build/dockerfiles/dispatch/Dockerfile"
+      }
+    },
+    "fixtures": {
+      "command": [
+        "node",
+        "/local/feishu-fixtures.mjs"
+      ],
+      "entrypoint": null,
+      "environment": {
+        "LOCAL_SIMULATION": "1",
+        "HUB_PORT": "__HUB_PORT__"
+      },
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://localhost:3000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+        ],
+        "timeout": "5s",
+        "interval": "5s",
+        "retries": 20
+      },
+      "image": "node:22.23.2-bookworm-slim",
+      "networks": {
+        "isolated": null
+      },
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "../local/feishu-fixtures.mjs",
+          "target": "/local/feishu-fixtures.mjs",
+          "read_only": true
+        },
+        {
+          "type": "volume",
+          "source": "fixture-data",
+          "target": "/data",
+          "volume": {}
+        }
+      ],
+      "depends_on": {
+        "bootstrap": {
+          "condition": "service_completed_successfully"
+        }
+      }
+    },
+    "gateway": {
+      "command": [
+        "node",
+        "/local/gateway.mjs"
+      ],
+      "depends_on": {
+        "hub": {
+          "condition": "service_started"
+        },
+        "learning-main": {
+          "condition": "service_started"
+        },
+        "course-candidate": {
+          "condition": "service_started"
+        }
+      },
+      "entrypoint": null,
+      "image": "node:22.23.2-bookworm-slim",
+      "networks": {
+        "isolated": {
+          "aliases": [
+            "course-gateway"
+          ]
+        },
+        "ingress": null
+      },
+      "ports": [
+        {
+          "target": 8080,
+          "published": "__HUB_PORT__",
+          "host_ip": "127.0.0.1",
+          "protocol": "tcp"
+        }
+      ],
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "../local/gateway.mjs",
+          "target": "/local/gateway.mjs",
+          "read_only": true
+        },
+        {
+          "type": "bind",
+          "source": "../local/local-identities.mjs",
+          "target": "/local/local-identities.mjs",
+          "read_only": true
+        }
+      ],
+      "environment": {
+        "LOCAL_SIMULATION": "1",
+        "HUB_PORT": "__HUB_PORT__"
+      }
+    },
+    "hub": {
+      "command": [
+        "node",
+        "server.mjs"
+      ],
+      "depends_on": {
+        "identity": {
+          "condition": "service_started",
+          "required": true
+        },
+        "storage": {
+          "condition": "service_healthy",
+          "required": true
+        },
+        "bootstrap": {
+          "condition": "service_completed_successfully"
+        }
+      },
+      "entrypoint": null,
+      "environment": {
+        "CENTRAL_AUTHORITY_BASE": "http://identity:3000/api",
+        "CENTRAL_AUTH_SESSION_BASE": "http://identity:3000/api",
+        "DATA_DIR": "/app/data",
+        "DISSECTION_BACKGROUND_ENABLED": "false",
+        "FEISHU_APP_ID": "",
+        "FEISHU_APP_SECRET": "",
+        "FLOW_LIVE_AUTO_DISPATCH": "false",
+        "FLOW_LIVE_NEXT_DAY_NOTIFICATIONS": "false",
+        "FLOW_LIVE_SESSIONS_ENABLED": "false",
+        "FLOW_PUBLIC_URL": "http://127.0.0.1:__HUB_PORT__/yxb/wis-marketing-hub/workflow-panorama/",
+        "FLOW_SOURCE_REFRESH_ENABLED": "false",
+        "HUB_EMBEDDED_MODULE_PATHS_JSON": "{\"creative-hub\": \"/yxb/wis-marketing-hub/modules/creative-hub/\", \"ai-first-creation\": \"/yxb/wis-marketing-hub/modules/ai-first-creation/\", \"material-workbench\": \"/yxb/wis-marketing-hub/modules/material-workbench/\", \"cloud-manager\": \"/yxb/wis-marketing-hub/modules/cloud-manager/\", \"live-room-management\": \"/yxb/wis-marketing-hub/modules/live-room-management/\", \"data-dashboard\": \"/yxb/wis-marketing-hub/modules/data-dashboard/\", \"data-center\": \"/yxb/wis-marketing-hub/modules/data-center/\", \"dispatch-center\": \"/yxb/wis-marketing-hub/modules/dispatch-center/\", \"workflow-engine\": \"/yxb/wis-marketing-hub/workflow-panorama/\"}",
+        "HUB_INTEGRATED_MODE": "1",
+        "HUB_PUBLIC_BASE_PATH": "/yxb/wis-marketing-hub/",
+        "NODE_OPTIONS": "",
+        "PINYING_DOCUMENT_CONFIG_FILE": "/run/secrets/pinying-documents.json",
+        "PINYING_SQLITE_CONFIG_FILE": "/run/secrets/pinying-review.json",
+        "PORT": "3000",
+        "RELEASE_ID": "local-reproduction",
+        "SOURCE_SCHEDULER_ENABLED": "false",
+        "WORKFLOW_BACKGROUND_ENABLED": "false",
+        "LOCAL_SIMULATION": "1",
+        "LIBTV_POINTS_SNAPSHOT_FILE": "/run/secrets/libtv-points-snapshot.json",
+        "HUB_PORT": "__HUB_PORT__"
+      },
+      "image": "brand-market-delivery/hub:local",
+      "networks": {
+        "isolated": null
+      },
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "hub-data",
+          "target": "/app/data",
+          "volume": {}
+        },
+        {
+          "type": "bind",
+          "source": "./config/pinying-documents.json",
+          "target": "/run/secrets/pinying-documents.json",
+          "read_only": true
+        },
+        {
+          "type": "bind",
+          "source": "./config/pinying-review.json",
+          "target": "/run/secrets/pinying-review.json",
+          "read_only": true
+        },
+        {
+          "type": "bind",
+          "source": "./config/flow-personnel-overrides.json",
+          "target": "/app/flow-personnel-overrides.json",
+          "read_only": true
+        },
+        {
+          "type": "bind",
+          "source": "./config/libtv-points-snapshot.json",
+          "target": "/run/secrets/libtv-points-snapshot.json",
+          "read_only": true
+        }
+      ],
+      "restart": "on-failure:20",
+      "user": "10001:10001",
+      "build": {
+        "context": "..",
+        "dockerfile": "build/dockerfiles/hub/Dockerfile"
+      }
+    },
+    "identity": {
+      "command": [
+        "node",
+        "/local/identity.mjs"
+      ],
+      "entrypoint": null,
+      "image": "node:22.23.2-bookworm-slim",
+      "networks": {
+        "isolated": null
+      },
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "../local/identity.mjs",
+          "target": "/local/identity.mjs",
+          "read_only": true
+        },
+        {
+          "type": "bind",
+          "source": "../local/local-identities.mjs",
+          "target": "/local/local-identities.mjs",
+          "read_only": true
+        }
+      ],
+      "environment": {
+        "LOCAL_SIMULATION": "1",
+        "HUB_PORT": "__HUB_PORT__"
+      },
+      "depends_on": {
+        "bootstrap": {
+          "condition": "service_completed_successfully"
+        }
+      }
+    },
+    "mysql": {
+      "command": null,
+      "entrypoint": null,
+      "environment": {
+        "MYSQL_DATABASE": "wis_local",
+        "MYSQL_PASSWORD": "__LOCAL_SECRET_0__",
+        "MYSQL_ROOT_PASSWORD": "__LOCAL_SECRET_22__",
+        "MYSQL_USER": "wis_local",
+        "LOCAL_SIMULATION": "1",
+        "MYSQL_ROOT_HOST": "%",
+        "HUB_PORT": "__HUB_PORT__"
+      },
+      "healthcheck": {
+        "test": [
+          "CMD-SHELL",
+          "MYSQL_PWD=\"$$MYSQL_PASSWORD\" mysql -h 127.0.0.1 -u wis_local -D wis_local -e \"SELECT 1\" >/dev/null"
+        ],
+        "timeout": "5s",
+        "interval": "5s",
+        "retries": 30
+      },
+      "image": "mysql:8.4.8",
+      "networks": {
+        "isolated": null
+      },
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "mysql-data",
+          "target": "/var/lib/mysql",
+          "volume": {}
+        },
+        {
+          "type": "bind",
+          "source": "../local/schema/mysql.sql",
+          "target": "/docker-entrypoint-initdb.d/00-schema.sql",
+          "read_only": true
+        }
+      ]
+    },
+    "object-store": {
+      "command": [
+        "node",
+        "/local/object-store-fixture.mjs"
+      ],
+      "entrypoint": null,
+      "environment": {
+        "LOCAL_SIMULATION": "1",
+        "HUB_PORT": "__HUB_PORT__"
+      },
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://localhost:9000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+        ],
+        "timeout": "5s",
+        "interval": "5s",
+        "retries": 20
+      },
+      "image": "node:22.23.2-bookworm-slim",
+      "networks": {
+        "isolated": null
+      },
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "../local/object-store-fixture.mjs",
+          "target": "/local/object-store-fixture.mjs",
+          "read_only": true
+        },
+        {
+          "type": "volume",
+          "source": "object-fixture-data",
+          "target": "/data",
+          "volume": {}
+        }
+      ],
+      "depends_on": {
+        "bootstrap": {
+          "condition": "service_completed_successfully"
+        }
+      }
+    },
+    "onecreation": {
+      "command": [
+        "node",
+        "server.js"
+      ],
+      "depends_on": {
+        "identity": {
+          "condition": "service_started",
+          "required": true
+        },
+        "storage": {
+          "condition": "service_healthy",
+          "required": true
+        },
+        "bootstrap": {
+          "condition": "service_completed_successfully"
+        }
+      },
+      "entrypoint": null,
+      "environment": {
+        "AI_WORKBENCH_PROVIDER_CREDENTIAL_DIR": "/data/provider-credentials",
+        "CENTRAL_AUTHORITY_BASE": "http://identity:3000/api",
+        "CREATIVE_LOCAL_BASE_URL": "http://creative:3000/",
+        "FEISHU_APP_ID": "",
+        "FEISHU_APP_SECRET": "",
+        "HOME": "/data/home",
+        "HOST": "0.0.0.0",
+        "HUB_INTEGRATED_MODE": "1",
+        "HUB_PUBLIC_BASE_PATH": "/yxb/wis-marketing-hub/",
+        "LOCAL_SIMULATION": "1",
+        "NODE_OPTIONS": "--import /opt/pinying-storage/metadata_files_mysql.mjs",
+        "PORT": "3766",
+        "RENDER_WORKER_SHARED_SECRET": "${RENDER_WORKER_SHARED_SECRET:-__LOCAL_SECRET_20__}",
+        "WIS_CENTRAL_ACCESS_URL": "http://identity:3000/api/central-auth/me",
+        "WIS_CENTRAL_OA_ACCESS_URL": "http://identity:3000/api/central-auth/me",
+        "WIS_HUB_SESSION_URL": "http://hub:3000/api/session",
+        "WIS_MATERIAL_CENTER_TOKEN": "${WIS_MATERIAL_CENTER_TOKEN:-__LOCAL_SECRET_20__}",
+        "WIS_TEAM_CATALOG_DB": "/data/team-catalog/catalog.sqlite",
+        "WIS_WORKSTATION_API_TOKEN": "${WIS_WORKSTATION_API_TOKEN:-__LOCAL_SECRET_20__}",
+        "LOCALAPPDATA": "/data/local-app",
+        "AI_MATERIAL_DB_HOST": "mysql",
+        "AI_MATERIAL_DB_PORT": "3306",
+        "AI_MATERIAL_DB_USER": "wis_local",
+        "AI_MATERIAL_DB_PASSWORD": "__LOCAL_SECRET_0__",
+        "AI_MATERIAL_DB_NAME": "wis_local",
+        "AI_MATERIAL_OSS_WRITE_ENABLED": "false",
+        "AI_MATERIAL_STORAGE_ROOT": "/data/material-center",
+        "AI_SHARED_STORAGE_CLIENT_ID": "local-simulation-workbench",
+        "HUB_PORT": "__HUB_PORT__"
+      },
+      "image": "brand-market-delivery/onecreation:local",
+      "networks": {
+        "isolated": null
+      },
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "../local/onecreation-fixture.cjs",
+          "target": "/local/onecreation-fixture.cjs",
+          "read_only": true
+        },
+        {
+          "type": "volume",
+          "source": "onecreation-data",
+          "target": "/data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "onecreation-jobs",
+          "target": "/opt/workbench/app/jobs",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "onecreation-cache",
+          "target": "/opt/workbench/app/cache",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "onecreation-uploads",
+          "target": "/opt/workbench/app/uploads",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "onecreation-outputs",
+          "target": "/opt/workbench/app/outputs",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "onecreation-collaboration-identity-data",
+          "target": "/opt/workbench/app/collaboration-identity-data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "onecreation-person-studio-person-jobs",
+          "target": "/opt/workbench/app/person-studio/person-jobs",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "onecreation-person-studio-person-uploads",
+          "target": "/opt/workbench/app/person-studio/person-uploads",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "onecreation-person-studio-identity-jobs",
+          "target": "/opt/workbench/app/person-studio/identity-jobs",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "onecreation-person-studio-identity-uploads",
+          "target": "/opt/workbench/app/person-studio/identity-uploads",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "bind",
+          "source": "./config/onecreation-metadata.json",
+          "target": "/run/pinying-metadata.json",
+          "read_only": true
+        },
+        {
+          "type": "bind",
+          "source": "./config/onecreation-sqlite.json",
+          "target": "/run/secrets/pinying-sqlite.json",
+          "read_only": true
+        },
+        {
+          "type": "bind",
+          "source": "./config/onecreation-auth.json",
+          "target": "/opt/workbench/app/auth-config.json",
+          "read_only": true
+        }
+      ],
+      "restart": "on-failure:20",
+      "user": "10001:10001",
+      "build": {
+        "context": "..",
+        "dockerfile": "build/dockerfiles/onecreation/Dockerfile"
+      }
+    },
+    "postgres": {
+      "command": null,
+      "entrypoint": null,
+      "environment": {
+        "POSTGRES_DB": "wis_local",
+        "POSTGRES_PASSWORD": "__LOCAL_SECRET_23__",
+        "POSTGRES_USER": "wis_local",
+        "LOCAL_SIMULATION": "1",
+        "HUB_PORT": "__HUB_PORT__"
+      },
+      "healthcheck": {
+        "test": [
+          "CMD-SHELL",
+          "pg_isready -U wis_local -d wis_local"
+        ],
+        "timeout": "5s",
+        "interval": "5s",
+        "retries": 20
+      },
+      "image": "postgres:16.6-bookworm",
+      "networks": {
+        "isolated": null
+      },
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "postgres-data",
+          "target": "/var/lib/postgresql/data",
+          "volume": {}
+        },
+        {
+          "type": "bind",
+          "source": "../local/schema/postgres.sql",
+          "target": "/docker-entrypoint-initdb.d/00-schema.sql",
+          "read_only": true
+        }
+      ]
+    },
+    "redis": {
+      "command": [
+        "redis-server",
+        "--appendonly",
+        "yes"
+      ],
+      "entrypoint": null,
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "redis-cli",
+          "ping"
+        ],
+        "timeout": "3s",
+        "interval": "5s",
+        "retries": 20
+      },
+      "image": "redis:7.4.2-alpine",
+      "networks": {
+        "isolated": null
+      },
+      "environment": {
+        "LOCAL_SIMULATION": "1",
+        "HUB_PORT": "__HUB_PORT__"
+      },
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "redis-data",
+          "target": "/data"
+        }
+      ]
+    },
+    "remix": {
+      "command": [
+        "node",
+        "render-worker/server.mjs"
+      ],
+      "depends_on": {
+        "cutter-fixture": {
+          "condition": "service_healthy",
+          "required": true
+        },
+        "identity": {
+          "condition": "service_started",
+          "required": true
+        },
+        "storage": {
+          "condition": "service_healthy",
+          "required": true
+        },
+        "vision-fixture": {
+          "condition": "service_healthy"
+        },
+        "bootstrap": {
+          "condition": "service_completed_successfully"
+        }
+      },
+      "entrypoint": null,
+      "environment": {
+        "AUTO_REMIX_ADMIN_USERS": "FD-999999",
+        "CENTRAL_AUTHORITY_BASE": "http://identity:3000/api",
+        "FEISHU_APP_ID": "",
+        "FEISHU_APP_SECRET": "",
+        "HUB_INTEGRATED_MODE": "1",
+        "LOCAL_SIMULATION": "1",
+        "NODE_OPTIONS": "--import /opt/pinying-storage/metadata_files_mysql.mjs",
+        "OA_ACCESS_AUTHORITY_URL": "http://identity:3000/api/central-auth/me",
+        "OA_API_BASE_URL": "http://identity:3000",
+        "RENDER_WORKER_DATA_DIR": "/data",
+        "RENDER_WORKER_HOST": "0.0.0.0",
+        "RENDER_WORKER_PORT": "8787",
+        "RENDER_WORKER_PUBLIC_URL": "http://127.0.0.1:__HUB_PORT__/yxb/wis-marketing-hub/modules/material-workbench/worker",
+        "RENDER_WORKER_SHARED_SECRET": "${RENDER_WORKER_SHARED_SECRET:-__LOCAL_SECRET_20__}",
+        "STABLE_APP_PUBLIC_PREFIX": "/yxb/wis-marketing-hub/modules/material-workbench",
+        "STABLE_APP_STATIC_DIR": "/app/render-worker/client-dist",
+        "WIS_CUTTER_BASE_URL": "${WIS_CUTTER_BASE_URL:-http://cutter-fixture:3000}",
+        "WIS_MATERIAL_CENTER_BASE_URL": "${WIS_MATERIAL_CENTER_BASE_URL:-http://cloud:3000/api/remix-workstation}",
+        "WIS_MATERIAL_CENTER_TOKEN": "${WIS_MATERIAL_CENTER_TOKEN:-__LOCAL_SECRET_20__}",
+        "WIS_WORKSTATION_API_TOKEN": "${WIS_WORKSTATION_API_TOKEN:-__LOCAL_SECRET_20__}",
+        "RENDER_WORKER_PROCESS_MAX_CONCURRENCY": "${RENDER_WORKER_PROCESS_MAX_CONCURRENCY:-1}",
+        "RENDER_WORKER_OCR_MAX_CONCURRENCY": "${RENDER_WORKER_OCR_MAX_CONCURRENCY:-1}",
+        "RENDER_WORKER_CPU_MAX_CONCURRENCY": "${RENDER_WORKER_CPU_MAX_CONCURRENCY:-1}",
+        "LOCAL_ASR_ENABLED": "false",
+        "JUMP_LLM_URL": "${JUMP_LLM_URL:-http://bridge:3000/vision}",
+        "JUMP_LLM_TOKEN": "${JUMP_LLM_TOKEN:-local-simulation}",
+        "JUMP_LLM_APPLICATION": "${JUMP_LLM_APPLICATION:-local-remix}",
+        "JUMP_LLM_PROVIDER": "${JUMP_LLM_PROVIDER:-local-simulation}",
+        "JUMP_LLM_VISION_MODEL": "${JUMP_LLM_VISION_MODEL:-local-simulation-vision}",
+        "WIS_REMIX_VISUAL_REVIEW_ENABLED": "${WIS_REMIX_VISUAL_REVIEW_ENABLED:-true}",
+        "HUB_PORT": "__HUB_PORT__",
+        "WIS_MATERIAL_CENTER_READ_TIMEOUT_MS": "${WIS_MATERIAL_CENTER_READ_TIMEOUT_MS:-60000}",
+        "WIS_MATERIAL_CENTER_READ_MAX_ATTEMPTS": "${WIS_MATERIAL_CENTER_READ_MAX_ATTEMPTS:-3}",
+        "WIS_MATERIAL_CENTER_READ_RETRY_DELAY_MS": "${WIS_MATERIAL_CENTER_READ_RETRY_DELAY_MS:-1000}",
+        "WIS_REMIX_VISION_PROVIDER": "${WIS_REMIX_VISION_PROVIDER:-fandow}",
+        "DEEPSEEK_API_KEY": "${DEEPSEEK_API_KEY:-}",
+        "DEEPSEEK_VISION_MODEL": "${DEEPSEEK_VISION_MODEL:-deepseek-flash}",
+        "WIS_REMIX_AUTOMATION_ENABLED": "${WIS_REMIX_AUTOMATION_ENABLED:-1}"
+      },
+      "image": "brand-market-delivery/remix:local",
+      "networks": {
+        "isolated": null
+      },
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "remix-data",
+          "target": "/data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "bind",
+          "source": "./config/remix-metadata.json",
+          "target": "/run/pinying-metadata.json",
+          "read_only": true
+        }
+      ],
+      "restart": "on-failure:20",
+      "user": "10001:10001",
+      "build": {
+        "context": "..",
+        "dockerfile": "build/dockerfiles/remix/Dockerfile"
+      }
+    },
+    "storage": {
+      "command": [
+        "python",
+        "-u",
+        "/opt/storage/sql_gateway.py"
+      ],
+      "depends_on": {
+        "mysql": {
+          "condition": "service_healthy",
+          "required": true
+        },
+        "redis": {
+          "condition": "service_healthy",
+          "required": true
+        },
+        "bootstrap": {
+          "condition": "service_completed_successfully"
+        }
+      },
+      "entrypoint": null,
+      "environment": {
+        "PINYING_GROWTH_MAINTENANCE_ENABLED": "false",
+        "PINYING_HISTORY_MAINTENANCE_ENABLED": "false",
+        "PYTHONPATH": "/opt/storage",
+        "LOCAL_SIMULATION": "1",
+        "HUB_PORT": "__HUB_PORT__"
+      },
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health', timeout=3)"
+        ],
+        "timeout": "5s",
+        "interval": "5s",
+        "retries": 20
+      },
+      "networks": {
+        "isolated": {
+          "aliases": [
+            "brand-marketing-fd-026222-data-gateway",
+            "brand-marketing-fd-026222-hub-storage-gateway",
+            "brand-marketing-fd-026222-remix-storage-gateway"
+          ]
+        }
+      },
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "./config/data-connection.json",
+          "target": "/run/secrets/data-connection.json",
+          "read_only": true
+        },
+        {
+          "type": "bind",
+          "source": "./config/gateway-tokens.json",
+          "target": "/run/secrets/gateway-tokens.json",
+          "read_only": true
+        },
+        {
+          "type": "bind",
+          "source": "../local/schema",
+          "target": "/local-schemas",
+          "read_only": true
+        },
+        {
+          "type": "volume",
+          "source": "creative-worker",
+          "target": "/local-creative-worker",
+          "volume": {}
+        },
+        {
+          "type": "bind",
+          "source": "./config/r2-cache.json",
+          "target": "/run/secrets/r2-cache.json",
+          "read_only": true
+        }
+      ],
+      "image": "brand-market-delivery/storage:local",
+      "restart": "on-failure:20",
+      "user": "10001:10001",
+      "build": {
+        "context": "..",
+        "dockerfile": "build/dockerfiles/storage/Dockerfile"
+      }
+    },
+    "course-candidate": {
+      "command": [
+        "sh",
+        "container-entrypoint.sh"
+      ],
+      "depends_on": {
+        "identity": {
+          "condition": "service_started",
+          "required": true
+        },
+        "storage": {
+          "condition": "service_healthy",
+          "required": true
+        },
+        "bootstrap": {
+          "condition": "service_completed_successfully"
+        }
+      },
+      "entrypoint": null,
+      "environment": {
+        "ANCHOR_STATUS_ENABLED": "false",
+        "ANCHOR_STATUS_NOTIFICATIONS_ENABLED": "false",
+        "ANCHOR_STATUS_SCHEDULER_ENABLED": "0",
+        "BASE_PATH": "/yxb/wis-marketing-hub/modules/live-room-management",
+        "CENTRAL_AUTHORITY_BASE": "http://identity:3000/api",
+        "DATA_DIR": "/app/data",
+        "FEISHU_APP_ID": "",
+        "FEISHU_APP_SECRET": "",
+        "HUB_INTEGRATED_MODE": "1",
+        "HUB_SAME_ORIGIN_EMBED": "true",
+        "LIFECYCLE_REMINDERS_ENABLED": "false",
+        "LIFECYCLE_SCHEDULER_ENABLED": "0",
+        "MARKETING_HUB_URL": "http://127.0.0.1:__HUB_PORT__/yxb/wis-marketing-hub/",
+        "NODE_OPTIONS": "--import /opt/pinying-storage/metadata_files_mysql.mjs",
+        "PORT": "3000",
+        "RENDER_WORKER_SHARED_SECRET": "${RENDER_WORKER_SHARED_SECRET:-__LOCAL_SECRET_20__}",
+        "WIS_MATERIAL_CENTER_TOKEN": "${WIS_MATERIAL_CENTER_TOKEN:-__LOCAL_SECRET_20__}",
+        "WIS_WORKSTATION_API_TOKEN": "${WIS_WORKSTATION_API_TOKEN:-__LOCAL_SECRET_20__}",
+        "LOCAL_SIMULATION": "1",
+        "ASSISTANT_RANKINGS_ENABLED": "true",
+        "ASSISTANT_RANKINGS_SCHEDULER_ENABLED": "false",
+        "ASSISTANT_RANKINGS_FIXTURE_FILE": "/local/assistant-capture.json",
+        "CONTRIBUTION_SYNC_ENABLED": "false",
+        "HUB_PORT": "__HUB_PORT__"
+      },
+      "image": "brand-market-delivery/live:local",
+      "networks": {
+        "isolated": {
+          "aliases": [
+            "live"
+          ]
+        }
+      },
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "live-data",
+          "target": "/app/data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "bind",
+          "source": "./config/live-metadata.json",
+          "target": "/run/pinying-metadata.json",
+          "read_only": true
+        },
+        {
+          "type": "bind",
+          "source": "./config/live-sqlite.json",
+          "target": "/run/secrets/pinying-sqlite.json",
+          "read_only": true
+        },
+        {
+          "type": "bind",
+          "source": "./config/assistant-capture.json",
+          "target": "/local/assistant-capture.json",
+          "read_only": true
+        }
+      ],
+      "restart": "on-failure:20",
+      "user": "10001:10001",
+      "build": {
+        "context": "..",
+        "dockerfile": "build/dockerfiles/live/Dockerfile"
+      }
+    },
+    "learning-main": {
+      "image": "brand-market-delivery/learning:local",
+      "build": {
+        "context": "..",
+        "dockerfile": "build/dockerfiles/learning/Dockerfile"
+      },
+      "environment": {
+        "LOCAL_SIMULATION": "1",
+        "PORT": "3000",
+        "HOST": "0.0.0.0",
+        "PUBLIC_ORIGIN": "http://127.0.0.1:__HUB_PORT__",
+        "HUB_PORT": "__HUB_PORT__"
+      },
+      "networks": [
+        "isolated"
+      ],
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "learning-data",
+          "target": "/data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "hub-ui",
+          "target": "/hub-dist",
+          "volume": {
+            "nocopy": true
+          }
+        }
+      ],
+      "depends_on": {
+        "hub-ui-init": {
+          "condition": "service_completed_successfully"
+        },
+        "bootstrap": {
+          "condition": "service_completed_successfully"
+        }
+      }
+    },
+    "hub-ui-init": {
+      "image": "brand-market-delivery/hub:local",
+      "build": {
+        "context": "..",
+        "dockerfile": "build/dockerfiles/hub/Dockerfile"
+      },
+      "user": "0:0",
+      "environment": {
+        "LOCAL_SIMULATION": "1",
+        "HUB_PORT": "__HUB_PORT__"
+      },
+      "command": [
+        "sh",
+        "-c",
+        "cp -a /app/dist/. /hub-ui/"
+      ],
+      "networks": [
+        "isolated"
+      ],
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "hub-ui",
+          "target": "/hub-ui",
+          "volume": {
+            "nocopy": true
+          }
+        }
+      ],
+      "restart": "no",
+      "depends_on": {
+        "bootstrap": {
+          "condition": "service_completed_successfully"
+        }
+      }
+    },
+    "bootstrap": {
+      "image": "brand-market-delivery/storage:local",
+      "build": {
+        "context": "..",
+        "dockerfile": "build/dockerfiles/storage/Dockerfile"
+      },
+      "user": "0:0",
+      "command": [
+        "python",
+        "/local/bootstrap.py"
+      ],
+      "environment": {
+        "LOCAL_SIMULATION": "1",
+        "MYSQL_HOST": "mysql",
+        "MYSQL_DATABASE": "wis_local",
+        "MYSQL_USER": "wis_local",
+        "MYSQL_ROOT_PASSWORD": "__LOCAL_SECRET_22__",
+        "PYTHONPATH": "/opt/storage",
+        "HUB_PORT": "__HUB_PORT__"
+      },
+      "networks": [
+        "isolated"
+      ],
+      "depends_on": {
+        "mysql": {
+          "condition": "service_healthy"
+        },
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "./config",
+          "target": "/run/secrets",
+          "read_only": false
+        },
+        {
+          "type": "bind",
+          "source": "../local",
+          "target": "/local",
+          "read_only": true
+        },
+        {
+          "type": "bind",
+          "source": "../local/schema",
+          "target": "/local-schemas",
+          "read_only": true
+        },
+        {
+          "type": "volume",
+          "source": "cloud-catalog",
+          "target": "/local-volumes/cloud-catalog",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "cloud-data",
+          "target": "/local-volumes/cloud-data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "creative-worker",
+          "target": "/local-volumes/creative-worker",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "cutter-fixture-data",
+          "target": "/local-volumes/cutter-fixture-data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "dashboard-data",
+          "target": "/local-volumes/dashboard-data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "data-center-data",
+          "target": "/local-volumes/data-center-data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "dispatch-data",
+          "target": "/local-volumes/dispatch-data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "fixture-data",
+          "target": "/local-volumes/fixture-data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "hub-data",
+          "target": "/local-volumes/hub-data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "live-data",
+          "target": "/local-volumes/live-data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "object-fixture-data",
+          "target": "/local-volumes/object-fixture-data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "onecreation-cache",
+          "target": "/local-volumes/onecreation-cache",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "onecreation-collaboration-identity-data",
+          "target": "/local-volumes/onecreation-collaboration-identity-data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "onecreation-data",
+          "target": "/local-volumes/onecreation-data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "onecreation-jobs",
+          "target": "/local-volumes/onecreation-jobs",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "onecreation-outputs",
+          "target": "/local-volumes/onecreation-outputs",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "onecreation-person-studio-identity-jobs",
+          "target": "/local-volumes/onecreation-person-studio-identity-jobs",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "onecreation-person-studio-identity-uploads",
+          "target": "/local-volumes/onecreation-person-studio-identity-uploads",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "onecreation-person-studio-person-jobs",
+          "target": "/local-volumes/onecreation-person-studio-person-jobs",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "onecreation-person-studio-person-uploads",
+          "target": "/local-volumes/onecreation-person-studio-person-uploads",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "onecreation-uploads",
+          "target": "/local-volumes/onecreation-uploads",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "remix-data",
+          "target": "/local-volumes/remix-data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "learning-data",
+          "target": "/local-volumes/learning-data",
+          "volume": {
+            "nocopy": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "input-data",
+          "target": "/local-volumes/input-data",
+          "volume": {
+            "nocopy": true
+          }
+        }
+      ],
+      "restart": "no"
+    },
+    "vision-fixture": {
+      "image": "brand-market-delivery/remix:local",
+      "build": {
+        "context": "..",
+        "dockerfile": "build/dockerfiles/remix/Dockerfile"
+      },
+      "command": [
+        "node",
+        "/app/local-support.mjs"
+      ],
+      "environment": {
+        "LOCAL_SIMULATION": "1",
+        "HUB_PORT": "__HUB_PORT__",
+        "LOCAL_LIBRARY_BASE_URL": "${LOCAL_LIBRARY_BASE_URL:-http://bridge:3000}"
+      },
+      "networks": {
+        "isolated": {
+          "aliases": [
+            "bridge"
+          ]
+        }
+      },
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "input-data",
+          "target": "/data",
+          "volume": {
+            "nocopy": true
+          }
+        }
+      ],
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+        ],
+        "interval": "5s",
+        "timeout": "3s",
+        "retries": 20
+      },
+      "depends_on": {
+        "bootstrap": {
+          "condition": "service_completed_successfully"
+        }
+      }
+    }
+  },
+  "volumes": {
+    "cloud-catalog": {},
+    "cloud-data": {},
+    "creative-worker": {},
+    "cutter-fixture-data": {},
+    "dashboard-data": {},
+    "data-center-data": {},
+    "dispatch-data": {},
+    "fixture-data": {},
+    "hub-data": {},
+    "live-data": {},
+    "mysql-data": {},
+    "object-fixture-data": {},
+    "onecreation-cache": {},
+    "onecreation-collaboration-identity-data": {},
+    "onecreation-data": {},
+    "onecreation-jobs": {},
+    "onecreation-outputs": {},
+    "onecreation-person-studio-identity-jobs": {},
+    "onecreation-person-studio-identity-uploads": {},
+    "onecreation-person-studio-person-jobs": {},
+    "onecreation-person-studio-person-uploads": {},
+    "onecreation-uploads": {},
+    "postgres-data": {},
+    "remix-data": {
+      "name": "${REMIX_DATA_VOLUME:-brand-market-full_remix-data}"
+    },
+    "redis-data": {},
+    "learning-data": {},
+    "hub-ui": {},
+    "input-data": {
+      "name": "${INPUT_DATA_VOLUME:-brand-market-full_input-data}"
+    }
+  }
+}

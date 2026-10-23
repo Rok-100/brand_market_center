@@ -1,0 +1,1 @@
+{"mysql": {"host": "mysql", "port": 3306, "user": "wis_local", "password": "__LOCAL_SECRET_0__", "database": "wis_local", "tls": false}, "redis": {"host": "redis", "port": 6379, "db": 0, "password": null}}

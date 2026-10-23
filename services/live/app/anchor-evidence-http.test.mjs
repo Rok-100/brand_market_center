@@ -1,0 +1,26 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile,writeFile,mkdtemp,rm} from 'node:fs/promises';
+import {join} from 'node:path';
+import {tmpdir} from 'node:os';
+import {pathToFileURL} from 'node:url';
+import {createServer} from 'node:http';
+test('anchor evidence HTTP keeps login boundary, returns current sources and handles bad name',async t=>{
+ const dir=await mkdtemp(join(tmpdir(),'anchor-evidence-'));t.after(()=>rm(dir,{recursive:true,force:true}));
+ let source=await readFile(new URL('./server.js',import.meta.url),'utf8');
+ source=source.slice(0,source.lastIndexOf('createServer((req, res) => {')).replaceAll("from './",`from '${new URL('./',import.meta.url).href}`);
+ source=source.replace('const auth = await authorizeCentral(req);',`const auth=req.headers['x-test-user']?{ok:true,mode:'central',user:{number:'TEST',realName:'测试'}}:{ok:false,status:401,detail:'unauthorized'};`);
+ source=source.replace('loadProfiles:readOfficialAnchorDevelopment,','loadProfiles:()=>readOfficialAnchorDevelopment(),');
+ source+=`\nreadOfficialAnchorDevelopment=async()=>[{name:'测试主播',abilities:{节奏:'S'},reviewDocumentUrl:'https://jqx28l0j4lx.feishu.cn/docx/test'}];
+ readLifecycleSnapshot=async()=>({profiles:[{name:'测试主播'}]});
+ collectAnchorEvidence=async()=>({sources:{coaching:{name:'WIS直播战队',available:false,reason:'private upstream'},learning:{name:'WIS直播学习',available:true}},evidenceByAnchor:{测试主播:{evaluations:[],recordings:[]}},fetchedAt:new Date().toISOString()});
+ export {handleRequest};`;
+ const file=join(dir,'fixture.mjs');await writeFile(file,source);const fixture=await import(pathToFileURL(file));
+ const server=createServer((req,res)=>fixture.handleRequest(req,res).catch(()=>{res.writeHead(500);res.end('{}')}));await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));t.after(()=>new Promise(resolve=>server.close(resolve)));
+ const url=`http://127.0.0.1:${server.address().port}/api/lifecycle/anchor-evidence`;
+ assert.equal((await fetch(url)).status,401);
+ const request=async name=>fetch(url+'?name='+encodeURIComponent(name),{headers:{'x-test-user':'yes'}});
+ assert.equal((await request('')).status,400);assert.equal((await request('其他主播')).status,404);
+ const response=await request('测试主播');assert.equal(response.status,200);const payload=await response.json();
+ assert.equal(payload.data.profile.abilities.节奏,'S');assert.equal(payload.data.sources.coaching.available,false);assert.ok(!JSON.stringify(payload).includes('private upstream'));
+});

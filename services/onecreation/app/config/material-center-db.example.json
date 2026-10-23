@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "encryption": "local-machine-protected",
+  "host": "database.example.invalid",
+  "port": 3306,
+  "user": "replace-with-user",
+  "database": "replace-with-database",
+  "passwordProtected": "replace-with-protected-password",
+  "updatedAt": null
+}

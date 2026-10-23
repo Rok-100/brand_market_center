@@ -1,0 +1,1 @@
+{"rules": [{"root": "/data", "logicalRoot": "/data", "connection": {"url": "http://brand-marketing-fd-026222-data-gateway:8080", "scope": "remix_documents", "token": "__LOCAL_SECRET_18__"}}]}

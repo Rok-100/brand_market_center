@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI产品镜生成 · 品牌营销工作台</title>
+    <link rel="stylesheet" href="./styles.css?v=2.9.4&build=2.10.43-stable-task-order-edit-icon&release=2.9.7-shotplan-source-tabs" />
+  <link rel="stylesheet" href="./product-workflows.css?v=2.9.11-canvas-link-retry-2.9.12-product-layout-2.9.13-canvas-prompt-link-fix-2.9.15-qwen-quota-notice-2.10.1-ai-showcase-template-2.10.1-custom-portrait-canvas-2.10.5-video-model-selector&build=2.10.19-sku-full-name&release=2.10.54-ai-showcase-ui-polish&workspace=2.10.49-ai-showcase-workspace-v2&routing=2.10.55-model-mode-template&interaction=2.10.56-click-select&layout=2.10.56-reference-copy&rules=2.10.57-user-guide&creative=2026.08.20-r7&sku-layout=2026.08.24-r1&instruction-example=2026.09.02-r1" />
+  </head>
+  <body class="pw-body ps-body">
+    <main class="pw-shell ps-shell">
+      <nav class="pw-nav">
+        <a href="./#creation">← 返回工作台首页</a>
+        <span>一创制作 / AI产品镜生成</span>
+        <a href="./replace-product.html">前往一键换品 →</a>
+      </nav>
+
+      <header class="pw-hero ps-hero">
+        <div>
+          <span class="pw-kicker">AI PRODUCT SHOWCASE</span>
+          <h1 id="productStudioHeroTitle">一张参考图，生成三条真实产展。</h1>
+          <p id="productStudioHeroDescription">先反推并确认空场景提示词，再生成平拍、俯拍、特写三个无产品场景。每个角度选择可选的同一SKU白底产品图和真实碎镜头。</p>
+        </div>
+        <div class="pw-storage" id="storageStatus">正在读取共享资产库…</div>
+      </header>
+
+      <div class="ps-workspace-with-rules" id="productRulesWorkspace">
+        <div class="ps-workflow-main">
+      <section class="pw-panel ps-library-panel ps-module-asset-source" id="assetLibrary">
+        <div class="pw-panel-head">
+          <div><small>统一资产引用</small><h2>选择本次任务使用的产品 SKU</h2></div>
+          <div class="ps-library-head-actions">
+            <a class="ps-open-asset-library" href="./asset-library.html">进入资产管理 →</a>
+            <button id="manageSkuButton" type="button" hidden>SKU管理</button>
+            <span id="assetCount" hidden>0 项</span>
+          </div>
+        </div>
+        <div class="ps-library-toolbar">
+          <div class="pw-field">
+            <span>产品SKU</span>
+            <div class="ps-product-select" id="productSelectControl">
+              <select id="productSelect" class="ps-product-select-native" aria-label="选择产品SKU" aria-hidden="true" tabindex="-1" title="选择产品SKU；双击当前SKU名称可修改"></select>
+              <button class="ps-product-select-trigger" id="productSelectTrigger" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="productSelectMenu" title="选择产品SKU；双击当前SKU名称可修改">
+                <span id="productSelectLabel">请选择产品SKU</span><i aria-hidden="true"></i>
+              </button>
+              <div class="ps-product-select-menu" id="productSelectMenu" role="listbox" aria-label="产品SKU列表" hidden></div>
+            </div>
+            <small id="productAssetHint">单击可选，图片与碎镜头按固定SKU编码关联资产库。</small>
+          </div>
+          <a class="ps-asset-library-summary" href="./asset-library.html"><b>管理产品图与碎镜头</b><span>新增、修改、删除和查看资产请前往一创资产管理；当前页面只选择任务所需素材。</span></a>
+          <div class="pw-tabs ps-library-tabs" aria-label="资产库分类" hidden>
+            <button class="active" data-asset-tab="image" type="button">图片资产库</button>
+            <button data-asset-tab="video" type="button">碎镜头资产库</button>
+          </div>
+          <label class="pw-field" id="assetRoleField" hidden>
+            <span>深海次抛图片角色</span>
+            <select id="assetRoleSelect"></select>
+          </label>
+          <label class="pw-upload ps-asset-upload" hidden>
+            <input id="assetFileInput" type="file" accept="image/png,image/jpeg" multiple />
+            <b id="assetUploadTitle">上传白底产品图</b>
+            <span id="assetUploadHint">PNG / JPG，单张不超过10MB；上传一次，工作台各模块共用</span>
+          </label>
+        </div>
+        <div class="pw-notice" id="uploadStatus" hidden></div>
+        <div class="pw-notice ps-asset-audit-notice" id="assetAuditStatus" hidden></div>
+        <section class="ps-upload-queue" id="assetUploadQueue" aria-live="polite" hidden></section>
+        <div class="ps-library-grid" id="assetGrid" aria-label="当前SKU资产缩略图" hidden></div>
+        <div class="pw-empty" id="assetEmpty" hidden>
+          <b>这个SKU的资产库还是空的</b>
+          <span>选择上方对应库并上传，AI产品镜、一键换品等模块会读取同一份工作台资产。</span>
+        </div>
+      </section>
+
+      <section class="ps-channel-tabs" role="tablist" aria-label="选择 AI 产品镜制作通道">
+        <button class="active" id="productChannelTabStandard" type="button" role="tab" aria-selected="true" aria-controls="standardShowcaseChannel" data-product-channel-tab="standard">
+          <b>三路制作</b><span>参考图 → 平拍 / 俯拍 / 特写 + 真实碎镜头</span>
+        </button>
+        <button id="productChannelTabSemiAuto" type="button" role="tab" aria-selected="false" aria-controls="semiAutoShowcaseChannel" tabindex="-1" data-product-channel-tab="semi-auto">
+          <b>备用半自动通道</b><span>自定义场景图 + 真实碎镜头</span>
+        </button>
+        <button id="productChannelTabCreativeInstruction" type="button" role="tab" aria-selected="false" aria-controls="creativeInstructionShowcaseChannel" tabindex="-1" data-product-channel-tab="creative-instruction">
+          <b>备用创意通道</b><span>产品白底图 + 一句话指令</span>
+        </button>
+      </section>
+
+      <div class="ps-channel-workspace" id="standardShowcaseChannel" role="tabpanel" aria-labelledby="productChannelTabStandard" data-product-channel-panel="standard">
+
+      <section class="ps-step-rail" aria-label="AI产品镜生成步骤">
+        <div class="active"><b>01</b><span>上传参考图</span></div>
+        <div><b>02</b><span>反推并确认提示词</span></div>
+        <div><b>03</b><span>生成3张空场景</span></div>
+        <div><b>04</b><span>选择白底图与碎镜头</span></div>
+        <div><b>05</b><span>生成4–15秒视频</span></div>
+      </section>
+
+      <section class="pw-panel ps-reference-panel">
+        <div class="pw-panel-head">
+          <div><small>01–02 / 场景理解</small><h2>上传参考图并确认提示词</h2></div>
+          <span id="promptProviderStatus">qwen3.7-plus</span>
+        </div>
+        <div class="ps-qwen-quota-notice" id="qwenQuotaNotice" role="status" hidden>
+          <b>Qwen 高阶模型额度已用完</b>
+          <span id="qwenQuotaMessage">图片反推暂不可用；你仍可手动填写提示词并继续使用生图、视频生成和共享资产功能。</span>
+        </div>
+        <div class="ps-reference-grid">
+          <label class="ps-reference-upload" id="referenceUpload">
+            <input id="referenceFileInput" type="file" accept="image/png,image/jpeg" />
+            <div class="ps-reference-placeholder" id="referencePlaceholder">
+              <b>上传场景参考图</b>
+              <span>PNG / JPG，单张不超过10MB</span>
+              <em>参考图只用于理解空间、光线与摄影风格</em>
+            </div>
+            <img id="referencePreview" alt="场景参考图预览" hidden />
+          </label>
+
+          <div class="ps-prompt-editor">
+            <div class="ps-inline-head">
+              <div><b>场景拆解、中文母提示词与一致性蓝图</b><span>按8个维度拆解并锁定空间、道具、光线和主体预留区；不保留参考图中的产品</span></div>
+              <button id="analyzePromptButton" type="button" disabled>调用 qwen3.7-plus</button>
+            </div>
+            <textarea id="scenePrompt" rows="16" placeholder="上传参考图后，点击“调用 qwen3.7-plus”。模型将按场景定位、构图、光影、色彩、材质、道具、镜头语言、真实感进行拆解，再输出可复用中文母提示词与跨机位一致性蓝图。"></textarea>
+            <div class="pw-field ps-image-model-field">
+              <span>生图模型</span>
+              <div class="pw-model-options" role="radiogroup" aria-label="选择空场景生图模型">
+                <label><input name="imageModel" type="radio" value="openai/gpt-image-2" checked /><span>GPT Image 2</span></label>
+                <label><input name="imageModel" type="radio" value="doubao-seedream-5-0-pro-260628" /><span>Seedream 5.0 Pro</span></label>
+              </div>
+              <small>首轮三张空场景和后续追加场景都会使用当前任务选定的模型。</small>
+            </div>
+            <div class="ps-confirm-row">
+              <span id="promptLockText">提示词尚未确认</span>
+              <button id="confirmPromptButton" type="button" disabled>确认提示词</button>
+            </div>
+          </div>
+        </div>
+        <div class="pw-notice" id="referenceStatus" hidden></div>
+      </section>
+
+      <section class="pw-panel ps-scenes-panel" id="scenesPanel">
+        <div class="pw-panel-head ps-scenes-head">
+          <div class="ps-scenes-copy">
+            <small>03-05/三路制作</small>
+            <h2>先生成平拍母图，再并发生成俯拍与特写</h2>
+          </div>
+          <span id="candidateStatus">等待确认提示词</span>
+        </div>
+        <div class="pw-notice" id="taskStatus" hidden></div>
+        <div class="ps-lane-board" id="laneBoard">
+          <div class="ps-production-skeleton">
+            <div class="ps-angle-tabs" aria-label="三路视频制作角度">
+              <button class="active" type="button">平拍</button><button type="button">俯拍</button><button type="button">特写</button>
+            </div>
+            <div class="ps-production-layout ps-production-layout-v2">
+              <div class="ps-production-main">
+                <div class="ps-lane-flow-scroll"><div class="ps-combine-row ps-lane-flow">
+                  <section class="ps-flow-unit"><small>输入 1 · 场景画面</small><div class="ps-asset-slot empty"><b>等待生成场景画面</b><span>确认提示词后生成</span></div></section><i>＋</i>
+                  <section class="ps-flow-unit"><small>输入 2 · 产品白底图（可选）</small><div class="ps-asset-slot empty ps-product-reference-empty"><span class="ps-product-reference-caution">请精准选择，建议直接不选</span><b>＋ 选择产品白底图</b><span>可不上传，最多9张</span></div><p>未选择时沿用碎镜头中的产品</p></section><i>＋</i>
+                  <section class="ps-flow-unit"><small>输入 3 · 真实碎镜头（至少2条）</small><div class="ps-asset-slot empty"><b>＋ 选择真实产展碎镜头</b><span>至少2条，将自动拼接并保留素材原声</span></div></section><i class="ps-flow-arrow">→</i>
+                  <section class="ps-flow-unit ps-lane-output-unit"><small>输出 · 平拍视频</small><div class="ps-output-preview"><div class="ps-preview-stage empty"><span class="ps-preview-icon" aria-hidden="true">▶</span><b>等待生成</b><span>9:16</span></div></div></section>
+                </div></div>
+                <section class="ps-generation-settings ps-lane-generation-settings">
+                  <div class="ps-lane-settings-heading"><div><small>LibTV · 用户选定模型</small><h3>生成设置</h3></div><span>产品白底图可选</span></div>
+                  <div class="ps-setting-grid"><label><span>时长</span><select disabled><option>4秒</option></select></label><label><span>清晰度</span><select disabled><option>720P</option></select></label><label class="ps-video-model-control"><span>视频生成模型</span><select disabled><option>正在检测模型积分…</option></select></label><label class="ps-video-mode-control"><span>视频生成模式</span><select disabled><option>全能参考</option></select></label></div>
+                  <div class="ps-preflight-checks"><b>生成前检查</b><span><i>•</i>场景画面等待生成</span><span class="ready"><i>✓</i>产品白底图可不上传</span><span><i>•</i>真实碎镜头至少2条</span><span><i>•</i>当前角度视频提示词待填写</span><span class="ready"><i>✓</i>时长与清晰度按模型联动</span><span class="ready"><i>✓</i>画面比例固定 9:16</span></div>
+                  <button class="ps-generate-button" type="button" disabled>✦ 生成平拍视频</button><p>连接工作台服务后自动启用</p>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      </div>
+
+      <div class="ps-channel-workspace" id="semiAutoShowcaseChannel" role="tabpanel" aria-labelledby="productChannelTabSemiAuto" data-product-channel-panel="semi-auto" hidden>
+      <section class="pw-panel ps-custom-creative-panel" id="customCreativePanel">
+        <div class="pw-panel-head ps-custom-creative-head">
+          <div>
+            <small>备用半自动通道</small>
+            <h2>自定义场景图输出，如对后景产品摆放有要求可提前自行生成</h2>
+          </div>
+          <span>不依赖生图模型</span>
+        </div>
+        <div class="pw-notice" id="customCreativeStatus" hidden></div>
+        <input id="customSceneFileInput" type="file" accept="image/png,image/jpeg" hidden />
+        <div class="ps-flow-labels"><span>输入素材</span><i></i><strong>输出结果</strong></div>
+        <div class="ps-combine-row ps-custom-creative-flow" id="customCreativeFlow">
+          <div class="ps-flow-unit">
+            <small>输入 1 · 自定义场景图</small>
+            <button class="ps-asset-slot empty ps-custom-scene-slot" id="customSceneButton" type="button"><b>＋ 上传场景图</b><span>PNG / JPG，单张不超过10MB</span></button>
+          </div>
+          <i>＋</i>
+          <div class="ps-flow-unit"><small>输入 2 · 产品白底图（可选0–9张）</small><div id="customProductSlot"></div></div>
+          <i>＋</i>
+          <div class="ps-flow-unit"><small>输入 3 · 真实碎镜头（至少2条）</small><div id="customFragmentSlot"></div></div>
+          <i class="ps-flow-arrow">→</i>
+          <div class="ps-flow-unit output"><small>输出 · 创意视频</small><div id="customOutputSlot"></div></div>
+        </div>
+        <label class="ps-angle-video-prompt ps-custom-creative-prompt">
+          <span><b>视频备注提示词</b><small>上传完成后将按实际 nodeKey 重组并提交给 LibTV；不会叠加外部通用规则或产品插件专控</small></span>
+          <textarea id="customCreativePrompt" rows="2" placeholder="如无具体要求请填写“无”，即可点击生成按钮；也可填写画面、动作、镜头或节奏要求。"></textarea>
+        </label>
+        <section class="ps-generation-settings ps-lane-generation-settings ps-custom-creative-settings">
+          <div class="ps-lane-settings-heading"><div><small>LibTV · 用户选定模型</small><h3>生成设置</h3></div><span id="customProductSelectionBadge">产品白底图可选</span></div>
+          <div class="ps-setting-grid">
+            <label class="ps-duration-control"><span>时长</span><select class="ps-click-select" id="customCreativeDuration" title="点击展开列表选择当前模型支持的时长"></select><small id="customCreativeDurationHint">选择碎镜头后按拼接总时长自动预填</small></label>
+            <label><span>清晰度</span><select class="ps-click-select" id="customCreativeClarity" title="点击展开列表选择清晰度"></select></label>
+            <label class="ps-video-model-control"><span>视频生成模型</span><select class="ps-click-select" id="customCreativeVideoModel" title="点击展开列表选择视频生成模型"></select><small id="customCreativeVideoModelHint"></small></label>
+            <label class="ps-video-mode-control"><span>视频生成模式</span><select class="ps-click-select" id="customCreativeVideoMode" title="点击展开列表选择视频生成模式"></select><small>将同步到 LibTV 视频节点</small></label>
+          </div>
+          <div class="ps-preflight-checks"><b>生成前检查</b>
+            <span id="customSceneCheck"><i>•</i>自定义场景图待上传</span>
+            <span class="ready" id="customProductCheck"><i>✓</i>产品白底图可不上传</span>
+            <span id="customFragmentCheck"><i>•</i>真实碎镜头至少2条</span>
+            <span id="customPromptCheck"><i>•</i>视频备注提示词待填写</span>
+            <span class="ready" id="customDurationCheck"><i>✓</i>时长已设置</span>
+            <span class="ready" id="customClarityCheck"><i>✓</i>清晰度已设置</span>
+            <span id="customModelCheck"><i>•</i>视频生成模型待确认</span>
+            <span class="ready" id="customModeCheck"><i>✓</i>视频生成模式已选择</span>
+          </div>
+          <button class="ps-generate-button" id="generateCustomCreativeButton" type="button" disabled>生成创意视频</button>
+          <p id="customCreativeSettingSummary">LibTV · 生成设置将在素材准备完成后启用</p>
+          <div class="ps-custom-creative-canvas" id="customCreativeCanvasLink"></div>
+        </section>
+      </section>
+
+      </div>
+
+      <div class="ps-channel-workspace" id="creativeInstructionShowcaseChannel" role="tabpanel" aria-labelledby="productChannelTabCreativeInstruction" data-product-channel-panel="creative-instruction" hidden>
+      <section class="pw-panel cis-panel" id="creativeInstructionShowcasePanel" hidden>
+        <div class="pw-panel-head cis-head">
+          <div>
+            <small>备用创意通道</small>
+            <h2>一句话自然指令输出创意视频</h2>
+            <p>场景图可选；产品白底图必选 1–9 张。后端会按全局、品类、SKU 三层规则编译提示词，并为本通道创建独立 LibTV 任务画布。</p>
+          </div>
+          <span>输出：创意视频</span>
+        </div>
+        <div class="pw-notice" id="cisStatus" hidden></div>
+        <section class="cis-category-picker" aria-labelledby="cisCategoryHeading">
+          <div class="cis-category-heading">
+            <div><small>必选 · 8 个商业分类</small><h3 id="cisCategoryHeading">先选择创意视频分类</h3></div>
+            <span>每类内置 20 个服务端场景预设</span>
+          </div>
+          <div class="cis-category-carousel-shell">
+            <button class="cis-category-nav" id="cisCategoryPrev" type="button" aria-label="查看前面的分类">‹</button>
+            <div class="cis-category-carousel" id="cisCategoryCarousel" role="radiogroup" aria-label="创意视频分类"></div>
+            <button class="cis-category-nav" id="cisCategoryNext" type="button" aria-label="查看后面的分类">›</button>
+          </div>
+          <p id="cisCategorySceneHint">请选择分类；服务端将从对应的 20 个场景中按生成数量去重组装提示词。</p>
+        </section>
+        <input id="cisSceneInput" type="file" accept="image/png,image/jpeg" hidden />
+
+        <div class="ps-flow-labels"><span>独立输入</span><i></i><strong>输出结果</strong></div>
+        <div class="cis-flow">
+          <section class="ps-flow-unit">
+            <small>输入 1 · 自定义场景图（可选）</small>
+            <div class="cis-asset-card" id="cisSceneSlot"></div>
+          </section>
+          <i>＋</i>
+          <section class="ps-flow-unit">
+            <small>输入 2 · 产品白底图（必选 1–9 张）</small>
+            <div class="cis-asset-card cis-product-card" id="cisProductSlot"></div>
+          </section>
+          <i>＋</i>
+          <section class="ps-flow-unit">
+            <small>输入 3 · 一句话自然指令</small>
+            <div class="cis-instruction-card">
+              <textarea id="cisInstruction" maxlength="2000" placeholder=" " aria-label="一句话自然指令" aria-describedby="cisInstructionExample"></textarea>
+              <div class="cis-instruction-example">
+                <button id="cisInstructionCopy" type="button" aria-label="复制一句话指令示例">复制示例</button>
+                <pre id="cisInstructionExample">先在上方选择创意视频分类，再输入一句话指令，比如：
+案例①豪车上女性人物第一人称主驾驶视觉，方向盘及车头窗外大马路作为主要背景，3个分镜的画面逻辑：从爱马仕包拿出一盒面膜→撕开面膜单片→取出面膜内容物。
+案例②生成数量：高级感-深蓝黑金影棚 + 黑色镜面台面 + 透明玻璃块 + 细窄金色扫光实拍场景1个
+特殊要求： 1、真实产品展示，去AI味，去TVC感； 2、以清晨奢华梳妆台为布景，日常清晨太阳光柔和照到梳妆台，产品光影明暗效果贴合实际。眼膜面膜作为“日常贵妇护肤仪式”，可使用珍珠、爱马仕高奢品牌首饰等元素点缀画面，展现精致女性高端生活方式； 3、5秒包含3个分镜：1、人物不出镜，以高处俯拍展示同一个人物左手拿燕窝眼膜罐，右手轻轻拧开燕窝眼膜罐的盖子后轻点膏体，向镜头展示燕窝眼膜罐内的膏体质地；2、同样的人物左手继续拿眼膜罐往下倒面膜罐内容物到下方精致水晶碗，右手稳稳拿着精致水晶碗，呈现倒出面膜罐内容物的画面；3、同样背景，近景拍摄人物右手拿着金色美容刷把水晶碗里的面膜膏体刷到左手手背肌肤上，呈现面膜膏体的质地。</pre>
+              </div>
+            </div>
+          </section>
+          <i class="cis-flow-arrow">→</i>
+          <section class="ps-flow-unit output">
+            <small>输出 · 创意视频（按填写数量）</small>
+            <div class="cis-output-card" id="cisOutputSlot"></div>
+          </section>
+        </div>
+
+        <section class="ps-generation-settings ps-lane-generation-settings cis-settings">
+          <div class="ps-lane-settings-heading">
+            <div><small>服务端提示词编译器 + 独立 LibTV 执行器</small><h3>生成设置</h3></div>
+            <span id="cisTemplateBadge">正在读取模板版本…</span>
+          </div>
+          <div class="cis-setting-grid">
+            <label><span>生成数量</span><input id="cisOutputCount" type="number" min="1" max="9" step="1" value="1" /><small>一任务一画布；每套提示词对应一个视频节点</small></label>
+            <label><span>时长</span><select class="ps-click-select" id="cisDuration"></select><small>短片自动编排建立、发展和收尾</small></label>
+            <label><span>清晰度</span><select class="ps-click-select" id="cisClarity"></select><small>按所选模型支持项联动</small></label>
+            <label><span>视频生成模型</span><select class="ps-click-select" id="cisVideoModel"></select><small id="cisVideoModelHint"></small></label>
+            <label><span>视频生成模式</span><select class="ps-click-select" id="cisVideoMode"></select><small>产品图和可选场景图作为上游事实资产</small></label>
+          </div>
+          <div class="ps-preflight-checks cis-checks">
+            <b>生成前检查</b>
+            <span id="cisSkuCheck"><i>—</i>请在页面顶部选择本次任务产品 SKU</span>
+            <span id="cisSceneCheck"><i>✓</i>未上传场景图时使用后端内置场景勾画</span>
+            <span id="cisCategoryCheck"><i>—</i>请选择 1 个商业分类</span>
+            <span id="cisOutputCountCheck"><i>✓</i>将生成 1 套提示词和 1 个视频节点</span>
+            <span id="cisProductCheck"><i>—</i>请上传 1–9 张产品白底图</span>
+            <span id="cisInstructionCheck"><i>—</i>请填写一句话自然指令</span>
+            <span id="cisModelCheck"><i>—</i>视频模型待确认</span>
+            <span class="ready"><i>✓</i>本通道表单、上传队列、草稿、轮询与任务状态完全独立</span>
+          </div>
+          <div class="cis-actions">
+            <button id="cisCompileButton" type="button">预览编译结果（不消耗额度）</button>
+            <button class="ps-generate-button" id="cisGenerateButton" type="button" disabled>生成创意视频</button>
+          </div>
+          <p id="cisSettingSummary">准备素材后可先预览服务端编译结果。</p>
+          <div class="cis-prompt-trace" id="cisPromptTrace" hidden></div>
+          <div class="ps-custom-creative-canvas" id="cisCanvasLink"></div>
+        </section>
+      </section>
+
+      </div>
+
+        </div>
+        <aside class="ps-current-rules" id="productRulesPanel" aria-label="AI产品镜当前执行规则">
+          <div class="ps-current-rules-head">
+            <div><h2>当前执行规则</h2><span>AI产品镜使用提示</span></div>
+            <button id="hideProductRulesButton" type="button" aria-controls="productRulesPanel">隐藏</button>
+          </div>
+          <ol class="ps-current-rule-list">
+            <li><b>开始前确认目标SKU</b><span>先确认当前任务选择的产品SKU，后续白底图和碎镜头不要混入其他产品、相似款或不同包装版本。</span></li>
+            <li><b>根据需求选择制作通道</b><span>需要平台根据参考图生成平拍、俯拍、特写场景时使用标准流程；已有明确后景或产品摆放场景图时使用备用半自动通道；只有产品白底图和自然语言创意要求时，使用备用创意通道。</span></li>
+            <li><b>场景参考图重点看环境</b><span>优先选择空间、构图、光线、色彩和道具关系清楚的图片。确认反推提示词前，检查并删除不希望带入新场景的产品或道具描述。</span></li>
+            <li class="important"><b>白底产品图宁缺毋滥</b><span>只选择与碎镜头中产品完全一致的SKU、包装和版本，可选择同一产品的不同角度。如无法确定是否一致，建议直接不选，平台将沿用碎镜头中的产品。</span></li>
+            <li><b>碎镜头决定动作和节奏</b><span>选择产品清楚、动作完整、画面稳定的真实碎镜头，并按希望生成的播放顺序排列。不要混入无关产品、重复动作或明显不同场景的镜头。</span></li>
+            <li><b>视频备注只写额外要求</b><span>只需补充动作、镜头、运镜或节奏要求，不要重复修改产品包装、颜色或场景内容。没有额外要求时填写“无”。</span></li>
+            <li><b>生成按钮未开放时先看检查项</b><span>依次检查场景图、碎镜头数量、参考视频总时长和视频备注。所有条件满足后，生成按钮会自动开放。</span></li>
+            <li><b>任务提交后可以离开页面</b><span>图片和视频会继续在后台生成，之后从左侧任务中心重新打开，即可查看进度和生成结果。</span></li>
+            <li><b>选择匹配的碎镜头资产</b><span>当前使用Seedance 2.0“全能参考”，建议选择包含完整产品动作且背景干扰较少的实拍碎镜头。具体积分扣除规则以LibTV官方为准；初次生成效果不满意，建议直接点击画布地址，人工修改后在LibTV重新生成。</span></li>
+          </ol>
+        </aside>
+      </div>
+      <button class="ps-show-rules-button" id="showProductRulesButton" type="button" aria-controls="productRulesPanel" hidden>显示当前执行规则</button>
+
+    </main>
+
+    <dialog class="ps-sku-manager" id="skuManagerDialog">
+      <div class="ps-sku-manager-head">
+        <div><small>共享资产管理</small><h2>产品SKU管理</h2><p>SKU编码是资产稳定标识；名称可修改并同步共享资产索引。系统SKU及含资产SKU不可删除，可停用保留素材。</p></div>
+        <button id="closeSkuManagerButton" type="button" aria-label="关闭SKU管理">×</button>
+      </div>
+      <div class="ps-sku-manager-body">
+        <aside class="ps-sku-list-pane">
+          <button class="ps-new-sku" id="newSkuButton" type="button">＋ 新增SKU</button>
+          <div class="ps-sku-list" id="skuManagerList"></div>
+        </aside>
+        <form class="ps-sku-editor" id="skuManagerForm">
+          <div class="pw-empty" id="skuEditorEmpty"><b>请选择一个SKU</b><span>可在左侧编辑现有SKU，或新增产品SKU。</span></div>
+          <div id="skuEditorFields" hidden>
+            <div class="ps-sku-editor-title"><div><small id="skuEditorSource">自定义SKU</small><h3 id="skuEditorTitle">新增SKU</h3></div><span id="skuEditorAssetCount">0张图片 · 0条碎镜头</span></div>
+            <label class="pw-field"><span>SKU编码</span><input id="skuIdInput" type="text" readonly /><small>系统自动生成，创建后不可修改</small></label>
+            <label class="pw-field"><span>产品名称</span><input id="skuNameInput" type="text" maxlength="240" required placeholder="例如：WIS隐形水润面膜（水光肽）" /><small>名称只更新共享资产索引；SKU编码和OSS文件地址保持不变</small></label>
+            <label class="pw-field"><span>产品简称</span><input id="skuShortNameInput" type="text" maxlength="120" placeholder="例如：水光肽面膜" /></label>
+            <label class="pw-field"><span>产品分类</span><input id="skuCategoryInput" type="text" maxlength="120" placeholder="例如：面膜、精华液、喷雾" /></label>
+            <div class="ps-sku-select-row">
+              <label class="pw-field"><span>使用状态</span><select id="skuStatusSelect"><option value="active">启用</option><option value="inactive">停用（保留素材）</option></select></label>
+              <label class="pw-field"><span>素材状态</span><select id="skuAssetStatusSelect"><option value="ready">可使用</option><option value="pending">待补素材</option></select></label>
+            </div>
+            <div class="pw-notice" id="skuManagerStatus" hidden></div>
+            <div class="ps-sku-editor-actions">
+              <button id="restoreSkuNameButton" type="button" hidden>恢复上次名称</button>
+              <button class="ps-danger-button" id="deleteSkuButton" type="button">删除空的自建SKU</button>
+              <button class="ps-save-sku" id="saveSkuButton" type="submit">保存SKU</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </dialog>
+
+    <dialog class="ps-picker" id="assetPickerDialog">
+      <div class="ps-picker-head">
+        <div><small id="pickerStep">选择资产</small><h2 id="pickerTitle">选择产品白底图</h2></div>
+        <button id="closePickerButton" type="button" aria-label="关闭">×</button>
+      </div>
+      <p id="pickerHint"></p>
+      <div class="ps-picker-upload" id="pickerUploadRow" hidden>
+        <label>
+          <input id="pickerProductUploadInput" type="file" accept="image/png,image/jpeg,.png,.jpg,.jpeg" multiple />
+          <b>＋ 本地上传产品图</b>
+        </label>
+        <span>上传后自动保存到当前 SKU 的产品资产，并加入本次选择</span>
+      </div>
+      <div class="pw-notice ps-picker-upload-status" id="pickerUploadStatus" hidden></div>
+      <div class="ps-picker-grid" id="pickerGrid"></div>
+      <div class="pw-empty" id="pickerEmpty" hidden><b>没有可选资产</b><span>请先关闭窗口，在资产库中上传对应SKU素材。</span></div>
+      <section class="ps-picker-selection" id="pickerSelection" hidden>
+        <header><b id="pickerSelectionTitle">已选素材</b><span id="pickerSelectionCount">已选 0 项</span></header>
+        <div id="pickerSelectionList"></div>
+      </section>
+      <div class="ps-picker-actions" id="pickerActions" hidden>
+        <button id="cancelPickerSelectionButton" type="button">取消</button>
+        <button id="confirmPickerSelectionButton" type="button" disabled>确认选择</button>
+      </div>
+    </dialog>
+
+    <dialog class="ps-asset-preview-dialog" id="assetPreviewDialog">
+      <header>
+        <div><small id="assetPreviewType">产品资产原图</small><h2 id="assetPreviewTitle">查看原始资产</h2></div>
+        <button id="closeAssetPreviewButton" type="button" aria-label="关闭资产预览">×</button>
+      </header>
+      <div class="ps-asset-preview-stage"><img id="assetPreviewImage" alt="产品白底图原图" hidden /><video id="assetPreviewVideo" controls playsinline preload="none" hidden></video></div>
+      <p>仅在打开此窗口后加载原图或原视频；按 Esc、点击关闭按钮或点击弹窗外区域均可返回素材选择。</p>
+    </dialog>
+
+    <script src="./workstation-identity.js?v=2.11.0"></script>
+    <script src="./module-task-center.js?v=2.10.36-ai-product-task-center&build=2.10.43-stable-task-order-edit-icon&channels=2026.08.20-r1"></script>
+  <script src="./product-studio.js?v=2.10.1-ai-showcase-template-2.10.1-custom-portrait-canvas-2.10.4-capacity-fallback-2.10.5-video-model-selector&build=2.10.36-task-output-recovery-2.10.32-video-options&release=2.10.54-ai-showcase-ui-polish&workspace=2.10.49-ai-showcase-workspace-v2&routing=2.10.55-model-mode-template&interaction=2.10.56-click-select&copy=2.10.57-video-note&rules=2.10.57-user-guide&creative=2026.08.20-r9&visibility=2026.08.27-r2"></script>
+  <script src="./creative-instruction-showcase.js?v=2026.09.02-r1"></script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "gatewayUrl": "https://example.invalid/auth",
+  "issuer": "workbench-auth",
+  "audience": "brand-marketing-workbench",
+  "keyId": "replace-with-key-id",
+  "collaborationApiKey": "replace-with-api-key",
+  "scopeLabel": "品牌营销部",
+  "publicKey": "replace-with-public-key"
+}
+

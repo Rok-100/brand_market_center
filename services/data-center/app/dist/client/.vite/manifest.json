@@ -1,0 +1,49 @@
+{
+  "_framework-Coa4FFO2.js": {
+    "file": "yxb/wis-marketing-hub/modules/data-center/_next/static/chunks/framework-Coa4FFO2.js",
+    "name": "framework",
+    "imports": [
+      "_rolldown-runtime-BAiWmo3V.js"
+    ]
+  },
+  "_rolldown-runtime-BAiWmo3V.js": {
+    "file": "yxb/wis-marketing-hub/modules/data-center/_next/static/chunks/rolldown-runtime-BAiWmo3V.js",
+    "name": "rolldown-runtime"
+  },
+  "app/dashboard.tsx": {
+    "file": "yxb/wis-marketing-hub/modules/data-center/_next/static/chunks/dashboard-VUHqxGNk.js",
+    "name": "dashboard",
+    "src": "app/dashboard.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-BAiWmo3V.js",
+      "_framework-Coa4FFO2.js"
+    ]
+  },
+  "node_modules/vinext/dist/shims/layout-segment-context.js": {
+    "file": "yxb/wis-marketing-hub/modules/data-center/_next/static/chunks/layout-segment-context-DPGmjr9H.js",
+    "name": "layout-segment-context",
+    "src": "node_modules/vinext/dist/shims/layout-segment-context.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-BAiWmo3V.js",
+      "virtual:vinext-app-browser-entry",
+      "_framework-Coa4FFO2.js"
+    ]
+  },
+  "virtual:vinext-app-browser-entry": {
+    "file": "yxb/wis-marketing-hub/modules/data-center/_next/static/chunks/index-D4UVuD5X.js",
+    "name": "index",
+    "src": "virtual:vinext-app-browser-entry",
+    "isEntry": true,
+    "imports": [
+      "_rolldown-runtime-BAiWmo3V.js",
+      "_framework-Coa4FFO2.js"
+    ],
+    "dynamicImports": [
+      "virtual:vinext-app-browser-entry",
+      "node_modules/vinext/dist/shims/layout-segment-context.js",
+      "app/dashboard.tsx"
+    ]
+  }
+}

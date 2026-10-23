@@ -1,0 +1,41 @@
+/* Give the recording image the entire preview area, including on narrow cards. */
+.anchor-recording-preview {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: #edf2ef;
+  color: #174c37;
+  text-decoration: none;
+}
+.anchor-recording-preview > img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.anchor-recording-preview:focus-visible {
+  outline: 3px solid #167348;
+  outline-offset: -3px;
+}
+.anchor-recording-preview .anchor-media-badge {
+  max-width: calc(100% - 40px);
+  box-sizing: border-box;
+}
+.recording-preview-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px;
+  text-align: center;
+}
+.recording-preview-placeholder strong { font-size: 18px; }
+.recording-preview-placeholder span { color: #60776b; font-size: 13px; line-height: 1.6; }
+.anchor-card .recording-file-name { overflow-wrap: anywhere; }

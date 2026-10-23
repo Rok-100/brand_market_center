@@ -1,0 +1,11 @@
+import {readFileSync,writeFileSync,copyFileSync} from 'node:fs';
+import assert from 'node:assert/strict';
+const file='dist/server/index.js';
+let source=readFileSync(file,'utf8');
+const nativeImport='import { env } from "cloudflare:workers";';
+assert.equal(source.split(nativeImport).length,2,'Expected exactly one native environment binding');
+source=source.replace(nativeImport,'import { env as nativeEnv } from "cloudflare:workers";\nimport {mysqlEnvironment} from "./d1_mysql.mjs";\nconst env = mysqlEnvironment(nativeEnv);');
+for(const marker of ['notificationChatId','notification-chats','ACT-FINAL-','ensureProductionSchema','sameProfile'])assert.ok(source.includes(marker),`Production bundle missing ${marker}`);
+writeFileSync(file,source);
+for(const name of ['d1_mysql.mjs','creative_schema.mjs','r2_mysql_metadata.mjs'])copyFileSync('server/storage/'+name,'dist/server/'+name);
+console.log('Production bundle: script notifications, MySQL/OSS adapters and existing performance behavior verified');

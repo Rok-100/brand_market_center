@@ -1,0 +1,9 @@
+# 连接 Docker 网络之外的素材库/识别服务时，叠加此文件。
+# 默认 compose.yaml 的本地隔离模式无需使用此文件。
+services:
+  remix:
+    networks:
+      - external-services
+networks:
+  external-services:
+    driver: bridge

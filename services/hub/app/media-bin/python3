@@ -1,0 +1,3 @@
+#!/bin/sh
+export PYTHONHOME=/opt/dissection-media/python/usr
+exec /opt/dissection-media/python/lib64/ld-linux-x86-64.so.2 --library-path /opt/dissection-media/python/lib/x86_64-linux-gnu:/opt/dissection-media/python/usr/lib/x86_64-linux-gnu /opt/dissection-media/python/usr/bin/python3 "$@"

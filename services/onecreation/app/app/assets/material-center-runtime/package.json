@@ -1,0 +1,10 @@
+{
+  "name": "ai-video-workbench-material-center-runtime",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MySQL metadata runtime for the AI video workbench material center.",
+  "main": "material-center.js",
+  "dependencies": {
+    "mysql2": "3.23.2"
+  }
+}

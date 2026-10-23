@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>品牌营销部工作站</title>
+    <link rel="stylesheet" href="./styles.css?v=2.11.60-creation-portal-blue-ui" />
+  </head>
+  <body class="hub-body">
+    <main class="hub-shell">
+      <header class="hub-hero">
+        <div class="hub-brand">
+          <span class="hub-kicker">品牌营销部 · 内容生产工作流</span>
+          <h1>品牌营销部工作站</h1>
+          <p>统一完成一创资产管理、视频生成与批量裂变；任务切换页面后仍会在后台继续运行。</p>
+        </div>
+        <div class="hub-status" id="hubStatus">
+          <span class="status-dot"></span>
+          <div>
+            <b id="hubStatusTitle">正在检查运行环境</b>
+            <small id="hubStatusText">请稍候</small>
+            <small class="hub-status-version" id="hubVersion">版本读取中</small>
+            <small class="hub-auth-user" id="hubAuthUser">正在读取登录账号</small>
+            <button class="hub-logout" id="hubLogout" type="button">退出登录</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="hub-update-panel" aria-label="版本更新信息">
+        <div class="hub-update-heading">
+          <span>更新信息</span>
+          <strong id="hubUpdateTitle">正在读取版本状态</strong>
+          <small id="hubUpdateText">请稍候</small>
+          <button class="hub-update-action" id="hubUpdateButton" type="button" hidden>立即在线更新</button>
+        </div>
+        <div class="hub-update-notes" id="hubUpdateNotes">
+          <span>正在读取本次更新内容…</span>
+        </div>
+      </section>
+
+      <section class="hub-access-guide" id="hubAccessGuide" aria-labelledby="hubAccessGuideTitle">
+        <header>
+          <div>
+            <span class="hub-access-eyebrow">首次使用准备</span>
+            <h2 id="hubAccessGuideTitle">先完成 FanDo 授权与 LibTV 登录</h2>
+            <p>两项授权均按当前飞书账号独立保存。同事首次进入时按顺序完成即可，工作站不会展示或共享个人凭证。</p>
+          </div>
+          <strong class="hub-access-summary" id="hubAccessSummary">正在检查两项授权…</strong>
+        </header>
+        <div class="hub-access-steps">
+          <article class="hub-access-step" id="hubProviderGuide">
+            <div class="hub-access-step-head"><span>01</span><b id="hubProviderGuideStatus">正在检查</b></div>
+            <h3>获取本人 FanDo 授权</h3>
+            <p>先登录 FanDo 客户端，再从默认目录选择本人最新的 <code>openclaw.json</code>。工作站只提取 API Key，并按飞书账号加密隔离。</p>
+            <small>默认目录：%APPDATA%\FanDo\openclaw</small>
+            <button class="hub-connect hub-access-action" id="hubProviderAuth" type="button">检查 FanDo 授权</button>
+          </article>
+          <article class="hub-access-step" id="hubLibtvGuide">
+            <div class="hub-access-step-head"><span>02</span><b id="hubLibtvGuideStatus">正在检查</b></div>
+            <h3>登录本人 LibTV 账号</h3>
+            <p>使用本人手机号和短信验证码完成登录，再选择实际生成视频的个人或团队空间；页面右上角需保持同名空间。</p>
+            <small>LibTV 凭证与当前工作台账号一对一绑定，其他成员不可读取。</small>
+            <button class="hub-connect hub-access-action" id="hubLibtvLogin" type="button">登录 LibTV</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="creation-studio" id="creation" aria-labelledby="creationStudioTitle">
+        <header class="creation-studio-intro">
+          <div>
+            <span class="creation-studio-eyebrow">AI CREATION WORKSPACE</span>
+            <h2 id="creationStudioTitle">选择一个制作任务</h2>
+            <p>先准备可复用资产，再进入对应任务；制作过程切换页面后仍会在后台继续。</p>
+          </div>
+          <span class="creation-studio-count"><b>3</b> 个制作入口</span>
+        </header>
+
+          <a class="workflow-asset-manager" href="./asset-library.html">
+            <i class="workflow-asset-icon" aria-hidden="true">库</i>
+            <span><em>统一资产底座</em><b>一创资产管理</b><small>集中维护产品 SKU、产品图片与真实碎镜头，供 AI 产品镜、一键做同款与 AI KOC 调用。</small></span>
+            <strong>进入管理 <i aria-hidden="true">↗</i></strong>
+          </a>
+          <div class="workflow-tool-grid">
+            <a href="./product.html" hidden aria-hidden="true">旧版AI产品镜兼容入口</a>
+            <a class="workflow-tool" data-creation-entry data-entry-state="visible" data-permission-key="creation.product" data-mode="product" href="./product-studio.html">
+              <div class="workflow-tool-top"><em class="workflow-tool-index">01</em><i class="workflow-tool-icon" aria-hidden="true">✦</i></div>
+              <span>AI产品镜</span><small>用产品图生成真实、可直接进入剪辑的产品展示镜头。</small><b class="workflow-tool-enter">进入制作 <i aria-hidden="true">›</i></b>
+            </a>
+            <a class="workflow-tool" data-creation-entry data-entry-state="visible" data-permission-key="creation.remake" data-mode="remake" href="./one-click-remake.html">
+              <div class="workflow-tool-top"><em class="workflow-tool-index">02</em><i class="workflow-tool-icon" aria-hidden="true">↻</i></div>
+              <span>一键做同款</span><small>复用成功 LibTV 画布的提示词、参数与上游资产，换产品或口播后批量生成。</small><b class="workflow-tool-enter">进入制作 <i aria-hidden="true">›</i></b>
+            </a>
+            <a class="workflow-tool" data-creation-entry data-entry-state="visible" data-permission-key="creation.koc" data-mode="koc" href="./koc.html">
+              <div class="workflow-tool-top"><em class="workflow-tool-index">03</em><i class="workflow-tool-icon workflow-tool-icon-koc" aria-hidden="true">KOC</i></div>
+              <span>AI KOC</span><small>用人物素材或参考视频生成更自然的 KOC 内容片段。</small><b class="workflow-tool-enter">进入制作 <i aria-hidden="true">›</i></b>
+            </a>
+            <a class="workflow-tool" data-creation-entry data-entry-state="reserved" data-permission-key="creation.replacement" data-mode="replacement" href="./replace-product.html" hidden aria-hidden="true">
+              <div class="workflow-tool-top"><em class="workflow-tool-index">04</em><i class="workflow-tool-icon" aria-hidden="true">×N</i></div>
+              <span>一键换品</span><small>组合参考视频、新首帧、产品图与参考音色，生成换品新视频。</small><b class="workflow-tool-enter">进入制作 <i aria-hidden="true">›</i></b>
+            </a>
+            <a class="workflow-tool" data-creation-entry data-entry-state="reserved" data-permission-key="creation.variation" data-mode="variation" href="./variation.html" hidden aria-hidden="true">
+              <div class="workflow-tool-top"><em class="workflow-tool-index">05</em><i class="workflow-tool-icon" aria-hidden="true">×N</i></div>
+              <span>单视频批量裂变</span><small>保留母版结构，按需调整产品、场景或文案并批量生成。</small><b class="workflow-tool-enter">进入制作 <i aria-hidden="true">›</i></b>
+            </a>
+            <a class="workflow-tool" data-creation-entry data-entry-state="reserved" data-permission-key="creation.person" data-mode="person" id="personStudioEntry" href="./person-studio/" hidden aria-hidden="true">
+              <div class="workflow-tool-top"><em class="workflow-tool-index">06</em><i class="workflow-tool-icon" aria-hidden="true">人</i></div>
+              <span>AI明星画面生成</span><small id="personStudioTag">用人物图片或视频生成明星/KOL画面</small><b class="workflow-tool-enter">进入制作 <i aria-hidden="true">›</i></b>
+            </a>
+          </div>
+          <footer class="creation-studio-meta">
+            <span><i aria-hidden="true"></i>任务切换后继续在后台运行</span>
+            <span><i aria-hidden="true"></i>生成结果统一回到任务列表</span>
+          </footer>
+      </section>
+
+      <footer class="hub-footer">
+        <span>共享经验，人工审核；投放前不自动发布</span>
+      </footer>
+      <a class="hub-feedback" id="feedbackEntry" href="https://jqx28l0j4lx.feishu.cn/sheets/RXk6scrORhAX9mt5XkscEOoBnSb" target="_blank" rel="noopener">
+        <span>意见反馈</span>
+        <small>打开飞书反馈表</small>
+      </a>
+    </main>
+    <dialog class="libtv-login-dialog" id="libtvLoginDialog" aria-labelledby="libtvLoginTitle">
+      <form class="libtv-login-form" id="libtvLoginForm">
+        <button class="libtv-dialog-close" id="libtvLoginClose" type="button" aria-label="关闭">×</button>
+        <span class="libtv-dialog-kicker">服务器授权</span>
+        <h2 id="libtvLoginTitle">登录 LibTV</h2>
+        <p>使用你自己的 LibTV 手机号完成短信验证。凭证只绑定当前工作台账号，其他同事无法查看或使用。</p>
+        <label class="libtv-login-field" id="libtvPhoneStep">
+          <span>手机号</span>
+          <input id="libtvPhone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" maxlength="11" placeholder="请输入11位手机号" required />
+        </label>
+        <div class="libtv-code-step" id="libtvCodeStep" hidden>
+          <label class="libtv-login-field">
+            <span>短信验证码</span>
+            <input id="libtvCode" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="请输入6位验证码" />
+          </label>
+        </div>
+        <section class="libtv-account-step" id="libtvAccountStep" hidden>
+          <label class="libtv-login-field">
+            <span>视频生成空间</span>
+            <select id="libtvAccountSelect" aria-describedby="libtvAccountHint"></select>
+          </label>
+          <p id="libtvAccountHint">工作台会在这里创建视频画布；打开 LibTV 网页后，请确认右上角也切换到同名团队。</p>
+          <button class="libtv-switch-account" id="libtvSwitchAccount" type="button">切换生成空间</button>
+        </section>
+        <p class="libtv-login-message" id="libtvLoginMessage" role="status" aria-live="polite"></p>
+        <div class="libtv-login-actions">
+          <button class="libtv-send-code" id="libtvSendCode" type="button">发送验证码</button>
+          <button class="libtv-verify-code" id="libtvVerifyCode" type="submit" hidden>完成登录</button>
+          <button class="libtv-send-code" id="libtvLogout" type="button" hidden>解除绑定并更换账号</button>
+        </div>
+      </form>
+    </dialog>
+    <script src="./home.js?v=2.11.60-creation-portal-blue-ui&build=guided-auth-v1"></script>
+  </body>
+</html>

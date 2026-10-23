@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-27T10:25:00+08:00",
+  "sourceMode": "verified-snapshot",
+  "sourceChat": {
+    "name": "品牌营销部-核心干将",
+    "chatId": "oc_04ec28cf2911911da8c202c5eee21742",
+    "readThroughDate": "2026-08-27"
+  },
+  "definition": "仅收录跨日、具备负责人或持续要求的工作；群聊和文档只作为事实来源，不把闲聊或未确认建议当任务。",
+  "items": [
+    {"id":"sep-original","title":"9月全员一创与有效 AI 开头","center":"ALL","owners":["各中心负责人"],"startDate":"2026-08-27","endDate":"2026-09-30","status":"进行中","acceptance":"每人形成可核验有效一创与至少一个有效 AI 开头","sourceType":"飞书文档","sourceTitle":"营销B-8月复盘与9月规划","sourceUrl":"https://jqx28l0j4lx.feishu.cn/wiki/Kj1jwUfo1ihsJEkh84BcTUxVnbe"},
+    {"id":"weekly-review","title":"每周二固定素材周复盘","center":"营销中心B","owners":["彭聪"],"startDate":"2026-09-01","endDate":"2026-09-30","status":"持续执行","acceptance":"每周形成有效方向、无效方向与下一轮测试动作","sourceType":"飞书文档","sourceTitle":"营销B-8月复盘与9月规划","sourceUrl":"https://jqx28l0j4lx.feishu.cn/wiki/Kj1jwUfo1ihsJEkh84BcTUxVnbe"},
+    {"id":"mid-autumn","title":"中秋节点素材储备","center":"营销中心B","owners":["营销中心B"],"startDate":"2026-08-27","endDate":"2026-09-20","status":"进行中","acceptance":"节点前完成可投放素材储备并通过复盘筛选","sourceType":"飞书文档","sourceTitle":"营销B-8月复盘与9月规划","sourceUrl":"https://jqx28l0j4lx.feishu.cn/wiki/Kj1jwUfo1ihsJEkh84BcTUxVnbe"},
+    {"id":"new-product-material","title":"新品每日原创素材测试与周度有效文案","center":"AI营销中心","owners":["吴为","AI营销中心"],"startDate":"2026-08-27","endDate":"2026-09-30","status":"进行中","acceptance":"每人每日至少2条原创素材测试，周度沉淀有效文案方向","sourceType":"飞书文档","sourceTitle":"08-26 抖店新品定计划","sourceUrl":"https://jqx28l0j4lx.feishu.cn/docx/LNu6dsmgwoLdyXxHRs1cUImRn1g"},
+    {"id":"new-product-review","title":"新品素材审核与复盘机制","center":"AI营销中心","owners":["吴为"],"startDate":"2026-08-27","endDate":"2026-09-30","status":"进行中","acceptance":"提升素材会议频次并按有效结果回写方向","sourceType":"飞书文档","sourceTitle":"08-26 抖店新品定计划","sourceUrl":"https://jqx28l0j4lx.feishu.cn/docx/LNu6dsmgwoLdyXxHRs1cUImRn1g"},
+    {"id":"ai-certification","title":"品牌营销部 AI 初级技能认证","center":"ALL","owners":["舒豪","各中心负责人"],"startDate":"2026-08-27","endDate":"2026-09-30","status":"进行中","acceptance":"全员完成7天考核并在3天内完成评分与结果归档","sourceType":"飞书文档","sourceTitle":"品牌营销部AI通用技能认证—初级考核设计","sourceUrl":"https://jqx28l0j4lx.feishu.cn/docx/LH5IdmRAmo66iyxxNXLcNU61nFh"},
+    {"id":"creative-radar","title":"创意雷达推广使用与反馈闭环","center":"ALL","owners":["舒豪","各中心负责人"],"startDate":"2026-08-27","endDate":"2026-09-15","status":"进行中","acceptance":"各中心完成使用反馈并沉淀可复用创意方向","sourceType":"核心干将群","sourceTitle":"品牌营销部-核心干将","sourceUrl":"https://applink.feishu.cn/client/chat/open?openChatId=oc_04ec28cf2911911da8c202c5eee21742"},
+    {"id":"center-dashboard","title":"各中心经营看板与关键工作补齐","center":"ALL","owners":["各中心负责人"],"startDate":"2026-08-27","endDate":"2026-09-05","status":"进行中","acceptance":"价值发现、关键工作、排期和可视化完整可读","sourceType":"核心干将群","sourceTitle":"品牌营销部-核心干将","sourceUrl":"https://applink.feishu.cn/client/chat/open?openChatId=oc_04ec28cf2911911da8c202c5eee21742"}
+  ]
+}

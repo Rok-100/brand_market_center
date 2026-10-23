@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>二创文案库｜品牌营销部工作站</title>
+    <link rel="stylesheet" href="./styles.css?v=2.8.21" />
+  </head>
+  <body class="copy-library-body remix-library-body">
+    <main class="copy-library-shell remix-library-shell">
+      <header class="copy-library-hero">
+        <a class="copy-library-back" href="./">← 返回工作台首页</a>
+        <div class="copy-library-heading remix-library-heading">
+          <div>
+            <span class="copy-library-kicker">WIS SECOND-CREATION COPY SYSTEM</span>
+            <h1>二创文案库</h1>
+            <p>完整原文与母版结构都已收录，可直接带入一创或二创；生成时自动约束跨SKU串词与虚假机制。</p>
+          </div>
+          <div class="remix-library-actions">
+            <a class="copy-library-source remix-library-primary" href="./variation.html">去单视频批量裂变 →</a>
+            <a class="copy-library-source" id="remixLibrarySource" href="#" target="_blank" rel="noopener">打开飞书母库 ↗</a>
+          </div>
+        </div>
+      </header>
+
+      <section class="copy-library-notice" aria-label="使用提示">
+        <strong>使用方法</strong>
+        <span>“完整原文”可直接查看和带入任务，“母版结构”用于选择成交逻辑；历史有效不等于当前商品事实已审核。</span>
+      </section>
+
+      <section class="remix-chain-panel" aria-label="有效成交链">
+        <div class="remix-chain-heading">
+          <span>历史有效链条</span>
+          <small id="remixLibraryVersion">规则加载中</small>
+        </div>
+        <div class="remix-chain" id="remixChain"></div>
+      </section>
+
+      <section class="copy-library-toolbar" aria-label="文案库筛选">
+        <label class="copy-library-search">
+          <span>⌕</span>
+          <input id="remixSearch" type="search" placeholder="搜索完整原文、结构、场景、风险或SKU" autocomplete="off" />
+        </label>
+        <div class="copy-library-filters" id="remixFilters" aria-label="内容类型"></div>
+      </section>
+
+      <section class="copy-library-summary remix-library-summary">
+        <div><b id="remixVisibleCount">0</b><span id="remixVisibleLabel">项可用规则</span></div>
+        <small>完整原文随工作台安装，并自动同步到部门文案云库</small>
+      </section>
+
+      <section class="remix-library-grid" id="remixLibraryGrid" aria-live="polite"></section>
+      <div class="copy-library-empty" id="remixLibraryEmpty" hidden>没有找到对应内容，请换一个关键词或查看其他分类。</div>
+    </main>
+    <script src="./knowledge-context.js?v=2.8.21"></script>
+    <script src="./copy-remix-library.js?v=2.8.21"></script>
+  </body>
+</html>

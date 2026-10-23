@@ -1,0 +1,40 @@
+import { type PostgresJsDatabase } from "@lark-apaas/fullstack-nestjs-core";
+import type { HourlyGsvSourcePoint } from "./sources.adapter";
+import { WechatDashboardService } from "../wechat-dashboard/dashboard.service";
+import type { OmniChannelOverviewResponse, OmniChannelRealtimeComparisonResponse, OmniChannelRealtimeSeries, OmniChannelTrendResponse } from "@shared/omnichannel.types";
+type RealtimeChannelKey = "douyin" | "wechat";
+type RealtimeSpendInput = {
+    todaySpendYuan: number | null;
+    comparisonTodaySpendYuan?: number | null;
+    yesterdaySameTimeSpendYuan: number | null;
+    yesterdayTotalSpendYuan: number | null;
+    coverage: "complete" | "partial" | "missing";
+    yesterdayCoverage?: "complete" | "partial" | "missing";
+    breakdown: OmniChannelRealtimeSeries["spendBreakdown"];
+};
+export declare function buildRealtimeSeries(key: RealtimeChannelKey, label: string, today: string, yesterday: string, rows: HourlyGsvSourcePoint[], unavailableReason?: string | null, spend?: RealtimeSpendInput, completeHourLimit?: number | null): OmniChannelRealtimeSeries;
+export declare class OmnichannelService {
+    private readonly db;
+    private readonly wechatDashboard;
+    constructor(db: PostgresJsDatabase, wechatDashboard: WechatDashboardService);
+    getRealtimeComparison(): Promise<OmniChannelRealtimeComparisonResponse>;
+    private fetchDaily;
+    private fetchChannelResults;
+    private sliceChannelResults;
+    getOverview(startDate?: string, endDate?: string): Promise<OmniChannelOverviewResponse>;
+    getTrend(startDate?: string, endDate?: string, granularity?: "day" | "week" | "month"): Promise<OmniChannelTrendResponse>;
+    private aggregatePeriod;
+    private commonProfitDates;
+    private buildProfitCoverage;
+    private aggregateProfit;
+    private aggregateState;
+    private aggregateAll;
+    private buildBrandMarketingTrend;
+    private channelTargetShare;
+    private buildAiInsights;
+    private buildCaveats;
+    private dayCount;
+    private shanghaiToday;
+    private shanghaiHour;
+}
+export {};

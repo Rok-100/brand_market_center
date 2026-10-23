@@ -1,0 +1,32 @@
+/* Readability scale: 12px is the hard floor; frequently used working text
+   receives a little more size so hierarchy does not rely on tiny type. */
+.cw-filter button,
+.cw-primary,
+.cw-cancel,
+.cw-return,
+.cw-hero-actions button {
+  font-size: 13px;
+}
+
+.cw-field input,
+.cw-field select,
+.cw-field textarea,
+.cw-decision textarea {
+  font-size: 14px;
+}
+
+.cw-suggestions button,
+.cw-note p,
+.cw-legacy-copy p {
+  font-size: 14px;
+}
+
+.cw-media-versions article b {
+  font-size: 14px;
+}
+
+@media (max-width: 760px) {
+  .cw-sidebar nav strong {
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,1 @@
+import{t as e}from"./rolldown-runtime-DdpfYrph.js";import{r as t}from"./framework~index~page~page~page~page~app-route-handler-dispatch-DyStpxcs.js";var n=e((e=>{e.prerender=t().prerender}));export{n as t};

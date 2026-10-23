@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "idea-os-creative-internal",
+  "main": "dist/server/index.js",
+  "compatibility_date": "2026-05-22",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "vars": {
+    "OA_USERINFO_URL": "http://127.0.0.1:3001/userinfo",
+    "PINYING_DATA_URL": "http://storage:8080"
+  },
+  "assets": {
+    "directory": "dist/client",
+    "binding": "ASSETS"
+  },
+  "r2_buckets": [
+    {
+      "binding": "MEDIA",
+      "bucket_name": "idea-os-creative-media"
+    }
+  ]
+}

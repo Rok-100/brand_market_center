@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>一创资产管理 · 品牌营销工作台</title>
+    <link rel="stylesheet" href="./styles.css?v=2.10.9-asset-library" />
+    <link rel="stylesheet" href="./product-workflows.css?v=2.11.92" />
+  </head>
+  <body class="pw-body asset-library-body">
+    <main class="pw-shell asset-library-shell">
+      <nav class="pw-nav">
+        <a href="./#creation">← 返回工作台首页</a>
+        <span>一创制作 / 资产管理</span>
+        <span>AI产品镜 · 一键换品 · 一键做同款 · AI-KOC 共用</span>
+      </nav>
+
+      <header class="pw-hero asset-library-hero">
+        <div>
+          <span class="pw-kicker">CREATION ASSET LIBRARY</span>
+          <h1>一套资产库，供所有一创模块共用。</h1>
+          <p>项目内置产品图会自动迁移至阿里云 OSS。图片和产品碎镜头在列表中只加载缩略图，点击预览时才读取原图或原视频。</p>
+        </div>
+        <div class="pw-storage" id="assetStorageStatus">正在检查 OSS…</div>
+      </header>
+
+      <section class="pw-panel asset-manager-panel">
+        <div class="pw-panel-head asset-manager-head">
+          <div><small>统一资产管理</small><h2>按产品 SKU 管理图片与碎镜头</h2></div>
+          <div class="asset-manager-head-actions">
+            <span id="assetTotalCount">0 项资产</span>
+            <button id="manageSkuButton" type="button">SKU 增删改查</button>
+          </div>
+        </div>
+
+        <div class="asset-manager-toolbar">
+          <div class="pw-field">
+            <span>产品 SKU</span>
+            <div class="ps-product-select" id="assetProductSelectControl">
+              <select id="assetProductSelect" class="ps-product-select-native" aria-label="选择产品 SKU" aria-hidden="true" tabindex="-1"></select>
+              <button class="ps-product-select-trigger" id="assetProductSelectTrigger" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="assetProductSelectMenu">
+                <span id="assetProductSelectLabel">请选择产品 SKU</span><i aria-hidden="true"></i>
+              </button>
+              <div class="ps-product-select-menu" id="assetProductSelectMenu" role="listbox" aria-label="产品 SKU 列表" hidden></div>
+            </div>
+            <small id="assetProductHint">选择后查看该 SKU 的共享资产</small>
+          </div>
+          <div class="pw-tabs asset-type-tabs" aria-label="资产类型">
+            <button class="active" data-asset-type="image" type="button">产品图片</button>
+            <button data-asset-type="video" type="button">产品碎镜头</button>
+          </div>
+          <label class="pw-field asset-search-field">
+            <span>搜索</span>
+            <input id="assetSearchInput" type="search" placeholder="按名称、分类或风格搜索" />
+          </label>
+          <label class="pw-upload asset-library-upload">
+            <input id="assetFileInput" type="file" accept="image/png,image/jpeg" multiple />
+            <b id="assetUploadTitle">新增产品图片</b>
+            <span id="assetUploadHint">PNG / JPG，单张不超过 10MB；填写完整资产信息后写入 OSS</span>
+          </label>
+        </div>
+
+        <div class="pw-notice" id="assetLibraryStatus" hidden></div>
+        <section class="ps-upload-queue" id="assetUploadQueue" aria-live="polite" hidden></section>
+        <div class="asset-library-grid" id="assetLibraryGrid"></div>
+        <div class="pw-empty" id="assetLibraryEmpty" hidden>
+          <b>当前分类还没有资产</b>
+          <span>使用上方入口上传；AI产品镜、一键换品、一键做同款和 AI-KOC 会自动读取这里的素材。</span>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="asset-edit-dialog asset-upload-dialog" id="assetUploadDialog">
+      <form id="assetUploadForm">
+        <header><div><small>新增资产</small><h2>上传产品图片</h2></div><button id="closeAssetUploadButton" type="button" aria-label="关闭">×</button></header>
+        <p class="asset-upload-file-summary" id="assetUploadFileSummary"></p>
+        <label class="pw-field asset-required-field"><span>资产名称</span><input id="assetUploadTitleInput" type="text" maxlength="240" required /></label>
+        <label class="pw-field asset-required-field"><span>所属 SKU</span><select id="assetUploadProductInput" required></select></label>
+        <label class="pw-field asset-required-field"><span>资产角色</span><select id="assetUploadRoleInput" required><option value="white_background">产品白底图</option><option value="package_box">次抛外盒</option><option value="ampoule_strip">次抛联排</option><option value="single_ampoule">次抛单支</option></select></label>
+        <label class="pw-field asset-required-field"><span>产品形态（供一键做同款映射）</span><select id="assetUploadProductStateInput" required><option value="" selected disabled>请选择产品形态</option><option value="retail_outer_box">零售外盒</option><option value="primary_container">主容器 / 瓶罐</option><option value="single_unit">单片 / 单支</option><option value="content">内容物</option><option value="open_state">打开状态</option><option value="usage_state">使用状态</option><option value="product_combination">产品组合</option></select></label>
+        <div class="pw-notice" id="assetUploadStatus" hidden></div>
+        <footer><button id="cancelAssetUploadButton" type="button">取消</button><button class="primary" id="confirmAssetUploadButton" type="submit">确认并上传</button></footer>
+      </form>
+    </dialog>
+
+    <dialog class="asset-edit-dialog" id="assetEditDialog">
+      <form id="assetEditForm">
+        <header><div><small>修改资产</small><h2 id="assetEditHeading">编辑资产信息</h2></div><button id="closeAssetEditButton" type="button" aria-label="关闭">×</button></header>
+        <label class="pw-field asset-required-field"><span>资产名称</span><input id="assetTitleInput" type="text" maxlength="240" required /></label>
+        <label class="pw-field asset-required-field"><span>所属 SKU</span><select id="assetProductInput" required></select></label>
+        <label class="pw-field asset-required-field"><span>资产角色</span><select id="assetRoleInput" required><option value="white_background">产品白底图</option><option value="product_broll">产品碎镜头</option><option value="package_box">次抛外盒</option><option value="ampoule_strip">次抛联排</option><option value="single_ampoule">次抛单支</option></select></label>
+        <label class="pw-field asset-required-field"><span>产品形态（供一键做同款映射）</span><select id="assetProductStateInput" required><option value="" disabled>请选择产品形态</option><option value="retail_outer_box">零售外盒</option><option value="primary_container">主容器 / 瓶罐</option><option value="single_unit">单片 / 单支</option><option value="content">内容物</option><option value="open_state">打开状态</option><option value="usage_state">使用状态</option><option value="product_combination">产品组合</option></select></label>
+        <label class="pw-field"><span>产品视角</span><select id="assetViewInput"><option value="unknown">未标注</option><option value="front">正面</option><option value="back">背面</option><option value="side">侧面</option><option value="top">俯视</option></select></label>
+        <label class="pw-field"><span>风格 / 备注</span><input id="assetStyleInput" type="text" maxlength="120" placeholder="可选，例如：正面、浴室场景" /></label>
+        <div class="pw-notice" id="assetEditStatus" hidden></div>
+        <footer><button id="cancelAssetEditButton" type="button">取消</button><button class="primary" type="submit">保存修改</button></footer>
+      </form>
+    </dialog>
+
+    <dialog class="ps-asset-preview-dialog asset-original-dialog" id="assetOriginalDialog">
+      <header><div><small id="assetOriginalType">原始资产</small><h2 id="assetOriginalTitle">查看原始资产</h2></div><button id="closeAssetOriginalButton" type="button" aria-label="关闭">×</button></header>
+      <div class="ps-asset-preview-stage">
+        <img id="assetOriginalImage" alt="资产原图" hidden />
+        <video id="assetOriginalVideo" controls playsinline preload="metadata" autoplay hidden></video>
+      </div>
+      <p>仅在打开此窗口后加载 OSS 原图或原视频。</p>
+    </dialog>
+
+    <dialog class="ps-sku-manager" id="skuManagerDialog">
+      <div class="ps-sku-manager-head">
+        <div><small>统一资产管理</small><h2>产品 SKU 管理</h2><p>可新增、查询和修改 SKU；自建且没有资产的 SKU 可以删除，其他 SKU 可停用保留。</p></div>
+        <button id="closeSkuManagerButton" type="button" aria-label="关闭SKU管理">×</button>
+      </div>
+      <div class="ps-sku-manager-body">
+        <aside class="ps-sku-list-pane"><button class="ps-new-sku" id="newSkuButton" type="button">＋ 新增 SKU</button><div class="ps-sku-list" id="skuManagerList"></div></aside>
+        <form class="ps-sku-editor" id="skuManagerForm">
+          <div class="pw-empty" id="skuEditorEmpty"><b>请选择一个 SKU</b><span>可编辑现有 SKU，或创建新的产品 SKU。</span></div>
+          <div id="skuEditorFields" hidden>
+            <div class="ps-sku-editor-title"><div><small id="skuEditorSource">自定义SKU</small><h3 id="skuEditorTitle">新增SKU</h3></div><span id="skuEditorAssetCount">0张图片 · 0条碎镜头</span></div>
+            <label class="pw-field"><span>SKU 编码</span><input id="skuIdInput" type="text" readonly /><small>系统生成，创建后不可修改</small></label>
+            <label class="pw-field"><span>产品名称</span><input id="skuNameInput" type="text" maxlength="240" required /></label>
+            <label class="pw-field"><span>产品简称</span><input id="skuShortNameInput" type="text" maxlength="120" /></label>
+            <label class="pw-field"><span>产品分类</span><input id="skuCategoryInput" type="text" maxlength="120" /></label>
+            <label class="pw-field"><span>默认产品形态</span><select id="skuDefaultProductStateSelect"><option value="">请选择（自建 SKU 必填）</option><option value="retail_outer_box">零售外盒</option><option value="primary_container">主容器 / 瓶罐</option><option value="single_unit">单片 / 单支</option><option value="content">内容物</option><option value="open_state">打开状态</option><option value="usage_state">使用状态</option><option value="product_combination">产品组合</option></select><small>用于把 OSS 素材映射到一键做同款等视频平台。</small></label>
+            <fieldset class="ps-sku-dimensions"><legend>实物尺寸（厘米，可选）</legend><label><span>长</span><input id="skuLengthInput" type="number" min="0" step="0.01" inputmode="decimal" /></label><label><span>宽</span><input id="skuWidthInput" type="number" min="0" step="0.01" inputmode="decimal" /></label><label><span>高</span><input id="skuHeightInput" type="number" min="0" step="0.01" inputmode="decimal" /></label><label><span>直径</span><input id="skuDiameterInput" type="number" min="0" step="0.01" inputmode="decimal" /></label><small>一键做同款自动布局需要尺寸；AI 产品镜和 AI-KOC 可先仅上传素材。</small></fieldset>
+            <div class="ps-sku-select-row">
+              <label class="pw-field"><span>使用状态</span><select id="skuStatusSelect"><option value="active">启用</option><option value="inactive">停用（保留素材）</option></select></label>
+              <label class="pw-field"><span>素材状态</span><select id="skuAssetStatusSelect"><option value="ready">可使用</option><option value="pending">待补素材</option></select></label>
+            </div>
+            <div class="pw-notice" id="skuManagerStatus" hidden></div>
+            <div class="ps-sku-editor-actions"><button class="ps-danger-button" id="deleteSkuButton" type="button">删除空的自建 SKU</button><button class="ps-save-sku" type="submit">保存 SKU</button></div>
+          </div>
+        </form>
+      </div>
+    </dialog>
+
+    <script src="./asset-library.js?v=2.11.92"></script>
+  </body>
+</html>

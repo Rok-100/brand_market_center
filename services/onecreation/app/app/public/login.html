@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>登录 · 品牌营销部工作站</title>
+    <link rel="stylesheet" href="./styles.css?v=2.9.7-provider-auth-v2" />
+  </head>
+  <body class="login-body">
+    <main class="login-shell">
+      <section class="login-intro">
+        <span class="hub-kicker">凡岛AI项目组</span>
+        <h1>品牌营销部工作站</h1>
+        <p>使用企业飞书账号验证身份后，才能进入产品镜、KOC、批量裂变和明星画面功能。</p>
+        <div class="login-scope">
+          <span>授权范围</span>
+          <strong>AI营销中心、营销中心A/B/C/D/J、视频中心、品牌创意中心</strong>
+        </div>
+        <ul>
+          <li>不另外创建用户名和密码</li>
+          <li>调离授权范围后，新的登录凭证自动失效</li>
+          <li>飞书应用密钥不会存放在同事电脑</li>
+        </ul>
+      </section>
+
+      <section class="login-panel" id="identityPanel" aria-labelledby="loginTitle">
+        <div class="login-shield" aria-hidden="true">✓</div>
+        <span class="login-eyebrow">部门身份验证</span>
+        <h2 id="loginTitle">使用飞书账号登录</h2>
+        <p id="loginMessage">首次使用点击一次完成飞书身份确认，成功后会自动返回工作台。</p>
+        <button class="login-primary" id="loginButton" type="button">
+          一键使用企业飞书登录
+        </button>
+        <div class="login-progress" id="loginProgress" hidden>
+          <span class="login-spinner" aria-hidden="true"></span>
+          <span>等待飞书完成授权，成功后会自动进入工作台…</span>
+        </div>
+        <button class="login-secondary" id="retryButton" type="button" hidden>
+          重新发起登录
+        </button>
+        <small>登录状态最长保留 8 小时，仅绑定当前电脑。</small>
+      </section>
+
+      <section class="login-panel provider-auth-panel" id="providerAuthPanel" aria-labelledby="providerAuthTitle" hidden>
+        <div class="login-shield provider-auth-shield" aria-hidden="true">2</div>
+        <span class="login-eyebrow">公司模型授权</span>
+        <h2 id="providerAuthTitle">连接本人 FanDo 授权</h2>
+        <p id="providerAuthMessage">飞书身份验证已完成。请选择 FanDo 生成的 openclaw.json，工作台只读取其中的 API Key，不上传整个文件。</p>
+        <div class="provider-path-card">
+          <span>FanDo 默认文件夹</span>
+          <code>%APPDATA%\FanDo\openclaw</code>
+          <button class="provider-path-copy" id="providerPathCopy" type="button">复制路径</button>
+        </div>
+        <p class="provider-picker-hint" id="providerPickerHint">点击后会复制文件夹路径；粘贴并回车进入文件夹，再选择 openclaw.json。普通文件上传不会申请系统目录访问权限。</p>
+        <button class="login-primary" id="providerFileButton" type="button">
+          复制文件夹路径并选择 openclaw.json
+        </button>
+        <input id="providerFileInput" type="file" accept=".json,application/json" hidden />
+        <div class="login-progress" id="providerProgress" hidden>
+          <span class="login-spinner" aria-hidden="true"></span>
+          <span>正在校验并安全保存本人授权…</span>
+        </div>
+        <button class="login-secondary" id="providerSkipButton" type="button">
+          暂不连接，先进入工作台
+        </button>
+        <small>API Key 会按当前飞书账号加密保存；失效后重新选择 FanDo 更新后的文件即可。</small>
+      </section>
+    </main>
+    <footer class="login-footer">
+      <span>开发者：舒豪</span>
+      <span>品牌营销部工作站 v2.10.4</span>
+    </footer>
+    <script src="./login.js?v=2.10.4&build=provider-auth-v5"></script>
+  </body>
+</html>

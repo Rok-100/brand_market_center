@@ -1,0 +1,5113 @@
+{
+  "source_info": [
+    {
+      "document_id": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "revision_id": 673,
+      "title": "10-4月品营课程资源库-学员资料",
+      "course_count": 20,
+      "restricted": 2
+    },
+    {
+      "document_id": "PMgwdg3hRo7NYaxtaXacBNZXnaf",
+      "revision_id": 631,
+      "title": "5-7月品营新岛民卓越计划-课程资源库（学员资料）",
+      "course_count": 15,
+      "restricted": 0
+    }
+  ],
+  "total_course_records": 35,
+  "restricted_course_records": 2,
+  "general_course_records": 33,
+  "missing_duration_count": 35,
+  "reference_course_count": 27,
+  "reference_sections": [
+    {
+      "id": "all",
+      "name": "全部课程"
+    },
+    {
+      "id": "s1",
+      "name": "品创新人培训",
+      "order": 1
+    },
+    {
+      "id": "s2",
+      "name": "AI一创精品课程",
+      "order": 2
+    },
+    {
+      "id": "s3",
+      "name": "AI一创市场优秀认知课程",
+      "order": 3
+    },
+    {
+      "id": "s4",
+      "name": "优秀Skill推广实操工作坊",
+      "order": 4
+    },
+    {
+      "id": "s5",
+      "name": "优秀营销专业课程",
+      "order": 5
+    }
+  ],
+  "courses": [
+    {
+      "id": "bmt-swuf-947d87c3eb5f",
+      "source_document": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "source_revision": 673,
+      "source_row": 1,
+      "source_block_id": "doxcnDp39s731kaoDgtkkMta2Cf",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/SwUFdmKBOoTkyPxgm0dcEsIunve#doxcnDp39s731kaoDgtkkMta2Cf",
+      "source_title": "10-4月品营课程资源库-学员资料",
+      "fields": {
+        "month": {
+          "text": "10月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "QRbNd9otJoG1oKx8Epccu0mbnig"
+          ]
+        },
+        "source_number": {
+          "text": "14",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnB17jYjfciRTXVymOH3YQRf"
+          ]
+        },
+        "date_raw": {
+          "text": "10.10",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnJcmjoCpUShIvnStaSHCjZe"
+          ]
+        },
+        "title": {
+          "text": "AI赋能营销素材实战认知课",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnDp39s731kaoDgtkkMta2Cf"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "唐基翔",
+              "open_id": "ou_3c4f596c11157c8756e31fb4162bed6e"
+            },
+            {
+              "name": "韩思远",
+              "open_id": "ou_4c9ec930f9989053abb5f226f6bc5f29"
+            }
+          ],
+          "block_ids": [
+            "doxcnaCurez3moXZlAoJfZ3jUcb"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.841",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Fm0tdq0xBom6eAxik1zc5NwAnfb"
+          ]
+        },
+        "description": {
+          "text": "(待补充)",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "LOQud828soSjVcxP56HcpmiOnlg"
+          ]
+        },
+        "audience": {
+          "text": "管培生、营销经理、视频编导、视频编辑",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "I7kpdrTfEo7rzGx0IPIcavy4nyd"
+          ]
+        },
+        "reading": {
+          "text": "",
+          "links": [
+            {
+              "title": "课前阅读：把 AI 从“酷炫工具”变成“日常同事”",
+              "type": "wiki",
+              "token": "CiLSw0wzkiPfMfkEkE1c6Pb3nBh",
+              "url": "https://jqx28l0j4lx.feishu.cn/wiki/CiLSw0wzkiPfMfkEkE1c6Pb3nBh",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnkyGbLOcR9DFrqtCLOfE5ih"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "AI赋能营销素材实战认知课-凡岛大学课程-唐基翔、韩思远20251010（宣发版）.pptx",
+              "type": "file",
+              "token": "BktxbjkJto5fHIxYjqbcPQ3Wn8f",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/BktxbjkJto5fHIxYjqbcPQ3Wn8f",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnjmtJ5qwrvMUWMVnkTqdBsb"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcneaz4u314clknseiu5811?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "OIfydzGQeoosvdxSkricwkw4nAd"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcniMlGhwcDkfl8YEeAICRPib"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 3,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.841,
+      "proposed_category": "ai",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-swuf-03ba998c1949",
+      "source_document": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "source_revision": 673,
+      "source_row": 2,
+      "source_block_id": "doxcn0oJgVnnIYjFkC1XBEaSgqe",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/SwUFdmKBOoTkyPxgm0dcEsIunve#doxcn0oJgVnnIYjFkC1XBEaSgqe",
+      "source_title": "10-4月品营课程资源库-学员资料",
+      "fields": {
+        "month": {
+          "text": "10月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "QRbNd9otJoG1oKx8Epccu0mbnig"
+          ]
+        },
+        "source_number": {
+          "text": "15",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcn0QjsHwfIoM3bD77jWTnshc"
+          ]
+        },
+        "date_raw": {
+          "text": "10.17",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnJVQerkWxkqa4fhm00sc65e"
+          ]
+        },
+        "title": {
+          "text": "竞价广告素材制作",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcn0oJgVnnIYjFkC1XBEaSgqe"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "宋睿凛",
+              "open_id": "ou_b028f00eef823a6bec226fad16ad8e9b"
+            }
+          ],
+          "block_ids": [
+            "doxcnJf7cQL1KsNZwKLLGnlIErb"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.671",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "TdPldnWXjoOZgQxwJ7tcUPsEnZb"
+          ]
+        },
+        "description": {
+          "text": "在当前营销环境中，竞价广告已成为效果转化核心，但大家面临流量成本高、素材效果不稳的困境。本课程针对营销人员对平台规则不清、创意方法论缺失的痛点，系统提炼实战经验，旨在帮助学员掌握竞价逻辑与素材制作科学方法，实现降本增效和爆款规模化生产。",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "PAczdWLNToLpHNxFsxHcgA5Rn0f"
+          ]
+        },
+        "audience": {
+          "text": "营销端未转正岛民（不含主播教练）",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Dv0mdrCbvoTto3xzzCEcn2RPnfc"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnEVUi0mDfVeTmbhQswIj4Hf"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "竞价广告素材制作-凡岛大学课程-宋睿凛20251017（宣发版）.pptx",
+              "type": "file",
+              "token": "DrjNbryLBoj020xyjmDcDOMCnAf",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/DrjNbryLBoj020xyjmDcDOMCnAf",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnxw46hb4x6nJV1P4aw3dXke"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcni2hbmnjks78v1n368l61?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "BcCudTKGZoQqQMxwvnhc6sxbnAe"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnQt4W6DVNlETqvJEEmWIIue"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 2,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.671,
+      "proposed_category": "advertising",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-swuf-871336f74363",
+      "source_document": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "source_revision": 673,
+      "source_row": 3,
+      "source_block_id": "doxcnccIbyGqaSUoDnkFzM5sjjd",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/SwUFdmKBOoTkyPxgm0dcEsIunve#doxcnccIbyGqaSUoDnkFzM5sjjd",
+      "source_title": "10-4月品营课程资源库-学员资料",
+      "fields": {
+        "month": {
+          "text": "10月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "QRbNd9otJoG1oKx8Epccu0mbnig"
+          ]
+        },
+        "source_number": {
+          "text": "16",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcntiNrfE7f46DMSAVz20fl3f"
+          ]
+        },
+        "date_raw": {
+          "text": "10.18",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnyNoVGm0z2AcAl15vXevSJh"
+          ]
+        },
+        "title": {
+          "text": "从营销到直播：明星内容场经验分享",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnccIbyGqaSUoDnkFzM5sjjd"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "李雨橦",
+              "open_id": "ou_fb9f3386ec6c2b9a758cf1652a43cc9a"
+            }
+          ],
+          "block_ids": [
+            "doxcnGr9ctvSX1vUocwzqwbLBmh"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.784",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "G8pddQL30o71p6xpo5EcRI4tnVh"
+          ]
+        },
+        "description": {
+          "text": "国庆双十一大促期间，明星大场需求增加大场举办有利于提高直播间爆发系数，撬动全域跑速",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "BpIcd58B3o5g0Axn6bhcHuJnnVg",
+            "AbdVdvno8oFoHExw6kjcfDbLnve"
+          ]
+        },
+        "audience": {
+          "text": "管培生、营销经理、视频编导（视频编辑可选参加）",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "UGNBdszcJomXkDxf6gpcBoyhnXd"
+          ]
+        },
+        "reading": {
+          "text": "",
+          "links": [
+            {
+              "title": "从产品brief到百万大场——课前读物",
+              "type": "wiki",
+              "token": "YvSFwcyBtiir5KkWsOMcGcUpnqb",
+              "url": "https://jqx28l0j4lx.feishu.cn/wiki/YvSFwcyBtiir5KkWsOMcGcUpnqb",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "doxcn0yq34EWWN77AazfhJ1dpxt"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "从营销到直播：明星内容场执行经验分享-凡岛大学课程-李雨橦20251018（宣发版）.pptx",
+              "type": "file",
+              "token": "DTrnbbG3TorceixbyE2cF4oJnYf",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/DTrnbbG3TorceixbyE2cF4oJnYf",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnDu56Cg1VI7xtNPxwtnmSDb"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnjn19i5v4j968bm9eg326?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "TUjRdDUs0o3OJ0xoBuucOZqpnze"
+          ]
+        },
+        "other": {
+          "text": "",
+          "links": [
+            {
+              "title": "从产品brief到百万大场—实战练习",
+              "type": "wiki",
+              "token": "EeoOwRYpOiZnyZk0hlucjgCcnQO",
+              "url": "https://jqx28l0j4lx.feishu.cn/wiki/EeoOwRYpOiZnyZk0hlucjgCcnQO",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnQhgImC8ZHZj1ZXElcCYFib"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 4,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.784,
+      "proposed_category": "live",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-swuf-76755afe4a9f",
+      "source_document": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "source_revision": 673,
+      "source_row": 4,
+      "source_block_id": "doxcnpglXWUAsR3Po5yOxDiMIAh",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/SwUFdmKBOoTkyPxgm0dcEsIunve#doxcnpglXWUAsR3Po5yOxDiMIAh",
+      "source_title": "10-4月品营课程资源库-学员资料",
+      "fields": {
+        "month": {
+          "text": "10月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "QRbNd9otJoG1oKx8Epccu0mbnig"
+          ]
+        },
+        "source_number": {
+          "text": "17",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcn5mCO8lNWcgf11Xysr0Ndye"
+          ]
+        },
+        "date_raw": {
+          "text": "10.20",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnaahyLjaf84rLUVDRrN4gkf"
+          ]
+        },
+        "title": {
+          "text": "如何做好混剪素材-从前置思考到过程实操",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnpglXWUAsR3Po5yOxDiMIAh"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "舒豪",
+              "open_id": "ou_193a8b0e08742fd0784a6f599798f08c"
+            }
+          ],
+          "block_ids": [
+            "doxcnEHAVWNIlpYoNt0Tdqt6qWH"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.906",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "KGV7d3M94o09eCxkSVJc3fvjnRc"
+          ]
+        },
+        "description": {
+          "text": "当下混剪产出的效率和有效率不足，希望通过经验分享帮助新岛民快速上手混剪取得业绩结果",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "EOJEdz5p6oeGhlx599gcRRTznih"
+          ]
+        },
+        "audience": {
+          "text": "未转正的管培生、营销经理、视频编导、视频编辑",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "DrkhdgoiSoSTuxxZL9nc1srQnEe"
+          ]
+        },
+        "reading": {
+          "text": "",
+          "links": [
+            {
+              "title": "《如何做好混剪素材-从前置思考到过程实操》课前阅读材料（预计20min含长视频）",
+              "type": "wiki",
+              "token": "WclHw3EO0iw2SMknJPUcEZ1Qnkh",
+              "url": "https://jqx28l0j4lx.feishu.cn/wiki/WclHw3EO0iw2SMknJPUcEZ1Qnkh",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnJ6b9hIJEX4kZGCBwRsRJhg"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "如何做好混剪素材-凡岛大学课程-舒豪20251020（宣发版）.pptx",
+              "type": "file",
+              "token": "TmVKbw74RoWoRQx6bsJchXoqnud",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/TmVKbw74RoWoRQx6bsJchXoqnud",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnkyqPzANTLPmGslJKHuJqDh"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnk49r8519pas14w57t498?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "ZdnmdDb79ozIh6xaH7acaZDanig"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnfckdzNDLMBmO7NQ1OoNjtf"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 3,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.906,
+      "proposed_category": "creative",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-swuf-8259e44cd944",
+      "source_document": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "source_revision": 673,
+      "source_row": 5,
+      "source_block_id": "doxcnnbK2m0VnRMWoEFkI8xYKNf",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/SwUFdmKBOoTkyPxgm0dcEsIunve#doxcnnbK2m0VnRMWoEFkI8xYKNf",
+      "source_title": "10-4月品营课程资源库-学员资料",
+      "fields": {
+        "month": {
+          "text": "10月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "QRbNd9otJoG1oKx8Epccu0mbnig"
+          ]
+        },
+        "source_number": {
+          "text": "18",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcn77dgSZwZi7k8lGKUNVleLs"
+          ]
+        },
+        "date_raw": {
+          "text": "10.22",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnk0wAs331KwcEtCDGNTLmSd"
+          ]
+        },
+        "title": {
+          "text": "如何提升自产&混剪爆款率",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnnbK2m0VnRMWoEFkI8xYKNf"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "彭聪",
+              "open_id": "ou_9d070a0f57b17a82702b1bfe7957554b"
+            }
+          ],
+          "block_ids": [
+            "doxcnIrpNCPE9SJbhmqBe5I5Yfg"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.917",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "NOVCdttq7oohy1xY2jscGhHynyc"
+          ]
+        },
+        "description": {
+          "text": "目前发现不限于营销A的新编导，甚至很多时间较长的编导们都不明确编导需要具备的技能以及不明确对自产的标准；同时发现不管是老营销经理同时还是新进入的营销经理，对于混剪的爆率还是没有很好的标准支撑；所以本次课程将更加颗粒度的，加入更多案例的，以及增加更多新老同事的互动，从而提升&补齐新老编导&新老营销的自产&混剪能力差距。",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Xb6NdWHiTojEu3xobeOc3XannBe"
+          ]
+        },
+        "audience": {
+          "text": "管培生、营销经理、视频编导、视频编辑",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Qigodv1AWoU0u6xUbaMcZ6xonzb"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnQL1keYjsThxzisQe3zzuAf"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "如何提升自产和混剪的爆率-凡岛大学课程-彭聪20251022（宣发版）.pptx",
+              "type": "file",
+              "token": "FlAnbRYeJo8lnixj2GZc31Dmnxc",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/FlAnbRYeJo8lnixj2GZc31Dmnxc",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnqLyGjxRfms1R8skChbXWph"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnmhzzp87bv19elwhr6d3i?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "Uxhids4VMoMM7exXzqfctSgInBc"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnB6gbPifeKvQt3fPv9drtSc"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 2,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.917,
+      "proposed_category": "creative",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-swuf-d2d19ea234b1",
+      "source_document": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "source_revision": 673,
+      "source_row": 6,
+      "source_block_id": "doxcn41NzGov3OiLLJYrIqmYYch",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/SwUFdmKBOoTkyPxgm0dcEsIunve#doxcn41NzGov3OiLLJYrIqmYYch",
+      "source_title": "10-4月品营课程资源库-学员资料",
+      "fields": {
+        "month": {
+          "text": "10月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "QRbNd9otJoG1oKx8Epccu0mbnig"
+          ]
+        },
+        "source_number": {
+          "text": "19",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnQ55gw2eqTYTAxLiTXjz6fe"
+          ]
+        },
+        "date_raw": {
+          "text": "10.24",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnIjCO1bt0AeolUCVh4fV33b"
+          ]
+        },
+        "title": {
+          "text": "主播教练进阶课：主播状态管理",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcn41NzGov3OiLLJYrIqmYYch"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "练美好",
+              "open_id": "ou_dd8d1d5f7df8bc5d60c3fffbdaac6dec"
+            }
+          ],
+          "block_ids": [
+            "doxcndBPQSy6LPCN4qnroAZb8Ep"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.818",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "B6O0dpPnZosPAMx1LQOc6R5ln4g"
+          ]
+        },
+        "description": {
+          "text": "现有品牌直播间主播上播状态参差不齐，但各项目直播间成交占比超80%，主播状态是影响直播间转化效率非常重要的元素，因此无论是行为规范、绩效激励、还是更深层次的状态引导，都应该引起我们的关注和完善优化。",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "SwvadX09lolBE6xVREfceesYn9f"
+          ]
+        },
+        "audience": {
+          "text": "所有主管+新主播教练",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "GoBvdrJfAocoWzxxUxXcE08WnNb"
+          ]
+        },
+        "reading": {
+          "text": "管理课程暂不对外开放（请目标学员找私信要资料）",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "李秋霞",
+              "open_id": "ou_3b2679abe58c1c43cdc45c63d3b22990"
+            }
+          ],
+          "block_ids": [
+            "Z3SNdab2eoVPY8x2865cEa1aneb"
+          ]
+        },
+        "slides": {
+          "text": "管理课程暂不对外开放（请目标学员找私信要资料）",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "李秋霞",
+              "open_id": "ou_3b2679abe58c1c43cdc45c63d3b22990"
+            }
+          ],
+          "block_ids": [
+            "Z3SNdab2eoVPY8x2865cEa1aneb"
+          ]
+        },
+        "recordings": {
+          "text": "管理课程暂不对外开放（请目标学员找私信要资料）",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "李秋霞",
+              "open_id": "ou_3b2679abe58c1c43cdc45c63d3b22990"
+            }
+          ],
+          "block_ids": [
+            "Z3SNdab2eoVPY8x2865cEa1aneb"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnXXAadssdqfdtXBz3diXbXf"
+          ]
+        }
+      },
+      "restricted": true,
+      "linked_resource_count": 0,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.818,
+      "proposed_category": "live",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-swuf-018de2b8ee8e",
+      "source_document": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "source_revision": 673,
+      "source_row": 7,
+      "source_block_id": "doxcnxUaMNrpHCfFq6EfBqarkUd",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/SwUFdmKBOoTkyPxgm0dcEsIunve#doxcnxUaMNrpHCfFq6EfBqarkUd",
+      "source_title": "10-4月品营课程资源库-学员资料",
+      "fields": {
+        "month": {
+          "text": "10月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "QRbNd9otJoG1oKx8Epccu0mbnig"
+          ]
+        },
+        "source_number": {
+          "text": "20",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnfSYXrbaeykwNn0MhbLLiFc"
+          ]
+        },
+        "date_raw": {
+          "text": "10.27",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcn5eBF0yloF07MuIAjP0LyHh"
+          ]
+        },
+        "title": {
+          "text": "混剪制作流程与疑难解答",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnxUaMNrpHCfFq6EfBqarkUd"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "张瑶",
+              "open_id": "ou_acf88dbc2718fc980a9fbe3ad488aa92"
+            },
+            {
+              "name": "唐茹",
+              "open_id": "ou_e11ea4e2ac5b813ad74f7ae8f3616635"
+            },
+            {
+              "name": "赵子珏",
+              "open_id": "ou_79b018d4ab839872f438267e7300fd8e"
+            }
+          ],
+          "block_ids": [
+            "doxcnFe69qoJu5R2cCRiI9F5uVc",
+            "doxcnm9LJuUy7YsgCuPXzWOCcUf"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.882",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "MdHFdtBc2oVkSRxKGL5cULQVndf"
+          ]
+        },
+        "description": {
+          "text": "很多新上任的视频编辑不知道如何剪出一个具有营销感的混剪视频，以及还有很多软件的常规操作缺失，本课程通过案例分享以及疑难解答的模式来加强后期编辑岗位的剪辑基础能力、剪辑效率以及营销感",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "IgLidmVMTorilbxbvFqcXDyynpf"
+          ]
+        },
+        "audience": {
+          "text": "管培生、营销经理、视频编导、视频编辑",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "E9bldaJZho2OYIxPoz9cuSV5nZf"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnNDOAc1v4NQmqqW4arunGbe"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "从素材到爆款：混剪的结构创新与裂变方法-凡岛大学课程-唐茹、张瑶、赵子珏（宣发版）.pptx",
+              "type": "file",
+              "token": "V2IubUZa9o4lsKxVQuQcurC1nfd",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/V2IubUZa9o4lsKxVQuQcurC1nfd",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnp3eqslLnS1UPbjNAfMddbc"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnps1bvmywrfxk71sq8811?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "Zc41d5DA7oXXFUxm3anc5wp2nXb"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcn2ApRy9SVPnQptj5NHEVSze"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 2,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.882,
+      "proposed_category": "creative",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-swuf-6d8a39546024",
+      "source_document": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "source_revision": 673,
+      "source_row": 8,
+      "source_block_id": "doxcnvEwrhz26ink0Bvu8Xae6Xf",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/SwUFdmKBOoTkyPxgm0dcEsIunve#doxcnvEwrhz26ink0Bvu8Xae6Xf",
+      "source_title": "10-4月品营课程资源库-学员资料",
+      "fields": {
+        "month": {
+          "text": "10月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "QRbNd9otJoG1oKx8Epccu0mbnig"
+          ]
+        },
+        "source_number": {
+          "text": "21",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnNHTDDhuzDlCpgyJX4K8P9f"
+          ]
+        },
+        "date_raw": {
+          "text": "10.28",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnnQkPXPYQAh0tMRWSqRF1Jh"
+          ]
+        },
+        "title": {
+          "text": "如何策划直播间内容场",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnvEwrhz26ink0Bvu8Xae6Xf"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "逯晶妍",
+              "open_id": "ou_aad54b427b924c33ef104852db6fba47"
+            }
+          ],
+          "block_ids": [
+            "doxcnvaVZt4UszoApb4miFHCbCg"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.816",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "P89qd4RGDoRBtRxD60vcGJNInXf"
+          ]
+        },
+        "description": {
+          "text": "不论是平销期还是大促期，内容场的竞对分析和策划落地都是提高直播间竞争力、提高整体转化效率的重要手段；从竞对分析、实际内容场的策划落地两个角度进行梳理，帮助大家提高策划落地内容场的能力",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "OMzhdESSnoDxp6xDa4Gcaddenic"
+          ]
+        },
+        "audience": {
+          "text": "营销经理、主播教练（有经验的同事可选参加）",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "KsCtdXj6hoGVjgxbRfFcL575nIb"
+          ]
+        },
+        "reading": {
+          "text": "",
+          "links": [
+            {
+              "title": "《主播教练进阶课:如何策划直播间内容场?》课前阅读材料",
+              "type": "wiki",
+              "token": "Mr1vwZ4BdiMELykipEgckbS9nqe",
+              "url": "https://jqx28l0j4lx.feishu.cn/wiki/Mr1vwZ4BdiMELykipEgckbS9nqe",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnYgzeMrAYL0kycO4bYqe38A"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "如何策划直播间内容场-凡岛大学课程-逯晶妍20251028（宣发版）.pptx",
+              "type": "file",
+              "token": "BnrRbAjbsoopl3xyxPDcnEOinZg",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/BnrRbAjbsoopl3xyxPDcnEOinZg",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnOzeGUPgincotIpaIAPsJRb"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnql5gmx471dy68t4349i1?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "QbbJdErt0oZ78PxE0b8caxb9nZe"
+          ]
+        },
+        "other": {
+          "text": "",
+          "links": [
+            {
+              "title": "一个关于内容场策划执行的简单SOP",
+              "type": "wiki",
+              "token": "AWcFwsdjDioBZakjlSgcsDp6n0b",
+              "url": "https://jqx28l0j4lx.feishu.cn/wiki/AWcFwsdjDioBZakjlSgcsDp6n0b",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnFYiNdiphURr71Ym0ZaoBOg"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 4,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.816,
+      "proposed_category": "live",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-swuf-bbb1fe85788b",
+      "source_document": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "source_revision": 673,
+      "source_row": 9,
+      "source_block_id": "doxcnwa40l8jOmBMw746grbDdcd",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/SwUFdmKBOoTkyPxgm0dcEsIunve#doxcnwa40l8jOmBMw746grbDdcd",
+      "source_title": "10-4月品营课程资源库-学员资料",
+      "fields": {
+        "month": {
+          "text": "10月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "QRbNd9otJoG1oKx8Epccu0mbnig"
+          ]
+        },
+        "source_number": {
+          "text": "22",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnuV0NjN9MTHb1MRHiS4S9de"
+          ]
+        },
+        "date_raw": {
+          "text": "10.29",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcno1rxm3HuEeMbggL2zCmz3b"
+          ]
+        },
+        "title": {
+          "text": "剧情素材创作基础",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnwa40l8jOmBMw746grbDdcd"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "李逸青",
+              "open_id": "ou_056796ff7b43c41c2227446310ce0df1"
+            }
+          ],
+          "block_ids": [
+            "doxcnhk1C5pMQsXNW5IS9VDXluh"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.875",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Bjprd6iUZos3xRxWYh7cUguLnxg"
+          ]
+        },
+        "description": {
+          "text": "部门内多品类具有剧情向素材撰写需求，本课程旨在拆解上手思路，规避新手误区；通过加深大家对剧情逻辑的理解，跳出1:1复刻思维限制，有效创新，提高剧情测试效率学员问题具体表述：主题选择问题：学员容易选失败概率比较大的主题，测试效率低，给自己上难度我怎么去选择一个好的主题？产品植入生硬视频脚本文字表述互动上生硬",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "E3CidDyLhodGsIx3ii0cfhVdnmg",
+            "OK6jd2BuoosEhixx3WKc5bdKnQb",
+            "CTV0dknaqovljZxOJdscynO2nqf",
+            "Rda9da4hKoLd0yxgAnHcd225nKd",
+            "Ue42dsCvLoqbYTxPT77cc1jUnye",
+            "EV8udmDKroBcEDxXVwSc2xMjnBh",
+            "K0ifdds2poFZIXxZlBVccGzInwe"
+          ]
+        },
+        "audience": {
+          "text": "写过剧情的营销经理和管培生（14人具体名单）",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "SclsdSldEowTKkxouDKc2itMnKe"
+          ]
+        },
+        "reading": {
+          "text": "",
+          "links": [
+            {
+              "title": "《剧情制作基础课程》-课程相关材料",
+              "type": "wiki",
+              "token": "HRtJw6LuhiUcRkkIEvBcChj0nqe",
+              "url": "https://jqx28l0j4lx.feishu.cn/wiki/HRtJw6LuhiUcRkkIEvBcChj0nqe",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "doxcn9MoUUrzIzoNiaQVQFTLZkf"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "剧情素材制作基础-凡岛大学课程-李逸青20251029（宣发版）.pptx",
+              "type": "file",
+              "token": "TOAqbEd8AoAZfXxJlfLca5p9nHd",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/TOAqbEd8AoAZfXxJlfLca5p9nHd",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "doxcn3SVYzTeH1CVJMlMKZZS5mc"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnq7rmz88w2g26zu4pzz8b?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "HhRbdtFG4oZaVKxXLXwctbCUnIf"
+          ]
+        },
+        "other": {
+          "text": "",
+          "links": [
+            {
+              "title": "脚本1:为你好【演绎划线段落】",
+              "type": "wiki",
+              "token": "KiIcwBl5DiCREZkzi8fcsswJnGc",
+              "url": "https://jqx28l0j4lx.feishu.cn/wiki/KiIcwBl5DiCREZkzi8fcsswJnGc",
+              "url_basis": "canonical_from_source_token"
+            },
+            {
+              "title": "脚本2（颈膜）-演绎下划线部分",
+              "type": "wiki",
+              "token": "Xw5XwTPJ5ifAXvkM5iNcxGiqnid",
+              "url": "https://jqx28l0j4lx.feishu.cn/wiki/Xw5XwTPJ5ifAXvkM5iNcxGiqnid",
+              "url_basis": "canonical_from_source_token"
+            },
+            {
+              "title": "脚本3-演绎划线部分",
+              "type": "wiki",
+              "token": "IzcwwjBksimMrEkNG0GcKb4AnWf",
+              "url": "https://jqx28l0j4lx.feishu.cn/wiki/IzcwwjBksimMrEkNG0GcKb4AnWf",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "JvLddNSXIoPYTmxHsgXcqtU1nLb",
+            "U4qFd3TCfoj2QXxBYqIc5EL7n1c",
+            "GvIZd8PIroSbUNxbVszcmkcsnBe"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 6,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.875,
+      "proposed_category": "creative",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-swuf-1bad1f28b75a",
+      "source_document": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "source_revision": 673,
+      "source_row": 10,
+      "source_block_id": "doxcn9NwCgKJk0hTakHu1LWjMBe",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/SwUFdmKBOoTkyPxgm0dcEsIunve#doxcn9NwCgKJk0hTakHu1LWjMBe",
+      "source_title": "10-4月品营课程资源库-学员资料",
+      "fields": {
+        "month": {
+          "text": "10月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "QRbNd9otJoG1oKx8Epccu0mbnig"
+          ]
+        },
+        "source_number": {
+          "text": "23",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcncJFvXptQaDT8F2g1trC0Tc"
+          ]
+        },
+        "date_raw": {
+          "text": "10.30",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnuuMDM4TiE5lrAWlLMinOze"
+          ]
+        },
+        "title": {
+          "text": "如何从自产小白成长为合格的自产素材负责人",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcn9NwCgKJk0hTakHu1LWjMBe"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "杜昀辰",
+              "open_id": "ou_a68dca1c5e42c721f593b88a260b63fd"
+            }
+          ],
+          "block_ids": [
+            "doxcnTFTEMjyITqO06zgQKXG4ld"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.913",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Mdnjdxo35oK89fxTkz1ctekKnug"
+          ]
+        },
+        "description": {
+          "text": "自产素材是素材混剪的基础，相比于高成本的明星、达人合作，自产素材的成本低，而且好的自产素材画面也是能够不断被利用的，能够以低成本撬动大的成交。本课程旨在引导小伙伴掌握自产素材产出的流程、自产素材成功的要素、自产素材脚本该怎么写、如何低成本高效产出自产素材",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "WQ4Edxt5hohIh0xTvpccbCPjnse"
+          ]
+        },
+        "audience": {
+          "text": "未转正的营销经理、管培、视频编导",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "F94kdwEvfoQNSxx0fFAcyG3Sn4f"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnAEz9FYH4yJaEwC0mACCOwe"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "如何从自产小白成长为合格的自产素材负责人-凡岛大学课程-杜昀辰20251030（宣发版）.pptx",
+              "type": "file",
+              "token": "XA7xbpe2HordMrxzpQBcA4nTn4c",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/XA7xbpe2HordMrxzpQBcA4nTn4c",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "doxcn4sxsfEJG15SqvbhauCO92g"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnrv372xf23j4e92sov2wj?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "BtmedU4E5oKahBxIyiHcEvGZnzc"
+          ]
+        },
+        "other": {
+          "text": "",
+          "links": [
+            {
+              "title": "自产负责人——案例阅读材料",
+              "type": "wiki",
+              "token": "KAOwwg8xziL0spk7Lmgc8s7qn2g",
+              "url": "https://jqx28l0j4lx.feishu.cn/wiki/KAOwwg8xziL0spk7Lmgc8s7qn2g",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnsteAQy0dkJXS1iE9FyTtac"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 3,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.913,
+      "proposed_category": "creative",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-swuf-d3c4b0b3949a",
+      "source_document": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "source_revision": 673,
+      "source_row": 11,
+      "source_block_id": "doxcnCp91Fnov0Zz9uhoq6OHH9d",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/SwUFdmKBOoTkyPxgm0dcEsIunve#doxcnCp91Fnov0Zz9uhoq6OHH9d",
+      "source_title": "10-4月品营课程资源库-学员资料",
+      "fields": {
+        "month": {
+          "text": "10月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "QRbNd9otJoG1oKx8Epccu0mbnig"
+          ]
+        },
+        "source_number": {
+          "text": "24",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnXXGupsm2lLAufjKAhy9Vvh"
+          ]
+        },
+        "date_raw": {
+          "text": "10.31",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnj9OgOod0J8tSJdgKSmlUNe"
+          ]
+        },
+        "title": {
+          "text": "如何用流量漏斗模型赋能素材",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnCp91Fnov0Zz9uhoq6OHH9d"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "李楚其",
+              "open_id": "ou_8a56bb4457de36eaa17152028ec0e09b"
+            }
+          ],
+          "block_ids": [
+            "doxcn3OqrxoUtizGf7T5MWHSEZe"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.552",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "SPtFd2WqcoqOgexQNDMcWdJZnFb"
+          ]
+        },
+        "description": {
+          "text": "目前千川主跑素材集中在机制、利益点类的视频，创意的体现相对比较少，主要体现在视频可看性相对来说偏弱；如何在视频策划层面、开头5秒吸引更大的人群和流量池，是这节课的目标",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "ImZjdv117oy4jHxr4spcgMm7nSc"
+          ]
+        },
+        "audience": {
+          "text": "未转正的管培生、营销经理、视频编导、视频编辑",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "FAcpdEesNoEjbFxVxsgcetaInZf"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnzuxL2H4e85Yob18lUMwFxc"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "如何用流量漏斗模型赋能素材-凡岛大学课程-李楚其20251031（宣发版）.pptx",
+              "type": "file",
+              "token": "J9u3bML72opqiQxJpLfcMqoGnSd",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/J9u3bML72opqiQxJpLfcMqoGnSd",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnHMHNG88BCkY98pOdfXZxlD"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnsknh36851e67358382m8?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "HvUid9Jbko7xwmxoXbbcYojwn1c"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "doxcnnr1QY6wJoXw8G9HTsuQQfd"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 2,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.552,
+      "proposed_category": "creative",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-swuf-e337bfa5f6a6",
+      "source_document": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "source_revision": 673,
+      "source_row": 12,
+      "source_block_id": "BdMfdq7k1oGYBBxjRc9cdPA8n7d",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/SwUFdmKBOoTkyPxgm0dcEsIunve#BdMfdq7k1oGYBBxjRc9cdPA8n7d",
+      "source_title": "10-4月品营课程资源库-学员资料",
+      "fields": {
+        "month": {
+          "text": "11月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "GAEjdkD1woUBazxTK8KcQDolnKd"
+          ]
+        },
+        "source_number": {
+          "text": "25",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "KksndR99IoAE4SxdaoPcuobGnHe"
+          ]
+        },
+        "date_raw": {
+          "text": "11.24",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "YKEUdxScVoKWwzxjRr7cGsZpnJe"
+          ]
+        },
+        "title": {
+          "text": "营销决策的底层逻辑：财报复盘 × 竞对分析",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "BdMfdq7k1oGYBBxjRc9cdPA8n7d"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "练美好",
+              "open_id": "ou_dd8d1d5f7df8bc5d60c3fffbdaac6dec"
+            }
+          ],
+          "block_ids": [
+            "I1iQd1lVho2nTaxT96vc2k9Knlg"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.931",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "LNz8d49U1oC4ZSxMgTgcwGqVnzb"
+          ]
+        },
+        "description": {
+          "text": "掌握竞对信息分析路径与方式，沉淀个人基础的行业判断",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "NYXjdzYK1oMdYhxZuXxcIOesnXf"
+          ]
+        },
+        "audience": {
+          "text": "营销端岛民",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "YpaddJUzJoRz0GxYXpCcNN9KnAb"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "VzTidLWr8oaeudxvwtqcQJesnub"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "营销决策的底层逻辑：财报复盘 × 竞对分析-凡岛大学课程-练美好20251124（宣发版）.pptx",
+              "type": "file",
+              "token": "EJODb3ZdBoCCLTxosrccMQoXn1g",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/EJODb3ZdBoCCLTxosrccMQoXn1g",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "QJywdXAvyoJ6bRxx7vocg1oUnlh"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcn942rz1v85pebyx83c28w?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "BHHldtRzXohjfOxLrVoczfX8nLc"
+          ]
+        },
+        "other": {
+          "text": "",
+          "links": [
+            {
+              "title": "竞对分析课堂练习材料",
+              "type": "docx",
+              "token": "JBjjdg05OoefmcxB7EZcpSEpnyh",
+              "url": "https://jqx28l0j4lx.feishu.cn/docx/JBjjdg05OoefmcxB7EZcpSEpnyh",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "MJNtdP9E3o4qaIxJoB6ccDSKn5g"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 3,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.931,
+      "proposed_category": "management",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-swuf-b5fda1a788d1",
+      "source_document": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "source_revision": 673,
+      "source_row": 13,
+      "source_block_id": "GfMkdjnFAoWK28x1juJccZm6nnc",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/SwUFdmKBOoTkyPxgm0dcEsIunve#GfMkdjnFAoWK28x1juJccZm6nnc",
+      "source_title": "10-4月品营课程资源库-学员资料",
+      "fields": {
+        "month": {
+          "text": "11月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "GAEjdkD1woUBazxTK8KcQDolnKd"
+          ]
+        },
+        "source_number": {
+          "text": "26",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "NxWPdhYZWoAOClxYAuYcA9IUnkf"
+          ]
+        },
+        "date_raw": {
+          "text": "11.26",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "PZyfdtofmot9TgxjWgEcV5aInhf"
+          ]
+        },
+        "title": {
+          "text": "如何挖掘营销机会点",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "GfMkdjnFAoWK28x1juJccZm6nnc"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "杨雯",
+              "open_id": "ou_25f228adbb0027c1237b0fc8df775a13"
+            }
+          ],
+          "block_ids": [
+            "ZX40dIBoboZD13xlOjPchLMcnIQ"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.813",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "KyGpd7AkdouaUGxAafncHSO6nkP"
+          ]
+        },
+        "description": {
+          "text": "部门历史发现机会点的思路 、逻辑 契机发现机会的信息来源，如何推进发现的机会点，推进成功与失败的应对措施个人分享思路和逻辑个人日常工作中怎么发现机会点小组讨论：自己可以从哪些方面发现机会点，以及接下来的行动策略",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "X3wKdc2l4oF5azxncXCcWhLBn4f",
+            "N05ZdLugXo0oSOxF32mca2EOnSc",
+            "Y5NYdgtfbor5moxsS7BcjdnmnSc",
+            "Ovg8dYznHo6oB7xOFcucX9vgn5f",
+            "NgJ3d7hawov62tx6UXSchJ1An2f"
+          ]
+        },
+        "audience": {
+          "text": "高级经理、见习高级经理、预备队成员",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "YpHAdKXUsoRIuaxE55dciuzXnYc",
+            "SzDydYp4Io5NRsxzzZdcABr3ndO"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "XXDcdwtN8o4XA6xvjQ1cXLyEnDh"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "如何挖掘营销机会点-凡岛大学课程-杨雯20251126（宣发版）.pptx",
+              "type": "file",
+              "token": "Zulwbs6g7oSGW7xLw5Fci0VwnYS",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/Zulwbs6g7oSGW7xLw5Fci0VwnYS",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "FsBLdpEpBoH6fVxuq6jcHYMjnTI"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnbh3r72x7tf2441k193x8?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "JXCPd7NqaoigUAxusFtcEeURnge"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "POgLdGDWgoph4sx48yjce34rnXb"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 2,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.813,
+      "proposed_category": "management",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-swuf-7e99b5a40390",
+      "source_document": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "source_revision": 673,
+      "source_row": 14,
+      "source_block_id": "ZYAXdcRTtoqZ97xKvK0cfIDhnge",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/SwUFdmKBOoTkyPxgm0dcEsIunve#ZYAXdcRTtoqZ97xKvK0cfIDhnge",
+      "source_title": "10-4月品营课程资源库-学员资料",
+      "fields": {
+        "month": {
+          "text": "12月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "V5vbd8nxJosLtmxNsGoct9Qln5b"
+          ]
+        },
+        "source_number": {
+          "text": "27",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Qwqid0oYfojvxbxqFpocKaaIn21"
+          ]
+        },
+        "date_raw": {
+          "text": "12.25",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "R8fHdfIdeos1tLxsC5vcZnoZnch"
+          ]
+        },
+        "title": {
+          "text": "千川引流素材的竞对分析",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "ZYAXdcRTtoqZ97xKvK0cfIDhnge"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "逯晶妍",
+              "open_id": "ou_aad54b427b924c33ef104852db6fba47"
+            }
+          ],
+          "block_ids": [
+            "Xd6QdGyR2oU6lnxDkK7cEPPznwh"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.769",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "YoaFdmt8moiiFBxqrFYcWB8MnRb"
+          ]
+        },
+        "description": {
+          "text": "现阶段岛民找不到有效的素材爆点方向，急需通过正确的竞对分析方法提高找到爆点的效率，并快速落地",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "TQ2pdp8CZoZSrUx5rX5ckcMLn7g"
+          ]
+        },
+        "audience": {
+          "text": "营销端28人名单（见习高级经理、管培生、营销经理、营销编导）",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "GoMId7BLbouhiPxiZN0ckGCAngh",
+            "I4n8dn0jsozOS1xDSTYc0tWZnkb"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "XATzdXyRaoU6JNxjK0wcyyiJnTb",
+            "SCcidHeLmoHH2mx4o0Ecvreknec"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "千川引流素材的竞对分析-逯晶妍-凡岛大学课程20251225（宣发版）.pptx",
+              "type": "file",
+              "token": "Iq8gbenYyoa1mzxqyIpckYy7n2g",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/Iq8gbenYyoa1mzxqyIpckYy7n2g",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "Q7GzdDwxmoMDxPxvhtccLPwQn2b"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnvdvcb3w41sy4vi2s94w7?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "TgfOdbBBEoj8CBxRY2McICwZn2b"
+          ]
+        },
+        "other": {
+          "text": "",
+          "links": [
+            {
+              "title": "百雀羚水乳焦虑开头.mp4",
+              "type": "file",
+              "token": "FVZCbyJBgoE0kIxA1nqcIMGYnbd",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/FVZCbyJBgoE0kIxA1nqcIMGYnbd",
+              "url_basis": "canonical_from_source_token"
+            },
+            {
+              "title": "韩束拧开瓶盖.mp4",
+              "type": "file",
+              "token": "Zm2PbegnOowYo3xv09tcSwLpn4f",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/Zm2PbegnOowYo3xv09tcSwLpn4f",
+              "url_basis": "canonical_from_source_token"
+            },
+            {
+              "title": "回春谷雨.mp4",
+              "type": "file",
+              "token": "Z1ArbXLiFooFJtx5rD5cDhYvnFh",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/Z1ArbXLiFooFJtx5rD5cDhYvnFh",
+              "url_basis": "canonical_from_source_token"
+            },
+            {
+              "title": "垮脸谷雨.mp4",
+              "type": "file",
+              "token": "GOYObTFKoot55txcfPUc2u9YnRd",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/GOYObTFKoot55txcfPUc2u9YnRd",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "WvbvdsZtRo8LllxDdpkcJYYBnNd",
+            "IPPHdQYB8oRJOVxHb2ucXs4UnSg",
+            "PdWDdGyZboEh9fxCIqvcY0ernde",
+            "OSiddlP9xo50rOx0Azrc0UIZnnr"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 6,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.769,
+      "proposed_category": "advertising",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-swuf-af4ff278898c",
+      "source_document": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "source_revision": 673,
+      "source_row": 15,
+      "source_block_id": "T5JEdWuhboWwUex8lVXcQ1k1nSb",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/SwUFdmKBOoTkyPxgm0dcEsIunve#T5JEdWuhboWwUex8lVXcQ1k1nSb",
+      "source_title": "10-4月品营课程资源库-学员资料",
+      "fields": {
+        "month": {
+          "text": "26年1月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "PB4GdXj92oTx4dxNDBFc9lSbnYd",
+            "RqALdH9dqodxqGx3u1ZcK6z1nJd"
+          ]
+        },
+        "source_number": {
+          "text": "28",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "UFbpdKrU1oT9QYxDvCKcW8GZnzh"
+          ]
+        },
+        "date_raw": {
+          "text": "1.8",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "EIUTdTZtIoSBy1xJhkKc2eAanjG"
+          ]
+        },
+        "title": {
+          "text": "自产素材拍摄筹备与执行",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "T5JEdWuhboWwUex8lVXcQ1k1nSb"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "何雨庭",
+              "open_id": "ou_e64c39dad4280529c4cfb89d4628b666"
+            }
+          ],
+          "block_ids": [
+            "R2todDEAgo6XSyxn1gOclSwinAf"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.889",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "GDXfd8kPWojtpYxaNkXcWe9Znhb"
+          ]
+        },
+        "description": {
+          "text": "找到有效的爆点是第一步，不能落地等于没有找到爆点，通过脚本的细致撰写和现场把控，提高对于有效爆点的落地效率",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "SbbOdowY0oyeHMxg9kLcTZg8nwf"
+          ]
+        },
+        "audience": {
+          "text": "营销端28人名单（见习高级经理、管培生、营销经理、营销编导）",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "XxOUdqUvVoz1l6xMPplcJqu3nVh",
+            "Kn0Pdj5p0obxGqxBy7pcRBd6nhg"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Qa5Sd2CF4onK3GxrBW4cRL6UnKd"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "自产素材拍摄筹备与执行-何雨庭-凡岛大学课程20250108（宣发版）.pptx",
+              "type": "file",
+              "token": "SZmzbhPJTo0iEYxrbQScztjbnqI",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/SZmzbhPJTo0iEYxrbQScztjbnqI",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "ItKudAdX2oZbExxWRVncOiQkn3d"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcn5zu5rkbdrdrw9k6dc13j?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "GbztdpTzsoShpGxpUQdcncdqn3f"
+          ]
+        },
+        "other": {
+          "text": "",
+          "links": [
+            {
+              "title": "21193243881993720.mp4",
+              "type": "file",
+              "token": "Nih9bBifto5FshxZk5xcXm8knnh",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/Nih9bBifto5FshxZk5xcXm8knnh",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "EfGpdMPCFojKRoxzMk0cdHUingb"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 3,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.889,
+      "proposed_category": "creative",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-swuf-2cb11905bf55",
+      "source_document": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "source_revision": 673,
+      "source_row": 16,
+      "source_block_id": "GiRwdcXxToEf6ExP2K0cTQY5nGb",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/SwUFdmKBOoTkyPxgm0dcEsIunve#GiRwdcXxToEf6ExP2K0cTQY5nGb",
+      "source_title": "10-4月品营课程资源库-学员资料",
+      "fields": {
+        "month": {
+          "text": "26年1月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "PB4GdXj92oTx4dxNDBFc9lSbnYd",
+            "RqALdH9dqodxqGx3u1ZcK6z1nJd"
+          ]
+        },
+        "source_number": {
+          "text": "29",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Ol5mdrv1ZomsWNxLBbgcsZ4Nn0b"
+          ]
+        },
+        "date_raw": {
+          "text": "1.15",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Cyv2dS94aoOTfOxalDqcJGF5nmg"
+          ]
+        },
+        "title": {
+          "text": "自产二创和混剪",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "GiRwdcXxToEf6ExP2K0cTQY5nGb"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "彭聪",
+              "open_id": "ou_9d070a0f57b17a82702b1bfe7957554b"
+            }
+          ],
+          "block_ids": [
+            "BB9ddmeJKoG6rTxRMdUcUZrLnCb"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.917",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "JQBCdETb7oUlEmxEI5wcaoU9nNh"
+          ]
+        },
+        "description": {
+          "text": "有有效素材，但有效素材利用率不高一直是痛点，重复拍摄增加了很多无效工作和成本，提高素材利用率迫在眉睫",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "AgdQdHe9Ro93J3xmnG3cSK4wncb"
+          ]
+        },
+        "audience": {
+          "text": "营销端28人名单（见习高级经理、管培生、营销经理、营销编导）",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Alx4dTJngohyQAxruDNcrYJAnLg",
+            "UNqidsUxpocrOTxYRvWc2fVQnqf"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "MSOudbyZKoTCSExtJzxcAZUmnpU"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "自产二创和混剪-彭聪-凡岛大学课程20260115（宣发版）.pptx",
+              "type": "file",
+              "token": "RhGAb5dLXoLxSixmeBocilGtnib",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/RhGAb5dLXoLxSixmeBocilGtnib",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "WZBRdn72dovEvZxayNlcAcMOndL"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnar6g4re61fjxa9c5y1zu?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "RL3BdqvIYoEamXxka0xcdm10nCg"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Qf1FdDvVDoHvMnxvQiVcyeNznZf"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 2,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.917,
+      "proposed_category": "creative",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-swuf-c4858fd897f9",
+      "source_document": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "source_revision": 673,
+      "source_row": 17,
+      "source_block_id": "PYXzd0HMpoLOaOxNkhHcbqaOnnf",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/SwUFdmKBOoTkyPxgm0dcEsIunve#PYXzd0HMpoLOaOxNkhHcbqaOnnf",
+      "source_title": "10-4月品营课程资源库-学员资料",
+      "fields": {
+        "month": {
+          "text": "26年2月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "GMORd4Q8ToghDNxysJBcIMdwneh"
+          ]
+        },
+        "source_number": {
+          "text": "30",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "TpOidTyLUoM4rnxG0BOcZHIen9e"
+          ]
+        },
+        "date_raw": {
+          "text": "2.24",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "ULTmdceLLocsihxA7IdcT4h2nOP"
+          ]
+        },
+        "title": {
+          "text": "营销管理的角色跃迁",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "PYXzd0HMpoLOaOxNkhHcbqaOnnf"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "吴超华",
+              "open_id": "ou_b05370a93a2bf02bbc82bd67cca4f4cc"
+            }
+          ],
+          "block_ids": [
+            "HJKbdD9nGoOgGHxFsxic0rs9nNc"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.950",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "F0fZdiX3Movg8vxDXKwcQa1onwb"
+          ]
+        },
+        "description": {
+          "text": "随着营销策划持续扩编，越来越多营销经理开始承担起对营销策划等角色的管理职责。但在实际业务推进中，很多人仍停留在“把事情做好”的个人贡献者状态，尚未真正完成从执行者到管理者的角色跃迁。团队带不动、目标抓不住、管理动作虚、能量被消耗，是当前营销管理中反复出现的真实问题。这门课正是在这样的背景下开发，聚焦营销团队一线管理中的典型痛点，帮助管理者重新理解管理的本质，建立更清晰的管理认知与更有效的管理动作，把精力真正用在提升团队效率、激发组织能量和推动业务结果上。",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "IIvJdVq5doTe2ZxVqHYcqYT2nKg",
+            "LoWpd7kwaox2bKxFc1bcYk4znNd"
+          ]
+        },
+        "audience": {
+          "text": "涉及营销管理的岛民",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "RRvydExFeoKQBpxCV6QciXw2nPh"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "F7ILduEWcoVSRfxbEGpc6SjRnob"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "营销管理的角色跃迁-吴超华-凡岛大学课程20260224.pptx",
+              "type": "file",
+              "token": "WmDpb4nYOoenN1xTwTec02F9nog",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/WmDpb4nYOoenN1xTwTec02F9nog",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "CMmMdEMNso2TQExbVtXcmrD1n9u"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcn2774i94kd481z645czz1?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "RGgWddQ0FoLlovxCjGAcWBbfnVb"
+          ]
+        },
+        "other": {
+          "text": "",
+          "links": [
+            {
+              "title": "02 自学材料：《权力与领导》内容节选.pdf",
+              "type": "file",
+              "token": "DoqgbnW9coXjgdxmfTecs4SKnfg",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/DoqgbnW9coXjgdxmfTecs4SKnfg",
+              "url_basis": "canonical_from_source_token"
+            },
+            {
+              "title": "《营销管理的角色跃迁》课后作业模板（行动计划 & 目标梳理）",
+              "type": "wiki",
+              "token": "WoSZwLH6Ui1PNCkSdQOc8rHRnog",
+              "url": "https://jqx28l0j4lx.feishu.cn/wiki/WoSZwLH6Ui1PNCkSdQOc8rHRnog",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "E92wddIkMotaptxAiBIcUOjznjc",
+            "HKm7dJG3bor1z5xME51cCtahnOc",
+            "WitgdcfMJo3E7GxmAghcvP1knXc"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 4,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.95,
+      "proposed_category": "management",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-swuf-eef7aada23e1",
+      "source_document": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "source_revision": 673,
+      "source_row": 18,
+      "source_block_id": "MfV6dOmoooOuSDxCkP1cUlMUnuf",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/SwUFdmKBOoTkyPxgm0dcEsIunve#MfV6dOmoooOuSDxCkP1cUlMUnuf",
+      "source_title": "10-4月品营课程资源库-学员资料",
+      "fields": {
+        "month": {
+          "text": "26年3月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "VG9DdjyRSo9hN1xT7CBcKZt2nIg"
+          ]
+        },
+        "source_number": {
+          "text": "31",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "LcEodNWZ0oyX6dxkbDYc7RQpnYg"
+          ]
+        },
+        "date_raw": {
+          "text": "3.13",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "TPRpd9CA8oDhO9xB3vHcTt3XnfL"
+          ]
+        },
+        "title": {
+          "text": "营销关键问题：竞争力视角下的经营认知升级",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "MfV6dOmoooOuSDxCkP1cUlMUnuf"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "唐娟",
+              "open_id": "ou_17b880f8e1a5d825d907481aa66483a5"
+            }
+          ],
+          "block_ids": [
+            "Nv1VddWFjou8umxzrDgcnJG6nIg"
+          ]
+        },
+        "historical_rating": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "VSTmdfah6onOVXxPDWpcDKsznyS"
+          ]
+        },
+        "description": {
+          "text": "管理培训暂不面向岛民开放",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "FTuRdrUK1oKjDbxuKmccMQJ0ncg"
+          ]
+        },
+        "audience": {
+          "text": "营销管理干部",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "SY5vdiSlNohs9OxghBzcm6Zancc"
+          ]
+        },
+        "reading": {
+          "text": "暂不面向岛民开放，需要的材料管理者请私聊@李秋霞",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "LPikdjbuCoPZQTxjsfzcat11n3g"
+          ]
+        },
+        "slides": {
+          "text": "暂不面向岛民开放，需要的材料管理者请私聊@李秋霞",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "AUrtdDygwobG6HxDpPRcPxOanBA"
+          ]
+        },
+        "recordings": {
+          "text": "暂不面向岛民开放，需要的材料管理者请私聊@李秋霞",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Ks3AdXRzboSAijxYuvqcRkgXnZy"
+          ]
+        },
+        "other": {
+          "text": "暂不面向岛民开放，需要的材料管理者请私聊@李秋霞",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Es3PdU5CGoa7bExD6iwc24Mxnth"
+          ]
+        }
+      },
+      "restricted": true,
+      "linked_resource_count": 0,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": null,
+      "proposed_category": "management",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-swuf-c77f96a62705",
+      "source_document": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "source_revision": 673,
+      "source_row": 19,
+      "source_block_id": "WBRrdEeXtoZEutx2A56cDf60nBf",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/SwUFdmKBOoTkyPxgm0dcEsIunve#WBRrdEeXtoZEutx2A56cDf60nBf",
+      "source_title": "10-4月品营课程资源库-学员资料",
+      "fields": {
+        "month": {
+          "text": "26年4月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "MiapdEwvXomw7lxLdOnczXxenY8"
+          ]
+        },
+        "source_number": {
+          "text": "32",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "A0GBda9mkolYbvxXjukc5mqTnCh"
+          ]
+        },
+        "date_raw": {
+          "text": "4.21",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "MdLzdnh8IoafbhxUlo9ci6YFnZc"
+          ]
+        },
+        "title": {
+          "text": "经营复盘：用利润视角判断营销动作到底好不好",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "WBRrdEeXtoZEutx2A56cDf60nBf"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "杨雯",
+              "open_id": "ou_25f228adbb0027c1237b0fc8df775a13"
+            }
+          ],
+          "block_ids": [
+            "NlkYdoiWDoIl8dxIHAfc9d6lnDh"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.830",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "BJCqdtN8rovu4UxbsPjcuetrnUg"
+          ]
+        },
+        "description": {
+          "text": "本课程基于营销团队在日常立项、投放、汇报与复盘中，容易只看GMV、曝光、ROI等单点指标、却忽视完整利润结构的真实业务问题开发。课程围绕“用利润视角判断营销动作到底好不好”展开，帮助学员建立经营复盘意识，学会把营销动作放回经营表中判断，系统掌握看基础数据、看财报、算净利润、做决策的核心方法，减少误判，做出更准确的业务判断。",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "PpdVdxwJUo1AFExC1jmc29aPnZc"
+          ]
+        },
+        "audience": {
+          "text": "营销端全员",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "MmvvdE0Sqop95rxHXLFcK2qKnyf"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "N9Ksde1xMoYRQSxIKHHcf29Onwg"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "经营复盘：用利润视角判断营销动作到底好不好-杨雯-凡岛大学课程20260421.pptx",
+              "type": "file",
+              "token": "Fq8ObRwHEouvYWxHjnncIwwHnLg",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/Fq8ObRwHEouvYWxHjnncIwwHnLg",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "PQLgdaKcMocH03xpXgzcuYjvnFd"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcn6lsb26zyoc59461262z6?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "KjXtdzusaoMk7oxh3nXcfzwCnT8"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Xs9pd64CGo6ytIxGHnBcSVBUnYi"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 2,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.83,
+      "proposed_category": "management",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-swuf-dbd533fb0753",
+      "source_document": "SwUFdmKBOoTkyPxgm0dcEsIunve",
+      "source_revision": 673,
+      "source_row": 20,
+      "source_block_id": "QO1Cd14qboQbOxxuYCVcUvlenec",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/SwUFdmKBOoTkyPxgm0dcEsIunve#QO1Cd14qboQbOxxuYCVcUvlenec",
+      "source_title": "10-4月品营课程资源库-学员资料",
+      "fields": {
+        "month": {
+          "text": "26年4月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "MiapdEwvXomw7lxLdOnczXxenY8"
+          ]
+        },
+        "source_number": {
+          "text": "33",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "QwandndSPojz9uxQQ3TcxRPkn9d"
+          ]
+        },
+        "date_raw": {
+          "text": "4.22",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "VnqYdqohkoCajsxNKHccIEq9n8c"
+          ]
+        },
+        "title": {
+          "text": "KOC选择与放大：跑出结果的关键判断",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "QO1Cd14qboQbOxxuYCVcUvlenec"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "王思怡",
+              "open_id": "ou_ee6abd2583f059da3c7f8d32bfa97831"
+            }
+          ],
+          "block_ids": [
+            "LOMQdoTaIoTi6KxktAecPryEn6f"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.538",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Sbb9dXuEHoqrfHxoZbBcL2osnrc"
+          ]
+        },
+        "description": {
+          "text": "（待补充）",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "SzKhd2G2soHAmDx1rJGcpHhMnDb"
+          ]
+        },
+        "audience": {
+          "text": "营销端新岛民",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Ij1UdtngRo1An4xGr8Oc68atntd"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "ZhvVdCdUmoaWg5xyTsJcS47Cndc"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "KOC选择与放大：跑出结果的关键判断-王思怡-凡岛大学课程20260422.pptx",
+              "type": "file",
+              "token": "McQNbZP81oufRqxaQZdcfGVtnTb",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/McQNbZP81oufRqxaQZdcfGVtnTb",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "RXPtder1UoByTpxTa69cGHahnMf"
+          ]
+        },
+        "recordings": {
+          "text": "https://jqx28l0j4lx.feishu.cn/minutes/obcn7b3lg32d35l866nxhy13?from=from_copylink",
+          "links": [
+            {
+              "title": "",
+              "type": "plaintext",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/obcn7b3lg32d35l866nxhy13?from=from_copylink",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "UcqId9X3qonnvsxyZmKcWsnYnYb"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Yi9JdBQNLoafRbxtK8Ac0Gykn6e"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 2,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.538,
+      "proposed_category": "channel",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-pmg-c9a337768357",
+      "source_document": "PMgwdg3hRo7NYaxtaXacBNZXnaf",
+      "source_revision": 631,
+      "source_row": 1,
+      "source_block_id": "OV53dBu8RowGVexV8g6cNNBZnod",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/PMgwdg3hRo7NYaxtaXacBNZXnaf#OV53dBu8RowGVexV8g6cNNBZnod",
+      "source_title": "5-7月品营新岛民卓越计划-课程资源库（学员资料）",
+      "fields": {
+        "month": {
+          "text": "5月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "EmVldP91To8hqVx1dJ7c5K6cn3f"
+          ]
+        },
+        "source_number": {
+          "text": "1",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "F54gdWV1NoEMrvxJTJjcqFn5n6c"
+          ]
+        },
+        "date_raw": {
+          "text": "5.15",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "GK6Fdnqa1odiEmxkGGPcijDynic"
+          ]
+        },
+        "title": {
+          "text": "护肤第一课： 从用户肌肤问题 到WIS产品表达",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "OV53dBu8RowGVexV8g6cNNBZnod"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "廖丫",
+              "open_id": "ou_12f2a99313c2a40482a8d5669fb295d6"
+            }
+          ],
+          "block_ids": [
+            "LIyddMX1ho4gBnxRO7AcQozCn7g"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.841",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "P8GDdPG8woHnlJxoufHcfyzSnHX"
+          ]
+        },
+        "description": {
+          "text": "本课程面向品牌营销部新岛民，帮助大家建立护肤品类与 WIS 产品的基础认知。课程从化妆品基础概念、常见肌肤问题与产品作用逻辑讲起，并以 WIS 隐形水润面膜为案例，拆解产品如何从用户需求、成分配方、包装设计走向营销表达。学完后，学员能更好理解产品资料、提炼卖点，并与产品经理高效协作。",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "ZavNdVjmBobWgVxblpncrrhZnmf"
+          ]
+        },
+        "audience": {
+          "text": "品营新岛民",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "SOO9dlKUComulVxqw5ecF3pnnng"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "VeTPdYbd8oCgGWxZWqccD77JnEe",
+            "DbWHd5oveo73TIxfhXKc8QapnVc"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "护肤第一课： 从用户肌肤问题 到WIS产品表达-廖丫-凡岛大学课程20260515.pptx",
+              "type": "file",
+              "token": "KV1FbqEpiokcJSxf21HcobR5nNf",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/KV1FbqEpiokcJSxf21HcobR5nNf",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "V3rWdpNw6oKhs2xGP7acmHb8nUc"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnm2lqke41945u167ig6zx?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "VdPNdxwq3oMERNxMY3rcHNdEn5g"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "VQl3dyTfRoyCUVxf97ocLkhxngd"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 2,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.841,
+      "proposed_category": "foundation",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-pmg-57b2eff21ab6",
+      "source_document": "PMgwdg3hRo7NYaxtaXacBNZXnaf",
+      "source_revision": 631,
+      "source_row": 2,
+      "source_block_id": "OdsbdBaZqoMM85x2xDMcGvGTnKf",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/PMgwdg3hRo7NYaxtaXacBNZXnaf#OdsbdBaZqoMM85x2xDMcGvGTnKf",
+      "source_title": "5-7月品营新岛民卓越计划-课程资源库（学员资料）",
+      "fields": {
+        "month": {
+          "text": "5月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "EmVldP91To8hqVx1dJ7c5K6cn3f"
+          ]
+        },
+        "source_number": {
+          "text": "2",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "TeoHdqXQJocLL8x6PudcqCKfnIg"
+          ]
+        },
+        "date_raw": {
+          "text": "5.18",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "TbnUdFCSrowxdmx8wtfcctlWnmb"
+          ]
+        },
+        "title": {
+          "text": "品牌营销部-部门第一课",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "OdsbdBaZqoMM85x2xDMcGvGTnKf"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "赵佳乐",
+              "open_id": "ou_e9b3c1713cbb8dc65232dad5d2f2c704"
+            }
+          ],
+          "block_ids": [
+            "HxPYd9Lpvo5hegxkoqJcMiN7nLb"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.886",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "CwPjdAmOBoCf5DxwL0ZcfAQEnNh"
+          ]
+        },
+        "description": {
+          "text": "本课程面向品牌营销部新岛民，由赵佳乐总监带大家系统理解部门定位、业务链路与成长路径。课程从“为什么选择营销”切入，讲清品牌营销部在 WIS 生意中的核心价值、抖音与视频号两大主战场、内容生产到投放转化的数据闭环，以及新人需要建立的结果意识、用户意识、数据意识和协同意识，帮助新岛民更快看懂部门、理解岗位、明确发展方向。",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "FzoEdMpyUoSxHdxy6mscnMC1n3f"
+          ]
+        },
+        "audience": {
+          "text": "品营新岛民",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "FCnqdlCz7oT6YbxN4TAcDb3pnoc"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "BdvjdjpsqolEjlxiSphcNUUInEd"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "《品牌营销部第一课》-赵佳乐总监-凡岛大学课程20260518.pptx",
+              "type": "file",
+              "token": "IyeSbnmnWoNTqbxKqGTcE11qnpK",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/IyeSbnmnWoNTqbxKqGTcE11qnpK",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "YJY0dIk5NoURBexaNUcciVMYnlb"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcno46kc24b7t87z98n7854?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "UK13dQcruoyO48xj6nhcrPben4g"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "XJ7AdhKqmoqWbhxoanScJeAMn2d"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 2,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.886,
+      "proposed_category": "foundation",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-pmg-9d378380c005",
+      "source_document": "PMgwdg3hRo7NYaxtaXacBNZXnaf",
+      "source_revision": 631,
+      "source_row": 3,
+      "source_block_id": "T6jHdzyyhoNg7sxCsnJc8DQxnMb",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/PMgwdg3hRo7NYaxtaXacBNZXnaf#T6jHdzyyhoNg7sxCsnJc8DQxnMb",
+      "source_title": "5-7月品营新岛民卓越计划-课程资源库（学员资料）",
+      "fields": {
+        "month": {
+          "text": "5月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "EmVldP91To8hqVx1dJ7c5K6cn3f"
+          ]
+        },
+        "source_number": {
+          "text": "3",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "LR72dTtWDo8EW0xUWCOczmlXnnf"
+          ]
+        },
+        "date_raw": {
+          "text": "5.20",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "FgsqdDRimoFF1txeT1xcTSfznrd"
+          ]
+        },
+        "title": {
+          "text": "今天我要剪亿条爆款——信息流混剪框架",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "T6jHdzyyhoNg7sxCsnJc8DQxnMb"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "吴为",
+              "open_id": "ou_4fbb3ee94fe121d2392748be5fa92727"
+            }
+          ],
+          "block_ids": [
+            "HPUAdREZToJ0WBxOzHcclL9jnhh"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.818",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "LVR1dT4Mko9QrYxOCd9croYonYf"
+          ]
+        },
+        "description": {
+          "text": "本课程面向品牌营销部新岛民及信息流混剪相关同事，围绕“什么样的素材更容易跑量”展开，系统拆解明星、机制、痛点、剧情/Vlog、产展、科普等常见爆款选题的判断逻辑。课程重点讲清开头吸引、主题一致、素材调性、BGM节奏、视觉中心与产品转化之间的关系，帮助学员从“会剪视频”升级为“会剪用户决策”。",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "F0FSdUL5KoQJmOxgK9zcIGGAnlc"
+          ]
+        },
+        "audience": {
+          "text": "品营新岛民",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "AtoFdVsaOoKD3dxwIoacIup9nLc"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "WO3gdARNvo9U4FxPVaccVJqJnKF"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "今天我要剪亿条爆款——信息流混剪框架-吴为讲师-凡岛大学课程20260520.pptx",
+              "type": "file",
+              "token": "SAU4bejq7o1QnVxeWlCcmSUMnRf",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/SAU4bejq7o1QnVxeWlCcmSUMnRf",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "V3p0dgZUaoOlkuxsPtCcqddDnUb"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnqh1v8qdnm7ls34srba7p?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "HqcadS0GsoYjNXxWefDcuGWbneb"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "USfXdvQ8sov2Wvx2pswcUE0mnWh"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 2,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.818,
+      "proposed_category": "creative",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-pmg-3c9633b1249e",
+      "source_document": "PMgwdg3hRo7NYaxtaXacBNZXnaf",
+      "source_revision": 631,
+      "source_row": 4,
+      "source_block_id": "LEcod8AqAovoddxMsplc9CXQnSZ",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/PMgwdg3hRo7NYaxtaXacBNZXnaf#LEcod8AqAovoddxMsplc9CXQnSZ",
+      "source_title": "5-7月品营新岛民卓越计划-课程资源库（学员资料）",
+      "fields": {
+        "month": {
+          "text": "5月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "EmVldP91To8hqVx1dJ7c5K6cn3f"
+          ]
+        },
+        "source_number": {
+          "text": "4",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "ZKozdpp8zofxDUxYXq1cKDLNnZb"
+          ]
+        },
+        "date_raw": {
+          "text": "5.22",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "LbxvdgtqroopGoxk0U4ck2EgnJg"
+          ]
+        },
+        "title": {
+          "text": "让AI成为每个人的助手 ——建立起对AI的认知",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "LEcod8AqAovoddxMsplc9CXQnSZ"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "舒豪",
+              "open_id": "ou_193a8b0e08742fd0784a6f599798f08c"
+            }
+          ],
+          "block_ids": [
+            "AfTZdotOMoUzNqxbvMKcWxUJnjc"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.833",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "A9LRddwZwoTMkZx38TkcmmQ2nHd"
+          ]
+        },
+        "description": {
+          "text": "本课程面向品牌营销部新岛民及希望提升 AI 应用意识的同事，帮助大家建立对 AI 工具的基础认知与使用心态。课程结合日报撰写、数据整理、视频分析、会议纪要、AI图片与视频生成等真实工作场景，讲清 AI 能在哪些重复、低效、表达和创意工作中提效，并引导学员从一个高频小场景开始，把 AI 逐步变成自己的工作助手。",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Rn3JdRiJIoJDW8xGqlhcDTDZnzg"
+          ]
+        },
+        "audience": {
+          "text": "品营新岛民",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "SOrcdTIQnoRJRbxYWhxcHpS3nHb"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "RFghdIENJoCx13xNbxKc1ChdnDf"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "让AI成为每个人的助手——建立起对AI的认知-舒豪讲师-凡岛大学课程20260522.pptx",
+              "type": "file",
+              "token": "XZxDbNpWwonWeqxb2iYcEIElnob",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/XZxDbNpWwonWeqxb2iYcEIElnob",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "SHVEdHUklojvGDxnnWZczq9unnd"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnrrzjv1ib8152aut1ux78?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "O50GduiSeoy5oLxdr7Xc0M6Enff"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "ARMQdFTjSoh2KKxXRlAcgqQgnKe"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 2,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.833,
+      "proposed_category": "ai",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-pmg-a0c4b2224e80",
+      "source_document": "PMgwdg3hRo7NYaxtaXacBNZXnaf",
+      "source_revision": 631,
+      "source_row": 5,
+      "source_block_id": "SJusdeKyTo8OMGx4zSucbaf0nod",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/PMgwdg3hRo7NYaxtaXacBNZXnaf#SJusdeKyTo8OMGx4zSucbaf0nod",
+      "source_title": "5-7月品营新岛民卓越计划-课程资源库（学员资料）",
+      "fields": {
+        "month": {
+          "text": "5月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "EmVldP91To8hqVx1dJ7c5K6cn3f"
+          ]
+        },
+        "source_number": {
+          "text": "5",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Y4XQd9B4DoMmTPx5uPKcfz5InbS"
+          ]
+        },
+        "date_raw": {
+          "text": "5.25",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "VXi0dAu93oA3QExbfLPcuLdBngh"
+          ]
+        },
+        "title": {
+          "text": "素材亿飞冲天",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "SJusdeKyTo8OMGx4zSucbaf0nod"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "唐茹",
+              "open_id": "ou_e11ea4e2ac5b813ad74f7ae8f3616635"
+            }
+          ],
+          "block_ids": [
+            "XORedhWneo5fnhxfFYPcVqDXnvf"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.825",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "NxFsdo8P0oSQaexTzQecDhSknih"
+          ]
+        },
+        "description": {
+          "text": "本课程面向品牌营销部新岛民及混剪相关同事，围绕信息流素材如何“从有效案例中衍生新爆款”展开。课程从剪辑节奏、结构拆解、台词重组、素材筛选、画面呈现与BGM使用等维度，拆解明星种草、机制素材、剧情素材等案例，帮助学员理解爆款不是简单复刻，而是基于有效开头、有效结构和有效画面进行变化创新，提升素材起量概率。",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "VtBPdO3Myo29X6xAkTkckYpPnBe"
+          ]
+        },
+        "audience": {
+          "text": "品营新岛民",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "UcrLdrCLAou1krx0bF3cf1S0nAl"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Iwvadrqv5oCQCdxc0k4cA44PnDd"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "素材亿飞冲天-唐茹讲师-凡岛大学课程20260525.pptx",
+              "type": "file",
+              "token": "S5cqbcjdMof0m4xI9ybcZ18ZnVh",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/S5cqbcjdMof0m4xI9ybcZ18ZnVh",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "ZlvcdkB3coXw46xq8QkcKtsnnxc",
+            "UWbXdDvqJoZ7nQxg5VccSwOSn9f"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcntw2eks94fk1ytn83i65r?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "MMoRdFt44oIuwQxK6gvcuFgjn2J"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "VPX1dbVHXoANs3x3DjoczAelnBg"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 2,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.825,
+      "proposed_category": "creative",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-pmg-38a85ce0385c",
+      "source_document": "PMgwdg3hRo7NYaxtaXacBNZXnaf",
+      "source_revision": 631,
+      "source_row": 6,
+      "source_block_id": "VZ5adFr1foIvMMxZCyEcRlt5nmf",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/PMgwdg3hRo7NYaxtaXacBNZXnaf#VZ5adFr1foIvMMxZCyEcRlt5nmf",
+      "source_title": "5-7月品营新岛民卓越计划-课程资源库（学员资料）",
+      "fields": {
+        "month": {
+          "text": "5月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "EmVldP91To8hqVx1dJ7c5K6cn3f"
+          ]
+        },
+        "source_number": {
+          "text": "6",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "VLrBdPIC3ok4S4xXRUScDfBknsn"
+          ]
+        },
+        "date_raw": {
+          "text": "5.27",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "QgrmdEwwZoPVVsxR9Oiczx9In8c"
+          ]
+        },
+        "title": {
+          "text": "亿气呵成剪出百万剧情：爆款开头、剧情结构与产品植入",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "VZ5adFr1foIvMMxZCyEcRlt5nmf"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "张瑶",
+              "open_id": "ou_acf88dbc2718fc980a9fbe3ad488aa92"
+            }
+          ],
+          "block_ids": [
+            "ZkNTdOziZoIl2xxJa5FcsZicn4d"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.824",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Fw5cdrqx9oVs5zx5fJGczTSKnEc"
+          ]
+        },
+        "description": {
+          "text": "本课程面向品牌营销部新岛民及剧情混剪相关同事，围绕“如何把剧情素材剪得更有代入感、更能跑量”展开。课程重点拆解爆款剧情开头的判断标准、冲突与矛盾升级的保留方式、人物反差与情绪爽点的塑造，以及产品在剧情中的自然植入与转化时机，帮助学员从“看懂剧情”升级为“会拆结构、会抓情绪、会设计产品承接”。",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "O3QCdsXz2o9GuixVGnBczKARnUb"
+          ]
+        },
+        "audience": {
+          "text": "品营新岛民",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "F9lhd2beCoK1U8xjKTMcgmprnhe"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "E8kxd7Ee2oKEfhxBdQUcvf7gnMg"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "亿气呵成剪出百万剧情：爆款开头、剧情结构与产品植入-张瑶讲师-凡岛大学课程20260527.pptx",
+              "type": "file",
+              "token": "Kds0bm4aBorUfwxkylMc71BinTg",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/Kds0bm4aBorUfwxkylMc71BinTg",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "FbnkdPJ8JoFL05x1UxBcpeRPnVd"
+          ]
+        },
+        "recordings": {
+          "text": "https://jqx28l0j4lx.feishu.cn/minutes/obcnva962qeqy399mge91jrg?from=from_copylink（无声，有录屏）https://jqx28l0j4lx.feishu.cn/minutes/obcnvbedyebhb7967skb97y5?from=from_copylink（有声，后半段）",
+          "links": [
+            {
+              "title": "",
+              "type": "plaintext",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/obcnva962qeqy399mge91jrg?from=from_copylink",
+              "url_basis": "source_url"
+            },
+            {
+              "title": "",
+              "type": "plaintext",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/obcnvbedyebhb7967skb97y5?from=from_copylink",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "Npl6dFOU8oV9CMxL5SIcH3v6nae",
+            "Sm6rdC1XKofcpRxHSALcPnG8nBd"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Klk1d6krFoZmO1xZU9vcuWIbn7d"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 3,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.824,
+      "proposed_category": "creative",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-pmg-1452a1bd051d",
+      "source_document": "PMgwdg3hRo7NYaxtaXacBNZXnaf",
+      "source_revision": 631,
+      "source_row": 7,
+      "source_block_id": "CLSPduUPyo9gKFx8BmOcyo40nAb",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/PMgwdg3hRo7NYaxtaXacBNZXnaf#CLSPduUPyo9gKFx8BmOcyo40nAb",
+      "source_title": "5-7月品营新岛民卓越计划-课程资源库（学员资料）",
+      "fields": {
+        "month": {
+          "text": "5月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "EmVldP91To8hqVx1dJ7c5K6cn3f"
+          ]
+        },
+        "source_number": {
+          "text": "8",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "TSVddiCO5oIIyXxhxKZchNqUnjf"
+          ]
+        },
+        "date_raw": {
+          "text": "5.29",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "UCiEd1MuAoYeLxxJfQjcMQtFnhb"
+          ]
+        },
+        "title": {
+          "text": "信息流广告黄金3秒吸引力方法论",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "CLSPduUPyo9gKFx8BmOcyo40nAb"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "唐娟",
+              "open_id": "ou_17b880f8e1a5d825d907481aa66483a5"
+            }
+          ],
+          "block_ids": [
+            "Z83ZdGid6olOIDxgUbec0m6Kn8c"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.852",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "PNI6dBkTEoBIznx4tbAcD72hn3f"
+          ]
+        },
+        "description": {
+          "text": "本课程面向品牌营销部全体同事，围绕“信息流广告黄金3秒吸引力”展开，属于营销端通用专业课程。课程旨在建立同事们对于注意力吸引的底层思维认知，掌握信息流广告黄金3秒营销端已沉淀的方法经验，让同事们能实际写出能够出爆款的前三秒的视频素材脚本。同时强化同事们从第一性原理出发分析复盘的能力。",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "FNfEdM2JloNXijxWwZpcpfGEnpb"
+          ]
+        },
+        "audience": {
+          "text": "品营全体岛民",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "RXggdkGTkoswVnxM6PgcpfRunyt"
+          ]
+        },
+        "reading": {
+          "text": "",
+          "links": [
+            {
+              "title": "大脑的资源分配战争：深度拆解人类注意力机制",
+              "type": "wiki",
+              "token": "RfT8wjpf7ig55Dk9meccTj7Rnac",
+              "url": "https://jqx28l0j4lx.feishu.cn/wiki/RfT8wjpf7ig55Dk9meccTj7Rnac",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "GtUYdahYcol6mOxvQ8ncUh9znNb"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "信息流广告黄金3秒吸引力方法论-唐娟讲师-凡岛大学课程20260529 .pptx",
+              "type": "file",
+              "token": "Aud8btMJMovlcdxz0eDch0LwnWc",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/Aud8btMJMovlcdxz0eDch0LwnWc",
+              "url_basis": "canonical_from_source_token"
+            },
+            {
+              "title": "信息流广告黄金3秒吸引力方法论-唐娟讲师-凡岛大学培训课程260601.pptx",
+              "type": "file",
+              "token": "GNAnb62VGoQ7Y6xUIQqcHtPKnYg",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/GNAnb62VGoQ7Y6xUIQqcHtPKnYg",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "PMvZdQztwoR9s9xNxghcZnjJnRf",
+            "NBP2dlT6pofH5zx7t1scfvwznAi"
+          ]
+        },
+        "recordings": {
+          "text": "第一批次：第二批次：",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnwk515c2kg73l36rdn7g3?from=ccm",
+              "url_basis": "source_url"
+            },
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://meetings.feishu.cn/minutes/embed/obcnzew56fu13m7e3qa5nh35?from=ccm&from_source=clip_generated",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "VrGEdpnsPo3ZLTxziDqcE8c3nPz",
+            "A6qAd43dzoP8ccxxWgrc3edJnmh",
+            "MQNsdsnXmog10LxTfBncF9jznSF",
+            "MoBbdVQx3ovegNxmgubck6x7nRn"
+          ]
+        },
+        "other": {
+          "text": "、第一批次：第二批次：新鲜出炉，你没体验过的鸭鸭冒险游戏！ - 抖音",
+          "links": [
+            {
+              "title": "课堂实操材料",
+              "type": "wiki",
+              "token": "H9k2wwmPnin8vQk3MtQcSAVSnGg",
+              "url": "https://jqx28l0j4lx.feishu.cn/wiki/H9k2wwmPnin8vQk3MtQcSAVSnGg",
+              "url_basis": "canonical_from_source_token"
+            },
+            {
+              "title": "信息流广告前三秒复盘自查表",
+              "type": "wiki",
+              "token": "FucNw9KPeiZOKbkAZBsc8rr0nvb",
+              "url": "https://jqx28l0j4lx.feishu.cn/wiki/FucNw9KPeiZOKbkAZBsc8rr0nvb",
+              "url_basis": "canonical_from_source_token"
+            },
+            {
+              "title": "信息流广告黄金 3 秒：基于大脑底层机制的复盘自查表6.1",
+              "type": "wiki",
+              "token": "WiirwOGezieYVyk9UH7c2DlMn9e",
+              "url": "https://jqx28l0j4lx.feishu.cn/wiki/WiirwOGezieYVyk9UH7c2DlMn9e",
+              "url_basis": "canonical_from_source_token"
+            },
+            {
+              "title": "新鲜出炉，你没体验过的鸭鸭冒险游戏！ - 抖音",
+              "type": "a",
+              "url": "https://v.douyin.com/VJ6jxKwLts0/",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "Y6vxdpRbloANVbxuJE4ctCdynHe",
+            "EvXUdrihNoeeE2xs2TTcmGXbnEc",
+            "UG8idInzOoDYXjxaoPzcCAfWnhb",
+            "EZzUdX3xxoMUefxR2gEcAjwNnuf"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 9,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.852,
+      "proposed_category": "creative",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-pmg-2a7a0a96b4ec",
+      "source_document": "PMgwdg3hRo7NYaxtaXacBNZXnaf",
+      "source_revision": 631,
+      "source_row": 8,
+      "source_block_id": "QXBodv8N7oAYRfxYpJ9cUJwZnff",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/PMgwdg3hRo7NYaxtaXacBNZXnaf#QXBodv8N7oAYRfxYpJ9cUJwZnff",
+      "source_title": "5-7月品营新岛民卓越计划-课程资源库（学员资料）",
+      "fields": {
+        "month": {
+          "text": "6月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "BXwGdazMPoaxlNxZZ8zcTHl7nHg",
+            "AvsOdk9XnofArbxrieAcQIh1nEh"
+          ]
+        },
+        "source_number": {
+          "text": "9",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "VTjgdP27qow5bTx77ehctWY6n1d"
+          ]
+        },
+        "date_raw": {
+          "text": "6.2",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "OWe4dmE29oQyOqxSccZclKljnEb"
+          ]
+        },
+        "title": {
+          "text": "亿眼定爆款：素材分析与创意判断力提升",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "QXBodv8N7oAYRfxYpJ9cUJwZnff"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "彭聪",
+              "open_id": "ou_9d070a0f57b17a82702b1bfe7957554b"
+            }
+          ],
+          "block_ids": [
+            "FFxAdzLXro0oKqxl7T1cA3GSnK8"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.912",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Ruk2dKiH8oX7fGxgQsicGXpInZg"
+          ]
+        },
+        "description": {
+          "text": "本课程面向品牌营销部全体同事，围绕“素材分析与创意判断力提升”展开，属于营销端通用专业课程。课程旨在建立同事们对于爆款素材创作与数据复盘的底层思维认知，掌握从对标、拆解到组合创新的系统方法论，让同事们能实际分析并创作出具有爆款潜力的视频素材。同时强化同事们基于第一性原理，通过数据反馈持续优化素材内容的能力。",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "DjuZdkiSToFji1xRB7yc7YeznPd",
+            "D3iHdUSe0obZh2x9qTacWJfPntb"
+          ]
+        },
+        "audience": {
+          "text": "品营新岛民",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "IJ2mdIYEKow8CwxZoakctQdNneS"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "FLKedwpxootyOaxmTOOcBpPFn8g"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "亿眼定爆款：素材分析与创意判断力提升-彭聪讲师-凡岛大学课程260601.pptx",
+              "type": "file",
+              "token": "GCP6bTkuBojZoPx0Giwc2hTun8v",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/GCP6bTkuBojZoPx0Giwc2hTun8v",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "ZqWCdpYwIo87RKxA0j6cOfR4nRg"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcns48248mc6884385b4i9d?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "IAJKd7ikXoS9APxI3Incnxn4nVg"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "YOOpdkxdVo8vhgxRt3rcXqkknpb"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 2,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.912,
+      "proposed_category": "creative",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-pmg-2dc273ce46be",
+      "source_document": "PMgwdg3hRo7NYaxtaXacBNZXnaf",
+      "source_revision": 631,
+      "source_row": 9,
+      "source_block_id": "MC68daSasoKbpixkzkwchhcHnHk",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/PMgwdg3hRo7NYaxtaXacBNZXnaf#MC68daSasoKbpixkzkwchhcHnHk",
+      "source_title": "5-7月品营新岛民卓越计划-课程资源库（学员资料）",
+      "fields": {
+        "month": {
+          "text": "6月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "BXwGdazMPoaxlNxZZ8zcTHl7nHg",
+            "AvsOdk9XnofArbxrieAcQIh1nEh"
+          ]
+        },
+        "source_number": {
+          "text": "10",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "G6vJdUM5Qorapgxw7xIc1NcOnwc"
+          ]
+        },
+        "date_raw": {
+          "text": "6.3",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "IJmBd2FzkoyXBJxa465cyQuvn9c"
+          ]
+        },
+        "title": {
+          "text": "直播间通识培训",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "MC68daSasoKbpixkzkwchhcHnHk"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "刘慧迅",
+              "open_id": "ou_2f90737d743168531c00f6a066982e15"
+            }
+          ],
+          "block_ids": [
+            "H4Hcdxa4tobBt0x1JWdcEYmDnQK"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.800",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "R0UMdO2AqoqBcexLNizcdpafn0e"
+          ]
+        },
+        "description": {
+          "text": "本课程面向直播中心全体新人（主播、直播助理），围绕“直播间系统认知与职业发展”展开，属于直播中心新人通识课程。课程旨在建立新人对于直播业务全局与个人角色的底层认知，掌握直播间核心数据工具与岗位协同的核心方法，让新人能快速融入岗位、明确发展路径并驱动业务增长。同时强化新人的成本敬畏感与持续迭代的职业心态。",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Xw8DdAoCzo9KVFxAS7ecUBAan9Y"
+          ]
+        },
+        "audience": {
+          "text": "品营新岛民",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "ZYDedUOHjooq46x9PG2c46AmnOl"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "HFGJdtAffowP5XxKQRTcAAY6n5c"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "直播间通识课 -刘慧迅讲师-凡岛大学培训课程260603.pptx",
+              "type": "file",
+              "token": "Ct2wbXKbioexNGxMG9ycvjjvnob",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/Ct2wbXKbioexNGxMG9ycvjjvnob",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "OksAdQKIboUyCLxQ7cLcJFljnQe"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "PugqdHvULoqoIbxGywScuhdZnwh",
+            "WmJKd97fZoanS9xVgjZcfyFZnQh"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "J3ZodVfhdoHi6Zxvo2pcxAvInFc",
+            "OARadv0SNoHLSLxaaHIccMGknjg"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 1,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.8,
+      "proposed_category": "live",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-pmg-2d88888d14bd",
+      "source_document": "PMgwdg3hRo7NYaxtaXacBNZXnaf",
+      "source_revision": 631,
+      "source_row": 10,
+      "source_block_id": "Vy6SdSjkroXloTx9PCqc5yfFnWd",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/PMgwdg3hRo7NYaxtaXacBNZXnaf#Vy6SdSjkroXloTx9PCqc5yfFnWd",
+      "source_title": "5-7月品营新岛民卓越计划-课程资源库（学员资料）",
+      "fields": {
+        "month": {
+          "text": "6月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "BXwGdazMPoaxlNxZZ8zcTHl7nHg",
+            "AvsOdk9XnofArbxrieAcQIh1nEh"
+          ]
+        },
+        "source_number": {
+          "text": "11",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "TR2MdkifJok6x0xl63ZcWSnFntb"
+          ]
+        },
+        "date_raw": {
+          "text": "6.9",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "LCzydQsLsoKzPxxP7zFc7MrYnkd"
+          ]
+        },
+        "title": {
+          "text": "千川竞对素材分析与应用实战",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Vy6SdSjkroXloTx9PCqc5yfFnWd"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "陈紫依",
+              "open_id": "ou_c8ee260e42849e718232f09ce80c268b"
+            }
+          ],
+          "block_ids": [
+            "W97Kd1490ov8nCx29UjcJXO1nYe"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.731",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "M2t7duhvwoBs5XxSQfKcYuQGnFh"
+          ]
+        },
+        "description": {
+          "text": "本课程面向品牌营销部全体同事，围绕“千川竞对素材分析与应用实战”展开，属于营销端通用专业课程。课程旨在建立同事们对于竞对素材分析与应用的底层思维认知，掌握从工具实操到素材拆解与混创的系统方法论，让同事们能实际分析并创作出具有跑量潜力的竞对混剪素材。同时强化同事们从“抄素材”升级为“抄逻辑”的结构化复盘能力。",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "HyondetEcofjfXxToQhckyrjnIc"
+          ]
+        },
+        "audience": {
+          "text": "品营新岛民",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "KpGidXLhuob7mQxfal4cVIrGnch"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "FtQIddiOVovREBxSvKvcR80gnQT"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "《混剪-C组长课》-陈紫依讲师-凡岛大学培训课程260609.pptx",
+              "type": "file",
+              "token": "PveIbERXgoFK6vxJmWGcIzMdnRe",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/PveIbERXgoFK6vxJmWGcIzMdnRe",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "EkK6dGyu7oulOLxqlyvcuiETnvc"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcns472a8s7923z7p3f362y?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "KVCtdFKMDoJKrTxv5Ticdo6inWe"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "IhyOddN2louJahxZH3yctwFdntg",
+            "LVUvd90iJoWiKaxZNjQcI52jnVc"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 2,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.731,
+      "proposed_category": "advertising",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-pmg-5ea9cb93c117",
+      "source_document": "PMgwdg3hRo7NYaxtaXacBNZXnaf",
+      "source_revision": 631,
+      "source_row": 11,
+      "source_block_id": "B23UdrGVQoBhcMx3ThBcgZ0Lnvg",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/PMgwdg3hRo7NYaxtaXacBNZXnaf#B23UdrGVQoBhcMx3ThBcgZ0Lnvg",
+      "source_title": "5-7月品营新岛民卓越计划-课程资源库（学员资料）",
+      "fields": {
+        "month": {
+          "text": "6月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "BXwGdazMPoaxlNxZZ8zcTHl7nHg",
+            "AvsOdk9XnofArbxrieAcQIh1nEh"
+          ]
+        },
+        "source_number": {
+          "text": "12",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "XoKid6WGpoD1EHxSxWYcCjWrnDg"
+          ]
+        },
+        "date_raw": {
+          "text": "6.11",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Zw3zdlMvYolHoZxxWQBcYTaRnue"
+          ]
+        },
+        "title": {
+          "text": "品牌营销部-Fando培训",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "B23UdrGVQoBhcMx3ThBcgZ0Lnvg"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "张俊辉",
+              "open_id": "ou_df6eb32e0889c68a2bf89d18cf3f7d2d"
+            },
+            {
+              "name": "吴灏楠",
+              "open_id": "ou_f4cf1bb2a43d9f67cebe35a7673579f3"
+            }
+          ],
+          "block_ids": [
+            "UCwed2OSRo71kRxq6UdcctO6nYe",
+            "QzgXdNpRAol8TKxD0T5cse2bnvh"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.798",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "CIa3dpI2EosJ1oxaaiHcFLRYn8b"
+          ]
+        },
+        "description": {
+          "text": "本课程面向品牌营销部全体岛民，围绕\"FanDo（凡动）AI 助手从入门到 Skill 创作\"展开，属于部门级工具赋能培训。课程从 FanDo 客户端安装配置、网关状态检查、模型选择与异常排查讲起，系统介绍 FanDo 的核心能力（文档处理、信息查找、飞书集成、数据抓取、自动化流程等）。重点通过\"抖音直播间监控\"和\"KONO视频号数据统计\"两个真实案例，手把手带领学员走通\"明确需求 → 发送指令 → 沟通必要信息 → FanDo 执行 → 验收测试 → 沉淀 Skill\"的六步法。学完后，学员能独立完成一个固定流程类 Skill 的创建与沉淀，并能判断日常工作中有哪些重复性流程适合用 FanDo 自动化。",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "BPoBdSWx1oTq0qxrdxNcgkdyndd"
+          ]
+        },
+        "audience": {
+          "text": "品营全体岛民",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "JFRMdsqubowFcHxLEjictcDMnQd"
+          ]
+        },
+        "reading": {
+          "text": "",
+          "links": [
+            {
+              "title": "凡动（FanDo） 常见问题 Q&A",
+              "type": "wiki",
+              "token": "Ynbvwc88SiKjY9kTgqHcuiQgnVc",
+              "url": "https://jqx28l0j4lx.feishu.cn/wiki/Ynbvwc88SiKjY9kTgqHcuiQgnVc",
+              "url_basis": "canonical_from_source_token"
+            },
+            {
+              "title": "凡动（FanDo） 操作手册",
+              "type": "docx",
+              "token": "IGB3dw4TOo5bWtxlOuxcgvK0nth",
+              "url": "https://jqx28l0j4lx.feishu.cn/docx/IGB3dw4TOo5bWtxlOuxcgvK0nth",
+              "url_basis": "canonical_from_source_token"
+            },
+            {
+              "title": "凡动（FanDo）产品手册",
+              "type": "wiki",
+              "token": "GWEKwrfqFi2Wbek1YONcsq1unyb",
+              "url": "https://jqx28l0j4lx.feishu.cn/wiki/GWEKwrfqFi2Wbek1YONcsq1unyb",
+              "url_basis": "canonical_from_source_token"
+            },
+            {
+              "title": "飞书机器人 使用指南",
+              "type": "wiki",
+              "token": "TmIxwCLLsiQIZNkcyCOcK2Bqnab",
+              "url": "https://jqx28l0j4lx.feishu.cn/wiki/TmIxwCLLsiQIZNkcyCOcK2Bqnab",
+              "url_basis": "canonical_from_source_token"
+            },
+            {
+              "title": "凡动工具能力速查手册",
+              "type": "docx",
+              "token": "H6K2dlMidoK8mIx6wOEc0QpHnTc",
+              "url": "https://jqx28l0j4lx.feishu.cn/docx/H6K2dlMidoK8mIx6wOEc0QpHnTc",
+              "url_basis": "canonical_from_source_token"
+            },
+            {
+              "title": "凡动系列培训1——如何创造skill？",
+              "type": "wiki",
+              "token": "FJVpwAKPzimdgNk6r7ycPfT7n2f",
+              "url": "https://jqx28l0j4lx.feishu.cn/wiki/FJVpwAKPzimdgNk6r7ycPfT7n2f",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "Wjz8dXLcQoQz8Fxu6mlcZ37Injd",
+            "GWBkd3Qj7o98sLxaXKuc4dPKnEf",
+            "OzkddmdX6oknaUxv6zqcJ3g0nPf",
+            "SL80d7rRpoT4WVxxu9ScmmhEnBN",
+            "MCk6dEQbjoJ4CRxwJPvcNtw7nnh",
+            "L15xdTBCco8nJ5x7JaScRo44n2b"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "品牌营销部-Fando培训-第一批次-张俊辉讲师-凡岛大学培训课程260611.pptx",
+              "type": "file",
+              "token": "GO9Abc3s7oYvJgxxZFLc9MnSneg",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/GO9Abc3s7oYvJgxxZFLc9MnSneg",
+              "url_basis": "canonical_from_source_token"
+            },
+            {
+              "title": "品牌营销部-Fando培训-第二批次-吴灏楠讲师-凡岛大学培训课程260612.pptx",
+              "type": "file",
+              "token": "Z5HTbBnFhog8djxSQMncNOVEnEG",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/Z5HTbBnFhog8djxSQMncNOVEnEG",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "WpU9dapdjoL0cOxbSClcw6xAnUT",
+            "UtFBdk5dAohjWKxxfBwcT5cGnK2"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcn6m2umx81dgp23bj47kqz?from=ccm",
+              "url_basis": "source_url"
+            },
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcns48325tx533r7g46j1o5?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "TtrEdKJtmoyE1cx9x5OcjxjRnDe",
+            "D4UMdlfMlov3V4xMzxCcriYEnlh"
+          ]
+        },
+        "other": {
+          "text": "",
+          "links": [
+            {
+              "title": "gpt-image-gen.7z",
+              "type": "file",
+              "token": "QYeXb8ckVo520yxQyEjcUKjRn4e",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/QYeXb8ckVo520yxQyEjcUKjRn4e",
+              "url_basis": "canonical_from_source_token"
+            },
+            {
+              "title": "seedance2-gen-video.7z",
+              "type": "file",
+              "token": "HR2cbkc1Jo3rFExWdeRceEASnAh",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/HR2cbkc1Jo3rFExWdeRceEASnAh",
+              "url_basis": "canonical_from_source_token"
+            },
+            {
+              "title": "FanDo-1.4.3-win-x64.exe",
+              "type": "file",
+              "token": "EINCbD2ISodcEQxecEkcoj8cnOd",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/EINCbD2ISodcEQxecEkcoj8cnOd",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "YZnhdK3KTovLHCx1tCQcqwoBnwg",
+            "OrJudB83JoaZd0xfLUecZ24Znfg",
+            "Pry0dVwXToR9zlxxIHuc4M7onRe"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 13,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.798,
+      "proposed_category": "ai",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-pmg-32e79f102ab0",
+      "source_document": "PMgwdg3hRo7NYaxtaXacBNZXnaf",
+      "source_revision": 631,
+      "source_row": 12,
+      "source_block_id": "H8NCdx7OfoMzLyxflrVc95Ddnnb",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/PMgwdg3hRo7NYaxtaXacBNZXnaf#H8NCdx7OfoMzLyxflrVc95Ddnnb",
+      "source_title": "5-7月品营新岛民卓越计划-课程资源库（学员资料）",
+      "fields": {
+        "month": {
+          "text": "6月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "BXwGdazMPoaxlNxZZ8zcTHl7nHg",
+            "AvsOdk9XnofArbxrieAcQIh1nEh"
+          ]
+        },
+        "source_number": {
+          "text": "13",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "GdWvd2AEFo8OqcxNAQbcGaDVntT"
+          ]
+        },
+        "date_raw": {
+          "text": "6.24",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Dxc9dpaMJo3B8ExFAw7c6hbcnLC"
+          ]
+        },
+        "title": {
+          "text": "《营销业务场景——肖像权使用风险及防范》",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "H8NCdx7OfoMzLyxflrVc95Ddnnb"
+          ]
+        },
+        "lecturers": {
+          "text": "外部律师",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "T6yZd9Y4hoy4bGxTw0KcKIbpnnb"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.717",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "RElkdLKSoojV2excYB5cQJ1Unxc"
+          ]
+        },
+        "description": {
+          "text": "本课程面向营销业务相关岗位同事，围绕“营销业务场景中的肖像权使用风险及防范”展开，属于营销端通用法律合规课程。课程旨在帮助同事建立肖像权合规使用的基础认知，掌握肖像授权期限、使用渠道、使用范围及使用方式等核心法律边界，让同事们能够在素材制作、审核、发布与复用过程中准确判断风险并采取相应防范措施。同时强化“先授权、后使用，不超期、不超范围、不超方式”的合规意识。",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "VB92dnOiSosoVFx6tfjcAy0hnEd"
+          ]
+        },
+        "audience": {
+          "text": "营销端岛民",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "QHGjdXnDjoXcODx9SoicnykTnVe"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "KjvodiTVpogWTmxcyHVckgF5nqg"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "营销业务场景肖像权使用风险及防范-凡岛大学课程20260624.pptx",
+              "type": "file",
+              "token": "L9kfbs94Ao00jmxQFEmc8xHLnRb",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/L9kfbs94Ao00jmxQFEmc8xHLnRb",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "ZFTvdkgeiomNLSxoU4mccdRgnlV"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnfhjsdu6314s6je483327?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "Z1isdLC89oDdIwxBSIdcXCoanDe"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "T17fdWMWloVpRSx6G4ScsqT5nie"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 2,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.717,
+      "proposed_category": "channel",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-pmg-580507175651",
+      "source_document": "PMgwdg3hRo7NYaxtaXacBNZXnaf",
+      "source_revision": 631,
+      "source_row": 13,
+      "source_block_id": "J492dN44voTM83xtqw5cOlbwnpc",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/PMgwdg3hRo7NYaxtaXacBNZXnaf#J492dN44voTM83xtqw5cOlbwnpc",
+      "source_title": "5-7月品营新岛民卓越计划-课程资源库（学员资料）",
+      "fields": {
+        "month": {
+          "text": "6月",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "BXwGdazMPoaxlNxZZ8zcTHl7nHg",
+            "AvsOdk9XnofArbxrieAcQIh1nEh"
+          ]
+        },
+        "source_number": {
+          "text": "14",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "YHvDdDBWZoP8lsxqCyMcmbU7n8g",
+            "MXCOdyJRqonV3Tx0syHcWieIn9f"
+          ]
+        },
+        "date_raw": {
+          "text": "6.29",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "IKfEdsu52oJwYOxYuNWc1s7cnFe"
+          ]
+        },
+        "title": {
+          "text": "《如何形成优质种草内容：从结构和数据角度，优化信息流广告》",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "J492dN44voTM83xtqw5cOlbwnpc"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "张鑫露",
+              "open_id": "ou_95d98bab0cba8b2ccfc41a60fd1d492b"
+            }
+          ],
+          "block_ids": [
+            "ZpgZdJOPtohDbJxT7vscOQr7nWe"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.859",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "HJBRdgFKboqVhTxzm5scCMisnk8"
+          ]
+        },
+        "description": {
+          "text": "本课程面向品牌营销、信息流投放及内容创作相关岗位同事，围绕\"从结构和数据角度优化信息流种草内容\"展开，属于营销端内容创作与数据运营通用课程。课程旨在帮助同事建立以数据驱动内容优化的系统认知，掌握完播率、点击率、转化率三项核心指标的含义及其对应内容问题的诊断方法，让同事们能够在素材创作、结构打磨、审核优化与投放复盘过程中准确识别种草内容的结构缺陷并采取针对性优化措施。同时强化\"数据指导创作、结构决定效果、每一步都接上\"的方法论意识。",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "C6AJdsUEsoax6SxZhsbcaDRcnJd"
+          ]
+        },
+        "audience": {
+          "text": "品营新岛民",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "HkHidFkz9o4ixbxtSrzcTwwgnHh"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "XV79dZC67o5KKMxvVKkcXASKnZb"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "如何形成优质种草内容：从结构和数据角度，优化信息流广告-凡岛大学课程 20260629.pptx",
+              "type": "file",
+              "token": "W5wRbaR6ZowEcoxznJOcyjxdnde",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/W5wRbaR6ZowEcoxznJOcyjxdnde",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "Mdn8ds7KhoaZBwxKA0LcEtKanZf"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcniwx8kd575q419tmfz237?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "IiaJdJ5XpoTkhWxjQzkcA1rUnfR"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "TdtKdITXuoS5BOxmNLpceR4Snth"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 2,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.859,
+      "proposed_category": "creative",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-pmg-916780a0b418",
+      "source_document": "PMgwdg3hRo7NYaxtaXacBNZXnaf",
+      "source_revision": 631,
+      "source_row": 14,
+      "source_block_id": "NlwCdbfXroiBkRxLnEBcro8Hnuf",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/PMgwdg3hRo7NYaxtaXacBNZXnaf#NlwCdbfXroiBkRxLnEBcro8Hnuf",
+      "source_title": "5-7月品营新岛民卓越计划-课程资源库（学员资料）",
+      "fields": {
+        "month": {
+          "text": "",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "MlqUdkRooormqexTiZPckQR3nOg"
+          ]
+        },
+        "source_number": {
+          "text": "15",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "LxpRdcHj3orPrTxgK3LcHKUInFg",
+            "OTB4dbXkbokdJDxr9RBcT3LTnuc"
+          ]
+        },
+        "date_raw": {
+          "text": "7.6",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "KOxJdV6Ygoh56fxsEQlcRXBUnyg"
+          ]
+        },
+        "title": {
+          "text": "《视频号培训——从渠道特性到运营全链路》",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "NlwCdbfXroiBkRxLnEBcro8Hnuf"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "宋睿凛",
+              "open_id": "ou_b028f00eef823a6bec226fad16ad8e9b"
+            }
+          ],
+          "block_ids": [
+            "LdtDdD38zoMStXxSJLpczUQgnRf"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.886",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "QrTqd2foVofGSaxJdtscWKkknAg"
+          ]
+        },
+        "description": {
+          "text": "本课程面向视频号运营、信息流投放及内容创作相关岗位同事，围绕\"视频号从渠道特性到运营全链路\"展开，属于新岛民入职通用培训课程。课程旨在帮助同事建立视频号平台运营的系统认知，掌握投流工具选型与策略、素材审核与资质合规要点、混剪制作与达人分发流程等核心运营能力边界，让同事们能够在平台认知、素材制作、审核发布与投放复盘过程中准确判断风险并采取相应优化措施。同时强化\"先合规再放量、选工具先匹配能力、数据驱动持续优化\"的运营意识。",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "DHZUd4s0XoqKOZxqy9ncJm8hnNh"
+          ]
+        },
+        "audience": {
+          "text": "品营视频号新岛民",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "WcZ5dn6k5oaJCmx1hfxcRAXZnub",
+            "QzKGd6JMsopI4vxS1ZWcPf6tn7e"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "KoONdvZpCoTgmLxA3NfcS7sXnUc"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "视频号培训——从渠道特性到运营全链路-凡岛大学课程-20260706.pptx",
+              "type": "file",
+              "token": "BD5Qbsor9oSpUOxt6CKc0XgOnYd",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/BD5Qbsor9oSpUOxt6CKc0XgOnYd",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "QIPxdH7CxotvvsxgCJwchcixngf"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnnq56hj1uldsmyekw1484?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "MMZYdfdLxob5vhx02HQc92m3nKF"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "EqJsdL4KjooAe7xQkoYciqTYnQc"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 2,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.886,
+      "proposed_category": "channel",
+      "classification_status": "approved_by_user_2026-10-12"
+    },
+    {
+      "id": "bmt-pmg-651be6faaff9",
+      "source_document": "PMgwdg3hRo7NYaxtaXacBNZXnaf",
+      "source_revision": 631,
+      "source_row": 15,
+      "source_block_id": "WCuEdZL5AoNZXvx5AzMcMawvnEh",
+      "source_url": "https://jqx28l0j4lx.feishu.cn/docx/PMgwdg3hRo7NYaxtaXacBNZXnaf#WCuEdZL5AoNZXvx5AzMcMawvnEh",
+      "source_title": "5-7月品营新岛民卓越计划-课程资源库（学员资料）",
+      "fields": {
+        "month": {
+          "text": "",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "Ca42dRoNzo4gq7xCP9acLyvJn8c"
+          ]
+        },
+        "source_number": {
+          "text": "16",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "HaIpdT73go6B7qxxFwFcFBgDnRb"
+          ]
+        },
+        "date_raw": {
+          "text": "7.16",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "LXCkdn8ziowcAYxLleLcWReUnme"
+          ]
+        },
+        "title": {
+          "text": "《一创造画面,二创接流量：AI大投素材的焕新、迭代与裂变》",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "WCuEdZL5AoNZXvx5AzMcMawvnEh"
+          ]
+        },
+        "lecturers": {
+          "text": "",
+          "links": [],
+          "lecturers": [
+            {
+              "name": "曾微微",
+              "open_id": "ou_869f20787e71f0f021662b2d4d266b13"
+            },
+            {
+              "name": "陈昱桦",
+              "open_id": "ou_68e0a0314d7f75e63552e74f4df5d472"
+            }
+          ],
+          "block_ids": [
+            "D9kBdh0OpoTu91xLxTVcCr2Bnb6"
+          ]
+        },
+        "historical_rating": {
+          "text": "4.711",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "ECdad8b9AofBuDxIKgwcfw3Rn3f"
+          ]
+        },
+        "description": {
+          "text": "本课程面向信息流大投、内容创作及素材运营相关岗位同事，围绕\"AI大投素材的焕新、迭代与裂变\"展开，属于营销端创意方法论与实操复盘课程。课程旨在帮助同事建立AI驱动素材创作的系统认知，掌握AI一创的脚本、形象、声线三大创意核心要素，以及衰退素材唤醒与新画面组合迭代的方法论，让同事们能够在素材创意策划、AI生成落地、二创混剪优化与矩阵裂变的全链路中准确判断增长机会并采取相应突破措施。同时强化\"稳底盘、提上限、快放大、可复制、长迭代\"的创意核心方法论。",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "LVQXdhEipoaXzrxKCsNcZE9EnMf"
+          ]
+        },
+        "audience": {
+          "text": "品营全体岛民",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "DhaMd14tlo0R2TxibrocKagenyg"
+          ]
+        },
+        "reading": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "HeMWdWESuooT6YxlcDfcZ1m5nLf"
+          ]
+        },
+        "slides": {
+          "text": "",
+          "links": [
+            {
+              "title": "一创造画面,二创接流量丨AI大投素材的焕新、迭代与裂变-凡岛大学课程-260716.pptx",
+              "type": "file",
+              "token": "UJrGbYLEJoK5Doxz645ckfiwneg",
+              "url": "https://jqx28l0j4lx.feishu.cn/file/UJrGbYLEJoK5Doxz645ckfiwneg",
+              "url_basis": "canonical_from_source_token"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "GJwYdkAQOoHr4Yx4k2vcWdrhnGb"
+          ]
+        },
+        "recordings": {
+          "text": "",
+          "links": [
+            {
+              "title": "",
+              "type": "readonly-block",
+              "url": "https://jqx28l0j4lx.feishu.cn/minutes/embed/obcnuke55f4x179x51as22jd?from=ccm",
+              "url_basis": "source_url"
+            }
+          ],
+          "lecturers": [],
+          "block_ids": [
+            "QF2fd6nYQoH4zOxl4VicHRZ5nDg"
+          ]
+        },
+        "other": {
+          "text": "/",
+          "links": [],
+          "lecturers": [],
+          "block_ids": [
+            "OlILd2ZjIoDBwhxKWoYc3Vhpn6f"
+          ]
+        }
+      },
+      "restricted": false,
+      "linked_resource_count": 2,
+      "duration_minutes": null,
+      "access_verified": false,
+      "date_status": "raw_date_preserved_year_to_verify",
+      "historical_rating": 4.711,
+      "proposed_category": "ai",
+      "classification_status": "approved_by_user_2026-10-12"
+    }
+  ]
+}

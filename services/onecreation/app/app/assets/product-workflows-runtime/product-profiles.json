@@ -1,0 +1,394 @@
+{
+  "schemaVersion": "2026.08.27-v1",
+  "sourceWorkbook": {
+    "fileName": "20260827视频平台7款产品资料入库.xlsx",
+    "sheet": "Sheet1",
+    "range": "A1:Z8",
+    "reviewedAt": "2026-08-27"
+  },
+  "scaleReferenceSubject": "成年亚洲女性中等手型",
+  "quantityStrategyDefaults": {
+    "mode": "recalculate_from_physical_scale",
+    "preserve": [
+      "原片产品占用区域",
+      "视觉量感与密度",
+      "重心与承托关系",
+      "遮挡顺序",
+      "连续镜头可见库存"
+    ],
+    "rules": [
+      "原片明确只有一个产品对象时一对一替换为一个目标产品",
+      "原片有多个产品时按目标产品真实尺寸与人体可持握能力重算数量和阵列，不机械保持旧件数",
+      "目标产品参考图张数只代表证据数量，不代表画面产品数量",
+      "只有真实拿出、放入、消耗、补充或重排动作才允许改变连续库存"
+    ],
+    "forbidden": [
+      "缩小同款产品制造数量感",
+      "放大同款产品填满旧产品外框",
+      "用旧产品包装类型强制决定目标包装层级"
+    ]
+  },
+  "products": {
+    "wis-black-crystal-mask": {
+      "productId": "wis-black-crystal-mask",
+      "formalName": "+WIS+黑晶光蕴蓄能面膜",
+      "platformName": "WIS黑晶光蕴蓄能面膜",
+      "shortName": "黑晶面膜",
+      "aliases": ["黑晶光蕴蓄能面膜", "黑晶面膜", "微针面膜"],
+      "englishName": "BLACK CRYSTAL GRAPHENE MASK",
+      "specification": "25g×10片",
+      "category": "片状护理面膜",
+      "filingNumber": "粤G妆网备字2025141398",
+      "packageHierarchy": ["retail_outer_box", "single_sachet", "content_unit"],
+      "dimensionsCm": {
+        "retailOuterBox": { "width": 16.4, "height": 16.4, "depth": 4 },
+        "singleSachet": { "width": 16, "height": 16 },
+        "foldedContent": { "width": 8.5, "height": 9, "thickness": 0.021 }
+      },
+      "scaleReference": {
+        "anchor": "张开单手",
+        "ratios": {
+          "outerBoxEdgeToMaxHandSpan": [1.15, 1.25],
+          "outerBoxEdgeToHandLength": 1.2
+        },
+        "prompt": "外盒明显大于一只张开的手掌；张开手掌平铺盒面时四周仍露出约1–2指宽，不能缩成普通掌心盒；单片袋正面约为外盒正面的95%。"
+      },
+      "quantityStrategy": {
+        "displayUnit": "retail_outer_box",
+        "sealedPackCount": 10,
+        "prompt": "多件陈列按16.4cm大尺寸扁平方盒重算自然数量与层数；保持原占用区域和抱持重心，不得缩小外盒制造密集囤货；开盒时每盒固定10片。"
+      },
+      "openingStates": [
+        "打开外盒后呈现10个近正方形单片袋",
+        "撕开单片袋后先取出近方形折叠的黑色湿润薄膜布",
+        "明确展开后才变为完整脸型膜布"
+      ],
+      "contentIdentity": "展示面为炭灰/灰黑蜂窝或六边形纹理，贴肤面纯黑；膜布薄、湿润、柔软。",
+      "usage": "洁面后开袋→取出折叠膜布→展开→贴合脸部→揭膜",
+      "assetGuidance": ["外盒正背面", "单片袋正背面", "折叠内容物", "展开膜布与材质微距"],
+      "requiredVideoShots": ["包装正面", "单片正面", "25g精华水光/滴落", "外露面蜂窝纹理膜布微距", "折叠膜布出袋", "湿润服帖上脸", "慢揭膜，贴脸面纯黑膜无蜂窝纹理", "敷后自然光泽气色"],
+      "negativeConstraints": ["单片袋变迷你或窄长袋", "刚出袋即完整展开", "展示面缺蜂窝纹", "白膜或普通无纺布膜"]
+    },
+    "wis-crystal-firming-eye-mask": {
+      "productId": "wis-crystal-firming-eye-mask",
+      "formalName": "+WIS+晶润紧致眼膜 3.0",
+      "platformName": "WIS晶润紧致眼膜 3.0",
+      "shortName": "晶润眼膜",
+      "aliases": ["晶润紧致眼膜", "眼膜", "晶润眼膜"],
+      "englishName": "JINGRUN TIGHTENING EYE MASK",
+      "specification": "1.3g×60片",
+      "category": "凝胶型眼贴膜",
+      "filingNumber": "粤G妆网备字2025064432",
+      "packageHierarchy": ["retail_outer_box", "primary_container", "content_unit"],
+      "dimensionsCm": {
+        "retailOuterBox": { "width": 8, "height": 4.4, "depth": 8 },
+        "primaryContainer": { "diameter": 7.7, "height": 4.1 }
+      },
+      "scaleReference": {
+        "anchor": "单手掌心托举",
+        "ratios": {
+          "frontWidthToHandLength": [0.85, 0.9],
+          "frontHeightToFourFingerPalmWidth": 1,
+          "depthToPalmWidth": 0.5
+        },
+        "prompt": "外盒正面是8×4.4cm横向扁长方形，顶部8×8cm；可由单手掌心托住，左右略超出掌心但无需双手；圆罐与外盒体量接近。"
+      },
+      "quantityStrategy": {
+        "displayUnit": "primary_container",
+        "sealedPackCount": 60,
+        "prompt": "单个盒或罐按单手可托举体量处理；多件堆叠按8cm盒宽和7.7cm罐径重算，不缩成小样；开罐时固定60片，两片一组首尾相扣。"
+      },
+      "openingStates": [
+        "开盒后先呈现低矮圆罐，盒与罐体量接近",
+        "开罐后呈现60片月牙状轻薄凝胶眼膜",
+        "两片反向旋转、首尾相扣并形成中央S形曲线"
+      ],
+      "contentIdentity": "极淡冰蓝或近透明冷白的轻薄弹力水凝膜，柔软可弯曲并带均匀水光。",
+      "usage": "开盒取罐→开盖→取出月牙状凝胶片→贴敷眼周→揭下",
+      "assetGuidance": ["外盒正侧面", "圆罐正背面", "开罐状态", "月牙凝胶片"],
+      "requiredVideoShots": ["包装正面", "眼膜罐正面", "开罐取片", "掌心/指尖轻捏弯曲", "水光与边缘小水滴微距", "眼周贴敷", "整齐囤货陈列"],
+      "negativeConstraints": ["正面误画成8×8方盒", "大礼盒配小样罐", "罐体变高筒瓶", "膜片变厚硅胶或整脸面膜"]
+    },
+    "wis-birds-nest-peptide-revitalizing-mask": {
+      "productId": "wis-birds-nest-peptide-revitalizing-mask",
+      "formalName": "+WIS+ 燕窝胜肽焕润面膜",
+      "platformName": "WIS燕窝胜肽焕润面膜",
+      "shortName": "燕窝胜肽面膜",
+      "aliases": ["燕窝面膜", "燕窝胜肽面膜", "胜肽面膜"],
+      "englishName": "BIRD'S NEST PEPTIDE REVITALIZING MASK",
+      "specification": "50g",
+      "category": "涂抹式凝胶面膜",
+      "filingNumber": "粤G妆网备字2026059433",
+      "packageHierarchy": ["retail_outer_box", "primary_container", "content_unit"],
+      "remakeDefaultStateId": "primary_container",
+      "remakeStates": [
+        {
+          "id": "primary_container",
+          "label": "燕窝面膜透明圆罐",
+          "allowedActions": ["陈列", "手持", "推倒", "开罐", "挖取", "涂抹"],
+          "forbiddenActions": ["开盒", "取单支", "掰断出液", "揭膜", "摇匀", "拔盖", "按压喷洒"]
+        },
+        {
+          "id": "retail_outer_box",
+          "label": "燕窝面膜零售外盒",
+          "allowedActions": ["陈列", "手持", "推倒", "开盒"],
+          "forbiddenActions": ["按压喷洒", "开罐", "挖取", "揭膜"]
+        }
+      ],
+      "dimensionsCm": {
+        "retailOuterBox": { "width": 5.4, "height": 8.2, "depth": 5.4 },
+        "primaryContainer": { "diameter": 4.9, "height": 7.8 }
+      },
+      "replacementGeometry": {
+        "layer": "primary_container",
+        "shape": "透明厚底正圆柱罐",
+        "dimensionsCm": { "length": 4.9, "width": 4.9, "height": 7.8, "diameter": 4.9 },
+        "fixedLengthWidthHeightRatio": [49, 49, 78],
+        "heightToDiameter": 1.59,
+        "orientationRule": "罐体竖直放置，横截面始终保持正圆，透视只能改变投影，不得改变实物比例。",
+        "invariants": ["不得变成矮胖眼霜罐", "不得拉长为高瓶", "所有罐体单体比例必须一致"]
+      },
+      "scaleReference": {
+        "anchor": "自然握拳",
+        "ratios": {
+          "outerBoxHeightToFistHeight": 1,
+          "outerBoxWidthToFistWidth": [0.85, 0.9],
+          "outerBoxDepthToFistWidth": 0.5
+        },
+        "prompt": "外盒是与女性自然握拳高度接近的小型立式方柱盒，宽度略窄于拳头；圆柱罐刚好放入外盒，不能放大成高瓶或大礼盒。"
+      },
+      "quantityStrategy": {
+        "displayUnit": "primary_container",
+        "netContentGrams": 50,
+        "prompt": "单盒和单罐均为一只手可轻松握持的小体量；多件陈列按5.4cm方柱盒或4.9cm罐径重算，不把圆罐缩成赠品；每罐净含量固定50g。"
+      },
+      "openingStates": [
+        "开盒后呈现透明厚底高身圆柱罐",
+        "开罐后直接可见半透明燕窝冻状凝胶",
+        "使用前轻搅拌后勺取或挖取"
+      ],
+      "contentIdentity": "乳白偏透明、可带轻微黄琥珀感的软糯凝胶，晶莹湿润、慢回弹并可克制拉丝。",
+      "usage": "使用前搅拌→洁面→避开眼唇均匀涂抹→静置10–15分钟→轻拭清理，无需二次清洁",
+      "assetGuidance": ["外盒正侧面", "透明圆罐正背面", "开罐凝胶", "搅拌与勺取连续素材"],
+      "requiredVideoShots": ["包装正面", "面膜罐正面", "开盖凝胶特写", "轻搅拌", "勺取拉丝与柔软堆叠", "清透上脸厚敷", "清理后自然水润细腻光泽"],
+      "negativeConstraints": ["误生成100g", "变成贴片面膜或眼膜", "圆罐变矮胖眼霜罐", "凝胶变白色厚膏或水"]
+    },
+    "wis-hydra-peptide-mask": {
+      "productId": "wis-hydra-peptide-mask",
+      "formalName": "+WIS+ 隐形水润面膜",
+      "platformName": "WIS隐形水润面膜",
+      "shortName": "隐形水润面膜",
+      "aliases": ["水润面膜", "水光肽面膜"],
+      "englishName": "MOIST HYDRATING INVISIBLE MASK",
+      "specification": "25g×10片",
+      "category": "片状护理面膜",
+      "filingNumber": "粤G妆网备字2026129508",
+      "packageHierarchy": ["retail_outer_box", "single_sachet", "content_unit", "protective_film"],
+      "dimensionsCm": {
+        "retailOuterBox": { "width": 13.5, "height": 18.5, "depth": 4 },
+        "singleSachet": { "width": 12.5, "height": 18.2 },
+        "foldedContent": { "width": 6.5, "height": 10.5, "thickness": 0.021 }
+      },
+      "scaleReference": {
+        "anchor": "纵向贴合完整手掌",
+        "ratios": {
+          "outerBoxHeightToHandLength": 1.05,
+          "outerBoxWidthToFourFingerPalmWidth": 1.8,
+          "outerBoxDepthToPalmWidth": 0.5,
+          "handCoverageOfBoxWidth": [0.55, 0.6]
+        },
+        "prompt": "外盒是接近一只完整女性手长度的竖向长方盒，手掌只覆盖盒面中央约55%–60%宽度；不能缩成掌心小盒。"
+      },
+      "quantityStrategy": {
+        "displayUnit": "retail_outer_box",
+        "sealedPackCount": 10,
+        "prompt": "多件陈列按13.5×18.5×4cm竖向大盒重算数量和承托范围；不机械保持小瓶件数、不缩小包装；开盒时固定10个单片袋。"
+      },
+      "openingStates": [
+        "开盒后呈现10个独立单片袋",
+        "撕袋后取出湿润膜布与珠光保护膜双层结构",
+        "展开贴脸后揭下珠光保护膜，只保留近乎隐形膜布"
+      ],
+      "contentIdentity": "0.21mm轻薄近透明膜布，湿润柔软且不掉毛；珠光保护膜必须可分离。",
+      "usage": "洁面→取出并展开→轻敷面部→揭下珠光保护膜→静敷约15分钟→取下并按摩吸收",
+      "assetGuidance": ["外盒与单片袋正背面", "折叠双层内容物", "展开膜布", "珠光保护膜揭除素材"],
+      "requiredVideoShots": ["包装正面", "单片正面", "撕袋取出双层折叠膜布", "展开并揭珠光膜", "近乎透明的上脸贴合", "25g精华湿润承载", "0.21mm膜布透字/材质微距", "用后水润光泽"],
+      "negativeConstraints": ["漏掉珠光保护膜", "膜布变厚白棉布或塑料片", "包装缩成掌心盒", "膜布干燥起毛"]
+    },
+    "wis-deep-sea-refining-tender-essence-classic": {
+      "productId": "wis-deep-sea-refining-tender-essence-classic",
+      "formalName": "+WIS+ 深海精粹弹嫩精华液（经典款）",
+      "platformName": "WIS深海精粹弹嫩精华液（经典款）",
+      "shortName": "WIS深海次抛",
+      "aliases": ["深海次抛", "深海精粹次抛", "次抛精华"],
+      "englishName": "DEEP SEA REFINING TENDER ESSENCE",
+      "specification": "1.5ml×30支",
+      "category": "次抛型精华液",
+      "filingNumber": "粤G妆网备字2024347467",
+      "packageHierarchy": ["retail_outer_box", "ampoule_strip", "content_unit"],
+      "remakeDefaultStateId": "retail_outer_box",
+      "remakeStates": [
+        {
+          "id": "retail_outer_box",
+          "label": "次抛零售外盒",
+          "allowedActions": ["陈列", "手持", "推倒", "开盒"],
+          "forbiddenActions": ["开罐", "挖取", "揭膜", "摇匀", "拔盖", "按压喷洒"]
+        },
+        {
+          "id": "single_unit",
+          "label": "次抛联排 / 单支",
+          "allowedActions": ["陈列", "手持", "取单支", "掰断出液", "涂抹"],
+          "forbiddenActions": ["开罐", "挖取", "揭膜", "按压喷洒"]
+        }
+      ],
+      "dimensionsCm": {
+        "retailOuterBox": { "width": 13.6, "height": 10, "depth": 6.4 },
+        "singleAmpoule": { "width": 1.8, "height": 8.7 }
+      },
+      "replacementGeometry": {
+        "layer": "retail_outer_box",
+        "shape": "横向扁长矩形零售外盒",
+        "dimensionsCm": { "length": 13.6, "width": 6.4, "height": 10 },
+        "fixedLengthWidthHeightRatio": [34, 16, 25],
+        "orientationRule": "13.6cm 长边始终水平且最长，10cm 垂直高度次之，6.4cm 侧面厚度最窄。",
+        "invariants": ["不得变成立式高盒", "不得压成极薄卡片", "所有外盒单体比例必须一致"]
+      },
+      "scaleReference": {
+        "anchor": "单手侧向持握",
+        "ratios": {
+          "outerBoxWidthToHandLength": 1.05,
+          "outerBoxFrontHeightToFourFingerPalmWidth": 1.8,
+          "outerBoxDepthToPalmWidth": 0.5
+        },
+        "prompt": "外盒是接近一只完整女性手长度的横向中大型扁长方盒，单手只能从侧边持握且不能轻松包过另一侧；长边必须水平。"
+      },
+      "quantityStrategy": {
+        "displayUnit": "retail_outer_box",
+        "sealedPackCount": 30,
+        "inventoryLayout": { "stripCount": 6, "unitsPerStrip": 5, "layout": "三横两列插立" },
+        "prompt": "外盒内库存固定6组×5支、共30支；多盒抱持按13.6cm横向大盒重算。若参考首帧人物抱持4列×2行共8瓶小产品，替换为次抛零售外盒时优先重构为2列×2行共4盒，以保持占用区域、重量感和手臂承托合理。"
+      },
+      "openingStates": [
+        "开盒后呈现6组×5支联排次抛",
+        "从联排取下一支",
+        "掰断顶部帽盖后挤压透明液体仓出液"
+      ],
+      "contentIdentity": "单支由可掰断帽盖、透明液体仓和蓝色标签尾部组成；液体为透明凝露。",
+      "usage": "从联排取下一支→掰断帽盖→挤出精华→涂抹面部与颈部；单支开启后一次用完",
+      "assetGuidance": ["外盒正面", "完整6×5联排", "五支联排", "单支正背面", "掰断与出液连续素材"],
+      "requiredVideoShots": ["外盒正面", "开盒6组×5支联排", "5支联排", "取下单支", "透明液体仓与蓝色管尾标签特写", "掰断顶部帽盖，挤压出液", "面部/颈部涂抹", "用后自然水润弹嫩光泽"],
+      "negativeConstraints": ["盒内数量不是30支", "联排不是6组×5支", "变成玻璃安瓶或注射器", "帽盖变旋拧瓶盖", "透明液体仓变白色"]
+    },
+    "wis-whitening-ampoule": {
+      "productId": "wis-whitening-ampoule",
+      "formalName": "+WIS+ 光感微珠美白精华液",
+      "platformName": "WIS美白针",
+      "shortName": "美白针",
+      "aliases": ["美白针", "美白精华", "美白精华液", "微珠美白针"],
+      "englishName": "LUMINOUS MICROBEAD WHITENING ESSENCE",
+      "specification": "10ml/支",
+      "category": "微珠型祛斑美白精华液",
+      "filingNumber": "国妆特字20250232",
+      "assetStatus": "pending",
+      "packageHierarchy": ["retail_outer_box", "primary_container", "outer_cap", "dispensing_tip"],
+      "dimensionsCm": {
+        "bottleBody": { "diameter": 2, "height": 13.5 },
+        "outerCap": { "diameter": 2.3, "height": 4.5 },
+        "dispensingTip": { "length": 2 }
+      },
+      "scaleReference": {
+        "anchor": "掌心竖放与环握",
+        "ratios": {
+          "closedLengthToHandLength": 1,
+          "bodyDiameterToFingerWidth": 2
+        },
+        "prompt": "闭合瓶体总长约等于一只完整女性手长，瓶身直径约两个手指宽；竖放掌心时两端接近指尖与腕横纹，环握时两端伸出拳面。"
+      },
+      "quantityStrategy": {
+        "displayUnit": "primary_container",
+        "prompt": "按细长单瓶的完整手长尺度重算多件数量与阵列；不得因为平台简称“美白针”而生成针剂、缩小为注射安瓿或复制成医疗用品陈列。"
+      },
+      "remakeAssetStateAliases": {
+        "open_state": "primary_container",
+        "usage_state": "primary_container"
+      },
+      "openingStates": [
+        "首先呈现带透明外盖的圆柱精华瓶",
+        "拔下透明外盖后露出银色肩环与按压式尖嘴",
+        "按压顶部后由尖嘴真实出液"
+      ],
+      "contentIdentity": "透明瓶内可见微珠；真实微珠颜色、数量、大小和涂开状态须服从后续白底图与出液素材。",
+      "usage": "洁面后拔下透明外盖→轻按顶部取适量→涂抹面部并按摩吸收",
+      "assetGuidance": ["透明瓶正背面白底图", "拔盖素材", "按压与出液连续素材", "真实微珠质地微距", "外盒与说明书"],
+      "requiredVideoShots": ["精华液瓶体正面", "透明瓶内可见微珠", "拔盖露出按压式滴管", "取下透明瓶盖，手指按压顶部，细长出液嘴出液", "尖嘴真实滴出", "微珠与底液融合涂开", "自然提亮肤感"],
+      "negativeConstraints": ["使用不存在的旧误称替代正式名称", "生成针头或注射器", "虚构微珠数量颜色大小", "按压尖嘴变胶头滴管或喷雾泵"]
+    },
+    "wis-skin-revitalizing-protein-spray": {
+      "productId": "wis-skin-revitalizing-protein-spray",
+      "formalName": "+WIS+ 肌活蛋白喷雾",
+      "platformName": "WIS肌活蛋白喷雾",
+      "shortName": "肌活蛋白喷雾",
+      "aliases": ["蛋白喷雾", "肌活蛋白喷雾"],
+      "englishName": "Skin-Revitalizing Protein Spray",
+      "specification": "250ml",
+      "category": "水油双相面部精华喷雾",
+      "filingNumber": "粤G妆网备字2026045493",
+      "packageHierarchy": ["retail_outer_box", "primary_container", "outer_cap", "spray_pump"],
+      "remakeDefaultStateId": "primary_container",
+      "remakeStates": [
+        {
+          "id": "primary_container",
+          "label": "蛋白喷雾瓶体",
+          "allowedActions": ["陈列", "手持", "推倒", "摇匀", "拔盖", "按压喷洒"],
+          "forbiddenActions": ["开盒", "开罐", "挖取", "取单支", "掰断出液", "揭膜"]
+        },
+        {
+          "id": "retail_outer_box",
+          "label": "蛋白喷雾零售外盒",
+          "allowedActions": ["陈列", "手持", "推倒", "开盒"],
+          "forbiddenActions": ["开罐", "挖取", "取单支", "掰断出液", "揭膜", "按压喷洒"]
+        }
+      ],
+      "dimensionsCm": {
+        "bottleBody": { "diameter": 5.3, "height": 18 },
+        "outerCap": { "diameter": 3, "height": 4.5 },
+        "sprayPump": { "diameter": 1.5, "height": 2.9 },
+        "assembled": { "diameter": 5.3, "height": 22.5, "derived": true }
+      },
+      "replacementGeometry": {
+        "layer": "primary_container",
+        "shape": "竖向正圆柱喷雾瓶身",
+        "dimensionsCm": { "length": 5.3, "width": 5.3, "height": 18, "diameter": 5.3 },
+        "fixedLengthWidthHeightRatio": [53, 53, 180],
+        "heightToDiameter": 3.4,
+        "orientationRule": "18cm 是瓶身高度，5.3cm 是底部直径；瓶身横截面始终为正圆，外盖和喷泵是瓶身上方的独立附件，不得通过拉长瓶身来补足总高。",
+        "invariants": ["不得缩成小喷瓶", "不得拉成细长香水瓶", "所有瓶体单体比例必须一致"]
+      },
+      "scaleReference": {
+        "anchor": "单手持握喷洒",
+        "ratios": {
+          "assembledHeightToHandLength": [1.3, 1.4],
+          "bodyHeightToHandLength": 1,
+          "bodyWidthToPalmWidth": [0.8, 0.9],
+          "capAndPumpShareOfHeight": [0.2, 0.25],
+          "palmCoverageOfBodyHeight": 0.6
+        },
+        "prompt": "含盖整瓶约1.3–1.4个完整女性手长，瓶身宽约0.8–0.9个掌宽；单手持握时掌心只覆盖瓶身约五分之三，不能缩成小喷瓶。"
+      },
+      "quantityStrategy": {
+        "displayUnit": "primary_container",
+        "prompt": "250ml高挑大瓶按22.5cm左右整瓶高度重算多件数量；人物抱持或桌面陈列应明显少于同占用区域的小瓶数量，不得缩小瓶体复制出密集阵列。"
+      },
+      "openingStates": [
+        "静置带盖瓶内呈现清晰水油双相",
+        "使用前充分摇匀使双相暂时融合",
+        "拔盖后按压喷泵形成细密均匀雾化"
+      ],
+      "contentIdentity": "静置水油分层、摇匀后暂时融合；喷出为细密扇形或云雾状，不是水柱。",
+      "usage": "使用前充分摇匀→拔盖并闭眼→距面部约10–15cm喷出细雾→轻拍吸收",
+      "assetGuidance": ["瓶体正背面", "静置分层", "摇匀融合", "拔盖", "真实喷雾连续素材"],
+      "requiredVideoShots": ["喷雾瓶正面", "静置水油分层特写", "手持摇匀双相融合", "拔盖露出喷泵", "按压形成细密均匀雾", "侧逆光呈现雾化", "面部/手背轻拍吸收", "妆前妆后不花妆的真实演示"],
+      "negativeConstraints": ["正式名称误写为微囊或其他产品", "静置状态没有分层", "喷成水柱或大滴", "瓶体缩成小喷瓶", "变成气雾罐或香水瓶"]
+    }
+  }
+}

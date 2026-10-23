@@ -1,100 +1,21 @@
 {
-  "name": "brand-market-remix",
+  "name": "brand-market-setup",
   "services": {
-    "remix": {
-      "build": "remix",
-      "environment": {
-        "LOCAL_SIMULATION": "1",
-        "NODE_OPTIONS": "",
-        "RENDER_WORKER_HOST": "0.0.0.0",
-        "RENDER_WORKER_PORT": "8787",
-        "RENDER_WORKER_DATA_DIR": "/data",
-        "RENDER_WORKER_SHARED_SECRET": "local-development-workstation-shared-token-20261023",
-        "RENDER_WORKER_PUBLIC_URL": "http://127.0.0.1:${HUB_PORT:-8095}/yxb/wis-marketing-hub/modules/material-workbench/worker",
-        "STABLE_APP_STATIC_DIR": "/app/render-worker/client-dist",
-        "STABLE_APP_PUBLIC_PREFIX": "/yxb/wis-marketing-hub/modules/material-workbench",
-        "HUB_INTEGRATED_MODE": "1",
-        "OA_ACCESS_AUTHORITY_URL": "http://bridge:3000/api/workstation/access-authorize",
-        "WIS_MATERIAL_CENTER_BASE_URL": "http://bridge:3000/api/remix-workstation",
-        "WIS_MATERIAL_CENTER_TOKEN": "local-development-workstation-shared-token-20261023",
-        "WIS_CUTTER_BASE_URL": "http://bridge:3000",
-        "SERVICE_NOTIFICATIONS_ENABLED": "false",
-        "PRIVATE_UPLOADS_ENABLED": "false",
-        "AUTO_REMIX_ADMIN_USERS": "FD-999999",
-        "RENDER_WORKER_PROCESS_MAX_CONCURRENCY": "1",
-        "RENDER_WORKER_OCR_MAX_CONCURRENCY": "1",
-        "RENDER_WORKER_CPU_MAX_CONCURRENCY": "1",
-        "LOCAL_ASR_ENABLED": "false",
-        "WIS_REMIX_VISUAL_REVIEW_ENABLED": "true",
-        "JUMP_LLM_URL": "http://bridge:3000/vision",
-        "JUMP_LLM_TOKEN": "local-simulation",
-        "JUMP_LLM_APPLICATION": "local-remix",
-        "JUMP_LLM_PROVIDER": "local-simulation",
-        "JUMP_LLM_VISION_MODEL": "local-simulation-vision"
-      },
-      "volumes": [
-        "remix-data:/data"
-      ],
-      "depends_on": {
-        "bridge": {
-          "condition": "service_healthy"
-        }
-      },
-      "networks": [
-        "local"
-      ],
-      "restart": "unless-stopped"
-    },
-    "bridge": {
-      "build": "remix",
+    "setup": {
+      "image": "python:3.12-slim-bookworm",
+      "user": "0:0",
+      "working_dir": "/workspace",
       "command": [
-        "node",
-        "/app/local-support.mjs"
+        "python",
+        "/workspace/local/prepare.py"
       ],
-      "environment": {
-        "LOCAL_SIMULATION": "1"
-      },
       "volumes": [
-        "input-data:/data"
-      ],
-      "healthcheck": {
-        "test": [
-          "CMD",
-          "node",
-          "-e",
-          "fetch('http://127.0.0.1:3000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
-        ],
-        "interval": "10s",
-        "timeout": "3s"
-      },
-      "networks": [
-        "local"
-      ],
-      "restart": "unless-stopped"
-    },
-    "gateway": {
-      "build": "gateway",
-      "ports": [
-        "127.0.0.1:${HUB_PORT:-8095}:8080"
-      ],
-      "depends_on": {
-        "remix": {
-          "condition": "service_healthy"
+        {
+          "type": "bind",
+          "source": ".",
+          "target": "/workspace"
         }
-      },
-      "networks": [
-        "local"
-      ],
-      "restart": "unless-stopped"
+      ]
     }
-  },
-  "networks": {
-    "local": {
-      "internal": true
-    }
-  },
-  "volumes": {
-    "remix-data": {},
-    "input-data": {}
   }
 }

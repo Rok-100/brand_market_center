@@ -1,0 +1,11 @@
+import {readFileSync} from 'node:fs';
+import {createApp} from './app.mjs';
+import {verifyLearningIdentity} from './learning-bridge.mjs';
+if(process.env.LOCAL_PREVIEW)throw Error('Preview is forbidden');
+const secret=readFileSync(process.env.LEARNING_BRIDGE_KEY_FILE,'utf8').trim();
+const csrfSecret=readFileSync(process.env.CSRF_SECRET_FILE,'utf8').trim();
+if(secret.length<32)throw Error('Missing bridge key');
+const {app,close}=createApp({dbPath:process.env.DB_PATH,basePath:process.env.BASE_PATH,publicOrigin:process.env.PUBLIC_ORIGIN,csrfSecret,identityProvider:req=>verifyLearningIdentity(req,secret)});
+const server=app.listen(Number(process.env.PORT||3000),'0.0.0.0');
+const shutdown=()=>server.close(()=>{close();process.exit(0)});
+process.on('SIGTERM',shutdown);process.on('SIGINT',shutdown);

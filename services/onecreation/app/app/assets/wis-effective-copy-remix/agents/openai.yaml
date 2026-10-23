@@ -1,0 +1,7 @@
+interface:
+  display_name: "WIS二创文案库"
+  short_description: "复刻WIS历史有效母版逻辑，生成可口播、可创新、可校验的二创文案"
+  default_prompt: "Use $wis-effective-copy-remix to analyze this mother script and generate verified spoken Chinese ad-copy variants."
+
+policy:
+  allow_implicit_invocation: true

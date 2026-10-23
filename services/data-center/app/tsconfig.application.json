@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "incremental": false
+  },
+  "include": ["next-env.d.ts", "app/**/*.ts", "app/**/*.tsx"],
+  "exclude": ["node_modules", "dist", "worker", "db", "tests"]
+}

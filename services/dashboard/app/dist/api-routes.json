@@ -1,0 +1,202 @@
+[
+  {
+    "method": "GET",
+    "path": "/api/ai-video-credits/overview"
+  },
+  {
+    "method": "GET",
+    "path": "/api/dashboard"
+  },
+  {
+    "method": "GET",
+    "path": "/api/dashboard/cockpit"
+  },
+  {
+    "method": "GET",
+    "path": "/api/dashboard/session"
+  },
+  {
+    "method": "GET",
+    "path": "/api/dashboard/operating-trend"
+  },
+  {
+    "method": "GET",
+    "path": "/api/dashboard/product-trend"
+  },
+  {
+    "method": "GET",
+    "path": "/api/dashboard/product-economics"
+  },
+  {
+    "method": "GET",
+    "path": "/api/dashboard/promotion-scene-trend"
+  },
+  {
+    "method": "GET",
+    "path": "/api/dashboard/material-online-trend"
+  },
+  {
+    "method": "GET",
+    "path": "/api/dashboard/materials"
+  },
+  {
+    "method": "GET",
+    "path": "/api/director/briefing/daily-key-work"
+  },
+  {
+    "method": "GET",
+    "path": "/api/director/briefing/operating-images"
+  },
+  {
+    "method": "GET",
+    "path": "/api/director/briefing/calendar"
+  },
+  {
+    "method": "GET",
+    "path": "/api/director/briefing/insights"
+  },
+  {
+    "method": "GET",
+    "path": "/api/director/briefing/operating-images/media"
+  },
+  {
+    "method": "PUT",
+    "path": "/api/director/briefing/daily-key-work"
+  },
+  {
+    "method": "GET",
+    "path": "/api/director/briefing/daily-summaries"
+  },
+  {
+    "method": "PUT",
+    "path": "/api/director/briefing/daily-summary"
+  },
+  {
+    "method": "GET",
+    "path": "/api/health"
+  },
+  {
+    "method": "GET",
+    "path": "/api/omnichannel/overview"
+  },
+  {
+    "method": "GET",
+    "path": "/api/omnichannel/trend"
+  },
+  {
+    "method": "GET",
+    "path": "/api/omnichannel/realtime-comparison"
+  },
+  {
+    "method": "GET",
+    "path": "/api/performance-reasons"
+  },
+  {
+    "method": "GET",
+    "path": "/"
+  },
+  {
+    "method": "GET",
+    "path": "/api/wechat/daily-adq"
+  },
+  {
+    "method": "POST",
+    "path": "/api/wechat/daily-adq"
+  },
+  {
+    "method": "PUT",
+    "path": "/api/wechat/daily-adq/:id"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/wechat/daily-adq/:id"
+  },
+  {
+    "method": "GET",
+    "path": "/api/wechat/daily-sales"
+  },
+  {
+    "method": "POST",
+    "path": "/api/wechat/daily-sales"
+  },
+  {
+    "method": "PUT",
+    "path": "/api/wechat/daily-sales/:id"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/wechat/daily-sales/:id"
+  },
+  {
+    "method": "GET",
+    "path": "/api/wechat/dashboard/overview"
+  },
+  {
+    "method": "GET",
+    "path": "/api/wechat/dashboard/metrics"
+  },
+  {
+    "method": "GET",
+    "path": "/api/wechat/dashboard/headline-metrics"
+  },
+  {
+    "method": "GET",
+    "path": "/api/wechat/dashboard/performance-metrics"
+  },
+  {
+    "method": "GET",
+    "path": "/api/wechat/dashboard/daily-gsv"
+  },
+  {
+    "method": "GET",
+    "path": "/api/wechat/dashboard/daily-adq"
+  },
+  {
+    "method": "GET",
+    "path": "/api/wechat/dashboard/adq-metrics"
+  },
+  {
+    "method": "GET",
+    "path": "/api/wechat/dashboard/product-trends"
+  },
+  {
+    "method": "GET",
+    "path": "/api/wechat/restricted-products/summary"
+  },
+  {
+    "method": "GET",
+    "path": "/api/wechat/restricted-products"
+  },
+  {
+    "method": "GET",
+    "path": "/api/wechat/restricted-products/:id"
+  },
+  {
+    "method": "GET",
+    "path": "/api/wechat/products"
+  },
+  {
+    "method": "POST",
+    "path": "/api/wechat/products"
+  },
+  {
+    "method": "PUT",
+    "path": "/api/wechat/products/:id"
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/wechat/products/:id/scale-status"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/wechat/products/:id"
+  },
+  {
+    "method": "GET",
+    "path": "/api/wechat/product-trend/:id/metrics"
+  },
+  {
+    "method": "GET",
+    "path": "/api/wechat/product-trend/:id/daily"
+  }
+]

@@ -1,0 +1,1 @@
+import{n as e,r as t,t as n}from"./central-auth-B5qDOiXr.js";var r=`edge`,i=`force-dynamic`;async function a(r){let i=await e(r);return i.ok?Response.json(t(i),{headers:{"Cache-Control":`no-store`}}):n(i)}export{a as GET,i as dynamic,r as runtime};
