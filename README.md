@@ -20,8 +20,8 @@
 需要 Docker Engine 或 Docker Desktop，以及 Docker Compose v2。首次构建需要联网下载公开基础镜像、npm 和 Python 依赖，并安装 FFmpeg；无需安装宿主机 Node、Python 或数据库。请在有足够构建内存的电脑上执行；此项目没有在低内存环境完成测试。
 
 ```sh
-git clone <上传后的仓库地址>
-cd <克隆目录>
+git clone https://github.com/gsy-fddm/brand_market_center.git
+cd brand_market_center
 docker compose up --build -d
 ```
 
@@ -78,4 +78,4 @@ SQLite 的首次建表与本地账号初始化位于 local_bootstrap.py；没有
 
 未完成：公开镜像下载、依赖安装、前端类型检查与构建、后端导入／首次建表、容器启动、浏览器验收、业务链路及重启持久化验证。可能仍有依赖或运行适配问题，须在有资源的电脑上完成上述验收后才能称为可运行版本。
 
-本目录尚未提交或推送到远程仓库，也未部署服务器。原有 8095 环境未被替换。本机构建请求被拒绝，未执行构建；随后按用户指示停止本地验证。
+源码发布仓库：https://github.com/gsy-fddm/brand_market_center ，分支为 main。上传源码不代表运行验证通过，亦不代表已部署服务器。原有 8095 环境未被替换。本机构建请求被拒绝，未执行构建；随后按用户指示停止本地验证。
