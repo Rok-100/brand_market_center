@@ -32,7 +32,7 @@ from .oss_service import ALLOWED_EXTENSIONS, VIDEO_EXTENSIONS, normalize_upload_
 logger = logging.getLogger(__name__)
 
 PREFIX = "wis/remix/"
-BUCKET = "marketing-video-dashboard"
+BUCKET = settings.bucket if os.getenv("LOCAL_SIMULATION") == "1" else "marketing-video-dashboard"
 PART_BYTES = 32 * 1024 * 1024
 CATEGORIES = {
     "其他 WIS 素材": "other-wis", "黑晶面膜": "black-crystal-mask",
@@ -122,9 +122,9 @@ def build_router(kind="remix"):
         return user
 
     router = APIRouter(prefix=f"/api/{kind}-library", dependencies=[Depends(require_remix_access)])
-    endpoint = os.getenv("REMIX_OSS_ENDPOINT", "https://oss.fandow.com").rstrip("/")
     local = os.getenv("LOCAL_SIMULATION") == "1"
-    if local and endpoint != "http://remix-object-store:9000":
+    endpoint = os.getenv("REMIX_OSS_ENDPOINT", settings.endpoint if local else "https://oss.fandow.com").rstrip("/")
+    if local and endpoint not in {"http://remix-object-store:9000", "http://object-store:9000"}:
         raise RuntimeError("Local remix validation must use its isolated object fixture")
     # Do not use the legacy RoutingClient: this bucket has no legacy fallback.
     client = boto3.client(

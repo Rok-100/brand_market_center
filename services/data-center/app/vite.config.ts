@@ -1,6 +1,11 @@
 import vinext from "vinext";
 import { defineConfig } from "vite";
-import hostingConfig from "./.openai/hosting.json";
+import { readFileSync } from "node:fs";
+
+const localSimulation = process.env.LOCAL_SIMULATION === "1";
+const hostingConfig = localSimulation ? {} : JSON.parse(
+  readFileSync(new URL("./.openai/hosting.json", import.meta.url), "utf8"),
+);
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   "00000000-0000-4000-8000-000000000000";
@@ -33,6 +38,7 @@ const localBindingConfig = {
 };
 
 export default defineConfig(async () => {
+  if (localSimulation) return { plugins: [vinext()] };
   // Keep Wrangler and Miniflare state project-local. These are non-secret tool
   // settings; application environment belongs in ignored `.env*` files.
   process.env.WRANGLER_WRITE_LOGS ??= "false";
