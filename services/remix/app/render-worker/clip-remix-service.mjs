@@ -7694,6 +7694,31 @@ export const createClipRemixService = ({
     return {...result, items: result.items.map(asset => ({...asset, autoRoleHints: [...roleHintsForAsset(asset)]}))};
   };
 
+  const localSourcePreparationKey = source => createHash('sha256').update(JSON.stringify([
+    source.storedName,source.contentSha256,source.size,sourceProductCategory(source),
+    source.analysisStatus,source.analysisRuleVersion,source.speechSegments,
+  ])).digest('hex');
+
+  const localSourceCandidatesForJob = async (library,job,run,limit) => {
+    const identity=accessIdentity({sub:job.createdById,name:job.createdByName});
+    const candidates=library.sources.filter(source=>source.sourceType==='manual_upload'&&
+      source.visibility!=='private'&&canReadSource(source,identity)&&
+      [job.productCategory,GENERAL_CLIP_CATEGORY].includes(sourceProductCategory(source))&&
+      !BLOCKED_SOURCE_PATTERN.test([source.originalName,...(source.tags||[])].join(' '))&&
+      Number(source.durationSeconds)>0)
+      .sort((a,b)=>Number(b.analysisStatus==='ready')-Number(a.analysisStatus==='ready')||String(a.id).localeCompare(String(b.id)));
+    const selected=[],seen=new Set();
+    for(const source of candidates){
+      if(selected.length>=limit)break;
+      const key=localSourcePreparationKey(source),previous=run.localSourcePreparationAttempts?.[source.id];
+      if(previous?.key===key&&(previous.complete||Date.now()-Date.parse(previous.attemptedAt)<sourcePreparationDelay(previous.attempts-1)))continue;
+      const contentKey=source.contentSha256||source.storedName;
+      if(!contentKey||seen.has(contentKey)||await missingMedia(path.join(sourcesDir,source.storedName)))continue;
+      seen.add(contentKey);selected.push(source);
+    }
+    return selected;
+  };
+
   const importEffectiveMaterialCenterClipsForJob = async (
     job,
     accessContext,
@@ -7783,8 +7808,20 @@ export const createClipRemixService = ({
     await updateLibrary(latest=>{
       const owner=latest.autoJobs.find(item=>item.id===jobId),run=owner?.runs.find(item=>item.id===runId);
       if(!owner||!run||owner.status!=='active'||!ownerCanUseAutomation(latest,owner))return unchangedLibrary(null);
-      for(const key of ['source_selection','source_slicing','clip_calibration','clip_review'])patchRunStageReport(run,key,
-        {status:'completed',summary:'复用现有切片；基础检查后自动入池，异常自动跳过，无需人工复核。',completedAt:nowIso()});
+      run.automaticSourcePreparationVersion=1;
+      const needsSources=onDemandSourceShortfall(latest,owner,run);
+      const fresh=freshAutomationStageReports();
+      for(const key of ['source_selection','source_slicing','clip_calibration','clip_review']){
+        const report=run.stageReports.find(item=>item.key===key);
+        // Repair receipts written by the old inventory-only branch, without
+        // erasing genuine selection, preparation progress or failed attempts.
+        const inventoryOnly=report?.summary==='复用现有切片；基础检查后自动入池，异常自动跳过，无需人工复核。';
+        if(needsSources){
+          if(inventoryOnly)Object.assign(report,fresh.find(item=>item.key===key));
+        }else if(!report?.processedCount&&(!report?.completedAt||inventoryOnly)){
+          patchRunStageReport(run,key,{status:'completed',summary:'现有切片已满足本批角色、时长与不同开头要求，复用库存，无需补源切片。',completedAt:nowIso()});
+        }
+      }
     });
   };
 
@@ -7823,16 +7860,14 @@ export const createClipRemixService = ({
 
     if (existingSelectionReport?.status !== 'completed') {
       await updateAutoRunStage(jobId, runId, 'source_selection', {
-        status: materialCenter?.configured ? 'running' : 'blocked',
-        summary: materialCenter?.configured
-          ? '正在从真实素材中心筛选源视频'
-          : '素材中心双向接口未配置',
+        status: 'running',
+        summary: '正在从本地上传与素材中心筛选源视频',
         evidence: [
           `品类：${job.productCategory}`,
           '当前素材中心 API 未提供投放表现字段，本阶段不生成虚假的历史效果评分。',
         ],
         startedAt: nowIso(),
-        completedAt: materialCenter?.configured ? null : nowIso(),
+        completedAt: null,
       });
       if (boundedHistoricalSources) {
         selectedAssetIds=[];
@@ -7846,7 +7881,7 @@ export const createClipRemixService = ({
             evidence:[`本批最多 ${run.onDemandSourcePreparation.limit} 条来源，重试仍使用同一清单。`,
               ...run.onDemandSourcePreparation.sourceIds.map(id=>`已登记候选 ${id}；仍需当前原文件、ASR 与逐段内容审核。`)],completedAt:nowIso()});
         });
-      } else if (materialCenter?.configured) {
+      } else {
         let effectiveImportEvidence = [];
         try {
           effectiveImportEvidence =
@@ -7870,10 +7905,11 @@ export const createClipRemixService = ({
           job.sourceSelectionLimit,
           Boolean(run.sourceDurationGap),
         );
+        const localCandidates=await localSourceCandidatesForJob(library,job,run,neededSourceCount);
         const selection = await materialCenterCandidatesForJob(
           job,
           library,
-          neededSourceCount,
+          Math.max(0,neededSourceCount-localCandidates.length),
         );
         const candidates = selection.items;
         selectedAssetIds = candidates.map((asset) => asset.id);
@@ -7883,18 +7919,22 @@ export const createClipRemixService = ({
           if (!latestJob || !latestRun)
             throw new Error('自动流水线批次已失效。');
           latestRun.selectedAssetIds = selectedAssetIds;
+          latestRun.selectedLocalSourceIds = localCandidates.map(source=>source.id);
+          const selectedCount=candidates.length+localCandidates.length;
           patchRunStageReport(latestRun, 'source_selection', {
             status: 'completed',
-            totalCount: candidates.length,
-            processedCount: candidates.length,
-            passedCount: candidates.length,
+            totalCount: selectedCount,
+            processedCount: selectedCount,
+            passedCount: selectedCount,
             reviewRequiredCount: 0,
             failedCount: 0,
-            summary: candidates.length
-              ? `现有切片存在缺口，已按实际缺口选择 ${candidates.length} 条合规源视频`
+            summary: selectedCount
+              ? `已选择本地上传 ${localCandidates.length} 条、素材中心 ${candidates.length} 条源视频，准备拆解补片`
               : neededSourceCount === 0
                 ? '现有审核通过切片已满足本批组合，直接使用切片库'
-                : '没有发现新的合规源视频，继续使用现有切片池',
+                : Object.values(latestRun.localSourcePreparationAttempts||{}).some(attempt=>attempt.error)
+                ? '已找到本地上传来源，但准备条件未满足；具体原因见自动切片回执'
+                : '本地上传与素材中心暂无可补切来源；请核对产品品类、文件和已处理记录',
             evidence: [
               `品类：${latestJob.productCategory}`,
               ...effectiveImportEvidence,
@@ -7915,7 +7955,8 @@ export const createClipRemixService = ({
                   (slot) =>
                     `优先补齐 ${slot.label}：现有 ${slot.candidateCount} 条，目标 ${slot.desiredCandidateCount} 条`,
                 ),
-              `去重后选择：${candidates.length} 条`,
+              `去重后选择：${selectedCount} 条；本地上传优先，与云来源共用本批上限。`,
+              ...localCandidates.map(source=>`本地上传：${safeLabel(source.originalName)}；${source.analysisStatus==='ready'?'复用已有拆解结果':'自动拆解后切片'}`),
               ...candidates.map(
                 (asset) =>
                   `素材 #${asset.id}：${safeLabel(asset.filename)}${
@@ -7972,15 +8013,58 @@ export const createClipRemixService = ({
         recoveredCtaSources.set(sourceId,recovered);selectedSourceIds.add(sourceId);}
     }
     const preparedVersionSources=new Map();
+    const preparedLocalSources=new Map();
+    const selectedLocalSourceIds=boundedHistoricalSources?[]:
+      ((await readLibrary()).autoJobs.find(item=>item.id===jobId)?.runs.find(item=>item.id===runId)?.selectedLocalSourceIds||[]);
     const slicingEvidence = [];
     const durationPreparationErrors = [];
     const sourceSlicingProgress=createSourcePreparationProgress({assetIds:selectedAssetIds,
+      localSourceIds:selectedLocalSourceIds,
       sourceIds:[...versionCandidates.map(item=>item.sourceId),...recoveredCtaSources.keys()],sources:library.sources});
-    const reportSourceSlicingProgress=(finished=false)=>updateAutoRunStage(jobId,runId,'source_slicing',
-      sourceSlicingProgress.report({finished,now:nowIso(),evidence:slicingEvidence}));
+    const sourceSlicingReport=(finished=false)=>{
+      const report=sourceSlicingProgress.report({finished,now:nowIso(),evidence:slicingEvidence});
+      const failures=Object.entries(run.localSourcePreparationAttempts||{}).filter(([,attempt])=>attempt.error);
+      if(!report.totalCount&&failures.length){
+        return {...report,status:'blocked',totalCount:failures.length,processedCount:failures.length,failedCount:failures.length,
+          summary:`本地来源准备受阻：${failures[0][1].error} 等待重试，保留上次失败回执。`,
+          evidence:failures.map(([id,attempt])=>`本地上传 ${id}：${attempt.error}（上次处理 ${attempt.attemptedAt}，本轮未重复执行）`),
+          completedAt:nowIso()};
+      }
+      return report;
+    };
+    const reportSourceSlicingProgress=(finished=false)=>updateAutoRunStage(jobId,runId,'source_slicing',sourceSlicingReport(finished));
     await updateAutoRunStage(jobId,runId,'source_slicing',{
-      ...sourceSlicingProgress.report({now:nowIso()}),startedAt:nowIso(),
+      ...sourceSlicingReport(),startedAt:nowIso(),
     });
+    for(const sourceId of selectedLocalSourceIds){
+      sourceSlicingProgress.beginLocalSource(sourceId);await reportSourceSlicingProgress();
+      let preparedSource=null,preparationError=null;
+      try{
+        const current=await readLibrary(),owner=current.autoJobs.find(item=>item.id===jobId),source=getSource(current,sourceId);
+        if(owner?.status!=='active'||owner.archivedAt||!ownerCanUseAutomation(current,owner))
+          throw Object.assign(Error('自动任务已暂停或权限变化，未处理本地来源。'),{code:'AUTOMATION_STOPPED'});
+        if(!source||source.visibility==='private'||!canReadSource(source,accessIdentity(accessContext))||
+            ![owner.productCategory,GENERAL_CLIP_CATEGORY].includes(sourceProductCategory(source)))
+          throw Error('本地来源的权限或产品品类已变化，未继续切片。');
+        preparedSource=sourceVersionManaged(source)
+          ?await prepareSourceForAutomation(sourceId,{accessContext,runId,trustedJobId:jobId,
+            isActiveInLibrary:latest=>{const active=latest.autoJobs.find(item=>item.id===jobId);return Boolean(active?.status==='active'&&!active.archivedAt&&ownerCanUseAutomation(latest,active));}})
+          :source.analysisStatus==='ready'&&source.speechSegments?.length?source:await analyzeSource(sourceId);
+        preparedLocalSources.set(sourceId,preparedSource);selectedSourceIds.add(sourceId);
+        slicingEvidence.push(`本地上传 ${safeLabel(source.originalName)}：已准备 ${preparedSource.speechSegments?.length||0} 段，继续校准切片。`);
+      }catch(error){preparationError=error;slicingEvidence.push(`本地上传 ${sourceId}：${error.message}`);}
+      sourceSlicingProgress.settleLocalSource(sourceId,sourcePreparationDisplayOutcome(preparedSource,preparationError,sourceVersionManaged(preparedSource)));
+      await updateLibrary(latest=>{
+        const owner=latest.autoJobs.find(item=>item.id===jobId),currentRun=owner?.runs.find(item=>item.id===runId),source=getSource(latest,sourceId);
+        if(!currentRun||!source)return unchangedLibrary(null);
+        const previous=currentRun.localSourcePreparationAttempts?.[sourceId];
+        currentRun.localSourcePreparationAttempts||={};
+        currentRun.localSourcePreparationAttempts[sourceId]={key:localSourcePreparationKey(source),complete:!preparationError&&preparedSource?.analysisStatus==='ready'&&Boolean(preparedSource.speechSegments?.length),
+          attemptedAt:nowIso(),attempts:(previous?.attempts||0)+1,error:preparationError?.message||null};
+      });
+      await reportSourceSlicingProgress();
+      if(preparationError?.code==='AUTOMATION_STOPPED')throw preparationError;
+    }
     await mapWithConcurrency(
       selectedAssetIds,
       AUTO_SOURCE_PROCESSING_CONCURRENCY,
@@ -8075,6 +8159,8 @@ export const createClipRemixService = ({
       .filter(Boolean);
     const sources=[];
     for(const source of selectedSources){
+      if(preparedLocalSources.has(source.id)){sources.push(preparedLocalSources.get(source.id));continue;}
+      if(selectedLocalSourceIds.includes(source.id))continue;
       if(sourceVersionManaged(source)){
         const candidate=versionCandidates.find(item=>item.sourceId===source.id);
         const recovered=recoveredCtaSources.get(source.id);
@@ -8383,6 +8469,16 @@ export const createClipRemixService = ({
         : '本批次没有新切片需要质检',
       evidence: assessmentEvidence,
       completedAt: nowIso(),
+    });
+    // Calibration annotates the transcript. Keep the completed local snapshot
+    // current so those annotations alone cannot schedule the same source again.
+    if(selectedLocalSourceIds.length)await updateLibrary(latest=>{
+      const currentRun=latest.autoJobs.find(item=>item.id===jobId)?.runs.find(item=>item.id===runId);
+      if(!currentRun)return unchangedLibrary(null);
+      for(const sourceId of selectedLocalSourceIds){
+        const attempt=currentRun.localSourcePreparationAttempts?.[sourceId],source=getSource(latest,sourceId);
+        if(attempt?.complete&&source)attempt.key=localSourcePreparationKey(source);
+      }
     });
   };
 
@@ -8949,6 +9045,7 @@ export const createClipRemixService = ({
         );
         run.selectedAssetIds = [];
         run.selectedSourceIds = [];
+        run.selectedLocalSourceIds = [];
       }
       run.status = outputStats.rejectedCount ? 'repairing' : 'preparing';
       run.startedAt ||= nowIso();
@@ -8982,17 +9079,23 @@ export const createClipRemixService = ({
       if (!prepared) return;
       const protocolLibrary=await readLibrary(),protocolJob=protocolLibrary.autoJobs.find(job=>job.id===jobId);
       const historicalRun=historicalInventoryEnabled({jobId,autoApproveOutputs:protocolJob?.autoApproveOutputs});
+      if(!historicalRun&&protocolJob.autoApproveOutputs===true)await performBasicPreproduction(jobId,prepared.runId);
       // This exact server-owned migration reuses approved inventory. It does not
       // re-run old source recognition, reset preparation receipts or enlarge quotas.
-      const progressivePreparation=protocolJob.autoApproveOutputs===true?null:await ensureProgressiveSourceBatch(jobId,prepared.runId);
+      const progressivePreparation=historicalRun?null:await ensureProgressiveSourceBatch(jobId,prepared.runId);
       const beforePreparation=await readLibrary();
       const preparingJob=beforePreparation.autoJobs.find(item=>item.id===jobId);
       const preparingRun=preparingJob?.runs.find(item=>item.id===prepared.runId);
-      const needsVersionBackfill=protocolJob.autoApproveOutputs!==true&&!historicalRun&&!progressivePreparation?.runAlreadyComplete && preparingJob && preparingRun &&
+      const needsVersionBackfill=!historicalRun&&!progressivePreparation?.runAlreadyComplete && preparingJob && preparingRun &&
         (await versionBackfillCandidates(beforePreparation,preparingJob,preparingRun)).length>0;
-      if (!historicalRun&&!progressivePreparation?.runAlreadyComplete&&(prepared.resumeStatus !== 'awaiting_review' || needsVersionBackfill||progressivePreparation?.materializationPending)) {
-        if(protocolJob.autoApproveOutputs===true)await performBasicPreproduction(jobId,prepared.runId);
-        else await performAutoPreproduction(jobId, prepared.runId);
+      const basicSourceShortfall=protocolJob.autoApproveOutputs===true&&preparingJob&&preparingRun&&
+        onDemandSourceShortfall(beforePreparation,preparingJob,preparingRun);
+      const fixedSourceBackoff=preparingRun?.onDemandSourcePreparation?.sourceIds?.length>0&&
+        !needsVersionBackfill&&!progressivePreparation?.materializationPending&&prepared.resumeStatus==='awaiting_review';
+      if (!historicalRun&&!progressivePreparation?.runAlreadyComplete&&
+          (protocolJob.autoApproveOutputs===true?basicSourceShortfall&&!fixedSourceBackoff:
+            prepared.resumeStatus !== 'awaiting_review' || needsVersionBackfill||progressivePreparation?.materializationPending)) {
+        await performAutoPreproduction(jobId, prepared.runId);
       }
       await reconcileAutomaticOutputReviews(jobId, prepared.runId);
       const canGenerate = await updateLibrary((library) => {
@@ -9038,7 +9141,14 @@ export const createClipRemixService = ({
           if (!qualified.canProduce && !qualified.evidenceAvailable) {
             if(run.onDemandSourcePreparation?.sourceIds?.length)qualified.reviewEvidenceMessage+=
               ` 本批固定 ${run.onDemandSourcePreparation.sourceIds.length} 条候选来源；仅按退避重试同源，不扩展全库，未解决的真实缺口继续保留。`;
-            holdAutomaticReview(job,run,{kind:'source_evidence',reason:'source_evidence_missing',summary:qualified.reviewEvidenceMessage},nowIso());
+            if(run.onDemandSourcePreparation?.sourceIds?.length||run.progressiveSourcePreparation){
+              holdAutomaticReview(job,run,{kind:'source_evidence',reason:'source_evidence_missing',summary:qualified.reviewEvidenceMessage},nowIso());
+            }else{
+              // A normal inventory shortage is retryable source work, not a
+              // content-review hold. Re-enter selection on the same run.
+              run.status='awaiting_sources';run.completedAt=null;run.errorMessage=qualified.reviewEvidenceMessage;
+              job.nextRunAt=nextAutoRemediationAt();job.updatedAt=nowIso();
+            }
             for (const key of ['remix_generation','output_review']) patchRunStageReport(run,key,{
               status:'blocked',summary:qualified.reviewEvidenceMessage,
               processedCount:outputStats.attemptedCount,passedCount:outputStats.approvedCount,
@@ -11391,6 +11501,9 @@ export const createClipRemixService = ({
       if(pendingMigration)continue;
       for(const run of job.runs||[]){
         if(!REVIEW_HOLD_STATUSES.has(run.status)||run.companyExhaustion)continue;
+        // Migration may wake old inventory-only holds once. New source work
+        // retains its bounded preparation/backoff or explicit dependency hold.
+        if(run.automaticSourcePreparationVersion===1)continue;
         if(['PROGRESSIVE_ATTEMPT_LIMIT','PROGRESSIVE_RUN_ATTEMPT_LIMIT','OUTPUT_SEQUENCE_PENDING','RECOVERY_REGISTRATION_ONLY','JOURNAL_RECOVERY_BLOCKED'].includes(run.automaticReviewHold?.reason))continue;
         if(run.automaticReviewHold?.reason==='PROGRESSIVE_TARGET_REACHED'&&basicWorkCount(library,job)>=20)continue;
         if(run.automaticReviewHold)run.automaticReviewHold={...run.automaticReviewHold,resolvedAt:nowIso(),resolution:BASIC_REVIEW_POLICY};
