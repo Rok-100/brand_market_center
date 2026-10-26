@@ -4,6 +4,7 @@ FROM runtime-base AS dependencies
 COPY services/data-center/app/ /app/
 WORKDIR /app
 RUN npm ci --ignore-scripts --no-audit --no-fund
+RUN LOCAL_SIMULATION=1 HUB_SAME_ORIGIN_BUILD=1 npx vinext build
 FROM runtime-base AS runtime
 COPY --from=dependencies --chown=10001:10001 /app /app
 COPY --chown=10001:10001 local/empty/ /opt/pinying-storage/

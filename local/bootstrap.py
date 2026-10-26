@@ -23,6 +23,9 @@ def main():
             cursor.execute("SELECT GET_LOCK('brand-market-full-bootstrap', 120)")
             if cursor.fetchone()[0] != 1:
                 raise RuntimeError('Another local bootstrap is still running')
+            # The independent remix library shares the asset schema but keeps
+            # its own identities, generated uniqueness column and indexes.
+            cursor.execute('CREATE TABLE IF NOT EXISTS py_cloud_remix_assets LIKE py_cloud_assets')
             registry = json.loads(Path('/local-schemas/migration-registry.json').read_text(encoding='utf-8-sig'))
             for scope, schema in registry.items():
                 cursor.execute('INSERT IGNORE INTO pinying_storage_schemas(scope,source_path,schema_json,updated_at) VALUES (%s,%s,%s,NOW(6))',

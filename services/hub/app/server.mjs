@@ -3126,7 +3126,8 @@ const flowAccessFor = payload => {
 const productionSources=process.env.FLOW_BUSINESS_SNAPSHOT?new ProductionSources(flowRuntime,flowSources,{file:process.env.FLOW_BUSINESS_SNAPSHOT,externalNumbers:(process.env.FLOW_EXTERNAL_COLLABORATOR_NUMBERS||'').split(',').filter(Boolean)}):null;
 const flowBlueprints=new FlowBlueprints(flowRuntime);flowRuntime.blueprints=flowBlueprints;
 const flowAutomation=new FlowAutomation(flowRuntime,flowSources);
-const liveSessions=new LiveSessionFlow(flowRuntime,{enabled:process.env.FLOW_LIVE_SESSIONS_ENABLED==='true',readSchedule:process.env.FLOW_LIVE_OFFICIAL_SOURCE==='true'?createOfficialLiveScheduleReader({appId:process.env.FEISHU_APP_ID,appSecret:process.env.FEISHU_APP_SECRET}):process.env.HUB_INTEGRATED_MODE==='1'?createLiveScheduleReader({publicUrl:process.env.FLOW_PUBLIC_URL}):null});
+const integratedLiveScheduleEnabled=process.env.HUB_INTEGRATED_MODE==='1'&&(process.env.LOCAL_SIMULATION!=='1'||process.env.FLOW_LIVE_SESSIONS_ENABLED==='true');
+const liveSessions=new LiveSessionFlow(flowRuntime,{enabled:process.env.FLOW_LIVE_SESSIONS_ENABLED==='true',readSchedule:process.env.FLOW_LIVE_OFFICIAL_SOURCE==='true'?createOfficialLiveScheduleReader({appId:process.env.FEISHU_APP_ID,appSecret:process.env.FEISHU_APP_SECRET}):integratedLiveScheduleEnabled?createLiveScheduleReader({publicUrl:process.env.FLOW_PUBLIC_URL}):null});
 const liveAutoDispatch=new LiveAutoDispatch(liveSessions,{enabled:process.env.FLOW_LIVE_AUTO_DISPATCH==='true'&&process.env.FLOW_LIVE_OFFICIAL_SOURCE==='true'});
 
 const flowExecution=workflowExecutionPolicy();
