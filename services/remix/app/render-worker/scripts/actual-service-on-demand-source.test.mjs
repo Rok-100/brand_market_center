@@ -77,7 +77,9 @@ async function fixture(t,{revoked=false,beforeAsr=async()=>{}}={}){
     assert.equal(response.status,201,JSON.stringify(response));created.push(response.body.job.id);return response.body.job.id;
   };
   const start=async id=>{const res=await route('POST',`/api/remix/automation/jobs/${id}/run-now`);assert.equal(res.status,200,JSON.stringify(res));
-    return until(async()=>{const library=await read(),job=library.autoJobs.find(j=>j.id===id);
+    // setInterval is intercepted above; explicitly drive its periodic ticks so
+    // a run-now request arriving during another tick is not lost in the fixture.
+    return until(async()=>{scheduler();const library=await read(),job=library.autoJobs.find(j=>j.id===id);
       return !service.runtimeState().activeAutoJobCount&&job.runs[0]?.automaticReviewHold&&job;},'source hold');};
   return {calls,read,route,create,start,tick:async()=>{scheduler();await sleep(80);},service};
 }
