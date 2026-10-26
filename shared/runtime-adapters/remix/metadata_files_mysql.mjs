@@ -74,13 +74,16 @@ function cacheWrite(item,text,version,sha){
   item.rule.versions.set(item.path,version);item.rule.verified.set(item.path,{stamp:fingerprint(item.local),sha});
 }
 const fileRefreshQueues=new Map();
+function withFileOperation(item,execute){
+  const previous=fileRefreshQueues.get(item.local)||Promise.resolve();
+  const operation=previous.catch(()=>{}).then(execute);
+  fileRefreshQueues.set(item.local,operation);
+  return operation.finally(()=>{if(fileRefreshQueues.get(item.local)===operation)fileRefreshQueues.delete(item.local);});
+}
 function refreshManagedAsync(item,options={}){
   // Authority checks must run after every older hydration for this file.
   // Do not share an earlier directory-based check with a later primary check.
-  const previous=fileRefreshQueues.get(item.local)||Promise.resolve();
-  const operation=previous.catch(()=>{}).then(()=>refreshManagedUnlocked(item,options));
-  fileRefreshQueues.set(item.local,operation);
-  return operation.finally(()=>{if(fileRefreshQueues.get(item.local)===operation)fileRefreshQueues.delete(item.local);});
+  return withFileOperation(item,()=>refreshManagedUnlocked(item,options));
 }
 async function refreshManagedUnlocked(item,{authoritative=false}={}){
   const found=authoritative?null:(await directoryAsync(item.rule)).get(item.path);
@@ -111,9 +114,45 @@ async function refreshManagedUnlocked(item,{authoritative=false}={}){
   return {version:item.rule.versions.get(item.path),sha256:item.rule.verified.get(item.path)?.sha};
 }
 async function readManagedAsync(item,options){
-  await refreshManagedAsync(item);
-  return originalPromises.readFile(item.local,options);
+  return withFileOperation(item,async()=>{
+    await refreshManagedUnlocked(item);
+    return originalPromises.readFile(item.local,options);
+  });
 }
+// Bind each business mutation to the exact authoritative snapshot it read.
+// Progress GETs can no longer replace a writer's compare-and-swap version.
+globalThis[Symbol.for('pinying.metadata.document.v1')]={
+  handles:file=>Boolean(matched(file)),
+  read:file=>{
+    const item=matched(file);if(!item)throw Error('Unmanaged metadata document');
+    return withFileOperation(item,async()=>{
+      const value=await item.rule.rpc.callAsync('readFile',[item.path]);
+      if(!value.exists)throw missing(item.local);
+      return {data:value.data,version:value.version,sha256:value.sha256};
+    });
+  },
+  commit:(file,snapshot,data)=>{
+    const item=matched(file);if(!item)throw Error('Unmanaged metadata document');
+    return withFileOperation(item,async()=>{
+      if(!Number.isSafeInteger(snapshot?.version)||snapshot.version<0||typeof data!=='string')throw Error('Invalid metadata snapshot');
+      // Derive deltas from this read's bytes, never a later cache hydration.
+      try{
+        let method='writeFile',payload=data;
+        const bytes=Buffer.from(data);
+        if(bytes.length>=1024*1024&&typeof snapshot.data==='string'&&hash(snapshot.data)===snapshot.sha256){
+          const delta=textDelta(Buffer.from(snapshot.data),bytes);
+          if(deltaTransportBytes(delta)<Math.min(bytes.length/2,16*1024*1024)){method='writeFileDelta';payload=delta;}
+        }
+        const value=await item.rule.rpc.callAsync(method,[item.path,snapshot.version,payload]);
+        cacheWrite(item,data,value.version,value.sha256);invalidateDirectory(item.rule.connection.scope);
+        return value;
+      }catch(error){
+        if(/Document changed during (transaction|delta)/u.test(error.message))error.code='METADATA_CONFLICT';
+        throw error;
+      }
+    });
+  },
+};
 // Internal adapter capability: check MySQL authority and refresh the verified
 // cache without allocating/decoding the complete document on every GET.
 // Unmanaged files return false; errors deliberately propagate (no stale pass).

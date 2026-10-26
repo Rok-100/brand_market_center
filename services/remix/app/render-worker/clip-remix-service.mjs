@@ -1,4 +1,5 @@
 import {automaticReviewDecision} from './automatic-review-policy.mjs';
+import {commitLibraryChange,libraryRebaseAllowed,isLibraryConflict} from './library-transaction.mjs';
 import {verifyDefinitiveContentFailure} from './definitive-content-failure.mjs';
 import {visionConnection} from './vision-provider.mjs';
 import {SourceSemanticReview,validateSourceSemanticProof} from './source-semantic-review.mjs';
@@ -571,7 +572,7 @@ const automationErrorText = (error) =>
   ).trim();
 
 export const isRecoverableAutoPipelineError = (error) =>
-  (error?.code==='SOURCE_DURATION_GAP'||RECOVERABLE_AUTOMATION_ERROR_PATTERN.test(automationErrorText(error))) &&
+  (isLibraryConflict(error)||error?.code==='SOURCE_DURATION_GAP'||RECOVERABLE_AUTOMATION_ERROR_PATTERN.test(automationErrorText(error))) &&
   !HARD_EXTERNAL_BLOCKER_PATTERN.test(automationErrorText(error));
 
 const shouldKeepRetryingExternalState = (...values) => {
@@ -628,6 +629,7 @@ export const deferQianchuanDeliveryForCapacity = (state, message = '') => ({
 });
 
 const autoRecoverySummary = (error) => {
+  if(isLibraryConflict(error))return '存储更新冲突，已保留原批次和已完成进度，等待自动重试；无需修改外部权限或配置。';
   if(error?.code==='SOURCE_DURATION_GAP')return error.message;
   const text = automationErrorText(error);
   if (/abort|timeout|timed out|超时/iu.test(text)) {
@@ -1032,6 +1034,7 @@ export const createClipRemixService = ({
     },
   });
   const activeAutoJobIds = new Set();
+  const storageConflictRetryAfter = new Map();
   const activeClipReplenishmentJobIds = new Set();
   const activeAutoReturnPromises = new Map();
   const activeQianchuanDeliveryPromises = new Map();
@@ -1223,6 +1226,23 @@ export const createClipRemixService = ({
   const updateLibrary = (updater, { scanOnly = false } = {}) => {
     if (readOnly) return Promise.reject(Object.assign(new Error('当前为只读预览，原任务与素材保持不变。'), { statusCode: 423 }));
     const operation = writeQueue.then(async () => {
+      const document=globalThis[Symbol.for('pinying.metadata.document.v1')];
+      if(document?.handles(libraryPath)){
+        const load=async()=>{const snapshot=await document.read(libraryPath);return {snapshot,library:normalizedLibrary(JSON.parse(snapshot.data))};};
+        try{
+          const initial=await load(),base=initial.library,working=structuredClone(base);
+          libraryCache.store(base);
+          const before=scanOnly?continuousScanBusinessState(base):null;
+          return await persistLibraryUpdate(working,updater,async updated=>{
+            if(scanOnly&&before===continuousScanBusinessState(updated)){
+              libraryCache.store(updated);invalidateReadModels();return false;
+            }
+            const committed=await commitLibraryChange({base,wanted:updated,snapshot:initial.snapshot,read:load,
+              commit:(snapshot,next)=>document.commit(libraryPath,snapshot,JSON.stringify(next)),canRebase:libraryRebaseAllowed});
+            libraryCache.store(committed);invalidateReadModels();return true;
+          });
+        }catch(error){libraryCache.invalidate();invalidateReadModels();throw error;}
+      }
       const library = await readLibrary();
       const libraryVersion = libraryCache.version();
       const scanBefore = scanOnly ? continuousScanBusinessState(library) : null;
@@ -9055,6 +9075,8 @@ export const createClipRemixService = ({
     });
 
   const processAutoJob = async (jobId) => {
+    if(Date.now()<(storageConflictRetryAfter.get(jobId)||0))return;
+    storageConflictRetryAfter.delete(jobId);
     if (activeAutoJobIds.has(jobId)) return;
     activeAutoJobIds.add(jobId);
     try {
@@ -9634,6 +9656,9 @@ export const createClipRemixService = ({
     } catch (error) {
       const recoverable = isRecoverableAutoPipelineError(error);
       const recoverySummary = autoRecoverySummary(error);
+      // The recovery receipt can itself lose a CAS race. Keep a process-local
+      // cooldown too, so that failure cannot create immediate retry hot loops.
+      if(isLibraryConflict(error))storageConflictRetryAfter.set(jobId,Date.now()+AUTO_REMIX_REMEDIATION_DELAY_MS);
       await updateLibrary((library) => {
         const job = library.autoJobs.find((item) => item.id === jobId);
         const run = job?.runs.find((item) =>
@@ -9653,6 +9678,15 @@ export const createClipRemixService = ({
         run.generatedCount = outputStats.approvedCount;
         run.attemptedCount = outputStats.attemptedCount;
         run.failedCount = outputStats.rejectedCount;
+        if(isLibraryConflict(error)){
+          run.status='queued';run.completedAt=null;run.errorMessage=recoverySummary;
+          run.storageConflict={code:'METADATA_CONFLICT',attempts:(run.storageConflict?.attempts||0)+1,lastAt:nowIso()};
+          for(const report of normalizedAutomationStageReports(run.stageReports)){
+            if(report.status==='running'||report.status==='failed')patchRunStageReport(run,report.key,{
+              status:'retrying',summary:recoverySummary,completedAt:null,currentItem:'等待存储更新后继续原批次'});
+          }
+          job.nextRunAt=nextAutoRemediationAt();job.updatedAt=nowIso();return;
+        }
         if(isLegacyDurationError(error)){
           holdAutomaticReview(job,run,{kind:'source_feasibility',reason:error.code,summary:error.message},nowIso());
           for(const key of ['source_selection','source_slicing','remix_generation'])patchRunStageReport(run,key,{status:'blocked',summary:error.message,completedAt:nowIso()});
@@ -11747,6 +11781,15 @@ export const createClipRemixService = ({
       ensureContinuousClipSupplyJob(library);
       let acceleratedDeliveryIndex = 0;
       for (const job of library.autoJobs) {
+        // Recover only the old machine-generated storage failure; never wake
+        // user-paused, archived or unauthorized jobs on deployment.
+        const storageFailed=job.runs?.find(run=>['failed','partial'].includes(run.status)&&isLibraryConflict(run.errorMessage));
+        if(job.status==='error'&&!job.archivedAt&&ownerCanUseAutomation(library,job)&&storageFailed){
+          job.status='active';job.nextRunAt=nowIso();storageFailed.status='queued';storageFailed.completedAt=null;
+          storageFailed.errorMessage=autoRecoverySummary(storageFailed.errorMessage);
+          for(const report of normalizedAutomationStageReports(storageFailed.stageReports))if(report.status==='failed'&&isLibraryConflict(report.summary))
+            patchRunStageReport(storageFailed,report.key,{status:'retrying',summary:storageFailed.errorMessage,completedAt:null});
+        }
         preserveAutoJobOnRestart(job, nowIso());
         const recoverableRun = job.runs?.find(
           (run) =>
